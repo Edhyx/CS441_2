@@ -1,3 +1,10 @@
+/*
+Projet CS441 - Mini projet de developpement d'une application de gestion de tirages
+photos numériques
+Equipe 2
+ */
+
+
 package fr.esisar.cs441.groupe2.controller;
 
 public class Main {
