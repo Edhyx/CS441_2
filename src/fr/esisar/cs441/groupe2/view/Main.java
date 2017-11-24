@@ -24,9 +24,16 @@ public class Main {
 		
 		while ((choix=this.choix()) != 0) {
 		
-			switch (choix=choix() != 0) {
-				case 1: {
-					menu = 1;
+			switch (menu) {
+				case 1: { // menu Init
+					switch (choix) {
+					case 1:		
+						affichageNouveauClient();
+						break;
+
+					default:
+						break;
+					}
 				}
 				case 2: {
 					menu = 2;
@@ -34,10 +41,9 @@ public class Main {
 				case 9: {
 					menu = 0;
 				}
-				default : System.out.println("Entrez un choix entre 1, 2 et 9"); break;
+				default : break;
 			}
-			return(menu);
-
+		}
 	}
 
 	public void affichageInit(){
@@ -48,7 +54,7 @@ public class Main {
 		System.out.println("Sortir : tapez 9");
 	}
 
-	public void nouveauClient(){
+	public void affichageNouveauClient(){
 
 	}
 	
@@ -56,6 +62,5 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		return sc.nextInt();
 	}
-		
-	}
+	
 }
