@@ -14,6 +14,13 @@ public class Format {
 		this.prixUnitaire = prixUnitaire;
 		this.ligneCommande = ligneCommande;
 	}
+      
+	public Format(int idFormat, int prixUnitaire) {
+		super();
+		this.idFormat = idFormat;
+		this.prixUnitaire = prixUnitaire;
+		this.ligneCommande = new ArrayList<LigneCommande>();
+	}
 
 	public int getIdFormat() {
 		return idFormat;
