@@ -84,7 +84,13 @@ public class Main {
 		System.out.println("--- --- GESTION DES ALBUMS --- ---");
 	}
 	
-	public void displayAlbumOrder(){}
+	public void displayAlbumOrder(){
+		System.out.println("--- --- COMMANDER UN ALBUM --- ---");
+	}
+
+	public void displayOrderList(){
+		System.out.println("--- --- LISTE DES COMMANDES --- ---");
+	}
 	
 	public int choice() {
 		Scanner sc = new Scanner(System.in);
