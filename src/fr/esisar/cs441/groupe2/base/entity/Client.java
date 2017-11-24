@@ -35,6 +35,19 @@ public class Client {
 		this.albums = new ArrayList<Album>();
 	}
 
+	public Client(String adresseMail, String nom, String prenom, String password) {
+		super();
+		this.adresseMail = adresseMail;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.password = password;
+		this.adresseDeFacturation = null;
+		this.adresseDeLivraison = null;
+		this.fichierImages = new ArrayList<FichierImage>();
+		this.commandes = new ArrayList<Commande>();
+		this.albums = new ArrayList<Album>();
+	}
+
 	public String getAdresseMail() {
 		return adresseMail;
 	}
@@ -105,34 +118,11 @@ public class Client {
 
 	public void setAlbums(ArrayList<Album> albums) {
 		this.albums = albums;
-	}
-	
-	public void add(Statement stmt) throws SQLException{
-	    String sql_element = "INSERT INTO Client " +
-	            "VALUES ('"+adresseMail+"', '"+nom+"', '"+prenom+"', '"+password+"')";
-	    try{
-	    stmt.executeUpdate(sql_element);
-	    System.out.println("Client '"+adresseMail+"' cree");
-	    } catch (SQLException e){
-	    	System.out.println("Client '"+adresseMail+"' existante");
-	    }
-	}
-	
-	public void delete(Statement stmt) throws SQLException{
-	    String sql_delete = "DELETE FROM Client " +
-	            "WHERE adresseMail = '"+adresseMail+"'";
-	    try{
-	    stmt.executeUpdate(sql_delete);
-	    System.out.println("Client '"+adresseMail+"' supprime");
-		} catch (SQLException e){
-	    	System.out.println("Table Client non existant");
-	    }
-	}
-	
+	}	
 	
 	public void affiche(Statement stmt) throws SQLException{
 		try{
-		String sql_aff = "SELECT adresseMail, nom, prenom, password FROM Client ";
+		String sql_aff = "SELECT * FROM Client ";
 	    ResultSet rs = stmt.executeQuery(sql_aff);
 	    
 	    boolean a;
@@ -157,5 +147,12 @@ public class Client {
 		} catch (SQLException e){
 	    	System.out.println("Table Client non existante");
 	    }
+	}
+
+	@Override
+	public String toString() {
+		return "Client [adresseMail=" + adresseMail + ", nom=" + nom + ", prenom=" + prenom + ", password=" + password
+				+ ", adresseDeFacturation=" + adresseDeFacturation + ", adresseDeLivraison=" + adresseDeLivraison
+				+ ", fichierImages=" + fichierImages + ", commandes=" + commandes + ", albums=" + albums + "]";
 	}
 }

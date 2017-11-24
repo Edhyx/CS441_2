@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import fr.esisar.cs441.groupe2.base.BDD.ClientDAO;
 import fr.esisar.cs441.groupe2.base.entity.Adresse;
 import fr.esisar.cs441.groupe2.base.entity.Client;
 
@@ -19,19 +20,21 @@ public class Parcours {
 		Class.forName(driver);
 		Connection connection = DriverManager.getConnection(url,login,login);
 	    Statement stmt = connection.createStatement();
-	       
+	     
+	    ClientDAO tableClient = new ClientDAO(stmt);
+	    
 		Adresse AdresseA = new Adresse(30,"t","r","s");
-		Client clientA = new Client("hnfjydt","nom","prenom","xxx",AdresseA,AdresseA);
+		Client clientA = new Client("hnfjydt","Van Damme","Jean-Claude","DoubleImpact",AdresseA,AdresseA);
 		Client clientB = new Client("aas","nom","prenom","xxx",AdresseA,AdresseA);
+	
 		
-		clientA.affiche(stmt);
-		clientB.affiche(stmt);
+		tableClient.add(clientA);
+		tableClient.add(clientB);
 		
-		/*
-		clientA.add(stmt);
-		clientB.add(stmt);*/
+		System.out.println(tableClient.getById(clientA.getAdresseMail()).toString());
 		
-		clientA.delete(stmt);
-		clientB.delete(stmt);
+		
+		tableClient.delete(clientA);
+		tableClient.delete(clientB);
 	}
 }

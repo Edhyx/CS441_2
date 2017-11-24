@@ -1,10 +1,12 @@
 
 	DAO
 		- muter les add en save (add ou update)
-
+		- Verifier methode querry (Mapping?)
+		
+		getById
+			- retourner null si non trouve est une bonne idee?
 
 	ClientDAO
-		
 		- gerer le lien avec la table d'Adresse
 		- gerer le lien avec la table de FichierImage
 		- gerer le lien avec la table d'Album
