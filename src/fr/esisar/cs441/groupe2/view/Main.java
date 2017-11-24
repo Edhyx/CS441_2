@@ -14,7 +14,7 @@ public class Main {
 	}
 
 	public static void init() {
-		Int choix = 0;
+		int choix = 0;
 		boolean arret = false;
 		while (!arret) {
 			Scanner sc = new Scanner(System.in);

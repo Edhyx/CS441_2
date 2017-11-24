@@ -1,5 +1,7 @@
 package fr.esisar.cs441.groupe2.base;
 
+import java.util.Optional;
+
 import com.sun.security.ntlm.Client;
 
 /*
@@ -13,7 +15,7 @@ public class Adresse {
     private String rue;
     private String codePostal;
     private String ville;
-    private Client client;
+    private Optional<Client> client;
 	
     // Constructeur avec client
 	public Adresse(int idAdresse, String rue, String codePostal, String ville, Client client) {
@@ -22,7 +24,9 @@ public class Adresse {
 		this.rue = rue;
 		this.codePostal = codePostal;
 		this.ville = ville;
-		this.client = client;
+		
+		
+		this.client = Optional.ofNullable(client);
 		
 	}
 	
@@ -33,6 +37,7 @@ public class Adresse {
 		this.rue = rue;
 		this.codePostal = codePostal;
 		this.ville = ville;
+		this.client = Optional.empty();
 	}
 
 	public int getIdAdresse() {
@@ -51,7 +56,7 @@ public class Adresse {
 		return ville;
 	}
 
-	public Client getClient() {
+	public Optional<Client> getClient() {
 		return client;
 	}
 
@@ -71,7 +76,7 @@ public class Adresse {
 		this.ville = ville;
 	}
 
-	public void setClient(Client client) {
+	public void setClient(Optional<Client> client) {
 		this.client = client;
 	}
 	    
