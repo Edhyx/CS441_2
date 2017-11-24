@@ -54,7 +54,7 @@ public class Contient {
 	            "VALUES ("+numOrdre+", '"+titre+"', "+commentaire+", '"+fichierImages.getCheminAcces()+"')";
 	    try{
 	    stmt.executeUpdate(sql_element);
-	    System.out.println("Contient '"+numOrdre+"' cree");
+	    System.out.println("Contient '"+ fichierImages.getCheminAcces() +"' cree");
 	    } catch (SQLException e){
 	    	System.out.println("Contient '"+numOrdre+"' existant");
 	    }
@@ -62,7 +62,7 @@ public class Contient {
 	
 	public void delete(Statement stmt) throws SQLException{
 	    String sql_delete = "DELETE FROM Contient " +
-	            "WHERE idCommande = "+numOrdre+"";
+	            "WHERE cheminAcces = "+numOrdre+"";
 	    try{
 	    stmt.executeUpdate(sql_delete);
 	    System.out.println("Contient '"+numOrdre+"' supprime");
