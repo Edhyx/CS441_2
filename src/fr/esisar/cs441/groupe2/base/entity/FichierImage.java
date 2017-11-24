@@ -21,22 +21,7 @@ public class FichierImage {
     private int ouverture;
     private int vitesseObturation;
     private Client client;
-    private ArrayList<Album> albums;
 	
-    public FichierImage(String cheminAcces, String appareilPhoto, String objectif, int distanceFocale,
-			int sensibiliteISO, int ouverture, int vitesseObturation, Client client, ArrayList<Album> albums) {
-		super();
-		this.cheminAcces = cheminAcces;
-		this.appareilPhoto = appareilPhoto;
-		this.objectif = objectif;
-		this.distanceFocale = distanceFocale;
-		this.sensibiliteISO = sensibiliteISO;
-		this.ouverture = ouverture;
-		this.vitesseObturation = vitesseObturation;
-		this.client = client;
-		this.albums = albums;
-	}
-    
     public FichierImage(String cheminAcces, String appareilPhoto, String objectif, int distanceFocale,
 			int sensibiliteISO, int ouverture, int vitesseObturation, Client client) {
 		super();
@@ -48,7 +33,6 @@ public class FichierImage {
 		this.ouverture = ouverture;
 		this.vitesseObturation = vitesseObturation;
 		this.client = client;
-		this.albums = new ArrayList<Album>();
 	}
     
 	public String getCheminAcces() {
@@ -75,9 +59,6 @@ public class FichierImage {
 	public Client getClient() {
 		return client;
 	}
-	public ArrayList<Album> getAlbums() {
-		return albums;
-	}
 	public void setCheminAcces(String cheminAcces) {
 		this.cheminAcces = cheminAcces;
 	}
@@ -101,9 +82,6 @@ public class FichierImage {
 	}
 	public void setClient(Client client) {
 		this.client = client;
-	}
-	public void setAlbums(ArrayList<Album> albums) {
-		this.albums = albums;
 	}
     
 	public void add(Statement stmt) throws SQLException{

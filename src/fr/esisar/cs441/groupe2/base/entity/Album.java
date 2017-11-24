@@ -22,7 +22,7 @@ public class Album {
     private String titre;
     private String sousTitre;
     private Client creeParClient;
-    private ArrayList<FichierImage>	fichierImages;
+    private ArrayList<Contient>	fichierImages;
     private ArrayList<LigneCommande> ligneCommandes;
 	
     public Album(int idAlbum, String titre, String sousTitre, Client creeParClient) {
@@ -31,12 +31,12 @@ public class Album {
 		this.titre = titre;
 		this.sousTitre = sousTitre;
 		this.creeParClient = creeParClient;
-		this.fichierImages = new ArrayList<FichierImage>();
+		this.fichierImages = new ArrayList<Contient>();
 		this.ligneCommandes = new ArrayList<LigneCommande>();
 	}
     
     public Album(int idAlbum, String titre, String sousTitre, Client creeParClient,
-			ArrayList<FichierImage> fichierImages, ArrayList<LigneCommande> ligneCommandes) {
+			ArrayList<Contient> fichierImages, ArrayList<LigneCommande> ligneCommandes) {
 		super();
 		this.idAlbum = idAlbum;
 		this.titre = titre;
@@ -47,7 +47,7 @@ public class Album {
 	}
 
 	public Album(int idAlbum, String titre, String sousTitre, Client creeParClient,
-			ArrayList<FichierImage> fichierImages) {
+			ArrayList<Contient> fichierImages) {
 		super();
 		this.idAlbum = idAlbum;
 		this.titre = titre;
@@ -73,7 +73,7 @@ public class Album {
 		return creeParClient;
 	}
 
-	public ArrayList<FichierImage> getFichierImages() {
+	public ArrayList<Contient> getFichierImages() {
 		return fichierImages;
 	}
 
@@ -97,7 +97,7 @@ public class Album {
 		this.creeParClient = creeParClient;
 	}
 
-	public void setFichierImages(ArrayList<FichierImage> fichierImages) {
+	public void setFichierImages(ArrayList<Contient> fichierImages) {
 		this.fichierImages = fichierImages;
 	}
 
