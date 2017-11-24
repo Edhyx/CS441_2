@@ -144,13 +144,13 @@ public class Client {
 	       //Retrieve by column name
 	       String id  = rs.getString("adresseMail");
 	       String nom = rs.getString("nom");
-	       String prénom = rs.getString("prénom");
+	       String prenom = rs.getString("prenom");
 	       String password = rs.getString("password");
 
 	       //Display values
 	       System.out.print("adresseMail: " + id);
 	       System.out.print(", nom: " + nom);
-	       System.out.print(", prénom: " + prénom);
+	       System.out.print(", prenom: " + prenom);
 	       System.out.println(", password: " + password);
 	    }
 	    rs.close();
