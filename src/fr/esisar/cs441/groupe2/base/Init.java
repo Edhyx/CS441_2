@@ -54,7 +54,7 @@ public class Init {
 	    System.out.println("Table adressL cree"); 
 	    /////////Creer table commande
 	    String sql_commande = "CREATE TABLE Commande " +
-	            "(idCommande INTEGER), " +
+	            "(idCommande INTEGER, " +
 	            " date VARCHAR(255), " + 
 	            " prixTotal INTEGER, " + 
 	            " adresseMail VARCHAR(255), " + 
@@ -70,7 +70,8 @@ public class Init {
 	            " idFormat INTEGER, " + 
 	            " idAlbum INTEGER, " + 
 	            " FOREIGN KEY (idCommande) REFERENCES Commande(idCommande), " +
-	            " FOREIGN KEY (idFormat) REFERENCES Format(idFormat))";
+	            " FOREIGN KEY (idFormat) REFERENCES Format(idFormat), " +
+	            " FOREIGN KEY (idAlbum) REFERENCES Album(idAlbum))";
 	    
 	    stmt.executeUpdate(sql_ligneC);
 	    System.out.println("Table LigneCommande cree"); 
@@ -81,7 +82,45 @@ public class Init {
 	    
 	    stmt.executeUpdate(sql_format);
 	    System.out.println("Table Format cree"); 
+	    /////////Creer table Album
+	    String sql_album = "CREATE TABLE Album " +
+	            "(idAlbum INTEGER, " +
+	            " titre VARCHAR(255), " + 
+	            " sousTitre VARCHAR(255), " + 
+	            " adresseMail VARCHAR(255), " + 
+	            " PRIMARY KEY ( idAlbum ), " +
+	            " FOREIGN KEY (adresseMail) REFERENCES Client(adresseMail))";
 	    
+	    stmt.executeUpdate(sql_album);
+	    System.out.println("Table album cree"); 
+/////////Creer table Contient
+	    String sql_contient = "CREATE TABLE Contient " +
+	            "(numOrdre INTEGER, " +
+	            " titre VARCHAR(255), " + 
+	            " commentaire VARCHAR(255), " + 
+	            " idAlbum INTEGER, " + 
+	            " cheminAcces VARCHAR(255), " + 
+	            " PRIMARY KEY ( idAlbum , cheminAcces ), " +
+	            " FOREIGN KEY (cheminAcces) REFERENCES FichierImage(cheminAcces), " +
+	            " FOREIGN KEY (idAlbum) REFERENCES Album(idAlbum))";
+	    
+	    stmt.executeUpdate(sql_contient);
+	    System.out.println("Table Contient cree"); 
+	    /////////Creer table FichierImage
+	    String sql_fichierIm = "CREATE TABLE FichierImage " +
+	            "(cheminAcces VARCHAR(255), " +
+	            " appareilPhoto VARCHAR(255), " + 
+	            " objectif VARCHAR(255), " + 
+	            " distanceFocale INTEGER, " + 
+	            " sensibiliteISO INTEGER, " + 
+	            " ouverture INTEGER, " + 
+	            " vitesseObturation INTEGER, " + 
+	            " adresseMail VARCHAR(255), " + 
+	            " PRIMARY KEY ( cheminAcces ), " +
+	            " FOREIGN KEY (adresseMail) REFERENCES Client(adresseMail))";
+	    
+	    stmt.executeUpdate(sql_fichierIm);
+	    System.out.println("Table FichierImage cree"); 
 
 	}
 	
