@@ -15,6 +15,7 @@ public class Main {
 		main.execute();
 	}
 
+<<<<<<< HEAD
 	public void execute() {
 		
 
@@ -23,6 +24,10 @@ public class Main {
 	public int affichageInit(){
 		int choix;
 		int menu = 0;
+=======
+	public static void init() {
+		int choix = 0;
+>>>>>>> 9983bc76cab50a7211c8baded8ddf5cd3374003d
 		boolean arret = false;
 		while (!arret) {
 			Scanner sc = new Scanner(System.in);
