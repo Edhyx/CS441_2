@@ -19,20 +19,6 @@ public class Init {
 		Connection connection = DriverManager.getConnection(url,login,login);
 			
 	    Statement stmt = connection.createStatement();
-	    /////////Creer table client
-	    String sql_client = "CREATE TABLE Client " +
-	            "(adresseMail VARCHAR(255), " +
-	            " nom VARCHAR(255), " + 
-	            " prénom VARCHAR(255), " + 
-	            " password VARCHAR(255), " + 
-	            " idAdressF INTEGER, " +
-	            " idAdressL INTEGER, " +
-	            " PRIMARY KEY ( adresseMail ), " +
-	            " FOREIGN KEY (idAdressF) REFERENCES AdressF(idAdressF), " +
-	            " FOREIGN KEY (idAdressL) REFERENCES AdressL(idAdressL))";
-	    
-	    stmt.executeUpdate(sql_client);
-	    System.out.println("Table client cree"); 
 /////////Creer table AdressF
 	    String sql_adressF = "CREATE TABLE AdressF " +
 	            "(idAdressF INTEGER, " +
@@ -52,6 +38,22 @@ public class Init {
 	    
 	    stmt.executeUpdate(sql_adressL);
 	    System.out.println("Table adressL cree"); 
+	    
+	    /////////Creer table client
+	    String sql_client = "CREATE TABLE Client " +
+	            "(adresseMail VARCHAR(255), " +
+	            " nom VARCHAR(255), " + 
+	            " prénom VARCHAR(255), " + 
+	            " password VARCHAR(255), " + 
+	            " idAdressF INTEGER, " +
+	            " idAdressL INTEGER, " +
+	            " PRIMARY KEY ( adresseMail ), " +
+	            " FOREIGN KEY (idAdressF) REFERENCES AdressF(idAdressF), " +
+	            " FOREIGN KEY (idAdressL) REFERENCES AdressL(idAdressL))";
+	    
+	    stmt.executeUpdate(sql_client);
+	    System.out.println("Table client cree"); 
+	    
 	    /////////Creer table commande
 	    String sql_commande = "CREATE TABLE Commande " +
 	            "(idCommande INTEGER, " +

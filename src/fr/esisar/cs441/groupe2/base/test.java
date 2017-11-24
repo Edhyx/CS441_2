@@ -17,11 +17,15 @@ public class test {
 		Connection connection = DriverManager.getConnection(url,login,login);
 	    Statement stmt = connection.createStatement();
 	    
+	    String sql_delete_tab =  "DROP TABLE Client ";
+	    ResultSet rs = stmt.executeQuery(sql_delete_tab);
+	    System.out.println("Table supprimee");
+	    /*
 		Adresse AdresseA = new Adresse(30,"t","r","s");
 		Client clientA = new Client("hnfjydt","nom","prenom","xxx",AdresseA,AdresseA);
 		clientA.add(stmt);
 		clientA.affiche(stmt);
-		
+		*/
 		/*Client clientB = new Client("aas","nom","prenom","xxx",AdresseA,AdresseA);
 		clientB.add(stmt);
 		clientB.affiche(stmt);*/
