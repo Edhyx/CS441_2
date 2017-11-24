@@ -18,12 +18,11 @@ public class Main {
 	public void execute() {
 
 		int menu = 1;
-		int choix = 0;
+		int choix;
 		
 		affichageInit();
 		
 		while ((choix=this.choix()) != 0) {
-
 			switch (menu) {
 				case 1:  // menu Init
 					switch (choix) {
@@ -35,10 +34,17 @@ public class Main {
 					}
 					break;
 
-
-
-
-
+				case 2: // menu Ajouter des photos
+					affichageAjoutPhotos();
+					break;
+				case 3: //menu Creation ou suppression d'album
+					break;
+				case 4: //menu Commande d'albums
+					break;
+				case 5: //menu Liste des commandes
+					break;
+				case 0: //fermeture
+					break;
 				default:
 					System.out.println("Entrez un choix entre 1, 2 et 9");
 					break;
@@ -57,10 +63,21 @@ public class Main {
 	public void affichageNouveauClient(){
 		System.out.println("--- --- Bienvenue --- ---");
 		System.out.print("Veuillez entrer une adresse mail : ");
+		System.out.print("Veuillez entrer un nom : ");
+		System.out.print("Veuillez entrer un prénom : ");
+		System.out.print("Veuillez entrer un password : ");
+
 	}
 
 	public void affichageClient(){
 		System.out.println("--- --- Bienvenue --- ---");
+		System.out.print("Veuillez entrer votre adresse mail : ");
+		System.out.print("Veuillez entrer votre mot de passe : ");
+	}
+
+	public void affichageAjoutPhotos(){
+		System.out.println("--- --- AJOUTER DES PHOTOS --- ---");
+
 	}
 	
 	public int choix() {
