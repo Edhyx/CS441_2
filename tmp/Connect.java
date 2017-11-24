@@ -1,10 +1,10 @@
 import java.sql.*;
 import java.util.ArrayList;
 
-import fr.esisar.cs441.groupe2.base.Adresse;
-import fr.esisar.cs441.groupe2.base.Album;
-import fr.esisar.cs441.groupe2.base.Commande;
-import fr.esisar.cs441.groupe2.base.FichierImage;
+import fr.esisar.cs441.groupe2.base.entity.Adresse;
+import fr.esisar.cs441.groupe2.base.entity.Album;
+import fr.esisar.cs441.groupe2.base.entity.Commande;
+import fr.esisar.cs441.groupe2.base.entity.FichierImage;
 
 //Download ojdbc6.jar then Build Path -> Libraries -> Add External JAR
 public class Connect {
@@ -23,6 +23,7 @@ public class Connect {
 	}
     
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+	
 	String server = "tp-oracle.esisar.grenoble-inp.fr";
 	String driver = "oracle.jdbc.driver.OracleDriver";
 	String url = "jdbc:oracle:thin:@//"+server+"/xe";
@@ -64,7 +65,7 @@ public class Connect {
     */
     
     /////////affiche la table
-    String sql_aff = "SELECT adresseMail, nom, prénom, password FROM Client ";
+    String sql_aff = "SELECT adresseMail, nom, prenom, password FROM Client ";
     ResultSet rs = stmt.executeQuery(sql_aff);
     
     boolean a;
