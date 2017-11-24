@@ -6,6 +6,9 @@ Album.java
 
 package fr.esisar.cs441.groupe2.base;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 /*
  * classe Album
@@ -22,6 +25,16 @@ public class Album {
     private ArrayList<FichierImage>	fichierImages;
     private ArrayList<LigneCommande> ligneCommandes;
 	
+    public Album(int idAlbum, String titre, String sousTitre, Client creeParClient) {
+		super();
+		this.idAlbum = idAlbum;
+		this.titre = titre;
+		this.sousTitre = sousTitre;
+		this.creeParClient = creeParClient;
+		this.fichierImages = new ArrayList<FichierImage>();
+		this.ligneCommandes = new ArrayList<LigneCommande>();
+	}
+    
     public Album(int idAlbum, String titre, String sousTitre, Client creeParClient,
 			ArrayList<FichierImage> fichierImages, ArrayList<LigneCommande> ligneCommandes) {
 		super();
@@ -41,7 +54,7 @@ public class Album {
 		this.sousTitre = sousTitre;
 		this.creeParClient = creeParClient;
 		this.fichierImages = fichierImages;
-		this.ligneCommandes = null;
+		this.ligneCommandes = new ArrayList<LigneCommande>();
 	}
 
 	public int getIdAlbum() {
@@ -92,4 +105,55 @@ public class Album {
 		this.ligneCommandes = ligneCommandes;
 	} 
     
+	public void add(Statement stmt) throws SQLException{
+	    String sql_element = "INSERT INTO Album " +
+	            "VALUES ("+idAlbum+", '"+titre+"', '"+sousTitre+"', '"+creeParClient.getAdresseMail()+"')";
+	    try{
+	    stmt.executeUpdate(sql_element);
+	    System.out.println("Album '"+idAlbum+"' cree");
+	    } catch (SQLException e){
+	    	System.out.println("idAlbum '"+idAlbum+"' existant");
+	    }
+	}
+	
+	public void delete(Statement stmt) throws SQLException{
+	    String sql_delete = "DELETE FROM Album " +
+	            "WHERE idAlbum = "+idAlbum+"";
+	    try{
+	    stmt.executeUpdate(sql_delete);
+	    System.out.println("Album '"+idAlbum+"' supprime");
+		} catch (SQLException e){
+	    	System.out.println("Table  Album non existant");
+	    }
+	}
+	
+	
+	public void affiche(Statement stmt) throws SQLException{
+		try{
+		String sql_aff = "SELECT idAlbum, titre, sousTitre, adresseMail FROM Album ";
+	    ResultSet rs = stmt.executeQuery(sql_aff);
+	    
+	    boolean a;
+	    while(a=rs.next())
+	    if (a==false){
+	    	System.out.println("La table Album est vide"); 
+	    }
+	    else{
+	       //Retrieve by column name
+	       String id  = rs.getString("idAlbum");
+	       String titre = rs.getString("titre");
+	       String sousTitre = rs.getString("sousTitre");
+	       String adresseMail = rs.getString("adresseMail");
+
+	       //Display values
+	       System.out.print("idAlbum: " + id);
+	       System.out.print(", titre: " + titre);
+	       System.out.print(", sousTitre: " + sousTitre);
+	       System.out.println(", adresseMail: " + adresseMail);
+	    }
+	    rs.close();
+		} catch (SQLException e){
+	    	System.out.println("Table Album non existante");
+	    }
+	}
 }

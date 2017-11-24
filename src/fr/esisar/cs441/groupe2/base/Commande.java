@@ -6,6 +6,9 @@ Commande.java
 
 package fr.esisar.cs441.groupe2.base;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Commande {
@@ -74,5 +77,56 @@ public class Commande {
 	public void setLigneCommandes(ArrayList<LigneCommande> ligneCommandes) {
 		this.ligneCommandes = ligneCommandes;
 	}
-    
+	
+	public void add(Statement stmt) throws SQLException{
+	    String sql_element = "INSERT INTO Commmande " +
+	            "VALUES ("+idCommande+", '"+date+"', "+prixTotal+", '"+client.getAdresseMail()+"')";
+	    try{
+	    stmt.executeUpdate(sql_element);
+	    System.out.println("Commande '"+idCommande+"' cree");
+	    } catch (SQLException e){
+	    	System.out.println("Commande '"+idCommande+"' existant");
+	    }
+	}
+	
+	public void delete(Statement stmt) throws SQLException{
+	    String sql_delete = "DELETE FROM Commande " +
+	            "WHERE idCommande = "+idCommande+"";
+	    try{
+	    stmt.executeUpdate(sql_delete);
+	    System.out.println("Commande '"+idCommande+"' supprime");
+		} catch (SQLException e){
+	    	System.out.println("Table Commande non existant");
+	    }
+	}
+	
+	
+	public void affiche(Statement stmt) throws SQLException{
+		try{
+		String sql_aff = "SELECT idCommande, date, prixTotal, adresseMail FROM Album ";
+	    ResultSet rs = stmt.executeQuery(sql_aff);
+	    
+	    boolean a;
+	    while(a=rs.next())
+	    if (a==false){
+	    	System.out.println("La table Commande est vide"); 
+	    }
+	    else{
+	       //Retrieve by column name
+	       int id  = rs.getInt("idCommande");
+	       String date = rs.getString("date");
+	       int prixTotal = rs.getInt("prixTotal");
+	       String adresseMail = rs.getString("adresseMail");
+
+	       //Display values
+	       System.out.print("idCommande: " + id);
+	       System.out.print(", date: " + date);
+	       System.out.print(", prixTotal: " + prixTotal);
+	       System.out.println(", adresseMail: " + adresseMail);
+	    }
+	    rs.close();
+		} catch (SQLException e){
+	    	System.out.println("Table Commande non existante");
+	    }
+	}
 }
