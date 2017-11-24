@@ -118,14 +118,14 @@ public class Client {
 	    }
 	}
 	
-	public void delete(Statement stmt,String ad) throws SQLException{
+	public void delete(Statement stmt) throws SQLException{
 	    String sql_delete = "DELETE FROM Client " +
-	            "WHERE adresseMail = 'daz@hdiz'";
+	            "WHERE adresseMail = '"+adresseMail+"'";
 	    try{
 	    stmt.executeUpdate(sql_delete);
 	    System.out.println("Element supprime");
 		} catch (SQLException e){
-	    	System.out.println("Adresse mail non existante");
+	    	System.out.println("Table non existant");
 	    }
 	}
 	

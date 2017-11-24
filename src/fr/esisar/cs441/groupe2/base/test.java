@@ -17,10 +17,13 @@ public class test {
 	    Statement stmt = connection.createStatement();
 	    
 		Adresse AdresseA = new Adresse(30,"t","r","s");
-		Client clientA = new Client("ad@ad","nom","prenom","xxx",AdresseA,AdresseA);
+		Client clientA = new Client("hnfjydt","nom","prenom","xxx",AdresseA,AdresseA);
 		clientA.add(stmt);
 		clientA.affiche(stmt);
 		
+		Client clientB = new Client("aas","nom","prenom","xxx",AdresseA,AdresseA);
+		clientB.add(stmt);
+		clientB.affiche(stmt);
 	}
 
 }
