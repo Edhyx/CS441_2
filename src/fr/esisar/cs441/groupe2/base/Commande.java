@@ -20,6 +20,15 @@ public class Commande {
 		this.ligneCommandes = ligneCommandes;
 	}
 
+	public Commande(int idCommande, String date, int prixTotal, Client client) {
+		super();
+		this.idCommande = idCommande;
+		this.date = date;
+		this.prixTotal = prixTotal;
+		this.client = client;
+		this.ligneCommandes = new ArrayList<LigneCommande>();
+	}
+
 	public int getIdCommande() {
 		return idCommande;
 	}

@@ -1,5 +1,6 @@
 package fr.esisar.cs441.groupe2.base;
 
+import java.sql.*;
 import java.util.*;
 
 public class Client {
@@ -98,5 +99,45 @@ public class Client {
 
 	public void setAlbums(ArrayList<Album> albums) {
 		this.albums = albums;
+	}
+	
+	public void add(Statement stmt) throws SQLException{
+	    String sql_element = "INSERT INTO Client " +
+	            "VALUES ('"+adresseMail+"', '"+nom+"', '"+prenom+"', '"+password+"')";
+	    stmt.executeUpdate(sql_element);
+	    System.out.println("Element cree");
+	}
+	
+	public void delete(Statement stmt,String ad) throws SQLException{
+	    String sql_delete = "DELETE FROM Client " +
+	            "WHERE adresseMail = 'daz@hdiz'";
+	    stmt.executeUpdate(sql_delete);
+	    System.out.println("Element supprime");
+	}
+	
+	
+	public void affiche(Statement stmt) throws SQLException{
+		String sql_aff = "SELECT adresseMail, nom, prénom, password FROM Client ";
+	    ResultSet rs = stmt.executeQuery(sql_aff);
+	    
+	    boolean a;
+	    while(a=rs.next())
+	    if (a==false){
+	    	System.out.println("La table est vide"); 
+	    }
+	    else{
+	       //Retrieve by column name
+	       String id  = rs.getString("adresseMail");
+	       String nom = rs.getString("nom");
+	       String prénom = rs.getString("prénom");
+	       String password = rs.getString("password");
+
+	       //Display values
+	       System.out.print("adresseMail: " + id);
+	       System.out.print(", nom: " + nom);
+	       System.out.print(", prénom: " + prénom);
+	       System.out.println(", password: " + password);
+	    }
+	    rs.close();
 	}
 }

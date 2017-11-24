@@ -23,8 +23,9 @@ public class Adresse {
 		this.codePostal = codePostal;
 		this.ville = ville;
 		this.client = client;
+		
 	}
-
+	
 	// Constructeur sans client
 	public Adresse(int idAdresse, String rue, String codePostal, String ville) {
 		super();
@@ -32,7 +33,6 @@ public class Adresse {
 		this.rue = rue;
 		this.codePostal = codePostal;
 		this.ville = ville;
-		this.client = null;
 	}
 
 	public int getIdAdresse() {
