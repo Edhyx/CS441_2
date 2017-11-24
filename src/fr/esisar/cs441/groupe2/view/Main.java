@@ -14,7 +14,7 @@ public class Main {
 		Main main = new Main();
 		main.execute();
 	}
-	
+
 	public void execute() {
 		
 
@@ -23,7 +23,6 @@ public class Main {
 	public int affichageInit(){
 		int choix;
 		int menu = 0;
-	public static void init() {
 		int choix = 0;
 		boolean arret = false;
 		while (!arret) {
