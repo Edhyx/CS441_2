@@ -11,10 +11,18 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
+		Main main = new Main();
+		main.execute();
 	}
 
-	public static void init() {
-		Int choix = 0;
+	public void execute() {
+		
+
+	}
+
+	public int affichageInit(){
+		int choix;
+		int menu = 0;
 		boolean arret = false;
 		while (!arret) {
 			Scanner sc = new Scanner(System.in);
@@ -25,15 +33,21 @@ public class Main {
 			choix = sc.nextInt();
 			switch (choix) {
 				case 1: {
-					System.out.println("Nouveau client");
+					menu = 1;
 				}
 				case 2: {
-					System.out.println("Connexion");
+					menu = 2;
 				}
 				case 9: {
-					System.out.println("Sortir");
+					menu = 0;
 				}
+				default : System.out.println("Entrez un choix entre 1, 2 et 9"); break;
 			}
+			return(menu);
 		}
+	}
+
+	public void nouveauClient(){
+
 	}
 }
