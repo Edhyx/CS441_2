@@ -17,12 +17,6 @@ public class Main {
 
 	public void execute() {
 
-
-
-	}
-
-	public void affichageInit(){
-
 		int menu = 1;
 		int choix = 0;
 		
@@ -31,33 +25,24 @@ public class Main {
 		while ((choix=this.choix()) != 0) {
 
 			switch (menu) {
-				case 1: { // menu Init
+				case 1:  // menu Init
 					switch (choix) {
-					case 1:		
-						affichageNouveauClient();
-						break;
+					case 1: affichageNouveauClient(); break;
+					case 2: affichageClient(); break;
+					case 9: menu = 0; break;
 
-					default:
-						break;
+					default: break;
 					}
+					break;
 
-				}
-				case 2: { 
-					menu = 2;
-				}
-				case 9: {
-					menu = 0;
-				}
+
+
+
 
 				default:
 					System.out.println("Entrez un choix entre 1, 2 et 9");
 					break;
 			}
-			return (menu);
-
-				default : break;
-			}
-
 		}
 	}
 
@@ -70,7 +55,12 @@ public class Main {
 	}
 
 	public void affichageNouveauClient(){
+		System.out.println("--- --- Bienvenue --- ---");
+		System.out.print("Veuillez entrer une adresse mail : ");
+	}
 
+	public void affichageClient(){
+		System.out.println("--- --- Bienvenue --- ---");
 	}
 	
 	public int choix() {
