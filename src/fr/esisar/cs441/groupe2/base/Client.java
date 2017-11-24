@@ -110,19 +110,28 @@ public class Client {
 	public void add(Statement stmt) throws SQLException{
 	    String sql_element = "INSERT INTO Client " +
 	            "VALUES ('"+adresseMail+"', '"+nom+"', '"+prenom+"', '"+password+"')";
+	    try{
 	    stmt.executeUpdate(sql_element);
 	    System.out.println("Element cree");
+	    } catch (SQLException e){
+	    	System.out.println("Adresse mail existante");
+	    }
 	}
 	
 	public void delete(Statement stmt,String ad) throws SQLException{
 	    String sql_delete = "DELETE FROM Client " +
 	            "WHERE adresseMail = 'daz@hdiz'";
+	    try{
 	    stmt.executeUpdate(sql_delete);
 	    System.out.println("Element supprime");
+		} catch (SQLException e){
+	    	System.out.println("Adresse mail non existante");
+	    }
 	}
 	
 	
 	public void affiche(Statement stmt) throws SQLException{
+		try{
 		String sql_aff = "SELECT adresseMail, nom, prénom, password FROM Client ";
 	    ResultSet rs = stmt.executeQuery(sql_aff);
 	    
@@ -145,5 +154,8 @@ public class Client {
 	       System.out.println(", password: " + password);
 	    }
 	    rs.close();
+		} catch (SQLException e){
+	    	System.out.println("Table non existante");
+	    }
 	}
 }

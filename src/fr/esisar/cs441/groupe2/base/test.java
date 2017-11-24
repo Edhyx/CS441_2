@@ -14,9 +14,8 @@ public class test {
 		String login = "malossep";
 		Class.forName(driver);
 		Connection connection = DriverManager.getConnection(url,login,login);
-			
 	    Statement stmt = connection.createStatement();
-    
+	    
 		Adresse AdresseA = new Adresse(30,"t","r","s");
 		Client clientA = new Client("ad@ad","nom","prenom","xxx",AdresseA,AdresseA);
 		clientA.add(stmt);
