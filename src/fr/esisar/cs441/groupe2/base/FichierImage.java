@@ -1,3 +1,9 @@
+/*
+CS441 Equipe N°2
+
+FichierImage.java
+*/
+
 package fr.esisar.cs441.groupe2.base;
 
 import java.util.ArrayList;

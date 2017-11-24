@@ -1,3 +1,9 @@
+/*
+CS441 Equipe N°2
+
+LigneCommande.java
+*/
+
 package fr.esisar.cs441.groupe2.base;
 
 public class LigneCommande {

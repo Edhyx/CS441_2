@@ -15,7 +15,7 @@ public class Adresse {
     private String ville;
     private Client client;
 	
-    // Construncteur avec client
+    // Constructeur avec client
 	public Adresse(int idAdresse, String rue, String codePostal, String ville, Client client) {
 		super();
 		this.idAdresse = idAdresse;
