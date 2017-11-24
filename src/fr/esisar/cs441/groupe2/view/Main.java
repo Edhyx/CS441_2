@@ -16,7 +16,15 @@ public class Main {
 	}
 
 	public void execute() {
+<<<<<<< HEAD
 
+
+	}
+
+	public int affichageInit(){
+=======
+
+>>>>>>> b84c22c55151dac5988e17574988e4334a498fa4
 		int menu = 0;
 		int choix = 0;
 		
