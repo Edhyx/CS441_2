@@ -99,4 +99,11 @@ public class Client {
 	public void setAlbums(ArrayList<Album> albums) {
 		this.albums = albums;
 	}
+	public void add()
+	{
+		String sql_element = "INSERT INTO Client " +
+	            "VALUES (" +adresseMail+ ", " +prenom+ ", " +nom+ ", " +password+ ")";
+	    stmt.executeUpdate(sql_element);
+	    System.out.println("Element créé");
+	}
 }
