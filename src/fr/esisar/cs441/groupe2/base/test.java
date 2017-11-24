@@ -2,6 +2,7 @@ package fr.esisar.cs441.groupe2.base;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -21,9 +22,9 @@ public class test {
 		clientA.add(stmt);
 		clientA.affiche(stmt);
 		
-		Client clientB = new Client("aas","nom","prenom","xxx",AdresseA,AdresseA);
+		/*Client clientB = new Client("aas","nom","prenom","xxx",AdresseA,AdresseA);
 		clientB.add(stmt);
-		clientB.affiche(stmt);
+		clientB.affiche(stmt);*/
 	}
 
 }
