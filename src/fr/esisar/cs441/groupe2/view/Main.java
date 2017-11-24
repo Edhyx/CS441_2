@@ -21,21 +21,15 @@ public class Main {
 
 	}
 
-	public int affichageInit(){
+	public void affichageInit(){
 
-		int menu = 0;
+		int menu = 1;
 		int choix = 0;
 		
 		affichageInit();
 		
 		while ((choix=this.choix()) != 0) {
-<<<<<<< HEAD
 
-			switch (choix = choix() != 0) {
-				case 1: {
-					menu = 1;
-=======
-		
 			switch (menu) {
 				case 1: { // menu Init
 					switch (choix) {
@@ -46,24 +40,24 @@ public class Main {
 					default:
 						break;
 					}
->>>>>>> 4f834f28ff44c1a07f6f3073fa21b67f49a16ac4
+
 				}
-				case 2: {
+				case 2: { 
 					menu = 2;
 				}
 				case 9: {
 					menu = 0;
 				}
-<<<<<<< HEAD
+
 				default:
 					System.out.println("Entrez un choix entre 1, 2 et 9");
 					break;
 			}
 			return (menu);
-=======
+
 				default : break;
 			}
->>>>>>> 4f834f28ff44c1a07f6f3073fa21b67f49a16ac4
+
 		}
 	}
 
