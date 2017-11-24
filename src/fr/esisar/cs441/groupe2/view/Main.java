@@ -16,12 +16,11 @@ public class Main {
 	}
 
 	public void execute() {
-		
+
 
 	}
 
 	public int affichageInit(){
-		int choix;
 		int menu = 0;
 		int choix = 0;
 		boolean arret = false;
