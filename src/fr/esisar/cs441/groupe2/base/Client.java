@@ -1,5 +1,12 @@
+/*
+CS441 Equipe N°2
+
+Client.java
+*/
+
 package fr.esisar.cs441.groupe2.base;
 
+import java.sql.*;
 import java.util.*;
 
 public class Client {
@@ -99,11 +106,56 @@ public class Client {
 	public void setAlbums(ArrayList<Album> albums) {
 		this.albums = albums;
 	}
-	public void add()
-	{
-		String sql_element = "INSERT INTO Client " +
-	            "VALUES (" +adresseMail+ ", " +prenom+ ", " +nom+ ", " +password+ ")";
+	
+	public void add(Statement stmt) throws SQLException{
+	    String sql_element = "INSERT INTO Client " +
+	            "VALUES ('"+adresseMail+"', '"+nom+"', '"+prenom+"', '"+password+"')";
+	    try{
 	    stmt.executeUpdate(sql_element);
-	    System.out.println("Element créé");
+	    System.out.println("Element cree");
+	    } catch (SQLException e){
+	    	System.out.println("Adresse mail existante");
+	    }
+	}
+	
+	public void delete(Statement stmt,String ad) throws SQLException{
+	    String sql_delete = "DELETE FROM Client " +
+	            "WHERE adresseMail = 'daz@hdiz'";
+	    try{
+	    stmt.executeUpdate(sql_delete);
+	    System.out.println("Element supprime");
+		} catch (SQLException e){
+	    	System.out.println("Adresse mail non existante");
+	    }
+	}
+	
+	
+	public void affiche(Statement stmt) throws SQLException{
+		try{
+		String sql_aff = "SELECT adresseMail, nom, prénom, password FROM Client ";
+	    ResultSet rs = stmt.executeQuery(sql_aff);
+	    
+	    boolean a;
+	    while(a=rs.next())
+	    if (a==false){
+	    	System.out.println("La table est vide"); 
+	    }
+	    else{
+	       //Retrieve by column name
+	       String id  = rs.getString("adresseMail");
+	       String nom = rs.getString("nom");
+	       String prenom = rs.getString("prenom");
+	       String password = rs.getString("password");
+
+	       //Display values
+	       System.out.print("adresseMail: " + id);
+	       System.out.print(", nom: " + nom);
+	       System.out.print(", prenom: " + prenom);
+	       System.out.println(", password: " + password);
+	    }
+	    rs.close();
+		} catch (SQLException e){
+	    	System.out.println("Table non existante");
+	    }
 	}
 }

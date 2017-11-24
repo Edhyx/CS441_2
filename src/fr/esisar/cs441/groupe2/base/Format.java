@@ -1,3 +1,9 @@
+/*
+CS441 Equipe N°2
+
+Format.java
+*/
+
 package fr.esisar.cs441.groupe2.base;
 
 import java.util.ArrayList;
@@ -13,6 +19,13 @@ public class Format {
 		this.idFormat = idFormat;
 		this.prixUnitaire = prixUnitaire;
 		this.ligneCommande = ligneCommande;
+	}
+      
+	public Format(int idFormat, int prixUnitaire) {
+		super();
+		this.idFormat = idFormat;
+		this.prixUnitaire = prixUnitaire;
+		this.ligneCommande = new ArrayList<LigneCommande>();
 	}
 
 	public int getIdFormat() {

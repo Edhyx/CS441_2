@@ -1,7 +1,27 @@
 import java.sql.*;
+import java.util.ArrayList;
+
+import fr.esisar.cs441.groupe2.base.Adresse;
+import fr.esisar.cs441.groupe2.base.Album;
+import fr.esisar.cs441.groupe2.base.Commande;
+import fr.esisar.cs441.groupe2.base.FichierImage;
 
 //Download ojdbc6.jar then Build Path -> Libraries -> Add External JAR
 public class Connect {
+	
+	private String adresseMail;
+    private String nom;
+    private String prenom;
+    private String password;
+    
+    public Connect() {
+		super();
+		this.adresseMail="cc";
+		this.nom="malosse";
+		this.prenom="pauline";
+		this.password="xxxx";
+	}
+    
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 	String server = "tp-oracle.esisar.grenoble-inp.fr";
 	String driver = "oracle.jdbc.driver.OracleDriver";
@@ -28,12 +48,13 @@ public class Connect {
     ResultSet rs = stmt.executeQuery(sql_delete_tab);
     System.out.println("Table supprimée");
     */
-	
+	Connect c = new Connect();
+	c.add(stmt);
     //////////Ajouter élément
     /*String sql_element = "INSERT INTO Client " +
-            "VALUES ('daz@hdiz', 'pauline', 'malosse', 'xx')";
+            "VALUES ('"+adresseMail+"', '"+nom+"', '"+prenom+"', '"+password+"')";
     stmt.executeUpdate(sql_element);
-    System.out.println("Element créé"); 
+    System.out.println("Element créé");
     */
 
     /////////supprimer un élement
@@ -45,8 +66,13 @@ public class Connect {
     /////////affiche la table
     String sql_aff = "SELECT adresseMail, nom, prénom, password FROM Client ";
     ResultSet rs = stmt.executeQuery(sql_aff);
-
-    while(rs.next()){
+    
+    boolean a;
+    while(a=rs.next())
+    if (a==false){
+    	System.out.println("La table est vide"); 
+    }
+    else{
        //Retrieve by column name
        String id  = rs.getString("adresseMail");
        String nom = rs.getString("nom");
@@ -63,4 +89,11 @@ public class Connect {
     stmt.close();
     connection.close();
 	}	
+	
+	public void add(Statement stmt) throws SQLException{
+	    String sql_element = "INSERT INTO Client " +
+	            "VALUES ('"+adresseMail+"', '"+nom+"', '"+prenom+"', '"+password+"')";
+	    stmt.executeUpdate(sql_element);
+	    System.out.println("Element créé");
+	}
 }
