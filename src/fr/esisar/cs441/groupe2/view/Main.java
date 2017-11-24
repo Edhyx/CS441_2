@@ -16,23 +16,15 @@ public class Main {
 	}
 
 	public void execute() {
-		
 
-	}
-
-	public int affichageInit(){
-		int choix;
 		int menu = 0;
 		int choix = 0;
-		boolean arret = false;
-		while (!arret) {
-			Scanner sc = new Scanner(System.in);
-			System.out.println("--- --- Bienvenue sur Esyphoto --- ---");
-			System.out.println("Nouveau client : tapez 1");
-			System.out.println("Connexion : tapez 2");
-			System.out.println("Sortir : tapez 9");
-			choix = sc.nextInt();
-			switch (choix) {
+		
+		affichageInit();
+		
+		while ((choix=this.choix()) != 0) {
+		
+			switch (choix=choix() != 0) {
 				case 1: {
 					menu = 1;
 				}
@@ -45,10 +37,25 @@ public class Main {
 				default : System.out.println("Entrez un choix entre 1, 2 et 9"); break;
 			}
 			return(menu);
-		}
+
+	}
+
+	public void affichageInit(){
+	
+		System.out.println("--- --- Bienvenue sur Esyphoto --- ---");
+		System.out.println("Nouveau client : tapez 1");
+		System.out.println("Connexion : tapez 2");
+		System.out.println("Sortir : tapez 9");
 	}
 
 	public void nouveauClient(){
 
+	}
+	
+	public int choix() {
+		Scanner sc = new Scanner(System.in);
+		return sc.nextInt();
+	}
+		
 	}
 }
