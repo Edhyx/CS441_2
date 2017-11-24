@@ -119,35 +119,6 @@ public class Client {
 	public void setAlbums(ArrayList<Album> albums) {
 		this.albums = albums;
 	}	
-	
-	public void affiche(Statement stmt) throws SQLException{
-		try{
-		String sql_aff = "SELECT * FROM Client ";
-	    ResultSet rs = stmt.executeQuery(sql_aff);
-	    
-	    boolean a;
-	    while(a=rs.next())
-	    if (a==false){
-	    	System.out.println("La table CLient est vide"); 
-	    }
-	    else{
-	       //Retrieve by column name
-	       String id  = rs.getString("adresseMail");
-	       String nom = rs.getString("nom");
-	       String prenom = rs.getString("prenom");
-	       String password = rs.getString("password");
-
-	       //Display values
-	       System.out.print("adresseMail: " + id);
-	       System.out.print(", nom: " + nom);
-	       System.out.print(", prenom: " + prenom);
-	       System.out.println(", password: " + password);
-	    }
-	    rs.close();
-		} catch (SQLException e){
-	    	System.out.println("Table Client non existante");
-	    }
-	}
 
 	@Override
 	public String toString() {
