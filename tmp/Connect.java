@@ -40,13 +40,13 @@ public class Connect {
             " password VARCHAR(255), " + 
             " PRIMARY KEY ( adresseMail ))";
     stmt.executeUpdate(sql_create);
-    System.out.println("Table créée"); 
+    System.out.println("Table creee"); 
     /*
     
     //////////Supprimer la table dans la BDD
     /*String sql_delete_tab =  "DROP TABLE Client";
     ResultSet rs = stmt.executeQuery(sql_delete_tab);
-    System.out.println("Table supprimée");
+    System.out.println("Table supprimee");
     */
 	Connect c = new Connect();
 	c.add(stmt);
