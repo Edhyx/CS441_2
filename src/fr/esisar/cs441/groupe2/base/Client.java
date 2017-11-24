@@ -112,9 +112,9 @@ public class Client {
 	            "VALUES ('"+adresseMail+"', '"+nom+"', '"+prenom+"', '"+password+"')";
 	    try{
 	    stmt.executeUpdate(sql_element);
-	    System.out.println("Element cree");
+	    System.out.println("Client '"+adresseMail+"' cree");
 	    } catch (SQLException e){
-	    	System.out.println("Adresse mail existante");
+	    	System.out.println("Client '"+adresseMail+"' existante");
 	    }
 	}
 	
@@ -123,22 +123,22 @@ public class Client {
 	            "WHERE adresseMail = '"+adresseMail+"'";
 	    try{
 	    stmt.executeUpdate(sql_delete);
-	    System.out.println("Element supprime");
+	    System.out.println("Client '"+adresseMail+"' supprime");
 		} catch (SQLException e){
-	    	System.out.println("Table non existant");
+	    	System.out.println("Table Client non existant");
 	    }
 	}
 	
 	
 	public void affiche(Statement stmt) throws SQLException{
 		try{
-		String sql_aff = "SELECT adresseMail, nom, prénom, password FROM Client ";
+		String sql_aff = "SELECT adresseMail, nom, prenom, password FROM Client ";
 	    ResultSet rs = stmt.executeQuery(sql_aff);
 	    
 	    boolean a;
 	    while(a=rs.next())
 	    if (a==false){
-	    	System.out.println("La table est vide"); 
+	    	System.out.println("La table CLient est vide"); 
 	    }
 	    else{
 	       //Retrieve by column name
@@ -155,7 +155,7 @@ public class Client {
 	    }
 	    rs.close();
 		} catch (SQLException e){
-	    	System.out.println("Table non existante");
+	    	System.out.println("Table Client non existante");
 	    }
 	}
 }
