@@ -15,44 +15,57 @@ public class Main {
 		main.execute();
 	}
 
-<<<<<<< HEAD
 	public void execute() {
-		
 
-	}
-
-	public int affichageInit(){
-		int choix;
-		int menu = 0;
-=======
-	public static void init() {
+		int menu = 1;
 		int choix = 0;
->>>>>>> 9983bc76cab50a7211c8baded8ddf5cd3374003d
-		boolean arret = false;
-		while (!arret) {
-			Scanner sc = new Scanner(System.in);
-			System.out.println("--- --- Bienvenue sur Esyphoto --- ---");
-			System.out.println("Nouveau client : tapez 1");
-			System.out.println("Connexion : tapez 2");
-			System.out.println("Sortir : tapez 9");
-			choix = sc.nextInt();
-			switch (choix) {
-				case 1: {
-					menu = 1;
-				}
-				case 2: {
-					menu = 2;
-				}
-				case 9: {
-					menu = 0;
-				}
-				default : System.out.println("Entrez un choix entre 1, 2 et 9"); break;
+		
+		affichageInit();
+		
+		while ((choix=this.choix()) != 0) {
+
+			switch (menu) {
+				case 1:  // menu Init
+					switch (choix) {
+					case 1: affichageNouveauClient(); break;
+					case 2: affichageClient(); break;
+					case 9: menu = 0; break;
+
+					default: break;
+					}
+					break;
+
+
+
+
+
+				default:
+					System.out.println("Entrez un choix entre 1, 2 et 9");
+					break;
 			}
-			return(menu);
 		}
 	}
 
-	public void nouveauClient(){
-
+	public void affichageInit(){
+	
+		System.out.println("--- --- Bienvenue sur Esyphoto --- ---");
+		System.out.println("Nouveau client : tapez 1");
+		System.out.println("Connexion : tapez 2");
+		System.out.println("Sortir : tapez 9");
 	}
+
+	public void affichageNouveauClient(){
+		System.out.println("--- --- Bienvenue --- ---");
+		System.out.print("Veuillez entrer une adresse mail : ");
+	}
+
+	public void affichageClient(){
+		System.out.println("--- --- Bienvenue --- ---");
+	}
+	
+	public int choix() {
+		Scanner sc = new Scanner(System.in);
+		return sc.nextInt();
+	}
+	
 }
