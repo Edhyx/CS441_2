@@ -54,11 +54,16 @@ public class Main {
 				case 9: {
 					menu = 0;
 				}
+<<<<<<< HEAD
 				default:
 					System.out.println("Entrez un choix entre 1, 2 et 9");
 					break;
 			}
 			return (menu);
+=======
+				default : break;
+			}
+>>>>>>> 4f834f28ff44c1a07f6f3073fa21b67f49a16ac4
 		}
 	}
 
