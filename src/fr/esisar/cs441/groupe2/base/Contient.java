@@ -19,10 +19,10 @@ public class Contient {
 	private int numOrdre;
     private String titre;
     private String commentaire;
-    private ArrayList<FichierImage>	fichierImages;
+    private FichierImage fichierImages;
     private ArrayList<Album> albums;
     
-    public Contient(int numOrdre, String titre, String commentaire, ArrayList<Album> albums, ArrayList<FichierImage> fichierImages){
+    public Contient(int numOrdre, String titre, String commentaire, ArrayList<Album> albums, FichierImage fichierImages){
     	this.numOrdre = numOrdre;
     	this.titre = titre;
     	this.commentaire = commentaire;

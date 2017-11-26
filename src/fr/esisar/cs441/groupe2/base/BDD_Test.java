@@ -1,0 +1,58 @@
+package fr.esisar.cs441.groupe2.base;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+public class BDD_Test {
+	
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		String driver = "com.mysql.jdbc.Driver";
+		String url = "jdbc:mysql://localhost/test?useSSL=false";
+		String login = "root";
+		String pass = "Pauline02";
+		try{
+			Class.forName(driver);	
+			Connection connexion = DriverManager.getConnection(url,login,pass);	
+			System.out.println("Connection OK!"); 
+			Statement stmt = connexion.createStatement();
+	 
+			Adresse AdresseA_f = new Adresse(30,"t","r","s");
+			Adresse AdresseA_l = new Adresse(30,"t","r","s");
+			Client clientA = new Client("hnfjydt","nom","prenom","xxx",AdresseA_f,AdresseA_l);
+			Client clientB = new Client("coucou","nom","prenom","xxx",AdresseA_f,AdresseA_l);
+			Commande commandeA = new Commande(100,"today",50,clientA);
+			Format formatA = new Format(10,50);
+			Album albumA = new Album(1,"vacances","malte",clientA);
+			LigneCommande lignecommandeA = new LigneCommande(20, commandeA, formatA, albumA);
+			FichierImage fichier = new FichierImage("chemin","canon","obj",20,20,20,20,clientA);
+			/*ArrayList albums = new ArrayList();
+			albums.add(albumA);
+			Contient contient = new Contient(2,"valetta","beau",albums,fichier);*/
+			AdresseA_f.add_F(stmt);
+			AdresseA_l.add_L(stmt);
+			AdresseA_f.affiche_F(stmt);
+			AdresseA_l.affiche_L(stmt);
+			clientA.add(stmt);
+			clientB.add(stmt);
+			clientA.affiche(stmt);
+			clientB.affiche(stmt);
+			commandeA.add(stmt);
+			commandeA.affiche(stmt);
+			formatA.add(stmt);
+			formatA.affiche(stmt);
+			albumA.add(stmt);
+			albumA.affiche(stmt);
+			lignecommandeA.add(stmt);
+			lignecommandeA.affiche(stmt);
+			fichier.add(stmt);
+			fichier.affiche(stmt);
+		}
+		catch (Exception e) {
+			System.out.println("echec driver : "+e);
+		}
+	}
+}

@@ -109,7 +109,7 @@ public class Client {
 	
 	public void add(Statement stmt) throws SQLException{
 	    String sql_element = "INSERT INTO Client " +
-	            "VALUES ('"+adresseMail+"', '"+nom+"', '"+prenom+"', '"+password+"')";
+	            "VALUES ('"+adresseMail+"', '"+nom+"', '"+prenom+"', '"+password+"', '"+adresseDeFacturation+"', '"+adresseDeLivraison+"')";
 	    try{
 	    stmt.executeUpdate(sql_element);
 	    System.out.println("Client '"+adresseMail+"' cree");
@@ -132,7 +132,7 @@ public class Client {
 	
 	public void affiche(Statement stmt) throws SQLException{
 		try{
-		String sql_aff = "SELECT adresseMail, nom, prenom, password FROM Client ";
+		String sql_aff = "SELECT adresseMail, nom, prenom, password, idAdresseF, idAdresseL FROM Client ";
 	    ResultSet rs = stmt.executeQuery(sql_aff);
 	    
 	    boolean a;
@@ -146,12 +146,16 @@ public class Client {
 	       String nom = rs.getString("nom");
 	       String prenom = rs.getString("prenom");
 	       String password = rs.getString("password");
+	       String idAdresseF = rs.getString("idAdresseF");
+	       String idAdresseL = rs.getString("idAdresseL");
 
 	       //Display values
 	       System.out.print("adresseMail: " + id);
 	       System.out.print(", nom: " + nom);
 	       System.out.print(", prenom: " + prenom);
 	       System.out.println(", password: " + password);
+	       System.out.println(", idAdresseF: " + idAdresseF);
+	       System.out.println(", idAdresseL: " + idAdresseL);
 	    }
 	    rs.close();
 		} catch (SQLException e){

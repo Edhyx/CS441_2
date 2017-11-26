@@ -17,7 +17,7 @@ public class LigneCommande {
     private Commande commande;
     private Format format;
 	
-    public LigneCommande(int quantite, Album album, Commande commande, Format format) {
+    public LigneCommande(int quantite, Commande commande, Format format, Album album) {
 		super();
 		this.quantite = quantite;
 		this.album = album;
