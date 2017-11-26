@@ -133,23 +133,22 @@ public class Album {
 		String sql_aff = "SELECT idAlbum, titre, sousTitre, adresseMail FROM Album ";
 	    ResultSet rs = stmt.executeQuery(sql_aff);
 	    
-	    boolean a;
-	    while(a=rs.next())
+	    boolean a=rs.next();
 	    if (a==false){
-	    	System.out.println("La table Album est vide"); 
+	    	System.out.println("La table LigneCommande est vide"); 
 	    }
-	    else{
+	    while(a){
 	       //Retrieve by column name
 	       String id  = rs.getString("idAlbum");
 	       String titre = rs.getString("titre");
 	       String sousTitre = rs.getString("sousTitre");
 	       String adresseMail = rs.getString("adresseMail");
-
 	       //Display values
 	       System.out.print("idAlbum: " + id);
 	       System.out.print(", titre: " + titre);
 	       System.out.print(", sousTitre: " + sousTitre);
 	       System.out.println(", adresseMail: " + adresseMail);
+	       a=rs.next();
 	    }
 	    rs.close();
 		} catch (SQLException e){

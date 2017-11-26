@@ -109,12 +109,12 @@ public class Client {
 	
 	public void add(Statement stmt) throws SQLException{
 	    String sql_element = "INSERT INTO Client " +
-	            "VALUES ('"+adresseMail+"', '"+nom+"', '"+prenom+"', '"+password+"', '"+adresseDeFacturation+"', '"+adresseDeLivraison+"')";
+	            "VALUES ('"+adresseMail+"', '"+nom+"', '"+prenom+"', '"+password+"', '"+adresseDeFacturation.getIdAdresse()+"', '"+adresseDeLivraison.getIdAdresse()+"')";
 	    try{
 	    stmt.executeUpdate(sql_element);
 	    System.out.println("Client '"+adresseMail+"' cree");
 	    } catch (SQLException e){
-	    	System.out.println("Client '"+adresseMail+"' existante");
+	    	System.out.println("Client '"+adresseMail+"' existant");
 	    }
 	}
 	
@@ -125,37 +125,36 @@ public class Client {
 	    stmt.executeUpdate(sql_delete);
 	    System.out.println("Client '"+adresseMail+"' supprime");
 		} catch (SQLException e){
-	    	System.out.println("Table Client non existant");
+	    	System.out.println("Table Client non existant "+e);
 	    }
 	}
 	
 	
 	public void affiche(Statement stmt) throws SQLException{
+		String sql_aff = "SELECT * FROM Client ";
 		try{
-		String sql_aff = "SELECT adresseMail, nom, prenom, password, idAdresseF, idAdresseL FROM Client ";
 	    ResultSet rs = stmt.executeQuery(sql_aff);
 	    
-	    boolean a;
-	    while(a=rs.next())
+	    boolean a=rs.next();
 	    if (a==false){
-	    	System.out.println("La table CLient est vide"); 
+	    	System.out.println("La table LigneCommande est vide"); 
 	    }
-	    else{
-	       //Retrieve by column name
-	       String id  = rs.getString("adresseMail");
-	       String nom = rs.getString("nom");
-	       String prenom = rs.getString("prenom");
-	       String password = rs.getString("password");
-	       String idAdresseF = rs.getString("idAdresseF");
-	       String idAdresseL = rs.getString("idAdresseL");
-
-	       //Display values
-	       System.out.print("adresseMail: " + id);
-	       System.out.print(", nom: " + nom);
-	       System.out.print(", prenom: " + prenom);
-	       System.out.println(", password: " + password);
-	       System.out.println(", idAdresseF: " + idAdresseF);
-	       System.out.println(", idAdresseL: " + idAdresseL);
+	    while(a){
+	    	//Retrieve by column name
+		    String id  = rs.getString("adresseMail");
+		    String nom = rs.getString("nom");
+		    String prenom = rs.getString("prenom");
+		    String password = rs.getString("password");
+		    String idAdresseF = rs.getString("idAdresseF");
+		    String idAdresseL = rs.getString("idAdresseL");
+	        //Display values
+	        System.out.print("adresseMail: " + id);
+		    System.out.print(", nom: " + nom);
+	        System.out.print(", prenom: " + prenom);
+	        System.out.print(", password: " + password);
+	        System.out.print(", idAdresseF: " + idAdresseF);
+	        System.out.println(", idAdresseL: " + idAdresseL);
+	        a=rs.next();
 	    }
 	    rs.close();
 		} catch (SQLException e){

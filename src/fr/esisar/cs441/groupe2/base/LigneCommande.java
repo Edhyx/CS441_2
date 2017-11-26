@@ -74,12 +74,11 @@ public class LigneCommande {
 		String sql_aff = "SELECT quantite, idCommande, idFormat, idAlbum FROM LigneCommande ";
 	    ResultSet rs = stmt.executeQuery(sql_aff);
 	    
-	    boolean a;
-	    while(a=rs.next())
+	    boolean a=rs.next();
 	    if (a==false){
 	    	System.out.println("La table LigneCommande est vide"); 
 	    }
-	    else{
+	    while(a){
 	       //Retrieve by column name
 	       int quantite = rs.getInt("quantite");
 	       String idCommande = rs.getString("idCommande");
@@ -90,7 +89,8 @@ public class LigneCommande {
 	       System.out.print("quantite: " + quantite);
 	       System.out.print(", idCommande: " + idCommande);
 	       System.out.print(", idFormat: " + idFormat);
-	       System.out.print(", idAlbum: " + idAlbum);
+	       System.out.println(", idAlbum: " + idAlbum);
+	       a=rs.next();
 	    }
 	    rs.close();
 		} catch (SQLException e){

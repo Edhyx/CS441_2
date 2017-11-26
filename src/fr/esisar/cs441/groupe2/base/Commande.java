@@ -79,7 +79,7 @@ public class Commande {
 	}
 	
 	public void add(Statement stmt) throws SQLException{
-	    String sql_element = "INSERT INTO Commmande " +
+	    String sql_element = "INSERT INTO Commande " +
 	            "VALUES ("+idCommande+", '"+date+"', "+prixTotal+", '"+client.getAdresseMail()+"')";
 	    try{
 	    stmt.executeUpdate(sql_element);
@@ -103,26 +103,25 @@ public class Commande {
 	
 	public void affiche(Statement stmt) throws SQLException{
 		try{
-		String sql_aff = "SELECT idCommande, date, prixTotal, adresseMail FROM Album ";
+		String sql_aff = "SELECT * FROM Commande ";
 	    ResultSet rs = stmt.executeQuery(sql_aff);
 	    
-	    boolean a;
-	    while(a=rs.next())
+	    boolean a=rs.next();
 	    if (a==false){
-	    	System.out.println("La table Commande est vide"); 
+	    	System.out.println("La table LigneCommande est vide"); 
 	    }
-	    else{
+	    while(a){
 	       //Retrieve by column name
 	       int id  = rs.getInt("idCommande");
 	       String date = rs.getString("date");
 	       int prixTotal = rs.getInt("prixTotal");
 	       String adresseMail = rs.getString("adresseMail");
-
 	       //Display values
 	       System.out.print("idCommande: " + id);
 	       System.out.print(", date: " + date);
 	       System.out.print(", prixTotal: " + prixTotal);
 	       System.out.println(", adresseMail: " + adresseMail);
+	       a=rs.next();
 	    }
 	    rs.close();
 		} catch (SQLException e){

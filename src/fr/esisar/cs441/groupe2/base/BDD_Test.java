@@ -32,6 +32,9 @@ public class BDD_Test {
 			/*ArrayList albums = new ArrayList();
 			albums.add(albumA);
 			Contient contient = new Contient(2,"valetta","beau",albums,fichier);*/
+			
+			//ADD
+			System.out.println("ADD");
 			AdresseA_f.add_F(stmt);
 			AdresseA_l.add_L(stmt);
 			AdresseA_f.affiche_F(stmt);
@@ -39,17 +42,39 @@ public class BDD_Test {
 			clientA.add(stmt);
 			clientB.add(stmt);
 			clientA.affiche(stmt);
-			clientB.affiche(stmt);
 			commandeA.add(stmt);
 			commandeA.affiche(stmt);
 			formatA.add(stmt);
 			formatA.affiche(stmt);
 			albumA.add(stmt);
 			albumA.affiche(stmt);
-			lignecommandeA.add(stmt);
-			lignecommandeA.affiche(stmt);
+			//Peut en avoir à l'infinie, lignecommande n'as pas de clef primaire
+			//lignecommandeA.add(stmt);
+			//lignecommandeA.affiche(stmt);
 			fichier.add(stmt);
 			fichier.affiche(stmt);
+			
+			//DELETE
+			System.out.println("DELETE");
+			//Peut en avoir à l'infinie, lignecommande n'as pas de clef primaire
+			//Comment supprimer un élément de cette table
+			//lignecommandeA.delete(stmt);
+			//lignecommandeA.affiche(stmt);
+			commandeA.delete(stmt);
+			commandeA.affiche(stmt);
+			formatA.delete(stmt);
+			formatA.affiche(stmt);
+			albumA.delete(stmt);
+			albumA.affiche(stmt);
+			fichier.delete(stmt);
+			fichier.affiche(stmt);
+			clientA.delete(stmt);
+			clientB.delete(stmt);
+			clientA.affiche(stmt);
+			AdresseA_f.delete_F(stmt);
+			AdresseA_l.delete_L(stmt);
+			AdresseA_f.affiche_F(stmt);
+			AdresseA_l.affiche_L(stmt);
 		}
 		catch (Exception e) {
 			System.out.println("echec driver : "+e);
