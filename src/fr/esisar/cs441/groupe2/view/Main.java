@@ -2,6 +2,8 @@
 Projet CS441 - Mini projet de developpement d'une application de gestion de tirages
 photos numériques
 Equipe 2
+
+Gestion de l'affichage en ligne de commandes
  */
 
 package fr.esisar.cs441.groupe2.view;
@@ -38,10 +40,13 @@ public class Main {
 					displayAddPhoto();
 					break;
 				case 3: //menu Creation ou suppression d'album
+					displayAlbumManagement();
 					break;
 				case 4: //menu Commande d'albums
+					displayAlbumOrder();
 					break;
 				case 5: //menu Liste des commandes
+					displayOrderList();
 					break;
 				case 0: //fermeture
 					break;
@@ -62,17 +67,23 @@ public class Main {
 
 	public void displayNewClient(){
 		System.out.println("--- --- Bienvenue --- ---");
-		System.out.print("Veuillez entrer une adresse mail : ");
-		System.out.print("Veuillez entrer un nom : ");
-		System.out.print("Veuillez entrer un prénom : ");
-		System.out.print("Veuillez entrer un password : ");
+		System.out.println("Veuillez entrer une adresse mail : ");
+		//Scan et envoi dans base
+		System.out.println("Veuillez entrer un nom : ");
+		//Scan et envoi dans base
+		System.out.println("Veuillez entrer un prénom : ");
+		//Scan et envoi dans base
+		System.out.println("Veuillez entrer un password : ");
+		//Scan et envoi dans base
 
 	}
 
 	public void displayClient(){
 		System.out.println("--- --- Bienvenue --- ---");
-		System.out.print("Veuillez entrer votre adresse mail : ");
+		System.out.print("Veuillez entrer votre identifiant (adresse mail) : ");
+		//Scan et envoi dans base. Check si vrai
 		System.out.print("Veuillez entrer votre mot de passe : ");
+		//Scan et envoi dans base. Check si vrai
 	}
 
 	public void displayAddPhoto(){
