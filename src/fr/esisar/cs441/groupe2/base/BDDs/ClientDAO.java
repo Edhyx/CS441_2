@@ -28,13 +28,17 @@ public class ClientDAO {
 	    				  	+ client.getPrenom()
 	    				  	+ "', '"
 	    				  	+ client.getPassword()
+	    				  	+ "', '"
+	    				  	+ client.getAdresseDeFacturation()
+	    				  	+ "', '"
+	    				  	+ client.getAdresseDeLivraison()
 	    				  	+ "')";
 	    
 	    try{
 		    this.stmt.executeUpdate(sql_element);
 		    System.out.println("Client '" + client.getAdresseMail() + "' cree");
 	    } catch (SQLException e){
-	    	System.out.println("Client '" + client.getAdresseMail() + "' existante");
+	    	System.out.println("Client '" + client.getAdresseMail() + "' existant");
 	    }
 	}
 	
@@ -58,25 +62,26 @@ public class ClientDAO {
 		Client client = null;
 		
 	    try {
-	    	
 	    	String adresseMail;
 			ResultSet rs = this.stmt.executeQuery(sql_aff);
 			
 			while(rs.next() && notFound) {
 				//Retrieve by column name
-			       adresseMail  = rs.getString("adresseMail");
+			    adresseMail  = rs.getString("adresseMail");
 			       
-			       if(adresseMail.equals(id)) {
-			    	   String nom = rs.getString("nom");
-				       String prenom = rs.getString("prenom");
-				       String password = rs.getString("password");
-				       
-				       client = new Client( adresseMail, nom, prenom, password);
-				       
-				       notFound = false;
-			       }		       
-			}
-			
+			    if(adresseMail.equals(id)) {
+			    	String nom = rs.getString("nom");
+				    String prenom = rs.getString("prenom");
+				    String password = rs.getString("password");
+				    String idAdresseF = rs.getString("idAdresseF");
+				    String idAdresseL = rs.getString("idAdresseL");
+				    
+				    client = new Client( adresseMail, nom, prenom, password);
+				  //client = new Client( adresseMail, nom, prenom, password,idAdresseF,idAdresseL);
+				     
+				    notFound = false;
+			     }		       
+			}			
 			rs.close();
 			
 			if(notFound) {
@@ -114,7 +119,6 @@ public class ClientDAO {
 			       
 			   client.add(new Client( adresseMail, nom, prenom, password));	       
 			}
-			
 			rs.close();
 		} catch (SQLException e) {
 			System.out.println("Impossible de trouver d'elements dans la table");
