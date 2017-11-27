@@ -41,6 +41,7 @@ public class BDD_Test {
 			AdresseA_l.add_L(stmt);
 			AdresseA_f.affiche_F(stmt);
 			AdresseA_l.affiche_L(stmt);
+			// erreur a cause des modifs de Mathieu
 			clientA.add(stmt);
 			clientB.add(stmt);
 			clientA.affiche(stmt);
