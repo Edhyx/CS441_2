@@ -86,7 +86,7 @@ public class FichierImage {
     
 	public void add(Statement stmt) throws SQLException{
 	    String sql_element = "INSERT INTO FichierImage " +
-	            "VALUES ("+cheminAcces+", '"+appareilPhoto+"', '"+objectif+"', "+distanceFocale+", "+sensibiliteISO+
+	            "VALUES ('"+cheminAcces+"', '"+appareilPhoto+"', '"+objectif+"', "+distanceFocale+", "+sensibiliteISO+
 	            			", "+ouverture+", "+vitesseObturation+", '"+client.getAdresseMail()+"')";
 	    try{
 	    stmt.executeUpdate(sql_element);
@@ -98,7 +98,7 @@ public class FichierImage {
 	
 	public void delete(Statement stmt) throws SQLException{
 	    String sql_delete = "DELETE FROM FichierImage " +
-	            "WHERE cheminAcces = "+cheminAcces+"";
+	            "WHERE cheminAcces = '"+cheminAcces+"'";
 	    try{
 	    stmt.executeUpdate(sql_delete);
 	    System.out.println("FichierImage '"+cheminAcces+"' supprime");
@@ -113,12 +113,11 @@ public class FichierImage {
 		String sql_aff = "SELECT cheminAcces, appareilPhoto, objectif, distanceFocale, sensibiliteISO, ouverture, vitesseObturation, adresseMail FROM FichierImage ";
 	    ResultSet rs = stmt.executeQuery(sql_aff);
 	    
-	    boolean a;
-	    while(a=rs.next())
+	    boolean a=rs.next();
 	    if (a==false){
-	    	System.out.println("La table FichierImage est vide"); 
+	    	System.out.println("La table LigneCommande est vide"); 
 	    }
-	    else{
+	    while(a){
 	       //Retrieve by column name
 	       String id  = rs.getString("cheminAcces");
 	       String appareilPhoto = rs.getString("appareilPhoto");
@@ -133,11 +132,12 @@ public class FichierImage {
 	       System.out.print("cheminAcces: " + id);
 	       System.out.print(", appareilPhoto: " + appareilPhoto);
 	       System.out.print(", objectif: " + objectif);
-	       System.out.println(", distanceFocale: " + distanceFocale);
-	       System.out.println(", sensibiliteISO: " + sensibiliteISO);
-	       System.out.println(", ouverture: " + ouverture);
-	       System.out.println(", vitesseObturation: " + vitesseObturation);
+	       System.out.print(", distanceFocale: " + distanceFocale);
+	       System.out.print(", sensibiliteISO: " + sensibiliteISO);
+	       System.out.print(", ouverture: " + ouverture);
+	       System.out.print(", vitesseObturation: " + vitesseObturation);
 	       System.out.println(", adresseMail: " + adresseMail);
+	       a=rs.next();
 	    }
 	    rs.close();
 		} catch (SQLException e){

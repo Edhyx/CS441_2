@@ -22,6 +22,7 @@ public class Contient {
     private FichierImage fichierImages;
     
     public Contient(int numOrdre, String titre, String commentaire, FichierImage fichierImages){
+
     	this.numOrdre = numOrdre;
     	this.titre = titre;
     	this.commentaire = commentaire;
@@ -74,12 +75,11 @@ public class Contient {
 		String sql_aff = "SELECT idCommande, titre, commentaire, adresseMail FROM Contient ";
 	    ResultSet rs = stmt.executeQuery(sql_aff);
 	    
-	    boolean a;
-	    while(a=rs.next())
+	    boolean a=rs.next();
 	    if (a==false){
-	    	System.out.println("La table Commande est vide"); 
+	    	System.out.println("La table LigneCommande est vide"); 
 	    }
-	    else{
+	    while(a){
 	       //Retrieve by column name
 	       int id  = rs.getInt("idCommande");
 	       String date = rs.getString("date");
@@ -91,6 +91,7 @@ public class Contient {
 	       System.out.print(", date: " + date);
 	       System.out.print(", prixTotal: " + prixTotal);
 	       System.out.println(", adresseMail: " + adresseMail);
+	       a=rs.next();
 	    }
 	    rs.close();
 		} catch (SQLException e){

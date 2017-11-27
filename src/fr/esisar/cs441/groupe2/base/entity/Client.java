@@ -120,10 +120,11 @@ public class Client {
 		this.albums = albums;
 	}	
 
-	@Override
 	public String toString() {
 		return "Client [adresseMail=" + adresseMail + ", nom=" + nom + ", prenom=" + prenom + ", password=" + password
 				+ ", adresseDeFacturation=" + adresseDeFacturation + ", adresseDeLivraison=" + adresseDeLivraison
 				+ ", fichierImages=" + fichierImages + ", commandes=" + commandes + ", albums=" + albums + "]";
+
 	}
+	
 }

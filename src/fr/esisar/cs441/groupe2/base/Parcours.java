@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import fr.esisar.cs441.groupe2.base.BDD.ClientDAO;
+import fr.esisar.cs441.groupe2.base.BDDs.ClientDAO;
 import fr.esisar.cs441.groupe2.base.entity.Adresse;
 import fr.esisar.cs441.groupe2.base.entity.Client;
 

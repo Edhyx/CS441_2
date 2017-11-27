@@ -1,4 +1,4 @@
-package fr.esisar.cs441.groupe2.base.BDD;
+package fr.esisar.cs441.groupe2.base.BDDs;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

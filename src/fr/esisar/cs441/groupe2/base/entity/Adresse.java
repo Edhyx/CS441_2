@@ -27,10 +27,7 @@ public class Adresse {
 		this.rue = rue;
 		this.codePostal = codePostal;
 		this.ville = ville;
-		
-		
 		this.client = Optional.ofNullable(client);
-		
 	}
 	
 	// Constructeur sans client
@@ -107,18 +104,18 @@ public class Adresse {
 	
 	public void delete_F(Statement stmt) throws SQLException{
 	    String sql_delete = "DELETE FROM AdresseF " +
-	            "WHERE idAdresse = "+idAdresse+"";
+	            "WHERE idAdresseF = "+idAdresse+"";
 	    try{
 	    stmt.executeUpdate(sql_delete);
 	    System.out.println("AdresseF '"+idAdresse+"' supprime");
 		} catch (SQLException e){
-	    	System.out.println("Table AdresseF non existant");
+	    	System.out.println("Table AdresseF non existant" +e);
 	    }
 	}
 	
 	public void delete_L(Statement stmt) throws SQLException{
 	    String sql_delete = "DELETE FROM AdresseL " +
-	            "WHERE idAdresse = "+idAdresse+"";
+	            "WHERE idAdresseL = "+idAdresse+"";
 	    try{
 	    stmt.executeUpdate(sql_delete);
 	    System.out.println("AdresseL '"+idAdresse+"' supprime");
@@ -129,26 +126,25 @@ public class Adresse {
 	
 	public void affiche_F(Statement stmt) throws SQLException{
 		try{
-		String sql_aff = "SELECT idAdresse, rue, codePostal, ville FROM AdresseF ";
+		String sql_aff = "SELECT * FROM AdresseF ";
 	    ResultSet rs = stmt.executeQuery(sql_aff);
 	    
-	    boolean a;
-	    while(a=rs.next())
+	    boolean a=rs.next();
 	    if (a==false){
-	    	System.out.println("La table AdresseF est vide"); 
+	    	System.out.println("La table LigneCommande est vide"); 
 	    }
-	    else{
-	       //Retrieve by column name
-	       int id  = rs.getInt("idAdresse");
-	       String rue = rs.getString("rue");
-	       String codePostal = rs.getString("codePostal");
-	       String ville = rs.getString("ville");
-
-	       //Display values
-	       System.out.print("idCommande: " + id);
-	       System.out.print(", date: " + rue);
-	       System.out.print(", prixTotal: " + codePostal);
-	       System.out.println(", adresseMail: " + ville);
+	    while(a){
+	    	//Retrieve by column name
+		    int id  = rs.getInt("idAdresseF");
+		    String rue = rs.getString("rue");
+		    String codePostal = rs.getString("codePostal");
+		    String ville = rs.getString("ville");
+	        //Display values
+		    System.out.print("idAdresseF: " + id);
+		    System.out.print(", rue: " + rue);
+		    System.out.print(", codePostal: " + codePostal);
+		    System.out.println(", ville: " + ville);
+		    a=rs.next();
 	    }
 	    rs.close();
 		} catch (SQLException e){
@@ -158,26 +154,25 @@ public class Adresse {
 	
 	public void affiche_L(Statement stmt) throws SQLException{
 		try{
-		String sql_aff = "SELECT idAdresse, rue, codePostal, ville FROM AdresseL ";
+		String sql_aff = "SELECT idAdresseL, rue, codePostal, ville FROM AdresseL ";
 	    ResultSet rs = stmt.executeQuery(sql_aff);
 	    
-	    boolean a;
-	    while(a=rs.next())
+	    boolean a=rs.next();
 	    if (a==false){
-	    	System.out.println("La table AdresseL est vide"); 
+	    	System.out.println("La table LigneCommande est vide"); 
 	    }
-	    else{
-	       //Retrieve by column name
-	       int id  = rs.getInt("idAdresse");
-	       String rue = rs.getString("rue");
-	       String codePostal = rs.getString("codePostal");
-	       String ville = rs.getString("ville");
-
-	       //Display values
-	       System.out.print("idCommande: " + id);
-	       System.out.print(", date: " + rue);
-	       System.out.print(", prixTotal: " + codePostal);
-	       System.out.println(", adresseMail: " + ville);
+	    while(a){
+	    	//Retrieve by column name
+		    int id  = rs.getInt("idAdresseL");
+		    String rue = rs.getString("rue");
+		    String codePostal = rs.getString("codePostal");
+	        String ville = rs.getString("ville");
+		    //Display values
+		    System.out.print("idAdresseL: " + id);
+		    System.out.print(", rue: " + rue);
+		    System.out.print(", codePostal: " + codePostal);
+		    System.out.println(", ville: " + ville);
+		    a=rs.next();
 	    }
 	    rs.close();
 		} catch (SQLException e){

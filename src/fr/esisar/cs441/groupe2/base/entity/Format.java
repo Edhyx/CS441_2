@@ -83,19 +83,18 @@ public class Format {
 		String sql_aff = "SELECT idFormat, prixUnitaire FROM Format ";
 	    ResultSet rs = stmt.executeQuery(sql_aff);
 	    
-	    boolean a;
-	    while(a=rs.next())
+	    boolean a=rs.next();
 	    if (a==false){
-	    	System.out.println("La table Format est vide"); 
+	    	System.out.println("La table LigneCommande est vide"); 
 	    }
-	    else{
+	    while(a){
 	       //Retrieve by column name
 	       int idFormat = rs.getInt("idFormat");
 	       int prixUnitaire = rs.getInt("prixUnitaire");
-
 	       //Display values
 	       System.out.print("idFormat: " + idFormat);
-	       System.out.print(", prixUnitaire: " + prixUnitaire);
+	       System.out.println(", prixUnitaire: " + prixUnitaire);
+	       a=rs.next();
 	    }
 	    rs.close();
 		} catch (SQLException e){
