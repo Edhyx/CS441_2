@@ -51,7 +51,7 @@ public class View {
 		Scanner passwd = new Scanner(System.in);
 		passwd.nextLine();
 		String sc = address + " " + name + " " + surname + " " + passwd; //Concaténation
-		control.notifyChangement(sc.nextLine());		//Scan et envoi dans controler
+		control.notifyChangement(sc);		//Envoi dans controler
 	}
 
 	public void displayConnection(ArrayList<String> str){
@@ -68,7 +68,7 @@ public class View {
 	}
 
 	public void displayMenu(ArrayList<String> str){
-		control = new ControllerMenu;
+		control = new ControllerMenu(this, model);
 		if(!str.isEmpty()){
 			System.out.println(str);
 		}
@@ -78,6 +78,8 @@ public class View {
 		System.out.println("Commander des albums : tapez 3");
 		System.out.println("Lister les commandes en cours : tapez 4");
 		System.out.println("Quitter : tapez 9");
+		Scanner sc = new Scanner(System.in);
+		control.notifyChangement(sc.nextLine());	//Scan et envoi dans controler.
 
 	}
 
@@ -123,13 +125,10 @@ public class View {
 	}
 
 	public void displayEnd(String str){
-		control = new ControllerEnd;
 		if(!str.isEmpty()){
 			System.out.println(str);
 		}
 		System.out.println("--- --- FIN DU PROGRAMME --- ---");
-		Scanner sc = new Scanner(System.in);
-		control.notifyChangement(sc.nextLine());
 	}
 
 	
