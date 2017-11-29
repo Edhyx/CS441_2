@@ -35,7 +35,10 @@ public class View {
 
 	}
 
-	public void displayNewClient(){
+	public void displayNewClient(String str){
+		if(!str.isEmpty()){
+			System.out.println(str);
+		}
 		control = new ControllerNewClient(this, model);
 		System.out.println("--- --- Bienvenue --- ---");
 		System.out.println("Veuillez entrer une adresse mail : ");
