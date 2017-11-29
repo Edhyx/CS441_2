@@ -8,8 +8,7 @@ Gestion de l'affichage en ligne de commandes
 
 package fr.esisar.cs441.groupe2.view;
 
-import fr.esisar.cs441.groupe2.controller.ControllerConnection;
-import fr.esisar.cs441.groupe2.controller.ControllerMenu;
+import fr.esisar.cs441.groupe2.controller.*;
 import fr.esisar.cs441.groupe2.model.Model;
 
 import java.util.ArrayList;
@@ -121,7 +120,7 @@ public class View {
 		control.notifyChangement(sc.next());
 	}
 
-	public void displayEnd(ArrayList<String> str){
+	public void displayEnd(String str){
 		control = new ControllerEnd;
 		if(!str.isEmpty()){
 			System.out.println(str);

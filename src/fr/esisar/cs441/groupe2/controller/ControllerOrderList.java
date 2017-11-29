@@ -1,6 +1,6 @@
 package fr.esisar.cs441.groupe2.controller;
 
-public class ControllerOrderManagement extends Controller{
+public class ControllerOrderList extends Controller{
 
 	@Override
 	public void notifychangement(String changement) {
@@ -8,7 +8,7 @@ public class ControllerOrderManagement extends Controller{
 		
 	}
 	
-	public ControllerOrderManagement() {
+	public ControllerOrderList() {
 		
 	}
 

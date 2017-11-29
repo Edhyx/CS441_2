@@ -1,6 +1,6 @@
 package fr.esisar.cs441.groupe2.controller;
 
-public class ControllerUploadImages extends Controller{
+public class ControllerAddPhoto extends Controller{
 
 	@Override
 	public void notifychangement(String changement) {
@@ -8,7 +8,7 @@ public class ControllerUploadImages extends Controller{
 		
 	}
 
-	public ControllerUploadImages(){
+	public ControllerAddPhoto(){
 		
 	}
 
