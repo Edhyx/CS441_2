@@ -7,5 +7,5 @@ public abstract class Controller {
 	protected View view;
 	protected Model model;
 	
-	public abstract void notifychangement(String changement);
+	public abstract void notifyChangement(String changement);
 }
