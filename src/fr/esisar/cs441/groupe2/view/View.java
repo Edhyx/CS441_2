@@ -4,108 +4,135 @@ photos numériques
 Equipe 2
 
 Gestion de l'affichage en ligne de commandes
+
+Auteur : Maxime FELICI
  */
 
 package fr.esisar.cs441.groupe2.view;
 
+import fr.esisar.cs441.groupe2.controller.*;
+import fr.esisar.cs441.groupe2.model.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
 
-	public static void main(String[] args) {
-		Main main = new Main();
-		main.execute();
-	}
+public class View {
+	private Controller control;
+	private Model model;
 
-	public void execute() {
-
-		int menu = 1;
-		int choice;
-		
-		displayInit();
-		
-		while ((choice=this.choice()) != 0) {
-			switch (menu) {
-				case 1:  // menu Init
-					switch (choice) {
-					case 1: displayNewClient(); break;
-					case 2: displayClient(); break;
-					case 9: menu = 0; break;
-
-					default: break;
-					}
-					break;
-
-				case 2: // menu Ajouter des photos
-					displayAddPhoto();
-					break;
-				case 3: //menu Creation ou suppression d'album
-					displayAlbumManagement();
-					break;
-				case 4: //menu Commande d'albums
-					displayAlbumOrder();
-					break;
-				case 5: //menu Liste des commandes
-					displayOrderList();
-					break;
-				case 0: //fermeture
-					break;
-				default:
-					System.out.println("Entrez un choix entre 1, 2 et 9");
-					break;
-			}
-		}
+	public View(Model model){
+		this.model = model;
 	}
 
 	public void displayInit(){
-	
+		control = new ControllerInit(this, model);
 		System.out.println("--- --- Bienvenue sur Esyphoto --- ---");
 		System.out.println("Nouveau client : tapez 1");
 		System.out.println("Connexion : tapez 2");
 		System.out.println("Sortir : tapez 9");
+		Scanner sc = new Scanner(System.in);
+		control.notifyChangement(sc.nextLine());		//Scan et envoi dans controler
+
 	}
 
-	public void displayNewClient(){
+	public void displayNewClient(String str){
+		if(!str.isEmpty()){
+			System.out.println(str);
+		}
+		control = new ControllerNewClient(this, model);
 		System.out.println("--- --- Bienvenue --- ---");
 		System.out.println("Veuillez entrer une adresse mail : ");
-		//Scan et envoi dans base
+		Scanner address = new Scanner(System.in);
+		address.nextLine();
 		System.out.println("Veuillez entrer un nom : ");
-		//Scan et envoi dans base
+		Scanner name = new Scanner(System.in);
+		name.nextLine();
 		System.out.println("Veuillez entrer un prénom : ");
-		//Scan et envoi dans base
+		Scanner surname = new Scanner(System.in);
+		surname.nextLine();
 		System.out.println("Veuillez entrer un password : ");
-		//Scan et envoi dans base
-
+		Scanner passwd = new Scanner(System.in);
+		passwd.nextLine();
+		String sc = address + " " + name + " " + surname + " " + passwd; //Concaténation
+		control.notifyChangement(sc);		//Envoi dans controler
 	}
 
-	public void displayClient(){
+	public void displayConnection(ArrayList<String> str){
+		control = new ControllerConnection(this, model);
+		if(!str.isEmpty()){
+			System.out.println(str);
+		}
 		System.out.println("--- --- Bienvenue --- ---");
-		System.out.print("Veuillez entrer votre identifiant (adresse mail) : ");
-		//Scan et envoi dans base. Check si vrai
-		System.out.print("Veuillez entrer votre mot de passe : ");
-		//Scan et envoi dans base. Check si vrai
-	}
-
-	public void displayAddPhoto(){
-		System.out.println("--- --- AJOUTER DES PHOTOS --- ---");
-
-	}
-	
-	public void displayAlbumManagement(){
-		System.out.println("--- --- GESTION DES ALBUMS --- ---");
-	}
-	
-	public void displayAlbumOrder(){
-		System.out.println("--- --- COMMANDER UN ALBUM --- ---");
-	}
-
-	public void displayOrderList(){
-		System.out.println("--- --- LISTE DES COMMANDES --- ---");
-	}
-	
-	public int choice() {
+		System.out.println("Tapez 0 pour quitter");
+		System.out.println("Tapez adresse_mail mot_de_passe pour vous identifier");
+		System.out.println(">>");
 		Scanner sc = new Scanner(System.in);
-		return sc.nextInt();
+		control.notifyChangement(sc.nextLine());	//Scan et envoi dans controler.
 	}
+
+	public void displayMenu(String str){
+		control = new ControllerMenu(this, model);
+		if(!str.isEmpty()){
+			System.out.println(str);
+		}
+		System.out.println("--- --- MENU --- ---");
+		System.out.println("Ajouter des photos : tapez 1");
+		System.out.println("Gérer les albums photo : tapez 2");
+		System.out.println("Commander des albums : tapez 3");
+		System.out.println("Lister les commandes en cours : tapez 4");
+		System.out.println("Quitter : tapez 9");
+		Scanner sc = new Scanner(System.in);
+		control.notifyChangement(sc.nextLine());	//Scan et envoi dans controler.
+
+	}
+
+	public void displayAddPhoto(ArrayList<String> str){
+		control = new ControllerAddPhoto(this, model);
+		if(!str.isEmpty()){
+			System.out.println(str);
+		}
+		System.out.println("--- --- AJOUTER DES PHOTOS --- ---");
+		Scanner sc = new Scanner(System.in);
+		control.notifyChangement(sc.nextLine());
+
+	}
+	
+	public void displayAlbumManagement(ArrayList<String> str){
+		control = new ControllerAlbumManagement(this, model);
+		if(!str.isEmpty()){
+			System.out.println(str);
+		}
+		System.out.println("--- --- GESTION DES ALBUMS --- ---");
+		Scanner sc = new Scanner(System.in);
+		control.notifyChangement(sc.nextLine());
+	}
+	
+	public void displayAlbumOrder(ArrayList<String> str){
+		control = new ControllerAlbumOrder(this, model);
+		if(!str.isEmpty()){
+			System.out.println(str);
+		}
+		System.out.println("--- --- COMMANDER UN ALBUM --- ---");
+		Scanner sc = new Scanner(System.in);
+		control.notifyChangement(sc.nextLine());
+	}
+
+	public void displayOrderList(ArrayList<String> str){
+		control = new ControllerOrderList(this, model);
+		if(!str.isEmpty()){
+			System.out.println(str);
+		}
+		System.out.println("--- --- LISTE DES COMMANDES --- ---");
+		Scanner sc = new Scanner(System.in);
+		control.notifyChangement(sc.nextLine());
+	}
+
+	public void displayEnd(String str){
+		if(!str.isEmpty()){
+			System.out.println(str);
+		}
+		System.out.println("--- --- FIN DU PROGRAMME --- ---");
+	}
+
 	
 }

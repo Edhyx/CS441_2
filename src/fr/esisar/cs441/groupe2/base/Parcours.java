@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import fr.esisar.cs441.groupe2.base.BDDs.ClientDAO;
 import fr.esisar.cs441.groupe2.base.entity.Adresse;
@@ -12,15 +13,15 @@ import fr.esisar.cs441.groupe2.base.entity.Client;
 public class Parcours {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		
-		String server = "tp-oracle.esisar.grenoble-inp.fr";
-		String driver = "oracle.jdbc.driver.OracleDriver";
-		String url = "jdbc:oracle:thin:@//"+server+"/xe";
-		String login = "malossep";
-		
-		Class.forName(driver);
-		Connection connection = DriverManager.getConnection(url,login,login);
-	    Statement stmt = connection.createStatement();
-	     
+		String driver = "com.mysql.jdbc.Driver";
+		String url = "jdbc:mysql://localhost/test?useSSL=false";
+		String login = "root";
+		String pass = "Pauline02";
+			Class.forName(driver);	
+			Connection connexion = DriverManager.getConnection(url,login,pass);	
+			System.out.println("Connection OK!");
+			Statement stmt = connexion.createStatement();
+	    		    
 	    ClientDAO tableClient = new ClientDAO(stmt);
 	    
 		Adresse AdresseA = new Adresse(30,"t","r","s");
@@ -32,6 +33,9 @@ public class Parcours {
 		tableClient.add(clientB);
 		
 		System.out.println(tableClient.getById(clientA.getAdresseMail()));
+
+		tableClient.getById(clientA.getAdresseMail());
+
 		//System.out.println(tableClient.getById(clientA).toString());
 		
 		tableClient.delete(clientA);

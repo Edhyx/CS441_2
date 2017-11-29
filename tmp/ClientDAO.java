@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import fr.esisar.cs441.groupe2.base.entity.Adresse;
 import fr.esisar.cs441.groupe2.base.entity.Client;
 
 public class ClientDAO {
@@ -16,30 +17,21 @@ public class ClientDAO {
 		this.stmt = stmt;
 	}
 	
-	public void add(Client client) {
+	public void add(Client client) throws SQLException {
 		
 		// elements de base
-	    String sql_element = "INSERT INTO Client "
-	    				  	+ "VALUES ('" 
-	    				  	+ client.getAdresseMail()
-	    				  	+ "', '"
-	    				  	+ client.getNom()
-	    				  	+ "', '"
-	    				  	+ client.getPrenom()
-	    				  	+ "', '"
-	    				  	+ client.getPassword()
-	    				  	+ "', '"
-	    				  	+ client.getAdresseDeFacturation()
-	    				  	+ "', '"
-	    				  	+ client.getAdresseDeLivraison()
-	    				  	+ "')";
+		
+	    String sql_element = "INSERT INTO Client " + 
+	    		 "VALUES ('"+client.getAdresseMail()+"', '"+client.getNom()+"', '"+client.getPrenom()+"','"+client.getPassword()+"', null, null)";
+			
+
 	    
-	    try{
+	   
 		    this.stmt.executeUpdate(sql_element);
 		    System.out.println("Client '" + client.getAdresseMail() + "' cree");
-	    } catch (SQLException e){
-	    	System.out.println("Client '" + client.getAdresseMail() + "' existant");
-	    }
+	   
+	    	//System.out.println("Client '" + client.getAdresseMail() + "' existant");
+	    
 	}
 	
 	public void delete(Client client) {
@@ -57,40 +49,50 @@ public class ClientDAO {
 	
 	public Client getById(String id) throws SQLException {
 		
-		String sql_find = "SELECT * FROM Client " +
-                "WHERE adresseMail= '"+id+ "'";
-		ResultSet rs = this.stmt.executeQuery(sql_find);
+		String sql_find = "SELECT * FROM Client " 
+						  + "WHERE adresseMail = '"
+				          + id
+				          + "'";
+		ResultSet rss = this.stmt.executeQuery(sql_find);
 
 		//boolean notFound = true;
 		Client client = null;
-		
-	    try {
+		boolean a;
+	   // try {
 			
-			while(rs.next()) {
+			while(a=rss.next()) {
+				 if (a==false){
+				    	System.out.println("Impossible de trouver le client associe a l'adresse : " + id); 
+				    }
+				 else {
 				//Retrieve by column name
-			        String adresseMail  = rs.getString("adresseMail");
-			    	String nom = rs.getString("nom");
-				    String prenom = rs.getString("prenom");
-				    String password = rs.getString("password");
-				    String idAdresseF = rs.getString("idAdresseF");
-				    String idAdresseL = rs.getString("idAdresseL");
-				    
-				    client = new Client( adresseMail, nom, prenom, password);
-				  //client = new Client( adresseMail, nom, prenom, password,idAdresseF,idAdresseL);
+			         id  = rss.getString("adresseMail");
+			    	String nom = rss.getString("nom");
+				    String prenom = rss.getString("prenom");
+				    String password = rss.getString("password");
+				    //int idAdresseF = rss.getInt("idAdresseF");
+				    //int idAdresseL = rss.getInt("idAdresseL");
+				    //optionnel   
+				    System.out.print("adresseMail: " + id);
+				    System.out.print(", nom: " + nom);
+				    System.out.print(", prenom: " + prenom);
+				    System.out.println(", password: " + password);
+				    //client = new Client( id, nom, prenom, password);
+				    client = new Client( id, nom, prenom, password,null,null);
 				     
 				   // notFound = false;
-			     }		       
+			     }	}	       
 					
-			rs.close();
+			rss.close();
 			
 			/*if(notFound) {
 				throw new SQLException();
 			}*/
 			
-		} catch (SQLException e) {
-			System.out.println("Impossible de trouver le client associe a l'adresse : " + id);
-		}
-	    
+		//} catch (SQLException e) {
+		//	System.out.println("Impossible de trouver le client associe a l'adresse : " + id);
+		//}
+	   
 	    return client;
 	}
 	
