@@ -10,8 +10,15 @@ public class ControllerConnection extends Controller{
 		this.model = model;
 	}
 	
-	public void notifychangement() {
-				
+	public void notifychangement(String changement) {
+		
+		// on detecte si il s'agit d'une commande
+		if(changement.length() == 1) {
+			switch(changement) {
+			
+			}
+		}
+		
 	}
 
 }
