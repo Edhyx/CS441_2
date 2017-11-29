@@ -79,7 +79,7 @@ public class Client {
 	public ArrayList<Commande> getCommandes() {
 		return commandes;
 	}
-
+	
 	public ArrayList<Album> getAlbums() {
 		return albums;
 	}
