@@ -1,5 +1,5 @@
 /*
-CS441 Equipe NÂ°2
+CS441 Equipe N°2
 
 Client.java
 */
@@ -124,7 +124,5 @@ public class Client {
 		return "Client [adresseMail=" + adresseMail + ", nom=" + nom + ", prenom=" + prenom + ", password=" + password
 				+ ", adresseDeFacturation=" + adresseDeFacturation + ", adresseDeLivraison=" + adresseDeLivraison
 				+ ", fichierImages=" + fichierImages + ", commandes=" + commandes + ", albums=" + albums + "]";
-
 	}
-	
 }

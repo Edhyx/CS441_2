@@ -131,7 +131,7 @@ public class Adresse {
 	    
 	    boolean a=rs.next();
 	    if (a==false){
-	    	System.out.println("La table LigneCommande est vide"); 
+	    	System.out.println("La table AdresseF est vide"); 
 	    }
 	    while(a){
 	    	//Retrieve by column name
@@ -159,7 +159,7 @@ public class Adresse {
 	    
 	    boolean a=rs.next();
 	    if (a==false){
-	    	System.out.println("La table LigneCommande est vide"); 
+	    	System.out.println("La table AdresseL est vide"); 
 	    }
 	    while(a){
 	    	//Retrieve by column name

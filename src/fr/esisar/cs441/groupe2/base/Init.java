@@ -10,13 +10,14 @@ public class Init {
 	 * @param args
 	 */
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		String server = "tp-oracle.esisar.grenoble-inp.fr";
-		String driver = "oracle.jdbc.driver.OracleDriver";
-		String url = "jdbc:oracle:thin:@//"+server+"/xe";
-		String login = "malossep";
-		Class.forName(driver);
-		Connection connection = DriverManager.getConnection(url,login,login);
-	    Statement stmt = connection.createStatement();
+		String driver = "com.mysql.jdbc.Driver";
+		String url = "jdbc:mysql://localhost/test?useSSL=false";
+		String login = "root";
+		String pass = "Pauline02";
+			Class.forName(driver);	
+			Connection connexion = DriverManager.getConnection(url,login,pass);	
+			System.out.println("Connection OK!"); 
+			Statement stmt = connexion.createStatement();
 			
 /////////Creer table AdressF
 	    String sql_adresseF = "CREATE TABLE AdresseF " +
@@ -121,5 +122,5 @@ public class Init {
 	            " FOREIGN KEY (idAlbum) REFERENCES Album(idAlbum))";	    
 	    stmt.executeUpdate(sql_contient);
 	    System.out.println("Table Contient cree");
-	}
+	    }
 }
