@@ -17,7 +17,7 @@
 		<mkdir dir="${jar.dir}"/>
 		<jar destfile="${ant.project.name}.jar" basedir="${classes.dir}">
 			<manifest>
-				<attribute name="Main-Class" value="fr.esisar.cs441.groupe2.view.Main"/>
+				<attribute name="Main-Class" value="fr.esisar.cs441.groupe2.view.View"/>
 			</manifest>
 		</jar>
 	</target>
