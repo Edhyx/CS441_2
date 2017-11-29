@@ -24,6 +24,7 @@ public class View {
 		this.model = model;
 	}
 
+	@SuppressWarnings("resource")
 	public void displayInit(){
 		control = new ControllerInit(this, model);
 		System.out.println("--- --- Bienvenue sur Esyphoto --- ---");

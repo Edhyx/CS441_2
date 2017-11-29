@@ -16,7 +16,6 @@ public class ControllerConnection extends Controller{
 		
 		// on detecte si il s'agit d'une commande
 		if(changement.length() == 1) {
-			System.out.println("hoho");
 			if(changement.charAt(0)=='9') {
 				view.displayEnd("");
 			}else {

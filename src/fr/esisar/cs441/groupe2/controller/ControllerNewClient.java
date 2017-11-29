@@ -19,25 +19,29 @@ public class ControllerNewClient extends Controller{
 		String[] element = new String[4];
 		int i = 0;
 		
-		while(changement.length()>0 & i<4) {
-			System.out.println(changement);
-			if(i<3) {
-				element[i] = changement.substring(0, changement.indexOf(" "));
-			}else {
-				element[i] = changement.substring(0, changement.length());
-			}
-			changement = changement.substring(0,changement.indexOf(" ")+1);	
-			i++;
-		}
-		
-		if(i==4) {
-			boolean result = model.createClient(element[0], element[1], element[2], element[3]);
-			if(result) {
-				view.displayMenu(new String("Bienvenu " + element[1] + " " + element[2]));	
+		try {
+			while(changement.length()>0 & i<4) {
+				System.out.println(changement);
+				if(i<3) {
+					element[i] = changement.substring(0, changement.indexOf(" "));
+				}else {
+					element[i] = changement.substring(0, changement.length());
+				}
+				changement = changement.substring(changement.indexOf(" ")+1, changement.length());	
+				i++;
 			}
 			
-		}else {
-			view.displayNewClient("erreur");
+			if(i==4) {
+				boolean result = model.createClient(element[0], element[1], element[2], element[3]);
+				if(result) {
+					view.displayMenu(new String("Bienvenu " + element[1] + " " + element[2]));	
+				}
+				
+			}else {
+				view.displayNewClient("erreur");
+			}
+		}catch(StringIndexOutOfBoundsException e) {
+			view.displayNewClient("probleme saisie");
 		}
 		
 

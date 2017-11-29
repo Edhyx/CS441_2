@@ -11,3 +11,6 @@
 		- gerer le lien avec la table de FichierImage
 		- gerer le lien avec la table d'Album
 		- gerer le lien avec la table de Commande
+		
+	A Faire : 
+		- Bug connection quand bien saisi (try and catch)
