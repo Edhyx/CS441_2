@@ -84,7 +84,7 @@ public class View {
 	}
 
 	public void displayAddPhoto(ArrayList<String> str){
-		control = new ControllerAddPhoto;
+		control = new ControllerAddPhoto(this, model);
 		if(!str.isEmpty()){
 			System.out.println(str);
 		}
@@ -95,7 +95,7 @@ public class View {
 	}
 	
 	public void displayAlbumManagement(ArrayList<String> str){
-		control = new ControllerAlbumManagement;
+		control = new ControllerAlbumManagement(this, model);
 		if(!str.isEmpty()){
 			System.out.println(str);
 		}
@@ -105,7 +105,7 @@ public class View {
 	}
 	
 	public void displayAlbumOrder(ArrayList<String> str){
-		control = new ControllerAlbumOrder;
+		control = new ControllerAlbumOrder(this, model);
 		if(!str.isEmpty()){
 			System.out.println(str);
 		}
@@ -115,7 +115,7 @@ public class View {
 	}
 
 	public void displayOrderList(ArrayList<String> str){
-		control = new ControllerOrderList;
+		control = new ControllerOrderList(this, model);
 		if(!str.isEmpty()){
 			System.out.println(str);
 		}
