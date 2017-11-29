@@ -19,7 +19,7 @@ public class Init {
 	    Statement stmt = connection.createStatement();
 			
 /////////Creer table AdressF
-	    String sql_adresseF = "CREATE TABLE AdresseF " +
+	    String sql_adresseF = "CREATE TABLE AdresseF " + 
 	            "(idAdresseF INTEGER, " +
 	            " rue VARCHAR(255), " + 
 	            " codePostal VARCHAR(255), " + 
