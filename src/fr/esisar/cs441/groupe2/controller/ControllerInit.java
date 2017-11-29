@@ -16,9 +16,9 @@ public class ControllerInit extends Controller{
 		ArrayList<String> vide = new ArrayList<String>();
 		
 		switch(changement){
-			case "1": view.displayNewClient();
+			case "1": view.displayNewClient("");
 			case "2": view.displayConnection(vide);
-			case "9": view.displayEnd(null);
+			case "9": view.displayEnd("");
 			}
 		}	
 	

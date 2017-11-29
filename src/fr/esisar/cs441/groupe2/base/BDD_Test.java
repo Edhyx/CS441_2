@@ -19,9 +19,9 @@ public class BDD_Test {
 		String login = "root";
 		String pass = "Pauline02";
 		try{
-			Class.forName(driver);	
-			Connection connexion = DriverManager.getConnection(url,login,pass);	
-			System.out.println("Connection OK!"); 
+			Class.forName(driver);
+			Connection connexion = DriverManager.getConnection(url,login,pass);
+			System.out.println("Connection OK!");
 			Statement stmt = connexion.createStatement();
 					    
 			ClientDAO tableClient = new ClientDAO(stmt);

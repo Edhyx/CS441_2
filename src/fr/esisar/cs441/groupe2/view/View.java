@@ -35,7 +35,10 @@ public class View {
 
 	}
 
-	public void displayNewClient(){
+	public void displayNewClient(String str){
+		if(!str.isEmpty()){
+			System.out.println(str);
+		}
 		control = new ControllerNewClient(this, model);
 		System.out.println("--- --- Bienvenue --- ---");
 		System.out.println("Veuillez entrer une adresse mail : ");
@@ -67,7 +70,7 @@ public class View {
 		control.notifyChangement(sc.nextLine());	//Scan et envoi dans controler.
 	}
 
-	public void displayMenu(ArrayList<String> str){
+	public void displayMenu(String str){
 		control = new ControllerMenu(this, model);
 		if(!str.isEmpty()){
 			System.out.println(str);
@@ -84,7 +87,7 @@ public class View {
 	}
 
 	public void displayAddPhoto(ArrayList<String> str){
-		control = new ControllerAddPhoto;
+		control = new ControllerAddPhoto(this, model);
 		if(!str.isEmpty()){
 			System.out.println(str);
 		}
@@ -95,7 +98,7 @@ public class View {
 	}
 	
 	public void displayAlbumManagement(ArrayList<String> str){
-		control = new ControllerAlbumManagement;
+		control = new ControllerAlbumManagement(this, model);
 		if(!str.isEmpty()){
 			System.out.println(str);
 		}
@@ -105,7 +108,7 @@ public class View {
 	}
 	
 	public void displayAlbumOrder(ArrayList<String> str){
-		control = new ControllerAlbumOrder;
+		control = new ControllerAlbumOrder(this, model);
 		if(!str.isEmpty()){
 			System.out.println(str);
 		}
@@ -115,7 +118,7 @@ public class View {
 	}
 
 	public void displayOrderList(ArrayList<String> str){
-		control = new ControllerOrderList;
+		control = new ControllerOrderList(this, model);
 		if(!str.isEmpty()){
 			System.out.println(str);
 		}
