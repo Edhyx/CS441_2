@@ -1,7 +1,6 @@
 package fr.esisar.cs441.groupe2.controller;
 
-public class ControllerMenu extends Controller{
-
+public class ControllerInit extends Controller{
 
 	@Override
 	public void notifychangement(String changement) {
@@ -9,7 +8,7 @@ public class ControllerMenu extends Controller{
 		
 	}
 	
-	public ControllerMenu(){
+	public ControllerInit(){
 		
 	}
 
