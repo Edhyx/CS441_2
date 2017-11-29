@@ -35,6 +35,7 @@ public class View {
 
 	}
 
+	@SuppressWarnings("resource")
 	public void displayNewClient(String str){
 		if(!str.isEmpty()){
 			System.out.println(str);
@@ -42,19 +43,16 @@ public class View {
 		control = new ControllerNewClient(this, model);
 		System.out.println("--- --- Bienvenue --- ---");
 		System.out.println("Veuillez entrer une adresse mail : ");
-		Scanner address = new Scanner(System.in);
-		address.nextLine();
+		Scanner sc = new Scanner(System.in);
+		String client = sc.nextLine();
 		System.out.println("Veuillez entrer un nom : ");
-		Scanner name = new Scanner(System.in);
-		name.nextLine();
+		client = client + " " + sc.nextLine();
 		System.out.println("Veuillez entrer un prénom : ");
-		Scanner surname = new Scanner(System.in);
-		surname.nextLine();
+		client = client + " " + sc.nextLine();
 		System.out.println("Veuillez entrer un password : ");
-		Scanner passwd = new Scanner(System.in);
-		passwd.nextLine();
-		String sc = address + " " + name + " " + surname + " " + passwd; //Concaténation
-		control.notifyChangement(sc);		//Envoi dans controler
+		client = client + " " + sc.nextLine();
+		
+		control.notifyChangement(client);		//Envoi dans controler
 	}
 
 	public void displayConnection(ArrayList<String> str){
@@ -63,7 +61,7 @@ public class View {
 			System.out.println(str);
 		}
 		System.out.println("--- --- Bienvenue --- ---");
-		System.out.println("Tapez 0 pour quitter");
+		System.out.println("Tapez 9 pour quitter");
 		System.out.println("Tapez adresse_mail mot_de_passe pour vous identifier");
 		System.out.println(">>");
 		Scanner sc = new Scanner(System.in);
@@ -82,7 +80,9 @@ public class View {
 		System.out.println("Lister les commandes en cours : tapez 4");
 		System.out.println("Quitter : tapez 9");
 		Scanner sc = new Scanner(System.in);
-		control.notifyChangement(sc.nextLine());	//Scan et envoi dans controler.
+		String choix = sc.nextLine();
+		sc = null;
+		control.notifyChangement(choix);	//Scan et envoi dans controler.
 
 	}
 

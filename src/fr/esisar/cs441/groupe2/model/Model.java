@@ -12,9 +12,9 @@ public class Model {
 		return null;
 	}
 	
-	public String createClient(String adresse, String nom, String prenom, String password) {
+	public boolean createClient(String adresse, String nom, String prenom, String password) {
 		Client newClient = new Client(adresse, nom, prenom, password, null, null);
 		// completer
-		return adresse + nom;
+		return true;
 	}
 }
