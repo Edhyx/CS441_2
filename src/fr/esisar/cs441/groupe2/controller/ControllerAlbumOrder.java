@@ -1,7 +1,18 @@
 package fr.esisar.cs441.groupe2.controller;
 
-/**
- * Created by maximefelici on 29/11/2017.
- */
-public class ControllerAlbumOrder {
+import fr.esisar.cs441.groupe2.model.Model;
+import fr.esisar.cs441.groupe2.view.View;
+
+
+public class ControllerAlbumOrder extends Controller{
+	
+	public ControllerAlbumOrder(View view, Model model) {
+		this.view = view;
+		this.model = model;
+	}
+
+	public void notifyChangement(String changement) {
+		
+	}
+	
 }

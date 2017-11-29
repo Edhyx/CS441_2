@@ -6,11 +6,13 @@ import fr.esisar.cs441.groupe2.view.View;
 /**
  * Created by maximefelici on 29/11/2017.
  */
-public class ControllerNewClient extends Controller {
+public class ControllerNewClient extends Controller{
+
 	public ControllerNewClient(View view, Model model) {
 		this.view = view;
 		this.model = model;
 	}
+
 	
 	public void notifyChangement(String changement) {
 		
