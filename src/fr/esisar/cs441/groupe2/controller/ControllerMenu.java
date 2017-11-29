@@ -23,6 +23,8 @@ public class ControllerMenu extends Controller{
 		case "1": view.displayAddPhoto(vide);
 		case "2": view.displayAlbumManagement(vide);
 		case "3": view.displayAlbumOrder(vide);
+		case "4": view.displayOrderList(vide);
+		case "9": view.displayEnd(null);
 		}
 	}
 
