@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 
 public class View {
-	controller control;
+	private controller control;
 
 	public void displayInit(){
 		control = new controlInit;
@@ -24,7 +24,7 @@ public class View {
 		System.out.println("Connexion : tapez 2");
 		System.out.println("Sortir : tapez 9");
 		Scanner sc = new Scanner(System.in);
-		control.notify(sc.next());
+		control.notifyChangement(sc.next());		//Scan et envoi dans controler
 	}
 
 	public void displayNewClient(ArrayList<String> str){
@@ -35,82 +35,82 @@ public class View {
 		System.out.println("--- --- Bienvenue --- ---");
 		System.out.println("Veuillez entrer une adresse mail : ");
 		Scanner sc = new Scanner(System.in);
-		control.Connection.notify(sc.next());		//Scan et envoi dans controler
+		control.notifyChangement(sc.next());		//Scan et envoi dans controler
 		System.out.println("Veuillez entrer un nom : ");
 		Scanner sc = new Scanner(System.in);
-		controler.Connection.notify(sc.next());		//Scan et envoi dans controler
+		control.notifyChangement(sc.next());		//Scan et envoi dans controler
 		System.out.println("Veuillez entrer un prénom : ");
 		Scanner sc = new Scanner(System.in);
-		controler.Connection.notify(sc.next());		//Scan et envoi dans controler
+		control.notifyChangement(sc.next());		//Scan et envoi dans controler
 		System.out.println("Veuillez entrer un password : ");
 		Scanner sc = new Scanner(System.in);
-		controler.Connection.notify(sc.next());		//Scan et envoi dans controler
+		control.notifyChangement(sc.next());		//Scan et envoi dans controler
 	}
 
 	public void displayConnection(ArrayList<String> str){
-		control = new controlClient;
+		control = new controlConnection;
 		if(!str.isEmpty()){
 			System.out.println(str);
 		}
 		System.out.println("--- --- Bienvenue --- ---");
 		System.out.print("Veuillez entrer votre identifiant (adresse mail) : ");
 		Scanner sc = new Scanner(System.in);
-		controler.Connection.notify(sc.next());		//Scan et envoi dans controler.
+		control.notifyChangement(sc.next());	//Scan et envoi dans controler.
 		System.out.print("Veuillez entrer votre mot de passe : ");
 		Scanner sc = new Scanner(System.in);
-		controler.Connection.notify(sc.next());		//Scan et envoi dans controler.
+		control.notifyChangement(sc.next());		//Scan et envoi dans controler.
 	}
 
 	public void displayAddPhoto(ArrayList<String> str){
+		control = new controlAddPhoto;
 		if(!str.isEmpty()){
 			System.out.println(str);
 		}
 		System.out.println("--- --- AJOUTER DES PHOTOS --- ---");
 		Scanner sc = new Scanner(System.in);
-		controler.Connection.notify(sc.next());
+		control.notifyChangement(sc.next());
 
 	}
 	
 	public void displayAlbumManagement(ArrayList<String> str){
+		control = new controlAlbumManagement;
 		if(!str.isEmpty()){
 			System.out.println(str);
 		}
 		System.out.println("--- --- GESTION DES ALBUMS --- ---");
 		Scanner sc = new Scanner(System.in);
-		controler.Connection.notify(sc.next());
+		control.notifyChangement(sc.next());
 	}
 	
 	public void displayAlbumOrder(ArrayList<String> str){
+		control = new controlAlbumOrder;
 		if(!str.isEmpty()){
 			System.out.println(str);
 		}
 		System.out.println("--- --- COMMANDER UN ALBUM --- ---");
 		Scanner sc = new Scanner(System.in);
-		controler.Connection.notify(sc.next());
+		control.notifyChangement(sc.next());
 	}
 
 	public void displayOrderList(ArrayList<String> str){
+		control = new controlOrderList;
 		if(!str.isEmpty()){
 			System.out.println(str);
 		}
 		System.out.println("--- --- LISTE DES COMMANDES --- ---");
 		Scanner sc = new Scanner(System.in);
-		controler.Connection.notify(sc.next());
+		control.notifyChangement(sc.next());
 	}
 
 	public void displayEnd(ArrayList<String> str){
+		control = new controlEnd;
 		if(!str.isEmpty()){
 			System.out.println(str);
 		}
 		System.out.println("--- --- FIN DU PROGRAMME --- ---");
 		Scanner sc = new Scanner(System.in);
-		controler.Connection.notify(sc.next());
+		control.notifyChangement(sc.next());
 
-	}
-	
-	public int choice() {
-		Scanner sc = new Scanner(System.in);
-		return sc.nextInt();
 	}
 	
 }
