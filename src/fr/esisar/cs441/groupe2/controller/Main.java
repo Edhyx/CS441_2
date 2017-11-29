@@ -4,7 +4,7 @@ photos numériques
 Equipe 2
  */
 
-package fr.esisar.cs441.groupe2.controller;
+package fr.esisar.cs441.groupe2.controler;
 
 public class Main {
 	
