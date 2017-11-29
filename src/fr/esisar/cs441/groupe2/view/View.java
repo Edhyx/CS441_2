@@ -120,8 +120,56 @@ public class View {
 			System.out.println(str);
 		}
 		System.out.println("--- --- AJOUTER DES PHOTOS --- ---");
+		System.out.println("Ajouter une photo : taper 1");
+		System.out.println("Ajouter un lot de photo : taper 2");
+		System.out.println("Quitter : tapez 9");
 		Scanner sc = new Scanner(System.in);
-		control.notifyChangement(sc.nextLine());
+		
+		String choix = sc.nextLine();
+		
+		String fichier;
+		
+		if(choix.charAt(0)=='1') {
+			
+			fichier = "PICTURE";
+			
+			System.out.println("Telechargement terminé.\nIl vous faut renseigner les informations suivantes :");
+			System.out.print("L'appareil Photo : ");
+			fichier = sc.nextLine();
+			System.out.print("L'objectif : ");
+			fichier = fichier + " " + sc.nextLine();
+			System.out.print("La distance Focale : ");
+			fichier = fichier + " " + sc.nextLine();
+			System.out.print("La sensibilité ISO : ");
+			fichier = fichier + " " + sc.nextLine();
+			System.out.print("L'ouverture : ");
+			fichier = fichier + " " + sc.nextLine();
+			System.out.print("La vitesse d'Obturation : ");
+			fichier = fichier + " " + sc.nextLine();
+			
+		}else if(choix.charAt(0)=='2') {
+			
+			fichier = "PACK";
+			
+			System.out.println("Combien de photos?");
+			fichier = fichier + " " + sc.nextLine();
+			System.out.println("Telechargement terminé.\nIl vous faut renseigner les informations suivantes :");
+			System.out.print("L'appareil Photo : ");
+			fichier = fichier + " " + sc.nextLine();
+			System.out.print("L'objectif : ");
+			fichier = fichier + " " + sc.nextLine();
+			System.out.print("La distance Focale : ");
+			fichier = fichier + " " + sc.nextLine();
+			System.out.print("La sensibilité ISO : ");
+			fichier = fichier + " " + sc.nextLine();
+			System.out.print("L'ouverture : ");
+			fichier = fichier + " " + sc.nextLine();
+			System.out.print("La vitesse d'Obturation : ");
+			fichier = fichier + " " + sc.nextLine();
+			
+		}else {
+			control.notifyChangement(choix);
+		}
 
 	}
 	
