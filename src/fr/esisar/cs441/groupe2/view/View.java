@@ -71,10 +71,10 @@ public class View {
 		}
 		System.out.println("--- --- MENU --- ---");
 		System.out.println("Ajouter des photos : tapez 1");
-		System.out.println(" : tapez 1");
-		System.out.println("Nouveau client : tapez 1");
-		System.out.println("Nouveau client : tapez 1");
-		System.out.println("Nouveau client : tapez 1");
+		System.out.println("Gérer les albums photo : tapez 2");
+		System.out.println("Commander des albums : tapez 3");
+		System.out.println("Lister les commandes en cours : tapez 4");
+		System.out.println("Quitter : tapez 9");
 
 	}
 
