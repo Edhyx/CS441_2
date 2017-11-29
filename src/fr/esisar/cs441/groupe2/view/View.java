@@ -10,17 +10,25 @@ package fr.esisar.cs441.groupe2.view;
 
 import fr.esisar.cs441.groupe2.controller.ControllerConnection;
 import fr.esisar.cs441.groupe2.controller.ControllerMenu;
+import fr.esisar.cs441.groupe2.model.Model;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 
 
+
+
 public class View {
 	private controller control;
+	private Model model;
+
+	public View(Model model){
+		this.model = model;
+	}
 
 	public void displayInit(){
-		control = new ControllerInit();
+		control = new ControllerInit(this,model);
 		System.out.println("--- --- Bienvenue sur Esyphoto --- ---");
 		System.out.println("Nouveau client : tapez 1");
 		System.out.println("Connexion : tapez 2");
@@ -34,16 +42,14 @@ public class View {
 		control = new ControllerNewClient;
 		System.out.println("--- --- Bienvenue --- ---");
 		System.out.println("Veuillez entrer une adresse mail : ");
-		Scanner sc = new Scanner(System.in);
-		control.notifyChangement(sc.next());		//Scan et envoi dans controler
+		Scanner address = new Scanner(System.in);
 		System.out.println("Veuillez entrer un nom : ");
-		Scanner sc = new Scanner(System.in);
-		control.notifyChangement(sc.next());		//Scan et envoi dans controler
+		Scanner name = new Scanner(System.in);
 		System.out.println("Veuillez entrer un prénom : ");
-		Scanner sc = new Scanner(System.in);
-		control.notifyChangement(sc.next());		//Scan et envoi dans controler
+		Scanner surname = new Scanner(System.in);
 		System.out.println("Veuillez entrer un password : ");
-		Scanner sc = new Scanner(System.in);
+		Scanner passwd = new Scanner(System.in);
+		String sc = address + " " + name + " " + surname + " " + passwd; //Concaténation
 		control.notifyChangement(sc.next());		//Scan et envoi dans controler
 	}
 
