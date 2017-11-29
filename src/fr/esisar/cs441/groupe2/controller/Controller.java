@@ -4,8 +4,8 @@ import fr.esisar.cs441.groupe2.model.Model;
 import fr.esisar.cs441.groupe2.view.View;
 
 public abstract class Controller {
-	private View view;
-	private Model model;
+	protected View view;
+	protected Model model;
 	
 	public abstract void notifychangement();
 }
