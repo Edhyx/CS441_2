@@ -15,8 +15,14 @@ public class ControllerConnection extends Controller{
 		// on detecte si il s'agit d'une commande
 		if(changement.length() == 1) {
 			switch(changement) {
-			
+				case "0" : view.displayClose();
+				break;
+				default : view.displayClose();
 			}
+		}else { // On test l'identification
+			String id = changement.substring(0,changement.indexOf(" ")-1);
+			String password = changement.substring(changement.indexOf(" ")+1,changement.length());
+			String clientPassword = model.
 		}
 		
 	}
