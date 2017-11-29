@@ -70,7 +70,7 @@ public class View {
 		control.notifyChangement(sc.nextLine());	//Scan et envoi dans controler.
 	}
 
-	public void displayMenu(ArrayList<String> str){
+	public void displayMenu(String str){
 		control = new ControllerMenu(this, model);
 		if(!str.isEmpty()){
 			System.out.println(str);

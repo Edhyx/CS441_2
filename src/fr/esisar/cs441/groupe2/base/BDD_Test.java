@@ -17,11 +17,11 @@ public class BDD_Test {
 		String login = "root";
 		String pass = "Pauline02";
 		try{
-			Class.forName(driver);	
-			Connection connexion = DriverManager.getConnection(url,login,pass);	
-			System.out.println("Connection OK!"); 
+			Class.forName(driver);
+			Connection connexion = DriverManager.getConnection(url,login,pass);
+			System.out.println("Connection OK!");
 			Statement stmt = connexion.createStatement();
-	 
+
 			Adresse AdresseA_f = new Adresse(30,"t","r","s");
 			Adresse AdresseA_l = new Adresse(30,"t","r","s");
 			Client clientA = new Client("hnfjydt","nom","prenom","xxx",AdresseA_f,AdresseA_l);
@@ -34,7 +34,7 @@ public class BDD_Test {
 			/*ArrayList albums = new ArrayList();
 			albums.add(albumA);
 			Contient contient = new Contient(2,"valetta","beau",albums,fichier);*/
-			
+
 			//ADD
 			System.out.println("ADD");
 			AdresseA_f.add_F(stmt);
@@ -51,16 +51,16 @@ public class BDD_Test {
 			formatA.affiche(stmt);
 			albumA.add(stmt);
 			albumA.affiche(stmt);
-			//Peut en avoir à l'infinie, lignecommande n'as pas de clef primaire
+			//Peut en avoir ï¿½ l'infinie, lignecommande n'as pas de clef primaire
 			//lignecommandeA.add(stmt);
 			//lignecommandeA.affiche(stmt);
 			fichier.add(stmt);
 			fichier.affiche(stmt);
-			
+
 			//DELETE
 			System.out.println("DELETE");
-			//Peut en avoir à l'infinie, lignecommande n'as pas de clef primaire
-			//Comment supprimer un élément de cette table
+			//Peut en avoir ï¿½ l'infinie, lignecommande n'as pas de clef primaire
+			//Comment supprimer un ï¿½lï¿½ment de cette table
 			//lignecommandeA.delete(stmt);
 			//lignecommandeA.affiche(stmt);
 			commandeA.delete(stmt);
