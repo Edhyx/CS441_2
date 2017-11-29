@@ -18,7 +18,7 @@ public class ControllerInit extends Controller{
 		switch(changement){
 			case "1": view.displayNewClient();
 			case "2": view.displayConnection(vide);
-			case "9": view.displayEnd(null);
+			case "9": view.displayEnd("");
 			}
 		}	
 	

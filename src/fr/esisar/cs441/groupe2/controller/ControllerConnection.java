@@ -17,9 +17,9 @@ public class ControllerConnection extends Controller{
 		// on detecte si il s'agit d'une commande
 		if(changement.length() == 1) {
 			switch(changement) {
-				case "0" : view.displayEnd(null);
+				case "0" : view.displayEnd("");
 				break;
-				default : view.displayEnd(null);
+				default : view.displayEnd("");
 			}
 		}else { // On test l'identification
 			System.out.println(changement);
