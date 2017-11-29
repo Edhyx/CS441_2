@@ -37,12 +37,12 @@ public class ControllerConnection extends Controller{
 					retour.add("Probleme : impossible de se connecter");
 					view.displayConnection(retour);
 				}
+			}else {
+			
+				ArrayList<String> retour = new ArrayList<String>();
+				retour.add("Probleme : impossible de se connecter");
+				view.displayConnection(retour);
 			}
-			
-			ArrayList<String> retour = new ArrayList<String>();
-			retour.add("Probleme : impossible de se connecter");
-			view.displayConnection(retour);
-			
 		}
 		
 	}
