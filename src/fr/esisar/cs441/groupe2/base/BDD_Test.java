@@ -41,6 +41,10 @@ public class BDD_Test {
 			tableAdresse.affiche_L();
 			tableClient.affiche();
 			
+			Adresse a = tableAdresse.getById_F(30);
+
+			System.out.println(a.toString());
+			
 			Client find= tableClient.getById("cc");
 			System.out.println(find.toString());
 			//System.out.println(tableAdresse.getById_F(50).toString());
