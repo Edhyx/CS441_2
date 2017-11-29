@@ -43,14 +43,42 @@ public class View {
 		control = new ControllerNewClient(this, model);
 		System.out.println("--- --- Bienvenue --- ---");
 		System.out.println("Veuillez entrer une adresse mail : ");
+		
 		Scanner sc = new Scanner(System.in);
 		String client = sc.nextLine();
+		String rue,code,ville;
+		
 		System.out.println("Veuillez entrer un nom : ");
 		client = client + " " + sc.nextLine();
 		System.out.println("Veuillez entrer un prénom : ");
 		client = client + " " + sc.nextLine();
 		System.out.println("Veuillez entrer un password : ");
 		client = client + " " + sc.nextLine();
+		
+		System.out.println("Adresse de Livraison : Veuillez entrer la rue : ");
+		rue = sc.nextLine();
+		client = client + " " + rue;
+		System.out.println("Adresse de Livraison : Veuillez entrer le code postal : ");
+		code = sc.nextLine();
+		client = client + " " + code;
+		System.out.println("Adresse de Livraison : Veuillez entrer la ville : ");
+		ville = sc.nextLine();
+		client = client + " " + ville;
+		
+		System.out.println("Meme adresse de Facturation? (y/n)");
+		if(sc.nextLine().charAt(0) == 'y') {
+			client = client + " " + rue + " " + code + " " + ville;
+		}else {
+			System.out.println("Adresse de Livraison : Veuillez entrer la rue : ");
+			rue = sc.nextLine();
+			client = client + " " + rue;
+			System.out.println("Adresse de Livraison : Veuillez entrer le code postal : ");
+			code = sc.nextLine();
+			client = client + " " + code;
+			System.out.println("Adresse de Livraison : Veuillez entrer la ville : ");
+			ville = sc.nextLine();
+			client = client + " " + ville;
+		}
 		
 		control.notifyChangement(client);		//Envoi dans controler
 	}
