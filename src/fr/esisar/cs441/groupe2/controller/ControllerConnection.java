@@ -16,10 +16,11 @@ public class ControllerConnection extends Controller{
 		
 		// on detecte si il s'agit d'une commande
 		if(changement.length() == 1) {
-			switch(changement) {
-				case "0" : view.displayEnd("");
-				break;
-				default : view.displayEnd("");
+			System.out.println("hoho");
+			if(changement.charAt(0)=='9') {
+				view.displayEnd("");
+			}else {
+				view.displayConnection(new ArrayList<String>());
 			}
 		}else { // On test l'identification
 			System.out.println(changement);
