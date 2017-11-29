@@ -14,7 +14,6 @@ public class ControllerInit extends Controller{
 	
 	public void notifyChangement(String changement) {
 		ArrayList<String> vide = new ArrayList<String>();
-		
 		switch(changement){
 			case "1": view.displayNewClient("");
 			case "2": view.displayConnection(vide);
