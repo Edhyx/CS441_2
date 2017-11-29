@@ -4,6 +4,8 @@ photos numériques
 Equipe 2
 
 Gestion de l'affichage en ligne de commandes
+
+Auteur : Maxime FELICI
  */
 
 package fr.esisar.cs441.groupe2.view;
@@ -15,11 +17,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-
-
-
 public class View {
-	private controller control;
+	private Controller control;
 	private Model model;
 
 	public View(Model model){
@@ -27,7 +26,7 @@ public class View {
 	}
 
 	public void displayInit(){
-		control = new ControllerInit(this,model);
+		control = new ControllerInit(this, model);
 		System.out.println("--- --- Bienvenue sur Esyphoto --- ---");
 		System.out.println("Nouveau client : tapez 1");
 		System.out.println("Connexion : tapez 2");
@@ -38,7 +37,7 @@ public class View {
 	}
 
 	public void displayNewClient(){
-		control = new ControllerNewClient;
+		control = new ControllerNewClient(this, model);
 		System.out.println("--- --- Bienvenue --- ---");
 		System.out.println("Veuillez entrer une adresse mail : ");
 		Scanner address = new Scanner(System.in);
@@ -53,7 +52,7 @@ public class View {
 	}
 
 	public void displayConnection(ArrayList<String> str){
-		control = new ControllerConnection;
+		control = new ControllerConnection(this, model);
 		if(!str.isEmpty()){
 			System.out.println(str);
 		}
