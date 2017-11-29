@@ -17,9 +17,9 @@ public class ControllerConnection extends Controller{
 		// on detecte si il s'agit d'une commande
 		if(changement.length() == 1) {
 			switch(changement) {
-				case "0" : view.displayEnd();
+				case "0" : view.displayEnd(null);
 				break;
-				default : view.displayEnd();
+				default : view.displayEnd(null);
 			}
 		}else { // On test l'identification
 			String id = changement.substring(0,changement.indexOf(" ")-1);
@@ -28,6 +28,10 @@ public class ControllerConnection extends Controller{
 			if((clientPassword = model.getClientPassword(id)) != null) {
 				if(password.equals(clientPassword)) {
 					view.displayMenu(new ArrayList<String>());
+				}else {
+					ArrayList<String> retour = new ArrayList<String>();
+					retour.add("Probleme : impossible de se connecter");
+					view.displayConnection(retour);
 				}
 			}
 			
