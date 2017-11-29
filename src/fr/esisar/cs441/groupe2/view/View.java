@@ -51,7 +51,7 @@ public class View {
 		Scanner passwd = new Scanner(System.in);
 		passwd.nextLine();
 		String sc = address + " " + name + " " + surname + " " + passwd; //Concaténation
-		control.notifyChangement(sc.nextLine());		//Scan et envoi dans controler
+		control.notifyChangement(sc);		//Envoi dans controler
 	}
 
 	public void displayConnection(ArrayList<String> str){
