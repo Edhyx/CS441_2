@@ -8,6 +8,10 @@ Gestion de l'affichage en ligne de commandes
 
 package fr.esisar.cs441.groupe2.view;
 
+import fr.esisar.cs441.groupe2.controller.ControllerConnection;
+import fr.esisar.cs441.groupe2.controller.ControllerMenu;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -15,23 +19,21 @@ import java.util.Scanner;
 public class View {
 	private controller control;
 
-
 	public void displayInit(){
-	
+		control = new ControllerInit();
 		System.out.println("--- --- Bienvenue sur Esyphoto --- ---");
 		System.out.println("Nouveau client : tapez 1");
 		System.out.println("Connexion : tapez 2");
 		System.out.println("Sortir : tapez 9");
-
 		Scanner sc = new Scanner(System.in);
 		control.notifyChangement(sc.next());		//Scan et envoi dans controler
 
 	}
 
 	public void displayNewClient(){
+		control = new ControllerNewClient;
 		System.out.println("--- --- Bienvenue --- ---");
 		System.out.println("Veuillez entrer une adresse mail : ");
-
 		Scanner sc = new Scanner(System.in);
 		control.notifyChangement(sc.next());		//Scan et envoi dans controler
 		System.out.println("Veuillez entrer un nom : ");
@@ -46,21 +48,34 @@ public class View {
 	}
 
 	public void displayConnection(ArrayList<String> str){
-		control = new controlConnection;
+		control = new ControllerConnection;
 		if(!str.isEmpty()){
 			System.out.println(str);
 		}
 		System.out.println("--- --- Bienvenue --- ---");
-		System.out.print("Veuillez entrer votre identifiant (adresse mail) : ");
+		System.out.print("Tapez 0 pour quitter");
+		System.out.print("Tapez adresse_mail mot_de_passe pour vous identifier");
+		System.out.print(">>");
 		Scanner sc = new Scanner(System.in);
 		control.notifyChangement(sc.next());	//Scan et envoi dans controler.
-		System.out.print("Veuillez entrer votre mot de passe : ");
-		Scanner sc = new Scanner(System.in);
-		control.notifyChangement(sc.next());		//Scan et envoi dans controler.
+	}
+
+	public void displayMenu(ArrayList<String> str){
+		control = new ControllerMenu;
+		if(!str.isEmpty()){
+			System.out.println(str);
+		}
+		System.out.println("--- --- MENU --- ---");
+		System.out.println("Ajouter des photos : tapez 1");
+		System.out.println(" : tapez 1");
+		System.out.println("Nouveau client : tapez 1");
+		System.out.println("Nouveau client : tapez 1");
+		System.out.println("Nouveau client : tapez 1");
+
 	}
 
 	public void displayAddPhoto(ArrayList<String> str){
-		control = new controlAddPhoto;
+		control = new ControllerAddPhoto;
 		if(!str.isEmpty()){
 			System.out.println(str);
 		}
@@ -71,7 +86,7 @@ public class View {
 	}
 	
 	public void displayAlbumManagement(ArrayList<String> str){
-		control = new controlAlbumManagement;
+		control = new ControllerAlbumManagement;
 		if(!str.isEmpty()){
 			System.out.println(str);
 		}
@@ -81,7 +96,7 @@ public class View {
 	}
 	
 	public void displayAlbumOrder(ArrayList<String> str){
-		control = new controlAlbumOrder;
+		control = new ControllerAlbumOrder;
 		if(!str.isEmpty()){
 			System.out.println(str);
 		}
@@ -91,7 +106,7 @@ public class View {
 	}
 
 	public void displayOrderList(ArrayList<String> str){
-		control = new controlOrderList;
+		control = new ControllerOrderList;
 		if(!str.isEmpty()){
 			System.out.println(str);
 		}
@@ -101,49 +116,14 @@ public class View {
 	}
 
 	public void displayEnd(ArrayList<String> str){
-		control = new controlEnd;
+		control = new ControllerEnd;
 		if(!str.isEmpty()){
 			System.out.println(str);
 		}
 		System.out.println("--- --- FIN DU PROGRAMME --- ---");
 		Scanner sc = new Scanner(System.in);
 		control.notifyChangement(sc.next());
-
-
-		//Scan et envoi dans base
-		System.out.println("Veuillez entrer un nom : ");
-		//Scan et envoi dans base
-		System.out.println("Veuillez entrer un prénom : ");
-		//Scan et envoi dans base
-		System.out.println("Veuillez entrer un password : ");
-		//Scan et envoi dans base
-
 	}
 
-	public void displayClient(){
-		System.out.println("--- --- Bienvenue --- ---");
-		System.out.print("Veuillez entrer votre identifiant (adresse mail) : ");
-		//Scan et envoi dans base. Check si vrai
-		System.out.print("Veuillez entrer votre mot de passe : ");
-		//Scan et envoi dans base. Check si vrai
-	}
-
-	public void displayAddPhoto(){
-		System.out.println("--- --- AJOUTER DES PHOTOS --- ---");
-
-	}
-	
-	public void displayAlbumManagement(){
-		System.out.println("--- --- GESTION DES ALBUMS --- ---");
-	}
-	
-	public void displayAlbumOrder(){
-		System.out.println("--- --- COMMANDER UN ALBUM --- ---");
-	}
-
-	public void displayOrderList(){
-		System.out.println("--- --- LISTE DES COMMANDES --- ---");
-
-	}
 	
 }
