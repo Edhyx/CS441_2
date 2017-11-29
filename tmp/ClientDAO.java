@@ -22,7 +22,7 @@ public class ClientDAO {
 		// elements de base
 		
 	    String sql_element = "INSERT INTO Client " + 
-	    		 "VALUES ('"+client.getAdresseMail()+"', '"+client.getNom()+"', '"+client.getPrenom()+"','"+client.getPassword()+"', null, null)";
+	    		 "VALUES ('"+client.getAdresseMail()+"', '"+client.getNom()+"', '"+client.getPrenom()+"','"+client.getPassword()+"',"+client.getAdresseDeFacturation().getIdAdresse()+","+client.getAdresseDeLivraison().getIdAdresse()+")";
 			
 
 	    
@@ -70,8 +70,9 @@ public class ClientDAO {
 			    	String nom = rss.getString("nom");
 				    String prenom = rss.getString("prenom");
 				    String password = rss.getString("password");
-				    //int idAdresseF = rss.getInt("idAdresseF");
-				    //int idAdresseL = rss.getInt("idAdresseL");
+				    int idAdresseF = rss.getInt("idAdresseF");
+				    int idAdresseL = rss.getInt("idAdresseL");
+				    //getidadress pour avoir ladress
 				    //optionnel   
 				    System.out.print("adresseMail: " + id);
 				    System.out.print(", nom: " + nom);

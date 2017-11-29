@@ -97,19 +97,24 @@ public class Connect {
     //String sql_aff = "SELECT adresseMail, nom, prenom, password FROM Client ";
    // ResultSet rs = stmt.executeQuery(sql_aff);
     ClientDAO tableClient = new ClientDAO(stmt);
+    AdresseDAO tableAdress= new AdresseDAO(stmt);
 	Adresse AdresseA = new Adresse(30,"t","r","s");
+	tableAdress.add_F(AdresseA);
+	tableAdress.add_L(AdresseA);
+	//il faut que laddress soit ajoutée dans la table adress
+
 	Client clientA = new Client("cc","Van Damme","Jean-Claude","DoubleImpact",AdresseA,AdresseA);
 	Client clientB = new Client("yz","nom","prenom","xxx",AdresseA,AdresseA);
 	
-   //tableClient.add(clientB);
-	
-  // tableClient.delete(clientA);
-	
+  //tableClient.delete(clientA);
+  tableClient.add(clientA);
+
    tableClient.getById(clientB.getAdresseMail()).toString();
-    /*ArrayList<Client> listeClient = tableClient.getAll();
+   System.out.println("******************************");
+    ArrayList<Client> listeClient = tableClient.getAll();
 	for(Client cl : listeClient) {
 		System.out.println(cl.toString());
-	}*/
+	}
 	
    /* 
    boolean a;
