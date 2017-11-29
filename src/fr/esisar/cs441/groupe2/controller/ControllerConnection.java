@@ -31,7 +31,7 @@ public class ControllerConnection extends Controller{
 			if((clientPassword = model.getClientPassword(id)) != null) {
 				System.out.println(clientPassword);
 				if(password.equals(clientPassword)) {
-					view.displayMenu(new ArrayList<String>());
+					view.displayMenu("");
 				}else {
 					ArrayList<String> retour = new ArrayList<String>();
 					retour.add("Probleme : impossible de se connecter");
