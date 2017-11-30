@@ -17,3 +17,4 @@
 		
 	Note :
 		- chemin d'acces : nom.client 
+		- dans controller addMenu/addAlbum changer le while car il faut pouvoir retourner false quand il existe déja.

@@ -33,4 +33,14 @@ public class Model {
 
 		return true;
 	}
+	
+	public boolean addFolder( String titre, String sousTitre) {
+		
+		String id = new String(""+ThreadLocalRandom.current().nextInt(0, 1000 + 1));
+		
+		// completer
+		
+		return true;
+		
+	}
 }

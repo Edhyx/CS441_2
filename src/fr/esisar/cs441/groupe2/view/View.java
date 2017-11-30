@@ -184,14 +184,117 @@ public class View {
 
 	}
 	
-	public void displayAlbumManagement(ArrayList<String> str){
+	@SuppressWarnings("resource")
+	public void displayAlbumMenu(String str){
 		control = new ControllerAlbumManagement(this, model);
+		
 		if(!str.isEmpty()){
-			System.out.println(str);
+			System.out.println("["+str+"]");
+		
 		}
 		System.out.println("--- --- GESTION DES ALBUMS --- ---");
+		System.out.println("Nouvel album : taper 1");
+		System.out.println("Consulter albums : taper 2");
+		System.out.println("Quitter : tapez 9");
 		Scanner sc = new Scanner(System.in);
-		control.notifyChangement(sc.nextLine());
+		
+		String choix = sc.nextLine();
+		
+		String fichier;
+		
+		if(choix.charAt(0)=='1') {
+			
+			fichier = "NEW";
+			
+			System.out.println("Il vous faut renseigner les informations suivantes :");
+			System.out.print("Titre de l'album : ");
+			fichier = fichier + " " + sc.nextLine();
+			System.out.print("Le sous-titre de l'album : ");
+			fichier = fichier + " " + sc.nextLine();
+			
+			control.notifyChangement(fichier);
+			
+		}else {
+			control.notifyChangement(choix);
+		}
+	}
+	
+	public void displayAlbumManagement(ArrayList<String> str){
+		
+		control = new ControllerAlbumManagement(this, model);
+		
+		System.out.println("--- --- GESTION DES ALBUMS --- ---");
+		if(!str.isEmpty()){
+			System.out.println("liste des Albums");
+			System.out.println(str);
+		}
+		
+		System.out.println("Ajouter des photos a un album : taper 1 [espace] chemin de l'album");
+		System.out.println("Suprimer album :  taper 2 [espace] chemin de l'album");
+		System.out.println("Quitter : tapez 9");
+		Scanner sc = new Scanner(System.in);
+		
+		String choix = sc.nextLine();
+		
+		String fichier;
+		
+		if(choix.charAt(0)=='1') {
+			
+			fichier = "ADDA";
+			
+			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
+			
+			control.notifyChangement(fichier);
+			
+		}else if(choix.charAt(0)=='2') { 
+			
+			fichier = "DELA";
+			
+			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
+			
+			control.notifyChangement(fichier);
+		}else {
+			control.notifyChangement(choix);
+		}
+	}
+	
+	public void displayAlbumADD(ArrayList<String> str){
+		
+		control = new ControllerAlbumManagement(this, model);
+		
+		System.out.println("--- --- GESTION DES ALBUMS --- ---");
+		if(!str.isEmpty()){
+			System.out.println("liste des Albums");
+			System.out.println(str);
+		}
+		
+		System.out.println("Ajouter des photos a l'album : taper 1 [espace] id de la photo");
+		System.out.println("Suprimer des photos a l'album :  taper 2 [espace] id de la photo");
+		System.out.println("Quitter : tapez 9");
+		Scanner sc = new Scanner(System.in);
+		
+		String choix = sc.nextLine();
+		
+		String fichier;
+		
+		if(choix.charAt(0)=='1') {
+			
+			fichier = "ADDF";
+			
+			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
+			
+			control.notifyChangement(fichier);
+			
+		}else if(choix.charAt(0)=='2') { 
+			
+			fichier = "DELF";
+			
+			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
+			
+			control.notifyChangement(fichier);
+		}else {
+			control.notifyChangement(choix);
+		}
 	}
 	
 	public void displayAlbumOrder(ArrayList<String> str){
