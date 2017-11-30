@@ -6,7 +6,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import fr.esisar.cs441.groupe2.base.entity.Adresse;
-import fr.esisar.cs441.groupe2.base.entity.Client;
 
 public class AdresseDAO {
 	private Statement stmt;
@@ -61,63 +60,55 @@ public class AdresseDAO {
 	}
 	
 	public Adresse getById_F(int id) throws SQLException{
-		String sql_aff = "SELECT * FROM AdresseF ";
-		boolean notFound = true;
+		String sql_aff = "SELECT * FROM AdresseF " + "WHERE idAdresseF = " + id +"";
 		Adresse adF = null;
+		boolean a;
 		try{
-			int idAdresseF;
 			ResultSet rs = this.stmt.executeQuery(sql_aff);
-			while(rs.next() && notFound) {
+			a = rs.next();
 				//Retrieve by column name
-				idAdresseF  = rs.getInt("idAdresseF");
-			       
-			    if(idAdresseF==id) {
-			    	idAdresseF  = rs.getInt("idAdresseF");
-					 String rue = rs.getString("rue");
-					 String codePostal = rs.getString("codePostal");
-					 String ville = rs.getString("ville");
+			if (a==false){
+		    	System.out.println("Impossible de trouver l'adresseF : " + id); 
+		    }
+		    else {
+		    	id  = rs.getInt("idAdresseF");
+				String rue = rs.getString("rue");
+				String codePostal = rs.getString("codePostal");
+				String ville = rs.getString("ville");
 
-				    adF = new Adresse(idAdresseF,rue,codePostal,ville);
-				    notFound = false;
-			     }		       
-			}			
-			rs.close();
-			if(notFound) {
-				throw new SQLException();
-			}
-		} catch (SQLException e) {
-			System.out.println("Impossible de trouver le client associe a l'adresse : " + id);
+				adF = new Adresse(id,rue,codePostal,ville);
+		    }		
+		rs.close();
+		}
+		catch (SQLException e) {
+			System.out.println("Impossible de trouver l'adresseF : " + id);
 		}
 	    return adF;
 	}
 	
 	public Adresse getById_L(int id) throws SQLException{
-		String sql_aff = "SELECT * FROM AdresseL ";
-		boolean notFound = true;
+		String sql_aff = "SELECT * FROM AdresseL " + "WHERE idAdresseL = " + id +"";
 		Adresse adL = null;
+		boolean a;
 		try{
-			int idAdresseL;
 			ResultSet rs = this.stmt.executeQuery(sql_aff);
-			while(rs.next() && notFound) {
+			a = rs.next();
 				//Retrieve by column name
-				idAdresseL  = rs.getInt("idAdresseL");
-			       
-			    if(idAdresseL==id) {
-			    	idAdresseL  = rs.getInt("idAdresseL");
-					 String rue = rs.getString("rue");
-					 String codePostal = rs.getString("codePostal");
-					 String ville = rs.getString("ville");
+			if (a==false){
+		    	System.out.println("Impossible de trouver l'adresseL : " + id); 
+		    }
+		    else {
+		    	id  = rs.getInt("idAdresseL");
+				String rue = rs.getString("rue");
+				String codePostal = rs.getString("codePostal");
+				String ville = rs.getString("ville");
 
-				    adL = new Adresse(idAdresseL,rue,codePostal,ville);
-				    notFound = false;
-			     }		       
-			}			
-			rs.close();
-			if(notFound) {
-				throw new SQLException();
-			}
-		} catch (SQLException e) {
-			System.out.println("Impossible de trouver le client associe a l'adresse : " + id);
+				adL = new Adresse(id,rue,codePostal,ville);
+		    }		
+		rs.close();
+		}
+		catch (SQLException e) {
+			System.out.println("Impossible de trouver l'adresseL : " + id);
 		}
 	    return adL;
 	}

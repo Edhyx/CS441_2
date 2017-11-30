@@ -43,7 +43,7 @@ public class BDD_Test {
 			
 			Adresse a = tableAdresse.getById_F(30);
 
-			System.out.println(a.toString());
+			System.out.println(a.toString_F());
 			
 			Client find= tableClient.getById("cc");
 			System.out.println(find.toString());
