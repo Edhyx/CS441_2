@@ -78,54 +78,7 @@ public class Commande {
 		this.ligneCommandes = ligneCommandes;
 	}
 	
-	public void add(Statement stmt) throws SQLException{
-	    String sql_element = "INSERT INTO Commande " +
-	            "VALUES ("+idCommande+", '"+date+"', "+prixTotal+", '"+client.getAdresseMail()+"')";
-	    try{
-	    stmt.executeUpdate(sql_element);
-	    System.out.println("Commande '"+idCommande+"' cree");
-	    } catch (SQLException e){
-	    	System.out.println("Commande '"+idCommande+"' existant");
-	    }
-	}
-	
-	public void delete(Statement stmt) throws SQLException{
-	    String sql_delete = "DELETE FROM Commande " +
-	            "WHERE idCommande = "+idCommande+"";
-	    try{
-	    stmt.executeUpdate(sql_delete);
-	    System.out.println("Commande '"+idCommande+"' supprime");
-		} catch (SQLException e){
-	    	System.out.println("Table Commande non existant");
-	    }
-	}
-	
-	
-	public void affiche(Statement stmt) throws SQLException{
-		try{
-		String sql_aff = "SELECT * FROM Commande ";
-	    ResultSet rs = stmt.executeQuery(sql_aff);
-	    
-	    boolean a=rs.next();
-	    if (a==false){
-	    	System.out.println("La table LigneCommande est vide"); 
-	    }
-	    while(a){
-	       //Retrieve by column name
-	       int id  = rs.getInt("idCommande");
-	       String date = rs.getString("date");
-	       int prixTotal = rs.getInt("prixTotal");
-	       String adresseMail = rs.getString("adresseMail");
-	       //Display values
-	       System.out.print("idCommande: " + id);
-	       System.out.print(", date: " + date);
-	       System.out.print(", prixTotal: " + prixTotal);
-	       System.out.println(", adresseMail: " + adresseMail);
-	       a=rs.next();
-	    }
-	    rs.close();
-		} catch (SQLException e){
-	    	System.out.println("Table Commande non existante");
-	    }
+	public String toString() {
+		return "Commande [idCommande =" + idCommande + ", date=" + date + ", prixTotal=" + prixTotal + ", client=" + client.getAdresseMail() +"]";
 	}
 }
