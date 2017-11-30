@@ -38,7 +38,7 @@ public class CommandeDAO {
 	    }
 	}
 	
-	public Commande getById_L(int id) throws SQLException{
+	public Commande getById(int id) throws SQLException{
 		String sql_aff = "SELECT * FROM Commande " + "WHERE idCommande = " + id +"";
 		Commande commande = null;
 		boolean a;

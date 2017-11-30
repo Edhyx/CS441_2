@@ -6,9 +6,6 @@ Commande.java
 
 package fr.esisar.cs441.groupe2.base.entity;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Commande {
