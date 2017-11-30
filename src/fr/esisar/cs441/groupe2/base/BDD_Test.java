@@ -14,14 +14,15 @@ import fr.esisar.cs441.groupe2.base.entity.*;
 public class BDD_Test {
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		
+
 		String server = "tp-oracle.esisar.grenoble-inp.fr";
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = "jdbc:oracle:thin:@//"+server+"/xe";
 		String login = "malossep";
+		String pass = "malossep";
 		try{
 			Class.forName(driver);
-			Connection connexion = DriverManager.getConnection(url,login,login);
+			Connection connexion = DriverManager.getConnection(url,login,pass);
 			System.out.println("Connection OK!");
 			Statement stmt = connexion.createStatement();
 					    
@@ -31,7 +32,7 @@ public class BDD_Test {
 			Adresse AdresseB = new Adresse(50,"t","r","s");
 			Client clientA = new Client("cc","Van Damme","Jean-Claude","DoubleImpact",AdresseA,AdresseB);
 			Client clientB = new Client("allo","nom","prenom","xxx",AdresseA,AdresseB);
-	
+
 
 			tableAdresse.add_F(AdresseA);
 			tableAdresse.add_F(AdresseB);

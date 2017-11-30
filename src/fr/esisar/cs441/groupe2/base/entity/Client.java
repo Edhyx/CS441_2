@@ -1,12 +1,11 @@
 /*
-CS441 Equipe N°2
+CS441 Equipe Nï¿½2
 
 Client.java
 */
 
 package fr.esisar.cs441.groupe2.base.entity;
 
-import java.sql.*;
 import java.util.*;
 
 public class Client {
