@@ -20,7 +20,7 @@ public class ContientDAO {
 	public void add(Contient contient) throws SQLException{
 	    String sql_element = "INSERT INTO Contient " +
 	            "VALUES ("+contient.getNumOrdre()+", '"+contient.getTitre()+"', "+contient.getCommentaire()+
-	            ", '"+contient.getFichierImages().getCheminAcces()+"', "+contient.getAlbum().getIdAlbum()+")";
+	            "', "+contient.getAlbum().getIdAlbum()+ ", '"+contient.getFichierImages().getCheminAcces()+")";
 	    try{
 	    stmt.executeUpdate(sql_element);
 	    System.out.println("Contient '"+ contient.getFichierImages().getCheminAcces() + "' et '" +contient.getAlbum().getIdAlbum() +"' cree");
@@ -32,7 +32,7 @@ public class ContientDAO {
 	//identifier le contient avec deux éléments
 	public void delete(Contient contient) throws SQLException{
 	    String sql_delete = "DELETE FROM Contient " +
-	            "WHERE (idAlbum, cheminAcces) = ("+contient.getAlbum().getIdAlbum()+" , '"+contient.getFichierImages().getCheminAcces()+"'";
+	            "WHERE idAlbum = "+contient.getAlbum().getIdAlbum()+" and cheminAcces = '"+contient.getFichierImages().getCheminAcces()+"'";
 	    try{
 	    stmt.executeUpdate(sql_delete);
 	    System.out.println("Contient '"+ contient.getFichierImages().getCheminAcces() + "' et '" +contient.getAlbum().getIdAlbum() +"' supprime");
@@ -41,9 +41,9 @@ public class ContientDAO {
 	    }
 	}
 	
-	//identifier le contient avec deux éléments
-	public Contient getById(int id) throws SQLException{
-		String sql_aff = "SELECT * FROM Contient " + "WHERE idCommande = " + id +"";
+	public Contient getById(int idAlbum, String cheminAcces) throws SQLException{
+		String sql_aff = "SELECT * FROM Contient " +
+				"WHERE idAlbum = "+idAlbum+" and cheminAcces = '"+cheminAcces+"'";
 		Contient contient = null;
 		boolean a;
 		try{
@@ -51,14 +51,14 @@ public class ContientDAO {
 			a = rs.next();
 				//Retrieve by column name
 			if (a==false){
-		    	System.out.println("Impossible de trouver la commande : " + id); 
+		    	System.out.println("Impossible de trouver le contient : " + idAlbum + ", " + cheminAcces); 
 		    }
 		    else {
 			    int numOrdre  = rs.getInt("numOrdre");
 			    String titre = rs.getString("titre");
 			    String commentaire = rs.getString("commentaire");
-			    String cheminAcces = rs.getString("cheminAcces");
-			    int idAlbum = rs.getInt("idAlbum");
+			    cheminAcces = rs.getString("cheminAcces");
+			    idAlbum = rs.getInt("idAlbum");
 			    FichierImageDAO tableFichierImage = new FichierImageDAO(stmt);
 			    FichierImage f = tableFichierImage.getById(cheminAcces);
 			    AlbumDAO tableAlbum = new AlbumDAO(stmt);
@@ -68,7 +68,7 @@ public class ContientDAO {
 		rs.close();
 		}
 		catch (SQLException e) {
-			System.out.println("Impossible de trouver le contient : " + id);
+			System.out.println("Impossible de trouver le contient : " + idAlbum + ", " + cheminAcces);
 		}
 	    return contient;
 	}

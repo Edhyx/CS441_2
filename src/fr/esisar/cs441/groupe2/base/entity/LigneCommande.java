@@ -6,10 +6,6 @@ LigneCommande.java
 
 package fr.esisar.cs441.groupe2.base.entity;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
 public class LigneCommande {
 
     private int quantite;
@@ -57,45 +53,8 @@ public class LigneCommande {
 		this.format = format;
 	}
 	
-	public void add(Statement stmt) throws SQLException{
-	    String sql_element = "INSERT INTO LigneCommande " +
-	            "VALUES ("+quantite+", '"+commande.getIdCommande()+"', '"+format.getIdFormat()
-	            +"', '"+album.getIdAlbum()+"')";
-	    try{
-	    stmt.executeUpdate(sql_element);
-	    System.out.println("LigneCommande '"+quantite+"' cree");
-	    } catch (SQLException e){
-	    	System.out.println("LigneCommande '"+quantite+"' existant");
-	    }
-	}	
-	
-	public void affiche(Statement stmt) throws SQLException{
-		try{
-		String sql_aff = "SELECT quantite, idCommande, idFormat, idAlbum FROM LigneCommande ";
-	    ResultSet rs = stmt.executeQuery(sql_aff);
-	    
-	    boolean a=rs.next();
-	    if (a==false){
-	    	System.out.println("La table LigneCommande est vide"); 
-	    }
-	    while(a){
-	       //Retrieve by column name
-	       int quantite = rs.getInt("quantite");
-	       String idCommande = rs.getString("idCommande");
-	       String idFormat = rs.getString("idFormat");
-	       String idAlbum = rs.getString("idAlbum");
-
-	       //Display values
-	       System.out.print("quantite: " + quantite);
-	       System.out.print(", idCommande: " + idCommande);
-	       System.out.print(", idFormat: " + idFormat);
-	       System.out.println(", idAlbum: " + idAlbum);
-	       a=rs.next();
-	    }
-	    rs.close();
-		} catch (SQLException e){
-	    	System.out.println("Table LigneCommande non existante");
-	    }
+	public String toString() {
+		return "LigneCommande [quantite =" + quantite + ", commande=" + commande.getIdCommande() + ", format=" + format.getIdFormat() +", album=" + album.getIdAlbum() +"]";
 	}
     
 }

@@ -5,12 +5,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import fr.esisar.cs441.groupe2.base.entity.Adresse;
 import fr.esisar.cs441.groupe2.base.entity.Album;
-import fr.esisar.cs441.groupe2.base.entity.Client;
 import fr.esisar.cs441.groupe2.base.entity.Format;
-
-import fr.esisar.cs441.groupe2.base.entity.Adresse;
 import fr.esisar.cs441.groupe2.base.entity.LigneCommande;
 import fr.esisar.cs441.groupe2.base.entity.Commande;
 

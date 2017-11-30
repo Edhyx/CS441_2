@@ -6,9 +6,6 @@ Format.java
 
 package fr.esisar.cs441.groupe2.base.entity;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Format {
@@ -54,51 +51,8 @@ public class Format {
 	public void setLigneCommande(ArrayList<LigneCommande> ligneCommande) {
 		this.ligneCommande = ligneCommande;
 	}
-
-	public void add(Statement stmt) throws SQLException{
-	    String sql_element = "INSERT INTO Format " +
-	            "VALUES ("+idFormat+", "+prixUnitaire+")";
-	    try{
-	    stmt.executeUpdate(sql_element);
-	    System.out.println("Format '"+idFormat+"' cree");
-	    } catch (SQLException e){
-	    	System.out.println("Format '"+idFormat+"' existant");
-	    }
-	}
 	
-	public void delete(Statement stmt) throws SQLException{
-	    String sql_delete = "DELETE FROM Format " +
-	            "WHERE idFormat = "+idFormat+"";
-	    try{
-	    stmt.executeUpdate(sql_delete);
-	    System.out.println("Format '"+idFormat+"' supprime");
-		} catch (SQLException e){
-	    	System.out.println("Table  Format non existant");
-	    }
-	}
-	
-	
-	public void affiche(Statement stmt) throws SQLException{
-		try{
-		String sql_aff = "SELECT idFormat, prixUnitaire FROM Format ";
-	    ResultSet rs = stmt.executeQuery(sql_aff);
-	    
-	    boolean a=rs.next();
-	    if (a==false){
-	    	System.out.println("La table LigneCommande est vide"); 
-	    }
-	    while(a){
-	       //Retrieve by column name
-	       int idFormat = rs.getInt("idFormat");
-	       int prixUnitaire = rs.getInt("prixUnitaire");
-	       //Display values
-	       System.out.print("idFormat: " + idFormat);
-	       System.out.println(", prixUnitaire: " + prixUnitaire);
-	       a=rs.next();
-	    }
-	    rs.close();
-		} catch (SQLException e){
-	    	System.out.println("Table Format non existante");
-	    }
+	public String toString() {
+		return "Format [idFormat =" + idFormat + ", prixUnitaire=" + prixUnitaire +"]";
 	}
 }

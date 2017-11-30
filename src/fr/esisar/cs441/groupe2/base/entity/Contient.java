@@ -62,6 +62,6 @@ public class Contient {
 	}
 	
 	public String toString() {
-		return "Contient [numOrdre =" + numOrdre + ", titre=" + titre + ", commentaire=" + commentaire + ", FichierImage=" + fichierImages.getCheminAcces() +", ALbum=" + album.getIdAlbum() +"]";
+		return "Contient [numOrdre =" + numOrdre + ", titre=" + titre + ", commentaire=" + commentaire + ", ALbum=" + album.getIdAlbum() +", FichierImage=" + fichierImages.getCheminAcces() +"]";
 	}
 }

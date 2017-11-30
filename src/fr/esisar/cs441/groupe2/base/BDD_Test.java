@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import fr.esisar.cs441.groupe2.base.BDDs.AdresseDAO;
 import fr.esisar.cs441.groupe2.base.BDDs.ClientDAO;
+import fr.esisar.cs441.groupe2.base.BDDs.CommandeDAO;
 import fr.esisar.cs441.groupe2.base.entity.*;
 
 public class BDD_Test {
@@ -25,20 +26,33 @@ public class BDD_Test {
 			Connection connexion = DriverManager.getConnection(url,login,pass);
 			System.out.println("Connection OK!");
 			Statement stmt = connexion.createStatement();
-					    
+			//Creation des tables		    
 			ClientDAO tableClient = new ClientDAO(stmt);
 		    AdresseDAO tableAdresse = new AdresseDAO(stmt);
+		    CommandeDAO tableCommande = new CommandeDAO(stmt);
+		    
+		    
+		    //Creation des objets
 			Adresse AdresseA = new Adresse(30,"t","r","s");
 			Adresse AdresseB = new Adresse(50,"t","r","s");
 			Client clientA = new Client("cc","Van Damme","Jean-Claude","DoubleImpact",AdresseA,AdresseB);
 			Client clientB = new Client("allo","nom","prenom","xxx",AdresseA,AdresseB);
-
-
+			Commande commandeA = new Commande(100,"today",50,clientA);
+			Format formatA = new Format(10,50);
+			Album albumA = new Album(1,"vacances","malte",clientA);
+			LigneCommande lignecommandeA = new LigneCommande(20, commandeA, formatA, albumA);
+			FichierImage fichier = new FichierImage("chemin","canon","obj",20,20,20,20,clientA);
+			
+			//Ajout des elements
 			tableAdresse.add_F(AdresseA);
 			tableAdresse.add_F(AdresseB);
 			tableAdresse.add_L(AdresseB);
 			tableClient.add(clientA);
 			tableClient.add(clientB);
+			tableCommande.add(commandeA);
+	
+			
+			//Affichage des elements
 			tableAdresse.affiche_F();
 			tableAdresse.affiche_L();
 			tableClient.affiche();
