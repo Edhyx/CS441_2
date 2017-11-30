@@ -62,7 +62,7 @@ public class CommandeDAO {
 		rs.close();
 		}
 		catch (SQLException e) {
-			System.out.println("Impossible de trouver l'adresseL : " + id);
+			System.out.println("Impossible de trouver la commande : " + id);
 		}
 	    return commande;
 	}

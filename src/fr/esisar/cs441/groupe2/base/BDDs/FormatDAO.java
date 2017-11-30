@@ -5,11 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import fr.esisar.cs441.groupe2.base.entity.Adresse;
-import fr.esisar.cs441.groupe2.base.entity.Client;
 import fr.esisar.cs441.groupe2.base.entity.Format;
-
-import fr.esisar.cs441.groupe2.base.entity.Adresse;
 
 public class FormatDAO {
 	private Statement stmt;
