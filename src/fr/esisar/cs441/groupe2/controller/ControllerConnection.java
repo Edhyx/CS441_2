@@ -22,15 +22,16 @@ public class ControllerConnection extends Controller{
 				view.displayConnection(new ArrayList<String>());
 			}
 		}else { // On test l'identification
-			System.out.println(changement);
+			
 			String id = changement.substring(0,changement.indexOf(" "));
-			System.out.println(id);
 			String password = changement.substring(changement.indexOf(" ")+1,changement.length());
-			System.out.println(password);
 			String clientPassword;
+			
 			if((clientPassword = model.getClientPassword(id)) != null) {
 				System.out.println(clientPassword);
 				if(password.equals(clientPassword)) {
+					model.setClient(id);
+					view.setModel(model);
 					view.displayMenu("");
 				}else {
 					ArrayList<String> retour = new ArrayList<String>();
