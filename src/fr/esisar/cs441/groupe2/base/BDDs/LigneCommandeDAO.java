@@ -41,8 +41,8 @@ public class LigneCommandeDAO {
 	    }
 	}
 	
-	public LigneCommande getById(int id) throws SQLException{
-		String sql_aff = "SELECT * FROM LigneCommande " + "WHERE idCommande = " + id +"";
+	public LigneCommande getById(int idCommande) throws SQLException{
+		String sql_aff = "SELECT * FROM LigneCommande " + "WHERE idCommande = " + idCommande +"";
 		LigneCommande adL = null;
 		boolean a;
 		try{
@@ -50,15 +50,15 @@ public class LigneCommandeDAO {
 			a = rs.next();
 				//Retrieve by column name
 			if (a==false){
-		    	System.out.println("Impossible de trouver le LigneCommande pour l'idCommande : " + id); 
+		    	System.out.println("Impossible de trouver le LigneCommande pour l'idCommande : " + idCommande); 
 		    }
 		    else {
-		    	id  = rs.getInt("idCommande");
+		    	idCommande  = rs.getInt("idCommande");
 		    	int quantite = rs.getInt("quantite");
 				int idFormat = rs.getInt("idFormat");
 				int idAlbum = rs.getInt("idAlbum");
 				CommandeDAO tableCommande = new CommandeDAO(stmt);
-				Commande cmd = tableCommande.getById(id);
+				Commande cmd = tableCommande.getById(idCommande);
 				FormatDAO tableFormat = new FormatDAO(stmt);
 				Format frm = tableFormat.getById(idFormat);
 				AlbumDAO tableAlbum = new AlbumDAO(stmt);
@@ -69,7 +69,7 @@ public class LigneCommandeDAO {
 		rs.close();
 		}
 		catch (SQLException e) {
-			System.out.println("Impossible de trouver le LigneCommande de idCommande : " + id);
+			System.out.println("Impossible de trouver le LigneCommande de idCommande : " + idCommande);
 		}
 	    return adL;
 	}

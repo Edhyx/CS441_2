@@ -39,7 +39,7 @@ public class FormatDAO {
 	
 	public Format getById(int id) throws SQLException{
 		String sql_aff = "SELECT * FROM Format " + "WHERE idFormat = " + id +"";
-		Format adL = null;
+		Format f = null;
 		boolean a;
 		try{
 			ResultSet rs = this.stmt.executeQuery(sql_aff);
@@ -51,19 +51,19 @@ public class FormatDAO {
 		    else {
 		    	id  = rs.getInt("idFormatL");
 				int prixUnitaire = rs.getInt("prixUnitaire");
-				adL = new Format(id,prixUnitaire);
+				f = new Format(id,prixUnitaire);
 		    }		
 		rs.close();
 		}
 		catch (SQLException e) {
 			System.out.println("Impossible de trouver le format : " + id);
 		}
-	    return adL;
+	    return f;
 	}
 	
 public ArrayList<Format> getAll() {
 		String sql_aff = "SELECT * FROM Format ";
-		ArrayList<Format> adF = new ArrayList<Format>();
+		ArrayList<Format> f = new ArrayList<Format>();
 	    try {
 	    	ResultSet rs = this.stmt.executeQuery(sql_aff);
 			while(rs.next()) {
@@ -72,13 +72,13 @@ public ArrayList<Format> getAll() {
 		    	int idFormat  = rs.getInt("idFormat");
 		    	int prixUnitaire = rs.getInt("prixUnitaire");
 
-			    adF.add(new Format(idFormat,prixUnitaire));	       
+			    f.add(new Format(idFormat,prixUnitaire));	       
 			}
 			rs.close();
 		} catch (SQLException e) {
 			System.out.println("Impossible de trouver d'elements dans la table");
 		}
-	    return adF;
+	    return f;
 	}
 
 
