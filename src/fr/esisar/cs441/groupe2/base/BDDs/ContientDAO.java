@@ -19,8 +19,8 @@ public class ContientDAO {
 	
 	public void add(Contient contient) throws SQLException{
 	    String sql_element = "INSERT INTO Contient " +
-	            "VALUES ("+contient.getNumOrdre()+", '"+contient.getTitre()+"', "+contient.getCommentaire()+
-	            "', "+contient.getAlbum().getIdAlbum()+ ", '"+contient.getFichierImages().getCheminAcces()+")";
+	            "VALUES ("+contient.getNumOrdre()+", '"+contient.getTitre()+"', '"+contient.getCommentaire()+
+	            "', "+contient.getAlbum().getIdAlbum()+ ", '"+contient.getFichierImages().getCheminAcces()+"')";
 	    try{
 	    stmt.executeUpdate(sql_element);
 	    System.out.println("Contient '"+ contient.getFichierImages().getCheminAcces() + "' et '" +contient.getAlbum().getIdAlbum() +"' cree");
@@ -119,8 +119,8 @@ public class ContientDAO {
 	       System.out.print("numOrdre: " + numOrdre);
 	       System.out.print(", titre: " + titre);
 	       System.out.print(", commentaire: " + commentaire);
-	       System.out.print(", cheminAcces: " + cheminAcces);
-	       System.out.println(", idAlbum: " + idAlbum);
+	       System.out.print(", idAlbum: " + idAlbum);
+	       System.out.println(", cheminAcces: " + cheminAcces);
 	       a=rs.next();
 	    }
 	    rs.close();

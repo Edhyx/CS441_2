@@ -14,7 +14,7 @@ public class Init {
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = "jdbc:oracle:thin:@//"+server+"/xe";
 		String login = "malossep";
-		String pass = "malossep";
+		String pass ="malossep";
 			Class.forName(driver);	
 			Connection connexion = DriverManager.getConnection(url,login,pass);	
 			System.out.println("Connection OK!"); 

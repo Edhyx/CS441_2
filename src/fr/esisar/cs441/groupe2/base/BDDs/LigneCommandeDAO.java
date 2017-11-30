@@ -123,7 +123,7 @@ public void affiche() throws SQLException{
 	    System.out.print("quantite: " + quantite);
 	    System.out.print(", idCommande: " + id);
 	    System.out.print(", idFormat: " + idFormat);
-	    System.out.print(", idAlbum: " + idAlbum);
+	    System.out.println(", idAlbum: " + idAlbum);
 
 	    a=rs.next();
     }

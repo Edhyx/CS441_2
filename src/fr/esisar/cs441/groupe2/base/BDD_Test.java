@@ -2,10 +2,8 @@ package fr.esisar.cs441.groupe2.base;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 import fr.esisar.cs441.groupe2.base.BDDs.*;
 import fr.esisar.cs441.groupe2.base.entity.*;
@@ -13,12 +11,11 @@ import fr.esisar.cs441.groupe2.base.entity.*;
 public class BDD_Test {
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-
 		String server = "tp-oracle.esisar.grenoble-inp.fr";
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = "jdbc:oracle:thin:@//"+server+"/xe";
 		String login = "malossep";
-		String pass = "malossep";
+		String pass ="malossep";
 		try{
 			Class.forName(driver);
 			Connection connexion = DriverManager.getConnection(url,login,pass);
@@ -70,7 +67,8 @@ public class BDD_Test {
 			tableLigneCommande.affiche();
 			tableFichierImage.affiche();
 			tableContient.affiche();
-			
+						
+			//Cherche les élements avec leur id
 			Adresse a = tableAdresse.getById_F(30);
 			System.out.println(a.toString_F());
 			Client find= tableClient.getById("cc");
@@ -81,15 +79,25 @@ public class BDD_Test {
 			System.out.println(f.toString());
 			Album al = tableAlbum.getById(1);
 			System.out.println(al.toString());
-			LigneCommande l = tableLigneCommande.getById(1);
+			LigneCommande l = tableLigneCommande.getById(100);
 			System.out.println(l.toString());
 			FichierImage fi = tableFichierImage.getById("chemin");
 			System.out.println(fi.toString());
 			Contient co = tableContient.getById(1, "chemin");
 			System.out.println(co.toString());
-						
+			
+			//Supprime les éléments
+			tableLigneCommande.delete(lignecommandeA);
+			tableCommande.delete(commandeA);
+			tableFormat.delete(formatA);
+			tableContient.delete(contient);
+			tableAlbum.delete(albumA);
+			tableFichierImage.delete(fichier);
 			tableClient.delete(clientA);
 			tableClient.delete(clientB);
+			tableAdresse.delete_F(AdresseA);
+			tableAdresse.delete_F(AdresseB);
+			tableAdresse.delete_L(AdresseB);
 		}
 		catch (Exception e) {
 			System.out.println("echec driver : "+e);

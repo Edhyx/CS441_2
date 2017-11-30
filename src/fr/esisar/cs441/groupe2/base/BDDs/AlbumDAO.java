@@ -62,7 +62,7 @@ public class AlbumDAO {
 		rs.close();
 		}
 		catch (SQLException e) {
-			System.out.println("Impossible de trouver l'adresseL : " + id);
+			System.out.println("Impossible de trouver l'album : " + id);
 		}
 	    return album;
 	}

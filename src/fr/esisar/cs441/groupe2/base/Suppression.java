@@ -14,9 +14,10 @@ public class Suppression {
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = "jdbc:oracle:thin:@//"+server+"/xe";
 		String login = "malossep";
+		String pass ="malossep";
 		
 		Class.forName(driver);
-		Connection connection = DriverManager.getConnection(url,login,login);
+		Connection connection = DriverManager.getConnection(url,login,pass);
 	    Statement stmt = connection.createStatement();
 	    
 	    String sql_delete_tab =  "DROP TABLE Client ";
