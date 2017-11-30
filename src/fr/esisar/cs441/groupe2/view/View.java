@@ -23,6 +23,10 @@ public class View {
 	public View(Model model){
 		this.model = model;
 	}
+	
+	public void setModel(Model model) {
+		this.model = model;
+	}
 
 	@SuppressWarnings("resource")
 	public void displayInit(){
@@ -92,12 +96,13 @@ public class View {
 		System.out.println("--- --- Bienvenue --- ---");
 		System.out.println("Tapez 9 pour quitter");
 		System.out.println("Tapez adresse_mail mot_de_passe pour vous identifier");
-		System.out.println(">>");
+		System.out.print(">>");
 		Scanner sc = new Scanner(System.in);
 		control.notifyChangement(sc.nextLine());	//Scan et envoi dans controler.
 	}
 
 	public void displayMenu(String str){
+		
 		control = new ControllerMenu(this, model);
 		if(!str.isEmpty()){
 			System.out.println(str);
@@ -115,11 +120,14 @@ public class View {
 
 	}
 
-	public void displayAddPhoto(ArrayList<String> str){
+	public void displayAddPhoto(String str){
+		
 		control = new ControllerAddPhoto(this, model);
-		if(!str.isEmpty()){
-			System.out.println(str);
+		
+		if(str!=null){
+			System.out.println("["+str+"]");
 		}
+		
 		System.out.println("--- --- AJOUTER DES PHOTOS --- ---");
 		System.out.println("Ajouter une photo : taper 1");
 		System.out.println("Ajouter un lot de photo : taper 2");
@@ -132,11 +140,11 @@ public class View {
 		
 		if(choix.charAt(0)=='1') {
 			
-			fichier = "PICTURE";
+			fichier = "1";
 			
 			System.out.println("Telechargement terminé.\nIl vous faut renseigner les informations suivantes :");
 			System.out.print("L'appareil Photo : ");
-			fichier = sc.nextLine();
+			fichier = fichier + " " + sc.nextLine();
 			System.out.print("L'objectif : ");
 			fichier = fichier + " " + sc.nextLine();
 			System.out.print("La distance Focale : ");
@@ -147,13 +155,13 @@ public class View {
 			fichier = fichier + " " + sc.nextLine();
 			System.out.print("La vitesse d'Obturation : ");
 			fichier = fichier + " " + sc.nextLine();
+			
+			control.notifyChangement(fichier);
 			
 		}else if(choix.charAt(0)=='2') {
-			
-			fichier = "PACK";
-			
+						
 			System.out.println("Combien de photos?");
-			fichier = fichier + " " + sc.nextLine();
+			fichier = sc.nextLine();
 			System.out.println("Telechargement terminé.\nIl vous faut renseigner les informations suivantes :");
 			System.out.print("L'appareil Photo : ");
 			fichier = fichier + " " + sc.nextLine();
@@ -167,6 +175,8 @@ public class View {
 			fichier = fichier + " " + sc.nextLine();
 			System.out.print("La vitesse d'Obturation : ");
 			fichier = fichier + " " + sc.nextLine();
+			
+			control.notifyChangement(fichier);
 			
 		}else {
 			control.notifyChangement(choix);

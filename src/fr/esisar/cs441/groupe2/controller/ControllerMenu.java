@@ -14,16 +14,14 @@ public class ControllerMenu extends Controller{
 
 	public void notifyChangement(String changement) {
 
-		ArrayList<String> vide = new ArrayList<String>();
-
 		if(changement.charAt(0)=='1') {
-			view.displayAddPhoto(vide);
+			view.displayAddPhoto(null);
 		}else if(changement.charAt(0)=='2') {
-			view.displayAlbumManagement(vide);
+			view.displayAlbumManagement(null);
 		}else if(changement.charAt(0)=='3') {
-			view.displayAlbumOrder(vide);
+			view.displayAlbumOrder(null);
 		}else if(changement.charAt(0)=='4') {
-			view.displayOrderList(vide);
+			view.displayOrderList(null);
 		}else if(changement.charAt(0)=='9') {
 			view.displayEnd("");
 		}else {

@@ -34,6 +34,8 @@ public class ControllerNewClient extends Controller{
 			if(i==4) {
 				boolean result = model.createClient(element[0], element[1], element[2], element[3]);
 				if(result) {
+					model.setClient(element[0]);
+					view.setModel(model);
 					view.displayMenu(new String("Bienvenu " + element[1] + " " + element[2]));	
 				}
 				
