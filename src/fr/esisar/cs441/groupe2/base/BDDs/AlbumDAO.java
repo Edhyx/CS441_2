@@ -38,7 +38,7 @@ public class AlbumDAO {
 	    }
 	}
 	
-	public Album getById_L(int id) throws SQLException{
+	public Album getById(int id) throws SQLException{
 		String sql_aff = "SELECT * FROM Album " + "WHERE idAlbum = " + id +"";
 		Album album = null;
 		boolean a;

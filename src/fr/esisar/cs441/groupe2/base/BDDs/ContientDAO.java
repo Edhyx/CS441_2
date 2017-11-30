@@ -62,7 +62,7 @@ public class ContientDAO {
 			    FichierImageDAO tableFichierImage = new FichierImageDAO(stmt);
 			    FichierImage f = tableFichierImage.getById(cheminAcces);
 			    AlbumDAO tableAlbum = new AlbumDAO(stmt);
-			    Album album = tableAlbum.getById_L(idAlbum);
+			    Album album = tableAlbum.getById(idAlbum);
 			    contient = new Contient(numOrdre,titre,commentaire,f,album);
 		    }		
 		rs.close();
@@ -87,7 +87,7 @@ public class ContientDAO {
 			    FichierImageDAO tableFichierImage = new FichierImageDAO(stmt);
 			    FichierImage f = tableFichierImage.getById(cheminAcces);
 			    AlbumDAO tableAlbum = new AlbumDAO(stmt);
-			    Album album = tableAlbum.getById_L(idAlbum);
+			    Album album = tableAlbum.getById(idAlbum);
 			    contient.add(new Contient(numOrdre,titre,commentaire,f,album));
 			}
 			rs.close();

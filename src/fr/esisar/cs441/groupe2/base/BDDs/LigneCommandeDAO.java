@@ -6,6 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import fr.esisar.cs441.groupe2.base.entity.Adresse;
+import fr.esisar.cs441.groupe2.base.entity.Album;
 import fr.esisar.cs441.groupe2.base.entity.Client;
 import fr.esisar.cs441.groupe2.base.entity.Format;
 
@@ -91,7 +92,7 @@ public ArrayList<LigneCommande> getAll() {
 				int idFormat = rs.getInt("idFormat");
 				int idAlbum = rs.getInt("idAlbum");
 				CommandeDAO tableCommande = new CommandeDAO(stmt);
-				Commande cmd = tableCommande.getById(id);
+				Commande cmd = tableCommande.getById(idCommande);
 				FormatDAO tableFormat = new FormatDAO(stmt);
 				Format frm = tableFormat.getById(idFormat);
 				AlbumDAO tableAlbum = new AlbumDAO(stmt);
