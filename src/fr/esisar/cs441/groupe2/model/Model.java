@@ -1,5 +1,6 @@
 package fr.esisar.cs441.groupe2.model;
 
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
@@ -20,27 +21,43 @@ public class Model {
 	}
 	
 	public String getClientPassword(String id) {
-		if(id.equals("plop")) {
-			return "123456";
-		}
-		return null;
+		ClientDAO tableClient = new ClientDAO(stmt);
+		Client client = tableClient.getById(id);
+		if (client ==null) {return null;}
+		else
+		return client.getPassword();
+		
 	}
 	
 	private Adresse createAdressF(int idAdresseF, String rue, String codePostal, String ville) {
 		Adresse newAdressF = new Adresse(idAdresseF,rue,codePostal,ville);
 		AdresseDAO tableAdressF = new AdresseDAO(stmt);
-		tableAdressF.add_F(newAdressF);
+		try {
+			tableAdressF.add_F(newAdressF);
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
 		return newAdressF;
 	}
 	public Adresse createAdressL(int idAdresseL, String rue, String codePostal, String ville) {
 		Adresse newAdressL = new Adresse(idAdresseL,rue,codePostal,ville);
 		AdresseDAO tableAdressL = new AdresseDAO(stmt);
-		tableAdressL.add_F(newAdressL);
+		try {
+			tableAdressL.add_F(newAdressL);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return newAdressL;
 	}
 	public boolean createClient(String adresseMail, String nom, String prenom, String password) {
-		Client newClient = new Client(adresseMail, nom, prenom, password, createAdressF, adresseL);
-		// completer
+		Client newClient = new Client(adresseMail, nom, prenom, password, createAdressF(0, null, null, null), createAdressL(0, null, null, null));
+		ClientDAO tableClient = new ClientDAO(stmt);
+		try {
+			tableClient.add(newClient);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return true;
 	}
 	
