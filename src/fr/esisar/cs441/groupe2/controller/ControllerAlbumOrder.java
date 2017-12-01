@@ -12,7 +12,41 @@ public class ControllerAlbumOrder extends Controller{
 	}
 
 	public void notifyChangement(String changement) {
-		
+		if(changement.charAt(0) == '9') {
+			view.displayEnd("");
+		}else {
+			
+			// On test tous les codes
+			if(changement.substring(0,3).equals("NEWW")) { // new Folder
+				if(this.newOrder( changement.substring( changement.indexOf(" "), changement.length()))) {
+					view.displayAlbumMenu("nouvelle commande");
+				}	
+			}		
+			view.displayAddPhoto("renseignements enregistres");
+		}/**********************************************************/
 	}
 	
+	private boolean newOrder(String data) {
+		try {
+
+			String[] element = new String[2];
+			int i = 0;
+
+			while (data.length() > 0 & i < 2) {
+
+				if (i < 1) {
+					element[i] = data.substring(0, data.indexOf(" "));
+				} else {
+					element[i] = data.substring(0, data.length());
+				}
+				data = data.substring(data.indexOf(" ") + 1, data.length());
+				i++;
+			}
+
+			return model.addFolder(element[0], element[1]);
+		} catch (StringIndexOutOfBoundsException e) {
+			view.displayAddPhoto("probleme saisie");
+			return false;
+		}
+	}
 }
