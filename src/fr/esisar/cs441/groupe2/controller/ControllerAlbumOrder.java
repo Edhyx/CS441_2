@@ -22,7 +22,7 @@ public class ControllerAlbumOrder extends Controller{
 					view.displayOrderMenu("nouvelle commande");
 				}	
 			}		
-			view.displayAddPhoto("renseignements enregistres");
+			view.displayAddOrder("renseignements enregistres");
 		}/**********************************************************/
 	}
 	
