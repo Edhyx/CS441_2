@@ -216,7 +216,7 @@ public class View {
 			
 		}else if(choix.charAt(0)=='2') {
 			
-			control.notifyChangement("PREA");
+			control.notifyChangement("PRE");
 			
 		}else {
 			control.notifyChangement(choix);
@@ -228,9 +228,11 @@ public class View {
 		control = new ControllerAlbumManagement(this, model);
 		
 		System.out.println("--- --- GESTION DES ALBUMS --- ---");
+		System.out.println("liste des albums :");
 		if(!str.isEmpty()){
-			System.out.println("liste des Albums");
-			System.out.println(str);
+			for(String line : str) {
+				System.out.println("+ " + line);
+			}
 		}
 		
 		System.out.println("Ajouter des photos a un album : taper 1 [espace] chemin de l'album");

@@ -46,7 +46,12 @@ public class Model {
 	}
 	
 	public ArrayList<String> getFolderList() {
+		ArrayList<String> returns = new ArrayList<String>();
 		
+		returns.add("blabla");
+		returns.add("poloplop");
+		
+		return returns;
 	}
 	
 }
