@@ -204,7 +204,7 @@ public class View {
 		
 		if(choix.charAt(0)=='1') {
 			
-			fichier = "NEWW";
+			fichier = "NEW";
 			
 			System.out.println("Il vous faut renseigner les informations suivantes :");
 			System.out.print("Titre de l'album : ");
@@ -248,7 +248,7 @@ public class View {
 			
 			fichier = "ADA";
 			
-			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
+			fichier = fichier + " " + choix.substring(choix.indexOf(" ")+1, choix.length());
 			
 			control.notifyChangement(fichier);
 			
@@ -256,7 +256,7 @@ public class View {
 			
 			fichier = "DEA";
 			
-			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
+			fichier = fichier + " " +choix.substring(choix.indexOf(" ")+1, choix.length());
 			
 			control.notifyChangement(fichier);
 		}else {
@@ -269,9 +269,13 @@ public class View {
 		control = new ControllerAlbumManagement(this, model);
 		
 		System.out.println("--- --- GESTION DES ALBUMS --- ---");
+		System.out.println("liste des Images sans albums");
+		
 		if(!str.isEmpty()){
-			System.out.println("liste des Images sans albums");
-			System.out.println("+ " + str);
+			
+			for(String line : str) {
+				System.out.println("+ " + line);
+			}
 		}
 		
 		System.out.println("Ajouter des photos a l'album : taper 1 [espace] id de la photo");
@@ -286,7 +290,7 @@ public class View {
 			
 			fichier = "ADF";
 			
-			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
+			fichier = fichier + " " + choix.substring(choix.indexOf(" ")+1, choix.length());
 			
 			control.notifyChangement(fichier);
 			
@@ -294,7 +298,7 @@ public class View {
 			
 			fichier = "DELF";
 			
-			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
+			fichier = fichier + " " + choix.substring(choix.indexOf(" ")+1, choix.length());
 			
 			control.notifyChangement(fichier);
 		}else {

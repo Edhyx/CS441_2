@@ -25,7 +25,7 @@ public class ControllerAlbumManagement extends Controller {
 			// On test tout les codes
 			if(changement.substring(0,3).equals("NEW")) { // new Folder
 				
-				if(this.newFolder( changement.substring( changement.indexOf(" "), changement.length()))) {
+				if(this.newFolder( changement.substring( changement.indexOf(" ")+1, changement.length()))) {
 					view.displayAlbumMenu("nouvel album");
 				}else {
 					view.displayAlbumMenu("creation impossible");
@@ -35,11 +35,11 @@ public class ControllerAlbumManagement extends Controller {
 				view.displayAlbumManagement(model.getFolderList());
 			}else if(changement.substring(0,3).equals("ADA")) { // affichage liste d'ajout
 				
-				view.displayAlbumADD(model.getFoldersFileList(changement.substring(changement.indexOf(" "), changement.length())));
+				view.displayAlbumADD(model.getFoldersFileList(changement.substring(changement.indexOf(" ")+1, changement.length())));
 				
 			}else if(changement.substring(0,3).equals("DEA")) { // new Folder
 				
-				if(model.delAlbum(changement.substring(changement.indexOf(" "),changement.length()))) {
+				if(model.delAlbum(changement.substring(changement.indexOf(" ")+1,changement.length()))) {
 					view.displayAlbumManagement(model.getFolderList());	
 				}else {
 					
