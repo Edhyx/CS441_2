@@ -342,23 +342,26 @@ public class View {
 	
 	public void displayOrderADD(ArrayList<String> str){
 		
-		control = new ControllerAlbumManagement(this, model);
+		control = new ControllerAlbumOrder(this, model);
 		
-		System.out.println("--- --- GESTION DES COMMANDES --- ---");
+		System.out.println("--- --- GESTION DES ALBUMS --- ---");
+		System.out.println("liste des albums :");
 		if(!str.isEmpty()){
-			System.out.println("liste des Commandes");
-			System.out.println(str);
+			for(String line : str) {
+				System.out.println("+ " + line);
+			}
 		}
-		System.out.println("Quitter : tapez 9");
+		
+		System.out.println("choisir l'album à commander: taper 1 [espace] id de l'album");
 		Scanner sc = new Scanner(System.in);
 		
 		String choix = sc.nextLine();
 		
 		String fichier;
 		
-		if(choix.charAt(0)=='1') {
+		/*if(choix.charAt(0)=='1') {
 			
-			fichier = "ADC";
+			fichier = "ADA";
 			
 			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
 			
@@ -366,18 +369,18 @@ public class View {
 			
 		}else if(choix.charAt(0)=='2') { 
 			
-			fichier = "DLC";
+			fichier = "DEA";
 			
 			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
 			
 			control.notifyChangement(fichier);
 		}else {
 			control.notifyChangement(choix);
-		}
+		}*/
 	}
 	
 	public void displayOrderMenu(String str){
-		control = new ControllerAlbumManagement(this, model);
+		control = new ControllerAlbumOrder(this, model);
 		
 		if(!str.isEmpty()){
 			System.out.println("["+str+"]");
@@ -396,13 +399,6 @@ public class View {
 		if(choix.charAt(0)=='1') {
 			
 			fichier = "NEW";
-			
-			System.out.println("Il vous faut renseigner les informations suivantes :");
-			System.out.print("Titre de l'album : ");
-			fichier = fichier + " " + sc.nextLine();
-			System.out.print("Le sous-titre de l'album : ");
-			fichier = fichier + " " + sc.nextLine();
-			
 			control.notifyChangement(fichier);
 			
 		}else if(choix.charAt(0)=='2') {
