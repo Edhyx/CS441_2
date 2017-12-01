@@ -21,7 +21,7 @@ public class Init {
 			Statement stmt = connexion.createStatement();
 			
 /////////Creer table AdressF
-	   /* String sql_adresseF = "CREATE TABLE AdresseF " + 
+/*String sql_adresseF = "CREATE TABLE AdresseF " + 
 	            "(idAdresseF INTEGER, " +
 	            " rue VARCHAR(255), " + 
 	            " codePostal VARCHAR(255), " + 
@@ -29,17 +29,17 @@ public class Init {
 	            " PRIMARY KEY ( idAdresseF ))";
 	    stmt.executeUpdate(sql_adresseF);
 	    System.out.println("Table AdresseF cree");*/
-	    
+	    /*
 /////////Creer table AdressL
-	    /*String sql_adresseL = "CREATE TABLE AdresseL " +
+	  String sql_adresseL = "CREATE TABLE AdresseL " +
 	            "(idAdresseL INTEGER, " +
 	            " rue VARCHAR(255), " + 
 	            " codePostal VARCHAR(255), " + 
 	            " ville VARCHAR(255), " + 
 	            " PRIMARY KEY ( idAdresseL ))";
 	    stmt.executeUpdate(sql_adresseL);
-	    System.out.println("Table AdresseL cree"); 
-	    */
+	    System.out.println("Table AdresseL cree"); */
+	    /*
 /////////Creer table client
 	    String sql_client = "CREATE TABLE Client " +
 	            "(adresseMail VARCHAR(255), " +
@@ -53,6 +53,7 @@ public class Init {
 	            " FOREIGN KEY (idAdresseL) REFERENCES AdresseL(idAdresseL))";
 	    stmt.executeUpdate(sql_client);
 	    System.out.println("Table Client cree"); 
+	    */
 	    
 /////////Creer table Commande
 			String sql_commande = "CREATE TABLE Commande " +
