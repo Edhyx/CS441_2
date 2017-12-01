@@ -70,17 +70,6 @@ public class BDD_Test {
 			tableFichierImage.add(fichierB);
 			tableContient.add(contient);
 			tableContient.add(contientB);
-			
-			/*//Affichage des elements
-			tableAdresse.affiche_F();
-			tableAdresse.affiche_L();
-			tableClient.affiche();
-			tableCommande.affiche();
-			tableFormat.affiche();
-			tableAlbum.affiche();
-			tableLigneCommande.affiche();
-			tableFichierImage.affiche();
-			tableContient.affiche();*/
 						
 			//Cherche les elements avec leur id
 			Adresse a = tableAdresse.getById_F(30);
