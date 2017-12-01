@@ -414,7 +414,7 @@ public class View {
 	}
 	
 	public void displayAddOrder(String str){
-		System.out.print(" something... ");
+		System.out.println(" something... ");
 	}
 
 	public void displayOrderList(ArrayList<String> str){
