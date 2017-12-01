@@ -33,6 +33,18 @@ public class ControllerAlbumManagement extends Controller {
 			}else if(changement.substring(0,3).equals("PRE")) { // new Folder
 				
 				view.displayAlbumManagement(model.getFolderList());
+			}else if(changement.substring(0,3).equals("ADA")) { // affichage liste d'ajout
+				
+				view.displayAlbumADD(model.getFoldersFileList(changement.substring(changement.indexOf(" "), changement.length())));
+				
+			}else if(changement.substring(0,3).equals("DEA")) { // new Folder
+				
+				if(model.delAlbum(changement.substring(changement.indexOf(" "),changement.length()))) {
+					view.displayAlbumManagement(model.getFolderList());	
+				}else {
+					
+					view.displayAlbumMenu("Probleme");
+				}
 			}
 		}
 	}

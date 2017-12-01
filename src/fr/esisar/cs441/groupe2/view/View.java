@@ -246,7 +246,7 @@ public class View {
 		
 		if(choix.charAt(0)=='1') {
 			
-			fichier = "ADDA";
+			fichier = "ADA";
 			
 			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
 			
@@ -254,7 +254,7 @@ public class View {
 			
 		}else if(choix.charAt(0)=='2') { 
 			
-			fichier = "DELA";
+			fichier = "DEA";
 			
 			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
 			
@@ -270,12 +270,11 @@ public class View {
 		
 		System.out.println("--- --- GESTION DES ALBUMS --- ---");
 		if(!str.isEmpty()){
-			System.out.println("liste des Albums");
-			System.out.println(str);
+			System.out.println("liste des Images sans albums");
+			System.out.println("+ " + str);
 		}
 		
 		System.out.println("Ajouter des photos a l'album : taper 1 [espace] id de la photo");
-		System.out.println("Suprimer des photos a l'album :  taper 2 [espace] id de la photo");
 		System.out.println("Quitter : tapez 9");
 		Scanner sc = new Scanner(System.in);
 		
@@ -285,7 +284,7 @@ public class View {
 		
 		if(choix.charAt(0)=='1') {
 			
-			fichier = "ADDF";
+			fichier = "ADF";
 			
 			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
 			

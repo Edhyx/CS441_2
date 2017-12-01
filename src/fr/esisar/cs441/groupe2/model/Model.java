@@ -54,5 +54,22 @@ public class Model {
 		return returns;
 	}
 	
+	public boolean delAlbum(String id) {
+		
+		// A completer
+		return true;
+	}
+
+	public ArrayList<String> getFoldersFileList(String substring) {
+		
+		ArrayList<String> returns = new ArrayList<String>();
+		
+		returns.add("photo1");
+		returns.add("photo2");
+		
+		return returns;
+		
+	}
+	
 	
 }
