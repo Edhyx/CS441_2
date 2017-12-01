@@ -1,5 +1,7 @@
 package fr.esisar.cs441.groupe2.controller;
 
+import java.util.ArrayList;
+
 import fr.esisar.cs441.groupe2.model.Model;
 import fr.esisar.cs441.groupe2.view.View;
 
@@ -13,21 +15,26 @@ public class ControllerAlbumManagement extends Controller {
 		this.model = model;
 	}
 	
-	public void notifChangement(String changement) {
+	public void notifyChangement(String changement) {
 		
 		if(changement.charAt(0) == '9') {
+
 			view.displayEnd("");
 		}else {
 			
 			// On test tout les codes
-			if(changement.substring(0,3).equals("NEWW")) { // new Folder
+			if(changement.substring(0,3).equals("NEW")) { // new Folder
+				
 				if(this.newFolder( changement.substring( changement.indexOf(" "), changement.length()))) {
-					view.displayAlbumMenu("nouvelle album");
+					view.displayAlbumMenu("nouvel album");
+				}else {
+					view.displayAlbumMenu("creation impossible");
 				}
-			}else if(changement.substring(0,3).equals("PREA")) { // new Folder
-				view.displayAlbumMenu(model.getFolderList());
+			}else if(changement.substring(0,3).equals("PRE")) { // new Folder
+				
+				view.displayAlbumManagement(model.getFolderList());
 			}
-			try {
+			/*try {
 				
 				// detection du type de telechargement
 				int number = Integer.parseInt(changement.substring(0, changement.indexOf(" ")));
@@ -55,7 +62,7 @@ public class ControllerAlbumManagement extends Controller {
 				view.displayAddPhoto("probleme nombre de photos");
 			}
 			
-			view.displayAddPhoto("renseignements enregistres");
+			view.displayAddPhoto("renseignements enregistres");*/
 		}
 	}
 	
@@ -75,7 +82,7 @@ public class ControllerAlbumManagement extends Controller {
 				data = data.substring(data.indexOf(" ")+1, data.length());	
 				i++;
 			}
-
+			
 			return model.addFolder(element[0], element[1]);		
 		}catch(StringIndexOutOfBoundsException e) {
 			view.displayAddPhoto("probleme saisie");

@@ -1,4 +1,3 @@
-package fr.esisar.cs441.groupe2.model;
 
 
 import java.sql.Connection;
@@ -48,7 +47,13 @@ public class Model {
 	
 	public String getClientPassword(String id) {
 		ClientDAO tableClient = new ClientDAO(stmt);
-		Client client = tableClient.getById(id);
+		Client client = null;
+		try {
+			client = tableClient.getById(id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if (client ==null) {return null;}
 		else
 		return client.getPassword();
@@ -114,6 +119,5 @@ public class Model {
 		
 		return returns;
 	}
-	
 	
 }

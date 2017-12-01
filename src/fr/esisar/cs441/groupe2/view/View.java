@@ -110,7 +110,7 @@ public class View {
 		System.out.println("--- --- MENU --- ---");
 		System.out.println("Ajouter des photos : tapez 1");
 		System.out.println("Gérer les albums photo : tapez 2");
-		System.out.println("Commander des albums : tapez 3");
+		System.out.println("Gérer les commandes : tapez 3");
 		System.out.println("Lister les commandes en cours : tapez 4");
 		System.out.println("Quitter : tapez 9");
 		Scanner sc = new Scanner(System.in);
@@ -216,7 +216,7 @@ public class View {
 			
 		}else if(choix.charAt(0)=='2') {
 			
-			control.notifyChangement("PREA");
+			control.notifyChangement("PRE");
 			
 		}else {
 			control.notifyChangement(choix);
@@ -228,9 +228,11 @@ public class View {
 		control = new ControllerAlbumManagement(this, model);
 		
 		System.out.println("--- --- GESTION DES ALBUMS --- ---");
+		System.out.println("liste des albums :");
 		if(!str.isEmpty()){
-			System.out.println("liste des Albums");
-			System.out.println(str);
+			for(String line : str) {
+				System.out.println("+ " + line);
+			}
 		}
 		
 		System.out.println("Ajouter des photos a un album : taper 1 [espace] chemin de l'album");
@@ -301,7 +303,7 @@ public class View {
 		}
 	}
 	
-	public void displayAlbumOrder(ArrayList<String> str){
+	public void displayAlbumOrder(String str){
 		control = new ControllerAlbumManagement(this, model);
 		
 		System.out.println("--- --- GESTION DES COMMANDES --- ---");
@@ -321,7 +323,7 @@ public class View {
 		
 		if(choix.charAt(0)=='1') {
 			
-			fichier = "ADDC";
+			fichier = "ADC";
 			
 			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
 			
@@ -329,7 +331,7 @@ public class View {
 			
 		}else if(choix.charAt(0)=='2') { //à modif
 			
-			fichier = "DELC";
+			fichier = "DLC";
 			
 			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
 			
@@ -382,8 +384,8 @@ public class View {
 			System.out.println("["+str+"]");
 		
 		}
-		System.out.println("--- --- GESTION DES ALBUMS --- ---");
-		System.out.println("Nouvel album : taper 1");
+		System.out.println("--- --- GESTION DES COMMANDES --- ---");
+		System.out.println("Nouvele Commande : taper 1");
 		System.out.println("Consulter albums : taper 2");
 		System.out.println("Quitter : tapez 9");
 		Scanner sc = new Scanner(System.in);
@@ -411,6 +413,10 @@ public class View {
 		}else {
 			control.notifyChangement(choix);
 		}
+	}
+	
+	public void displayAddOrder(String str){
+		System.out.println(" something... ");
 	}
 
 	public void displayOrderList(ArrayList<String> str){
