@@ -19,7 +19,7 @@ public class Suppression {
 		Class.forName(driver);
 		Connection connection = DriverManager.getConnection(url,login,pass);
 	    Statement stmt = connection.createStatement();
-/*
+
 	    ResultSet rs1=stmt.executeQuery("SHOW COLUMNS from Album ");
 	    //suppression LigneCommande
 	    String sql_delete_tabLc =  "DROP TABLE LigneCommande ";
@@ -50,7 +50,7 @@ public class Suppression {
 	    String sql_delete_tabFi =  "DROP TABLE FichierImage ";
 	    ResultSet rsFi = stmt.executeQuery(sql_delete_tabFi);
 	    System.out.println("Table FichierImage supprimee");
-	  */
+	  
 	    //suppression client
 	    String sql_delete_tabC =  "DROP TABLE Client ";
 	    ResultSet rsClient = stmt.executeQuery(sql_delete_tabC);
