@@ -1,5 +1,7 @@
 package fr.esisar.cs441.groupe2.model;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -12,8 +14,31 @@ public class Model {
 	private String idClient;
 	private Statement stmt;
 
-	public Model(Statement stmt) {
-		this.stmt = stmt;
+	public Model() {
+		String driver = "com.mysql.jdbc.Driver";
+		String url = "jdbc:mysql://localhost/test?useSSL=false";
+		String login = "root";
+		String pass = "Pauline02";
+		try {
+			Class.forName(driver);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}	
+		Connection connexion = null;
+		try {
+			connexion = DriverManager.getConnection(url,login,pass);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+
+		Statement stmts = null;
+		try {
+			stmts = connexion.createStatement();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		this.stmt = stmts;
 	}
 	
 	public void setClient(String id) {
@@ -80,7 +105,7 @@ public class Model {
 		
 	}
 	
-	public ArrayList<String> getFolderList() {
+	public void getFolderList() {
 		
 	}
 	
