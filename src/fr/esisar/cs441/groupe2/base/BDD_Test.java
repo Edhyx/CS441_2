@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import fr.esisar.cs441.groupe2.base.BDDs.*;
 import fr.esisar.cs441.groupe2.base.entity.*;
@@ -57,7 +58,7 @@ public class BDD_Test {
 			tableFichierImage.add(fichier);
 			tableContient.add(contient);
 			
-			//Affichage des elements
+			/*//Affichage des elements
 			tableAdresse.affiche_F();
 			tableAdresse.affiche_L();
 			tableClient.affiche();
@@ -66,9 +67,9 @@ public class BDD_Test {
 			tableAlbum.affiche();
 			tableLigneCommande.affiche();
 			tableFichierImage.affiche();
-			tableContient.affiche();
+			tableContient.affiche();*/
 						
-			//Cherche les élements avec leur id
+			//Cherche les elements avec leur id
 			Adresse a = tableAdresse.getById_F(30);
 			System.out.println(a.toString_F());
 			Client find= tableClient.getById("cc");
@@ -85,6 +86,40 @@ public class BDD_Test {
 			System.out.println(fi.toString());
 			Contient co = tableContient.getById(1, "chemin");
 			System.out.println(co.toString());
+					
+			ArrayList<Adresse> adressesF = tableAdresse.getAll_F();			
+			for (Adresse array : adressesF)
+				System.out.println(array.toString_F());
+			ArrayList<Adresse> adressesL = tableAdresse.getAll_L();			
+			for (Adresse array : adressesL)
+				System.out.println(array.toString_L());
+			
+			ArrayList<Client> client = tableClient.getAll();			
+			for (Client array : client)
+				System.out.println(array.toString());
+			
+			ArrayList<Commande> commande = tableCommande.getAll();			
+			for (Commande array : commande)
+				System.out.println(array.toString());
+			
+			ArrayList<Format> format = tableFormat.getAll();			
+			for (Format array : format)
+				System.out.println(array.toString());
+			
+			ArrayList<Album> album = tableAlbum.getAll();			
+			for (Album array : album)
+				System.out.println(array.toString());
+			ArrayList<LigneCommande> lc = tableLigneCommande.getAll();			
+			for (LigneCommande array : lc)
+				System.out.println(array.toString());
+			
+			ArrayList<FichierImage> fis = tableFichierImage.getAll();			
+			for (FichierImage array : fis)
+				System.out.println(array.toString());
+			
+			ArrayList<Contient> con = tableContient.getAll();			
+			for (Contient array : con)
+				System.out.println(array.toString());
 			
 			//Supprime les éléments
 			tableLigneCommande.delete(lignecommandeA);

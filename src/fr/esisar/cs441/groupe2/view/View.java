@@ -142,14 +142,14 @@ public class View {
 			
 			fichier = "1";
 			
-			System.out.println("Telechargement terminé.\nIl vous faut renseigner les informations suivantes :");
+			System.out.println("Telechargement terminï¿½.\nIl vous faut renseigner les informations suivantes :");
 			System.out.print("L'appareil Photo : ");
 			fichier = fichier + " " + sc.nextLine();
 			System.out.print("L'objectif : ");
 			fichier = fichier + " " + sc.nextLine();
 			System.out.print("La distance Focale : ");
 			fichier = fichier + " " + sc.nextLine();
-			System.out.print("La sensibilité ISO : ");
+			System.out.print("La sensibilitï¿½ ISO : ");
 			fichier = fichier + " " + sc.nextLine();
 			System.out.print("L'ouverture : ");
 			fichier = fichier + " " + sc.nextLine();
@@ -162,14 +162,14 @@ public class View {
 						
 			System.out.println("Combien de photos?");
 			fichier = sc.nextLine();
-			System.out.println("Telechargement terminé.\nIl vous faut renseigner les informations suivantes :");
+			System.out.println("Telechargement terminï¿½.\nIl vous faut renseigner les informations suivantes :");
 			System.out.print("L'appareil Photo : ");
 			fichier = fichier + " " + sc.nextLine();
 			System.out.print("L'objectif : ");
 			fichier = fichier + " " + sc.nextLine();
 			System.out.print("La distance Focale : ");
 			fichier = fichier + " " + sc.nextLine();
-			System.out.print("La sensibilité ISO : ");
+			System.out.print("La sensibilitï¿½ ISO : ");
 			fichier = fichier + " " + sc.nextLine();
 			System.out.print("L'ouverture : ");
 			fichier = fichier + " " + sc.nextLine();
@@ -304,13 +304,115 @@ public class View {
 	}
 	
 	public void displayAlbumOrder(ArrayList<String> str){
-		control = new ControllerAlbumOrder(this, model);
+		control = new ControllerAlbumManagement(this, model);
+		
+		System.out.println("--- --- GESTION DES COMMANDES --- ---");
 		if(!str.isEmpty()){
+			System.out.println("liste des commandes");
 			System.out.println(str);
 		}
-		System.out.println("--- --- COMMANDER UN ALBUM --- ---");
+		
+		System.out.println("Commander un album : taper 1 [espace] chemin de l'album");
+		System.out.println("Suprimer commande :  taper 2 [espace] chemin de la commande");
+		System.out.println("Quitter : tapez 9");
 		Scanner sc = new Scanner(System.in);
-		control.notifyChangement(sc.nextLine());
+		
+		String choix = sc.nextLine();
+		
+		String fichier;
+		
+		if(choix.charAt(0)=='1') {
+			
+			fichier = "ADDC";
+			
+			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
+			
+			control.notifyChangement(fichier);
+			
+		}else if(choix.charAt(0)=='2') { //Ã  modif
+			
+			fichier = "DELC";
+			
+			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
+			
+			control.notifyChangement(fichier);
+		}else {
+			control.notifyChangement(choix);
+		}
+	}
+	
+	public void displayOrderADD(ArrayList<String> str){
+		
+		control = new ControllerAlbumManagement(this, model);
+		
+		System.out.println("--- --- GESTION DES COMMANDES --- ---");
+		if(!str.isEmpty()){
+			System.out.println("liste des Commandes");
+			System.out.println(str);
+		}
+		System.out.println("Quitter : tapez 9");
+		Scanner sc = new Scanner(System.in);
+		
+		String choix = sc.nextLine();
+		
+		String fichier;
+		
+		if(choix.charAt(0)=='1') {
+			
+			fichier = "ADC";
+			
+			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
+			
+			control.notifyChangement(fichier);
+			
+		}else if(choix.charAt(0)=='2') { 
+			
+			fichier = "DLC";
+			
+			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
+			
+			control.notifyChangement(fichier);
+		}else {
+			control.notifyChangement(choix);
+		}
+	}
+	
+	public void displayOrderMenu(String str){
+		control = new ControllerAlbumManagement(this, model);
+		
+		if(!str.isEmpty()){
+			System.out.println("["+str+"]");
+		
+		}
+		System.out.println("--- --- GESTION DES ALBUMS --- ---");
+		System.out.println("Nouvel album : taper 1");
+		System.out.println("Consulter albums : taper 2");
+		System.out.println("Quitter : tapez 9");
+		Scanner sc = new Scanner(System.in);
+		
+		String choix = sc.nextLine();
+		
+		String fichier;
+		
+		if(choix.charAt(0)=='1') {
+			
+			fichier = "NEW";
+			
+			System.out.println("Il vous faut renseigner les informations suivantes :");
+			System.out.print("Titre de l'album : ");
+			fichier = fichier + " " + sc.nextLine();
+			System.out.print("Le sous-titre de l'album : ");
+			fichier = fichier + " " + sc.nextLine();
+			
+			control.notifyChangement(fichier);
+			
+		}else if(choix.charAt(0)=='2') {
+			
+			control.notifyChangement("PREA");
+			
+		}else {
+			control.notifyChangement(choix);
+		}
 	}
 
 	public void displayOrderList(ArrayList<String> str){
