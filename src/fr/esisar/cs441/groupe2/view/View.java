@@ -304,7 +304,7 @@ public class View {
 	}
 	
 	public void displayAlbumOrder(String str){
-		control = new ControllerAlbumManagement(this, model);
+		control = new ControllerAlbumOrder(this, model);
 		
 		System.out.println("--- --- GESTION DES COMMANDES --- ---");
 		if(!str.isEmpty()){
