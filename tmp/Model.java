@@ -1,4 +1,4 @@
-package fr.esisar.cs441.groupe2.model;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
