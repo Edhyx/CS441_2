@@ -17,7 +17,7 @@ public class ControllerMenu extends Controller{
 		if(changement.charAt(0)=='1') {
 			view.displayAddPhoto(null);
 		}else if(changement.charAt(0)=='2') {
-			view.displayAlbumMenu(null);
+			view.displayAlbumMenu("");
 		}else if(changement.charAt(0)=='3') {
 			view.displayAlbumOrder(null);
 		}else if(changement.charAt(0)=='4') {

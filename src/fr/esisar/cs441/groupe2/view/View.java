@@ -204,7 +204,7 @@ public class View {
 		
 		if(choix.charAt(0)=='1') {
 			
-			fichier = "NEW";
+			fichier = "NEWW";
 			
 			System.out.println("Il vous faut renseigner les informations suivantes :");
 			System.out.print("Titre de l'album : ");
@@ -213,6 +213,10 @@ public class View {
 			fichier = fichier + " " + sc.nextLine();
 			
 			control.notifyChangement(fichier);
+			
+		}else if(choix.charAt(0)=='2') {
+			
+			control.notifyChangement("PREA");
 			
 		}else {
 			control.notifyChangement(choix);
