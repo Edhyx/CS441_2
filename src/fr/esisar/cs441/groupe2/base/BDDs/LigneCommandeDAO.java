@@ -96,7 +96,7 @@ public ArrayList<LigneCommande> getAll() {
 				Album alb = tableAlbum.getById(idAlbum);
 				*/
 				
-			    adF.add(new LigneCommande(quantite,null,null,null));	       
+			    adF.add(new LigneCommande(quantite));	       
 			}
 			rs.close();
 		} catch (SQLException e) {

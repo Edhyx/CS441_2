@@ -140,15 +140,22 @@ public class BDD_Test {
 			
 			//Supprime les �l�ments
 			tableLigneCommande.delete(lignecommandeA);
+			tableLigneCommande.delete(lignecommandeB);
 			tableCommande.delete(commandeA);
+			tableCommande.delete(commandeB);
 			tableFormat.delete(formatA);
+			tableFormat.delete(formatB);
 			tableContient.delete(contient);
+			tableContient.delete(contientB);
 			tableAlbum.delete(albumA);
+			tableAlbum.delete(albumB);
 			tableFichierImage.delete(fichier);
+			tableFichierImage.delete(fichierB);
 			tableClient.delete(clientA);
 			tableClient.delete(clientB);
 			tableAdresse.delete_F(AdresseA);
 			tableAdresse.delete_F(AdresseB);
+			tableAdresse.delete_L(AdresseA);
 			tableAdresse.delete_L(AdresseB);
 		}
 		catch (Exception e) {

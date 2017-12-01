@@ -28,8 +28,6 @@ public class Suppression {
 	    	rs1.next();
 	    }
 
-/*
->>>>>>> d6a3ad53b2b9b569d3fa44b3356afd284a4a6950
 	    //suppression LigneCommande
 	    String sql_delete_tabLc =  "DROP TABLE LigneCommande ";
 	    ResultSet rsLc = stmt.executeQuery(sql_delete_tabLc);
@@ -59,7 +57,7 @@ public class Suppression {
 	    String sql_delete_tabFi =  "DROP TABLE FichierImage ";
 	    ResultSet rsFi = stmt.executeQuery(sql_delete_tabFi);
 	    System.out.println("Table FichierImage supprimee");
-	    */
+	    
 	    //suppression client
 	    String sql_delete_tabC =  "DROP TABLE Client ";
 	    ResultSet rsClient = stmt.executeQuery(sql_delete_tabC);

@@ -13,6 +13,14 @@ public class LigneCommande {
     private Commande commande;
     private Format format;
 	
+    public LigneCommande(int quantite) {
+		super();
+		this.quantite = quantite;
+		this.album = null;
+		this.commande = null;
+		this.format = null;
+	}
+    
     public LigneCommande(int quantite, Commande commande, Format format, Album album) {
 		super();
 		this.quantite = quantite;
@@ -54,7 +62,7 @@ public class LigneCommande {
 	}
 	
 	public String toString() {
-		return "LigneCommande [quantite =" + quantite + ", commande=" + commande.getIdCommande() + ", format=" + format.getIdFormat() +", album=" + album.getIdAlbum() +"]";
+		return "LigneCommande [quantite =" + quantite + "]";
 	}
     
 }

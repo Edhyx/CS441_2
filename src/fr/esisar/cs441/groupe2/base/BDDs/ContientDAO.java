@@ -90,7 +90,7 @@ public class ContientDAO {
 			    AlbumDAO tableAlbum = new AlbumDAO(stmt);
 			    Album album = tableAlbum.getById(idAlbum);
 			    */
-			    contient.add(new Contient(numOrdre,titre,commentaire,null,null));
+			    contient.add(new Contient(numOrdre,titre,commentaire));
 			}
 			rs.close();
 		} catch (SQLException e) {

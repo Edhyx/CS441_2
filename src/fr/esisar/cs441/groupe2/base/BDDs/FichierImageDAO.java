@@ -91,7 +91,7 @@ public class FichierImageDAO {
 			    Client client = tableClient.getById(adresseMail);
 			    */
 			    
-				f.add(new FichierImage(id,appareilPhoto,objectif,distanceFocale,sensibiliteISO,ouverture,vitesseObturation,null));
+				f.add(new FichierImage(id,appareilPhoto,objectif,distanceFocale,sensibiliteISO,ouverture,vitesseObturation));
 			}
 			rs.close();
 		} catch (SQLException e) {

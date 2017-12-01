@@ -22,6 +22,15 @@ public class Album {
     private ArrayList<Contient>	fichierImages;
     private ArrayList<LigneCommande> ligneCommandes;
 	
+    public Album(int idAlbum, String titre, String sousTitre) {
+		super();
+		this.idAlbum = idAlbum;
+		this.titre = titre;
+		this.sousTitre = sousTitre;
+		this.creeParClient = null;
+		this.fichierImages = new ArrayList<Contient>();
+		this.ligneCommandes = new ArrayList<LigneCommande>();
+	}
     public Album(int idAlbum, String titre, String sousTitre, Client creeParClient) {
 		super();
 		this.idAlbum = idAlbum;
@@ -103,6 +112,6 @@ public class Album {
 	} 
     
 	public String toString() {
-		return "Album [idAlbum=" + idAlbum + ", titre=" + titre + ", sousTitre=" + sousTitre + ", client=" + creeParClient.getAdresseMail() +"]";
+		return "Album [idAlbum=" + idAlbum + ", titre=" + titre + ", sousTitre=" + sousTitre +"]";
 	}
 }

@@ -82,7 +82,7 @@ public class AlbumDAO {
 				   Client client = tableClient.getById(adresseMail);
 				   */
 			    
-				   album.add(new Album(id,titre,sousTitre,null));
+				   album.add(new Album(id,titre,sousTitre));
 			}
 			rs.close();
 		} catch (SQLException e) {
