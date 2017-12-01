@@ -53,6 +53,15 @@ public class Init {
 	            " FOREIGN KEY (idAdresseL) REFERENCES AdresseL(idAdresseL))";
 	    stmt.executeUpdate(sql_client);
 	    System.out.println("Table Client cree"); 
+
+	    
+/////////Creer table Format
+	    String sql_format = "CREATE TABLE Format " +
+	            "(idFormat INTEGER, " +
+	            "prixUnitaire INTEGER, " +
+	            " PRIMARY KEY ( idFormat ))";
+	    stmt.executeUpdate(sql_format);
+	    System.out.println("Table Format cree"); 
 	    
 /////////Creer table commande
 	    String sql_commande = "CREATE TABLE Commande " +
@@ -64,14 +73,6 @@ public class Init {
 	            " FOREIGN KEY (adresseMail) REFERENCES Client(adresseMail))";
 	    stmt.executeUpdate(sql_commande);
 	    System.out.println("Table Commande cree"); 
-	    
-/////////Creer table Format
-	    String sql_format = "CREATE TABLE Format " +
-	            "(idFormat INTEGER, " +
-	            "prixUnitaire INTEGER, " +
-	            " PRIMARY KEY ( idFormat ))";
-	    stmt.executeUpdate(sql_format);
-	    System.out.println("Table Format cree"); 
 
 /////////Creer table Album
 	    String sql_album = "CREATE TABLE Album " +
