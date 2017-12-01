@@ -40,22 +40,21 @@ public class ClientDAO {
 	    	System.out.println("Table Client non existant");
 	    }
 	}
-	
+				
+
 	public Client getById(String id) {		
-		String sql_aff = "SELECT * FROM Client ";
+		String sql_aff = "SELECT * FROM Client " + "WHERE adresseMail = '" + id +"'";
 		Client client = null;
+	    boolean a;
 		try{
 		    ResultSet rs = stmt.executeQuery(sql_aff);
-		    
-		    boolean a=rs.next();
-		    if (a==false){
-		    	System.out.println("La table Client est vide"); 
-		    }
-		    while(a){
-		    	
+		    a = rs.next();
+			    if (a==false){
+			    	System.out.println("Impossible de trouver le client associe a l'adresse : " + id); 
+			    }
+			    else {
 		    	//Retrieve by column name
-			    String adresseMail  = rs.getString("adresseMail");
-				if (adresseMail.equals(id)) {
+			    	id = rs.getString("adresseMail");
 					String nom = rs.getString("nom");
 				    String prenom = rs.getString("prenom");
 				    String password = rs.getString("password");
@@ -65,13 +64,11 @@ public class ClientDAO {
 				    Adresse adF = tableAdresse.getById_F(idAdresseF);
 				    Adresse adL = tableAdresse.getById_L(idAdresseL);
 
-				    client = new Client(adresseMail, nom, prenom, password,adF,adL);
-				    break;
+				    client = new Client(id, nom, prenom, password,adF,adL);
 				}
-				a=rs.next();
-		    }
-			rs.close();			
-		} catch (SQLException e) {
+		rs.close();
+	}
+		catch (SQLException e) {
 			System.out.println("Impossible de trouver le client associe a l'adresse : " + id +e);
 		}
 	    return client;
@@ -85,7 +82,6 @@ public class ClientDAO {
 	    try {
 	    	ResultSet rs = this.stmt.executeQuery(sql_aff);
 			while(rs.next()) {
-				//Retrieve by column name
 				String adresseMail  = rs.getString("adresseMail");
 				String nom = rs.getString("nom");
 				String prenom = rs.getString("prenom");
@@ -102,7 +98,6 @@ public class ClientDAO {
 		} catch (SQLException e) {
 			System.out.println("Impossible de trouver d'elements dans la table");
 		}
-	    
 	    return client;
 	}
 	

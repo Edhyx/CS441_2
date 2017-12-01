@@ -11,3 +11,10 @@
 		- gerer le lien avec la table de FichierImage
 		- gerer le lien avec la table d'Album
 		- gerer le lien avec la table de Commande
+		
+	A Faire : 
+		- Bug connection quand bien saisi (try and catch)
+		
+	Note :
+		- chemin d'acces : nom.client 
+		- dans controller addMenu/addAlbum changer le while car il faut pouvoir retourner false quand il existe déja.

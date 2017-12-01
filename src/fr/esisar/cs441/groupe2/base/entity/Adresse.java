@@ -1,8 +1,5 @@
 package fr.esisar.cs441.groupe2.base.entity;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Optional;
 
 import com.sun.security.ntlm.Client;
@@ -80,104 +77,11 @@ public class Adresse {
 		this.client = client;
 	}
 	
-	public void add_F(Statement stmt) throws SQLException{
-	    String sql_element = "INSERT INTO AdresseF " +
-	            "VALUES ("+idAdresse+", '"+rue+"', '"+codePostal+"', '"+ville+"')";
-	    try{
-	    stmt.executeUpdate(sql_element);
-	    System.out.println("AdresseF '"+idAdresse+"' cree");
-	    } catch (SQLException e){
-	    	System.out.println("idAdresseF '"+idAdresse+"' existant");
-	    }
+	public String toString_F() {
+		return "AdresseF [idAdresseF=" + idAdresse + ", rue=" + rue + ", codePostal=" + codePostal + ", ville=" + ville +"]";
 	}
 	
-	public void add_L(Statement stmt) throws SQLException{
-	    String sql_element = "INSERT INTO AdresseL " +
-	            "VALUES ("+idAdresse+", '"+rue+"', '"+codePostal+"', '"+ville+"')";
-	    try{
-	    stmt.executeUpdate(sql_element);
-	    System.out.println("AdresseL '"+idAdresse+"' cree");
-	    } catch (SQLException e){
-	    	System.out.println("idAdresseL '"+idAdresse+"' existant");
-	    }
+	public String toString_L() {
+		return "AdresseF [idAdresseL=" + idAdresse + ", rue=" + rue + ", codePostal=" + codePostal + ", ville=" + ville +"]";
 	}
-	
-	public void delete_F(Statement stmt) throws SQLException{
-	    String sql_delete = "DELETE FROM AdresseF " +
-	            "WHERE idAdresseF = "+idAdresse+"";
-	    try{
-	    stmt.executeUpdate(sql_delete);
-	    System.out.println("AdresseF '"+idAdresse+"' supprime");
-		} catch (SQLException e){
-	    	System.out.println("Table AdresseF non existant" +e);
-	    }
-	}
-	
-	public void delete_L(Statement stmt) throws SQLException{
-	    String sql_delete = "DELETE FROM AdresseL " +
-	            "WHERE idAdresseL = "+idAdresse+"";
-	    try{
-	    stmt.executeUpdate(sql_delete);
-	    System.out.println("AdresseL '"+idAdresse+"' supprime");
-		} catch (SQLException e){
-	    	System.out.println("Table AdresseL non existant");
-	    }
-	}
-	
-	public void affiche_F(Statement stmt) throws SQLException{
-		try{
-		String sql_aff = "SELECT * FROM AdresseF ";
-	    ResultSet rs = stmt.executeQuery(sql_aff);
-	    
-	    boolean a=rs.next();
-	    if (a==false){
-	    	System.out.println("La table AdresseF est vide"); 
-	    }
-	    while(a){
-	    	//Retrieve by column name
-		    int id  = rs.getInt("idAdresseF");
-		    String rue = rs.getString("rue");
-		    String codePostal = rs.getString("codePostal");
-		    String ville = rs.getString("ville");
-	        //Display values
-		    System.out.print("idAdresseF: " + id);
-		    System.out.print(", rue: " + rue);
-		    System.out.print(", codePostal: " + codePostal);
-		    System.out.println(", ville: " + ville);
-		    a=rs.next();
-	    }
-	    rs.close();
-		} catch (SQLException e){
-	    	System.out.println("Table AdresseF non existante");
-	    }
-	}
-	
-	public void affiche_L(Statement stmt) throws SQLException{
-		try{
-		String sql_aff = "SELECT idAdresseL, rue, codePostal, ville FROM AdresseL ";
-	    ResultSet rs = stmt.executeQuery(sql_aff);
-	    
-	    boolean a=rs.next();
-	    if (a==false){
-	    	System.out.println("La table AdresseL est vide"); 
-	    }
-	    while(a){
-	    	//Retrieve by column name
-		    int id  = rs.getInt("idAdresseL");
-		    String rue = rs.getString("rue");
-		    String codePostal = rs.getString("codePostal");
-	        String ville = rs.getString("ville");
-		    //Display values
-		    System.out.print("idAdresseL: " + id);
-		    System.out.print(", rue: " + rue);
-		    System.out.print(", codePostal: " + codePostal);
-		    System.out.println(", ville: " + ville);
-		    a=rs.next();
-	    }
-	    rs.close();
-		} catch (SQLException e){
-	    	System.out.println("Table AdresseL non existante");
-	    }
-	}
-	    
 }

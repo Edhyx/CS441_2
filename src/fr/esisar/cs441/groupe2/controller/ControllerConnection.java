@@ -16,21 +16,22 @@ public class ControllerConnection extends Controller{
 		
 		// on detecte si il s'agit d'une commande
 		if(changement.length() == 1) {
-			switch(changement) {
-				case "0" : view.displayEnd("");
-				break;
-				default : view.displayEnd("");
+			if(changement.charAt(0)=='9') {
+				view.displayEnd("");
+			}else {
+				view.displayConnection(new ArrayList<String>());
 			}
 		}else { // On test l'identification
-			System.out.println(changement);
+			
 			String id = changement.substring(0,changement.indexOf(" "));
-			System.out.println(id);
 			String password = changement.substring(changement.indexOf(" ")+1,changement.length());
-			System.out.println(password);
 			String clientPassword;
+			
 			if((clientPassword = model.getClientPassword(id)) != null) {
 				System.out.println(clientPassword);
 				if(password.equals(clientPassword)) {
+					model.setClient(id);
+					view.setModel(model);
 					view.displayMenu("");
 				}else {
 					ArrayList<String> retour = new ArrayList<String>();

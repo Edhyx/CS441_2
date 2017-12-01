@@ -10,17 +10,18 @@ public class Init {
 	 * @param args
 	 */
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://localhost/test?useSSL=false";
-		String login = "root";
-		String pass = "Pauline02";
+		String server = "tp-oracle.esisar.grenoble-inp.fr";
+		String driver = "oracle.jdbc.driver.OracleDriver";
+		String url = "jdbc:oracle:thin:@//"+server+"/xe";
+		String login = "malossep";
+		String pass ="malossep";
 			Class.forName(driver);	
 			Connection connexion = DriverManager.getConnection(url,login,pass);	
 			System.out.println("Connection OK!"); 
 			Statement stmt = connexion.createStatement();
 			
 /////////Creer table AdressF
-	    String sql_adresseF = "CREATE TABLE AdresseF " +
+	    String sql_adresseF = "CREATE TABLE AdresseF " + 
 	            "(idAdresseF INTEGER, " +
 	            " rue VARCHAR(255), " + 
 	            " codePostal VARCHAR(255), " + 

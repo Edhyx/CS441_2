@@ -32,9 +32,11 @@ public class Parcours {
 		tableClient.add(clientA);
 		tableClient.add(clientB);
 		
-		tableClient.getById();
+		System.out.println(tableClient.getById(clientA.getAdresseMail()));
+
+		tableClient.getById(clientA.getAdresseMail());
+
 		//System.out.println(tableClient.getById(clientA).toString());
-		
 		
 		tableClient.delete(clientA);
 		tableClient.delete(clientB);

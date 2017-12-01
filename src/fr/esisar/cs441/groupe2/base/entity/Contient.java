@@ -6,11 +6,6 @@ Contient.java
 
 package fr.esisar.cs441.groupe2.base.entity;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-
 /*
  * il faut gerer l'association
  */
@@ -20,14 +15,32 @@ public class Contient {
     private String titre;
     private String commentaire;
     private FichierImage fichierImages;
-    
-    public Contient(int numOrdre, String titre, String commentaire, FichierImage fichierImages){
+	private Album album;
+	   
+    public Contient(int numOrdre, String titre, String commentaire, FichierImage fichierImages, Album album){
 
     	this.numOrdre = numOrdre;
     	this.titre = titre;
     	this.commentaire = commentaire;
     	this.fichierImages = fichierImages;
+    	this.album = album;
     }
+	
+    public FichierImage getFichierImages() {
+		return fichierImages;
+	}
+
+	public void setFichierImages(FichierImage fichierImages) {
+		this.fichierImages = fichierImages;
+	}
+
+	public Album getAlbum() {
+		return album;
+	}
+
+	public void setAlbum(Album album) {
+		this.album = album;
+	}
     
 	public String getTitre() {
 		return titre;
@@ -48,54 +61,7 @@ public class Contient {
 		this.commentaire = commentaire;
 	}
 	
-	public void add(Statement stmt) throws SQLException{
-	    String sql_element = "INSERT INTO Contient " +
-	            "VALUES ("+numOrdre+", '"+titre+"', "+commentaire+", '"+fichierImages.getCheminAcces()+"')";
-	    try{
-	    stmt.executeUpdate(sql_element);
-	    System.out.println("Contient '"+ fichierImages.getCheminAcces() +"' cree");
-	    } catch (SQLException e){
-	    	System.out.println("Contient '"+numOrdre+"' existant");
-	    }
-	}
-	
-	public void delete(Statement stmt) throws SQLException{
-	    String sql_delete = "DELETE FROM Contient " +
-	            "WHERE cheminAcces = "+numOrdre+"";
-	    try{
-	    stmt.executeUpdate(sql_delete);
-	    System.out.println("Contient '"+numOrdre+"' supprime");
-		} catch (SQLException e){
-	    	System.out.println("Table Contient non existant");
-	    }
-	}
-	
-	public void affiche(Statement stmt) throws SQLException{
-		try{
-		String sql_aff = "SELECT idCommande, titre, commentaire, adresseMail FROM Contient ";
-	    ResultSet rs = stmt.executeQuery(sql_aff);
-	    
-	    boolean a=rs.next();
-	    if (a==false){
-	    	System.out.println("La table LigneCommande est vide"); 
-	    }
-	    while(a){
-	       //Retrieve by column name
-	       int id  = rs.getInt("idCommande");
-	       String date = rs.getString("date");
-	       int prixTotal = rs.getInt("prixTotal");
-	       String adresseMail = rs.getString("adresseMail");
-
-	       //Display values
-	       System.out.print("idCommande: " + id);
-	       System.out.print(", date: " + date);
-	       System.out.print(", prixTotal: " + prixTotal);
-	       System.out.println(", adresseMail: " + adresseMail);
-	       a=rs.next();
-	    }
-	    rs.close();
-		} catch (SQLException e){
-	    	System.out.println("Table Commande non existante");
-	    }
+	public String toString() {
+		return "Contient [numOrdre =" + numOrdre + ", titre=" + titre + ", commentaire=" + commentaire + ", ALbum=" + album.getIdAlbum() +", FichierImage=" + fichierImages.getCheminAcces() +"]";
 	}
 }
