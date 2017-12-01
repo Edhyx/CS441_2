@@ -68,7 +68,7 @@ public class BDD_Test {
 			tableFichierImage.affiche();
 			tableContient.affiche();*/
 						
-			//Cherche les élements avec leur id
+			//Cherche les elements avec leur id
 			Adresse a = tableAdresse.getById_F(30);
 			System.out.println(a.toString_F());
 			Client find= tableClient.getById("cc");
@@ -85,8 +85,7 @@ public class BDD_Test {
 			System.out.println(fi.toString());
 			Contient co = tableContient.getById(1, "chemin");
 			System.out.println(co.toString());
-			
-			
+					
 			ArrayList<Adresse> adressesF = tableAdresse.getAll_F();			
 			for (Adresse array : adressesF)
 				System.out.println(array.toString_F());

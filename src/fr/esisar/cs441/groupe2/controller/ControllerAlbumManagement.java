@@ -20,10 +20,12 @@ public class ControllerAlbumManagement extends Controller {
 		}else {
 			
 			// On test tout les codes
-			if(changement.substring(0,3).equals("NEW")) { // new Folder
+			if(changement.substring(0,3).equals("NEWW")) { // new Folder
 				if(this.newFolder( changement.substring( changement.indexOf(" "), changement.length()))) {
 					view.displayAlbumMenu("nouvelle album");
 				}
+			}else if(changement.substring(0,3).equals("PREA")) { // new Folder
+				view.displayAlbumMenu(model.getFolderList());
 			}
 			try {
 				

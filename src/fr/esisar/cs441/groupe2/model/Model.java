@@ -1,5 +1,6 @@
 package fr.esisar.cs441.groupe2.model;
 
+import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 import fr.esisar.cs441.groupe2.base.entity.Client;
@@ -43,4 +44,9 @@ public class Model {
 		return true;
 		
 	}
+	
+	public ArrayList<String> getFolderList() {
+		
+	}
+	
 }
