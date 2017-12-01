@@ -120,8 +120,6 @@ public class Client {
 	}	
 
 	public String toString() {
-		return "Client [adresseMail=" + adresseMail + ", nom=" + nom + ", prenom=" + prenom + ", password=" + password
-				+ ", adresseDeFacturation=" + adresseDeFacturation.getIdAdresse() + ", adresseDeLivraison=" + adresseDeLivraison.getIdAdresse()
-				+ ", fichierImages=" + fichierImages + ", commandes=" + commandes + ", albums=" + albums + "]";
+		return "Client [adresseMail=" + adresseMail + ", nom=" + nom + ", prenom=" + prenom + ", password=" + password+ "]";
 	}
 }
