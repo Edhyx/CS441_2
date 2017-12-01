@@ -27,7 +27,7 @@ public class Suppression {
 	    	System.out.println("Table " + rs1.getString("table_name"));
 	    	rs1.next();
 	    }
-
+/*
 	    //suppression LigneCommande
 	    String sql_delete_tabLc =  "DROP TABLE LigneCommande ";
 	    ResultSet rsLc = stmt.executeQuery(sql_delete_tabLc);
@@ -57,7 +57,7 @@ public class Suppression {
 	    String sql_delete_tabFi =  "DROP TABLE FichierImage ";
 	    ResultSet rsFi = stmt.executeQuery(sql_delete_tabFi);
 	    System.out.println("Table FichierImage supprimee");
-
+*/
 	    //suppression client
 	    String sql_delete_tabC =  "DROP TABLE Client ";
 	    ResultSet rsClient = stmt.executeQuery(sql_delete_tabC);

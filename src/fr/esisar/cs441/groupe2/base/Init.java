@@ -57,6 +57,7 @@ public class Init {
 /////////Creer table Commande
 			String sql_commande = "CREATE TABLE Commande " +
 		            "(idCommande INTEGER, " +
+		            " dates VARCHAR(255), " + 
 		            " prixTotal INTEGER, " + 
 		            " adresseMail VARCHAR(255), " +  
 		            " PRIMARY KEY ( idCommande ), " +
