@@ -312,8 +312,8 @@ public class View {
 			System.out.println(str);
 		}
 		
-		System.out.println("Commander un album : taper 1 [espace] chemin de l'album");
-		System.out.println("Suprimer commande :  taper 2 [espace] chemin de la commande");
+		System.out.println("Commander un album : taper 1 ");
+		System.out.println("Suprimer commande :  taper 2 ");
 		System.out.println("Quitter : tapez 9");
 		Scanner sc = new Scanner(System.in);
 		
