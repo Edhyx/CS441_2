@@ -138,5 +138,19 @@ public class Model {
 		}
 		return returns;
 	}
+	public boolean delFolder(int idAlbum) {
+		AlbumDAO tableAlbum = new AlbumDAO(stmt);
+		try {
+			Album album = tableAlbum.getById(idAlbum);
+			tableAlbum.delete(album);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return true;
+	}
+	
+	
 
 }
