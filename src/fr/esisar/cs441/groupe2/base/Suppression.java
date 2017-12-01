@@ -19,13 +19,13 @@ public class Suppression {
 		Class.forName(driver);
 		Connection connection = DriverManager.getConnection(url,login,pass);
 	    Statement stmt = connection.createStatement();
-	  
-	   
+/*
+	    ResultSet rs1=stmt.executeQuery("SHOW COLUMNS from Album ");
 	    //suppression LigneCommande
 	    String sql_delete_tabLc =  "DROP TABLE LigneCommande ";
 	    ResultSet rsLc = stmt.executeQuery(sql_delete_tabLc);
 	    System.out.println("Table LigneCommande supprimee");
-	    
+	
 	    //suppression Commande
 	    String sql_delete_tabCo =  "DROP TABLE Commande ";
 	    ResultSet rsCo = stmt.executeQuery(sql_delete_tabCo);
@@ -50,12 +50,12 @@ public class Suppression {
 	    String sql_delete_tabFi =  "DROP TABLE FichierImage ";
 	    ResultSet rsFi = stmt.executeQuery(sql_delete_tabFi);
 	    System.out.println("Table FichierImage supprimee");
-	   
+	  */
 	    //suppression client
 	    String sql_delete_tabC =  "DROP TABLE Client ";
-	    ResultSet rs = stmt.executeQuery(sql_delete_tabC);
+	    ResultSet rsClient = stmt.executeQuery(sql_delete_tabC);
 	    System.out.println("Table Client supprimee");
-	   
+	     
 	    //suppression adressF
 	    String sql_delete_tabAdF =  "DROP TABLE AdresseF ";
 	    ResultSet rsAF = stmt.executeQuery(sql_delete_tabAdF);
@@ -65,8 +65,6 @@ public class Suppression {
 	    String sql_delete_tabAdL =  "DROP TABLE AdresseL ";
 	    ResultSet rsAL = stmt.executeQuery(sql_delete_tabAdL);
 	    System.out.println("Table AdresseL supprimee");
-	      
-	    
 	}
 
 }
