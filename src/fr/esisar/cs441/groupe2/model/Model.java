@@ -185,6 +185,21 @@ public class Model {
 		}
 		return returns;
 	}
-	
+	//j'ai changé le type de fichierImage en Liste de fichierImage au lieux de contient 
+	public boolean addFileToFolder(int idAlbum, String idFile){
+		AlbumDAO tableAlbum = new AlbumDAO(stmt);
+		try {
+			Album album = tableAlbum.getById(idAlbum);
+			ArrayList<FichierImage> fichierImages = new ArrayList<FichierImage>();
+			FichierImageDAO tableFI = new FichierImageDAO(stmt);
+			FichierImage fichier = tableFI.getById(idFile);
+			fichierImages.add(fichier);
+			album.setFichierImages(fichierImages);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return true;
+	}
 
 }
