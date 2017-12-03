@@ -37,7 +37,15 @@ public class ControllerAlbumManagement extends Controller {
 				
 				view.displayAlbumADD(model.getFoldersFileList(changement.substring(changement.indexOf(" ")+1, changement.length())));
 				
-			}else if(changement.substring(0,3).equals("DEA")) { // new Folder
+			}else if(changement.substring(0,3).equals("DEA")) { // on supprime un album
+				
+				if(model.delAlbum(changement.substring(changement.indexOf(" ")+1,changement.length()))) {
+					view.displayAlbumManagement(model.getFolderList());	
+				}else {
+					
+					view.displayAlbumMenu("Probleme");
+				}
+			}else if(changement.substring(0,3).equals("ADF")) { // on ajoute une image à un album
 				
 				if(model.delAlbum(changement.substring(changement.indexOf(" ")+1,changement.length()))) {
 					view.displayAlbumManagement(model.getFolderList());	

@@ -294,13 +294,6 @@ public class View {
 			
 			control.notifyChangement(fichier);
 			
-		}else if(choix.charAt(0)=='2') { 
-			
-			fichier = "DELF";
-			
-			fichier = fichier + " " + choix.substring(choix.indexOf(" ")+1, choix.length());
-			
-			control.notifyChangement(fichier);
 		}else {
 			control.notifyChangement(choix);
 		}

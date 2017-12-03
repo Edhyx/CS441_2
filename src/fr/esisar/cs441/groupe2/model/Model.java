@@ -54,7 +54,7 @@ public class Model {
 		return returns;
 	}
 	
-	public boolean delAlbum(String id) {
+	public boolean delFolder(String id) {
 		
 		// A completer
 		return true;
@@ -69,6 +69,13 @@ public class Model {
 		
 		return returns;
 		
+	}
+
+	public boolean delAlbum(String id) {
+		
+		// a completer
+		
+		return true;
 	}
 	
 	
