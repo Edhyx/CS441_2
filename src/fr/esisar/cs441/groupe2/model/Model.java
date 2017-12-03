@@ -101,12 +101,15 @@ public class Model {
 		FichierImage fichierIm = new FichierImage(url, appareilPhoto, objectif, distance, sensibilte, ouverture,
 				vitesse, client);
 		FichierImageDAO tableFichierIm = new FichierImageDAO(stmt);
-		try {
-			tableFichierIm.add(fichierIm);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return true;
+		if (client==null) {return false;}
+		else{
+			try {
+				tableFichierIm.add(fichierIm);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return true;
+			}
 	}
 
 	public boolean addFolder(String idClient, String titre, String sousTitre) {
@@ -116,14 +119,16 @@ public class Model {
 		Client client = tableClient.getById(idClient);
 		Album album = new Album(id, titre, sousTitre, client);
 		AlbumDAO tableAlbum = new AlbumDAO(stmt);
-		try {
-			tableAlbum.add(album);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		if (client==null) {return false;}
+		else{
+			try {
+				tableAlbum.add(album);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 
-		return true;
-
+			return true;
+			}
 	}
 
 	public ArrayList<String> getFolderList() {
@@ -142,8 +147,10 @@ public class Model {
 		AlbumDAO tableAlbum = new AlbumDAO(stmt);
 		try {
 			Album album = tableAlbum.getById(idAlbum);
-			tableAlbum.delete(album);
-
+			if (album==null){return false;}
+			else{
+				tableAlbum.delete(album);
+				}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -151,6 +158,33 @@ public class Model {
 		return true;
 	}
 	
+	public boolean addOrder(String idClient, String date,int prixTotal){
+		Integer id = new Integer(ThreadLocalRandom.current().nextInt(0, 1000 + 1));
+		ClientDAO tableClient = new ClientDAO(stmt);
+		Client client = tableClient.getById(idClient);
+		Commande commande = new Commande(id,date,prixTotal,client);
+		CommandeDAO tableCommande = new CommandeDAO(stmt);
+		if (client==null) {return false;}
+		else{
+			try {
+				tableCommande.add(commande);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return true;
+			}
+	}
+	public ArrayList<String> getOrderList(){
+		ArrayList<String> returns = new ArrayList<String>();
+		ArrayList<Commande> commande = new ArrayList<Commande>();
+		CommandeDAO tableCommande = new CommandeDAO(stmt);
+		commande = tableCommande.getAll();
+
+		for (Commande co : commande) {
+			returns.add(commande.toString());
+		}
+		return returns;
+	}
 	
 
 }
