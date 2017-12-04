@@ -17,53 +17,7 @@ public class ControllerAlbumManagement extends Controller {
 	
 	public void notifyChangement(String changement) {
 		
-		if(changement.charAt(0) == '9') {
 
-			view.displayEnd("");
-		}else {
-			
-			// On test tout les codes
-			if(changement.substring(0,3).equals("NEW")) { // new Folder
-				
-				if(this.newFolder( changement.substring( changement.indexOf(" "), changement.length()))) {
-					view.displayAlbumMenu("nouvel album");
-				}else {
-					view.displayAlbumMenu("creation impossible");
-				}
-			}else if(changement.substring(0,3).equals("PRE")) { // new Folder
-				
-				view.displayAlbumManagement(model.getFolderList());
-			}
-			/*try {
-				
-				// detection du type de telechargement
-				int number = Integer.parseInt(changement.substring(0, changement.indexOf(" ")));
-				changement = changement.substring( changement.indexOf(" ")+1, changement.length());
-							
-				while(changement.length()>0 & i<6) {
-	
-					if(i<5) {
-						element[i] = changement.substring(0, changement.indexOf(" "));
-					}else {
-						element[i] = changement.substring(0, changement.length());
-					}
-					changement = changement.substring(changement.indexOf(" ")+1, changement.length());	
-					i++;
-				}
-	
-				if(i==6) {
-					for(int j=0; j<number; j++) {
-						while(!model.addFile(element[0], element[1], element[2], element[3], element[4], element[5]));
-					}		
-				}
-			}catch(StringIndexOutOfBoundsException e) {
-				view.displayAddPhoto("probleme saisie");
-			}catch (NumberFormatException e) {
-				view.displayAddPhoto("probleme nombre de photos");
-			}
-			
-			view.displayAddPhoto("renseignements enregistres");*/
-		}
 	}
 	
 	private boolean newFolder(String data) {
