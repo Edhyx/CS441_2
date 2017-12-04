@@ -1,11 +1,10 @@
 /*
-Projet CS441 - Mini projet de developpement d'une application de gestion de tirages
-photos numériques
-Equipe 2
-
-Gestion de l'affichage en ligne de commandes
-
-Auteur : Maxime FELICI
+ * Projet CS441 - Mini projet de developpement d'une application de gestion de tirages
+ * photos numériques
+ * Equipe 2
+ * 
+ * pattern MVC : View
+ * Gestion de l'affichage en ligne de commandes
  */
 
 package fr.esisar.cs441.groupe2.view;
