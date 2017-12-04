@@ -16,8 +16,7 @@ public class Commande {
     private Client client;
     ArrayList<LigneCommande> ligneCommandes;
 	
-    public Commande(int idCommande, String date, int prixTotal, Client client,
-			ArrayList<LigneCommande> ligneCommandes) {
+    public Commande(int idCommande, String date, int prixTotal, Client client) {
 		super();
 		this.idCommande = idCommande;
 		this.date = date;
@@ -25,13 +24,14 @@ public class Commande {
 		this.client = client;
 		this.ligneCommandes = ligneCommandes;
 	}
+    
 
-	public Commande(int idCommande, String date, int prixTotal, Client client) {
+	public Commande(int idCommande, String date, int prixTotal) {
 		super();
 		this.idCommande = idCommande;
 		this.date = date;
 		this.prixTotal = prixTotal;
-		this.client = client;
+		this.client = null;
 		this.ligneCommandes = new ArrayList<LigneCommande>();
 	}
 
@@ -76,6 +76,6 @@ public class Commande {
 	}
 	
 	public String toString() {
-		return "Commande [idCommande =" + idCommande + ", date=" + date + ", prixTotal=" + prixTotal + ", client=" + client.getAdresseMail() +"]";
+		return "Commande [idCommande =" + idCommande + ", date=" + date + ", prixTotal=" + prixTotal + "]";
 	}
 }

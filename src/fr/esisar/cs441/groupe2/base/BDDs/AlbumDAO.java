@@ -76,11 +76,13 @@ public class AlbumDAO {
 			       int id  = rs.getInt("idAlbum");
 			       String titre = rs.getString("titre");
 			       String sousTitre = rs.getString("sousTitre");
+			       /*
 			       String adresseMail = rs.getString("adresseMail");
 			       ClientDAO tableClient = new ClientDAO(stmt);
 				   Client client = tableClient.getById(adresseMail);
+				   */
 			    
-				   album.add(new Album(id,titre,sousTitre,client));
+				   album.add(new Album(id,titre,sousTitre));
 			}
 			rs.close();
 		} catch (SQLException e) {

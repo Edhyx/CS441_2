@@ -17,7 +17,15 @@ public class Contient {
     private FichierImage fichierImages;
 	private Album album;
 	   
-    public Contient(int numOrdre, String titre, String commentaire, FichierImage fichierImages, Album album){
+	public Contient(int numOrdre, String titre, String commentaire){
+
+    	this.numOrdre = numOrdre;
+    	this.titre = titre;
+    	this.commentaire = commentaire;
+    	this.fichierImages = null;
+    	this.album = null;
+    }
+	public Contient(int numOrdre, String titre, String commentaire, FichierImage fichierImages, Album album){
 
     	this.numOrdre = numOrdre;
     	this.titre = titre;
@@ -62,6 +70,6 @@ public class Contient {
 	}
 	
 	public String toString() {
-		return "Contient [numOrdre =" + numOrdre + ", titre=" + titre + ", commentaire=" + commentaire + ", ALbum=" + album.getIdAlbum() +", FichierImage=" + fichierImages.getCheminAcces() +"]";
+		return "Contient [numOrdre =" + numOrdre + ", titre=" + titre + ", commentaire=" + commentaire + "]";
 	}
 }

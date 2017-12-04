@@ -51,7 +51,7 @@ public class CommandeDAO {
 		    }
 		    else {
 		    	id  = rs.getInt("idCommande");
-			    String date = rs.getString("date");
+			    String date = rs.getString("dates");
 			    int prixTotal = rs.getInt("prixTotal");
 			    String adresseMail = rs.getString("adresseMail");
 			    ClientDAO tableClient = new ClientDAO(stmt);
@@ -74,13 +74,15 @@ public class CommandeDAO {
 	    	ResultSet rs = this.stmt.executeQuery(sql_aff);
 			while(rs.next()) {
 		    	int id  = rs.getInt("idCommande");
-			    String date = rs.getString("date");
+			    String date = rs.getString("dates");
 			    int prixTotal = rs.getInt("prixTotal");
+			    /*
 			    String adresseMail = rs.getString("adresseMail");
 			    ClientDAO tableClient = new ClientDAO(stmt);
 			    Client client = tableClient.getById(adresseMail);
+			    */
 			    
-				commande.add(new Commande(id,date,prixTotal,client));
+				commande.add(new Commande(id,date,prixTotal));
 			}
 			rs.close();
 		} catch (SQLException e) {
@@ -102,7 +104,7 @@ public class CommandeDAO {
 	    while(a){
 	       //Retrieve by column name
 	       int id  = rs.getInt("idCommande");
-	       String date = rs.getString("date");
+	       String date = rs.getString("dates");
 	       int prixTotal = rs.getInt("prixTotal");
 	       String adresseMail = rs.getString("adresseMail");
 	       //Display values

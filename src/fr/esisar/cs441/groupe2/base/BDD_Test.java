@@ -39,35 +39,37 @@ public class BDD_Test {
 			Client clientA = new Client("cc","Van Damme","Jean-Claude","DoubleImpact",AdresseA,AdresseB);
 			Client clientB = new Client("allo","nom","prenom","xxx",AdresseA,AdresseB);
 			Commande commandeA = new Commande(100,"today",50,clientA);
+			Commande commandeB = new Commande(50,"today",50,clientB);
 			Format formatA = new Format(10,50);
+			Format formatB = new Format(50,50);
 			Album albumA = new Album(1,"vacances","malte",clientA);
+			Album albumB = new Album(2,"vacances","malte",clientB);
 			LigneCommande lignecommandeA = new LigneCommande(20, commandeA, formatA, albumA);
+			LigneCommande lignecommandeB = new LigneCommande(200, commandeB, formatB, albumB);
 			FichierImage fichier = new FichierImage("chemin","canon","obj",20,20,20,20,clientA);
+			FichierImage fichierB = new FichierImage("ec","canon","obj",20,20,20,20,clientB);
 			Contient contient = new Contient(2,"valetta","beau",fichier,albumA);
+			Contient contientB = new Contient(2,"ec","beau",fichierB,albumB);
 			
 			//Ajout des elements
 			tableAdresse.add_F(AdresseA);
 			tableAdresse.add_F(AdresseB);
+			tableAdresse.add_L(AdresseA);
 			tableAdresse.add_L(AdresseB);
 			tableClient.add(clientA);
 			tableClient.add(clientB);
 			tableCommande.add(commandeA);
+			tableCommande.add(commandeB);
 			tableFormat.add(formatA);
+			tableFormat.add(formatB);
 			tableAlbum.add(albumA);
+			tableAlbum.add(albumB);
 			tableLigneCommande.add(lignecommandeA);
+			tableLigneCommande.add(lignecommandeB);
 			tableFichierImage.add(fichier);
+			tableFichierImage.add(fichierB);
 			tableContient.add(contient);
-			
-			/*//Affichage des elements
-			tableAdresse.affiche_F();
-			tableAdresse.affiche_L();
-			tableClient.affiche();
-			tableCommande.affiche();
-			tableFormat.affiche();
-			tableAlbum.affiche();
-			tableLigneCommande.affiche();
-			tableFichierImage.affiche();
-			tableContient.affiche();*/
+			tableContient.add(contientB);
 						
 			//Cherche les elements avec leur id
 			Adresse a = tableAdresse.getById_F(30);
@@ -88,15 +90,18 @@ public class BDD_Test {
 			System.out.println(co.toString());
 					
 			ArrayList<Adresse> adressesF = tableAdresse.getAll_F();			
-			for (Adresse array : adressesF)
+			for (Adresse array : adressesF) {
 				System.out.println(array.toString_F());
+			}
+			
 			ArrayList<Adresse> adressesL = tableAdresse.getAll_L();			
 			for (Adresse array : adressesL)
 				System.out.println(array.toString_L());
 			
 			ArrayList<Client> client = tableClient.getAll();			
-			for (Client array : client)
+			for (Client array : client){
 				System.out.println(array.toString());
+			}
 			
 			ArrayList<Commande> commande = tableCommande.getAll();			
 			for (Commande array : commande)
@@ -109,6 +114,7 @@ public class BDD_Test {
 			ArrayList<Album> album = tableAlbum.getAll();			
 			for (Album array : album)
 				System.out.println(array.toString());
+			
 			ArrayList<LigneCommande> lc = tableLigneCommande.getAll();			
 			for (LigneCommande array : lc)
 				System.out.println(array.toString());
@@ -121,17 +127,24 @@ public class BDD_Test {
 			for (Contient array : con)
 				System.out.println(array.toString());
 			
-			//Supprime les éléments
+			//Supprime les ï¿½lï¿½ments
 			tableLigneCommande.delete(lignecommandeA);
+			tableLigneCommande.delete(lignecommandeB);
 			tableCommande.delete(commandeA);
+			tableCommande.delete(commandeB);
 			tableFormat.delete(formatA);
+			tableFormat.delete(formatB);
 			tableContient.delete(contient);
+			tableContient.delete(contientB);
 			tableAlbum.delete(albumA);
+			tableAlbum.delete(albumB);
 			tableFichierImage.delete(fichier);
+			tableFichierImage.delete(fichierB);
 			tableClient.delete(clientA);
 			tableClient.delete(clientB);
 			tableAdresse.delete_F(AdresseA);
 			tableAdresse.delete_F(AdresseB);
+			tableAdresse.delete_L(AdresseA);
 			tableAdresse.delete_L(AdresseB);
 		}
 		catch (Exception e) {

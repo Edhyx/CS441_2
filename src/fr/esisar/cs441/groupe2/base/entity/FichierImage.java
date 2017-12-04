@@ -18,6 +18,18 @@ public class FichierImage {
     private Client client;
 	
     public FichierImage(String cheminAcces, String appareilPhoto, String objectif, int distanceFocale,
+			int sensibiliteISO, int ouverture, int vitesseObturation) {
+		super();
+		this.cheminAcces = cheminAcces;
+		this.appareilPhoto = appareilPhoto;
+		this.objectif = objectif;
+		this.distanceFocale = distanceFocale;
+		this.sensibiliteISO = sensibiliteISO;
+		this.ouverture = ouverture;
+		this.vitesseObturation = vitesseObturation;
+		this.client = null;
+	}
+    public FichierImage(String cheminAcces, String appareilPhoto, String objectif, int distanceFocale,
 			int sensibiliteISO, int ouverture, int vitesseObturation, Client client) {
 		super();
 		this.cheminAcces = cheminAcces;
@@ -82,7 +94,7 @@ public class FichierImage {
 	public String toString() {
 		return "FichierImage [cheminAcces =" + cheminAcces + ", appareilPhoto=" + appareilPhoto +
 				", objectif=" + objectif + ", distanceFocale=" + distanceFocale +", sensibiliteISO=" +sensibiliteISO +
-				", ouverture=" + ouverture + ", vitesseObturation=" + vitesseObturation +", client=" + client.getAdresseMail() +"]";
+				", ouverture=" + ouverture + ", vitesseObturation=" + vitesseObturation +"]";
 	}
 	
 }
