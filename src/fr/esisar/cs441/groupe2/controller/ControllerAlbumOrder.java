@@ -18,11 +18,9 @@ public class ControllerAlbumOrder extends Controller{
 			
 			// On test tous les codes
 			if(changement.substring(0,3).equals("NEW")) { // new Folder
-				if(this.newOrder( changement.substring( changement.indexOf(" "), changement.length()))) {
-					view.displayOrderMenu("nouvelle commande");
-				}	
+				view.displayOrderADD(model.getFolderList());	
 			}		
-			view.displayAddPhoto("renseignements enregistres");
+			view.displayAddOrder("renseignements enregistres");
 		}/**********************************************************/
 	}
 	

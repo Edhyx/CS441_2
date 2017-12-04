@@ -17,7 +17,43 @@ public class ControllerAlbumManagement extends Controller {
 	
 	public void notifyChangement(String changement) {
 		
-
+		if(changement.charAt(0)=='9') {
+			view.displayEnd("");
+		}else {
+			
+			// On test tout les codes
+			if(changement.substring(0,3).equals("NEW")) { // new Folder
+				
+				if(this.newFolder( changement.substring( changement.indexOf(" ")+1, changement.length()))) {
+					view.displayAlbumMenu("nouvel album");
+				}else {
+					view.displayAlbumMenu("creation impossible");
+				}
+			}else if(changement.substring(0,3).equals("PRE")) { // new Folder
+				
+				view.displayAlbumManagement(model.getFolderList());
+			}else if(changement.substring(0,3).equals("ADA")) { // affichage liste d'ajout
+				
+				view.displayAlbumADD(model.getFoldersFileList(changement.substring(changement.indexOf(" ")+1, changement.length())));
+				
+			}else if(changement.substring(0,3).equals("DEA")) { // on supprime un album
+				
+				if(model.delAlbum(changement.substring(changement.indexOf(" ")+1,changement.length()))) {
+					view.displayAlbumManagement(model.getFolderList());	
+				}else {
+					
+					view.displayAlbumMenu("Probleme");
+				}
+			}else if(changement.substring(0,3).equals("ADF")) { // on ajoute une image à un album
+				
+				if(model.delAlbum(changement.substring(changement.indexOf(" ")+1,changement.length()))) {
+					view.displayAlbumManagement(model.getFolderList());	
+				}else {
+					
+					view.displayAlbumMenu("Probleme");
+				}
+			}
+		}
 	}
 	
 	private boolean newFolder(String data) {

@@ -185,6 +185,7 @@ public class Model {
 		}
 		return returns;
 	}
+	
 	//j'ai changé le type de fichierImage en Liste de fichierImage au lieux de contient 
 	public boolean addFileToFolder(int idAlbum, String idFile){
 		AlbumDAO tableAlbum = new AlbumDAO(stmt);
