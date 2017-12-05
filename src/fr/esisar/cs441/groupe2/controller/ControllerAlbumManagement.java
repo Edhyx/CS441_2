@@ -44,7 +44,7 @@ public class ControllerAlbumManagement extends Controller {
 					
 					view.displayAlbumMenu("Probleme");
 				}
-			}else if(changement.substring(0,3).equals("ADF")) { // on ajoute une image à un album
+			}else if(changement.substring(0,3).equals("ADF")) { // on ajoute une image ï¿½ un album
 				
 				if(model.delAlbum(changement.substring(changement.indexOf(" ")+1,changement.length()))) {
 					view.displayAlbumManagement(model.getFolderList());	

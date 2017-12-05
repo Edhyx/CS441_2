@@ -17,31 +17,41 @@ public class ControllerAlbumOrder extends Controller{
 		}else {
 			
 			// On test tous les codes
-			if(changement.substring(0,3).equals("NEW")) { // new Folder
-				view.displayOrderADD(model.getFolderList());	
-			}		
-			view.displayAddOrder("renseignements enregistres");
+			if(changement.substring(0,3).equals("NEW")) { // new order
+				view.displayOrderADD(model.getFolderList());
+				
+			} else if(changement.substring(0,3).equals("ADC")) { // ajout nouvelle commande
+				changement = "12/12/17 "+"30€ "+changement; //ajout des infos commande "random"
+				if(newOrder(changement)){
+					view.displayOrderMenu("");
+				} else {
+					view.displayAddOrder("problème ajout nouvelle commande");
+				}
+			} else if(changement.substring(0,3).equals("SHC")) { // affichage liste commandes
+				view.displayOrderADD(model.getOrderList());
+			}
 		}/**********************************************************/
 	}
 	
 	private boolean newOrder(String data) {
 		try {
 
-			String[] element = new String[2];
+			String[] element = new String[3];
 			int i = 0;
 
-			while (data.length() > 0 & i < 2) {
+			while (i < 3) {
 
-				if (i < 1) {
-					element[i] = data.substring(0, data.indexOf(" "));
+				if (i == 0) {
+					element[i] = data.substring(0, 7);
+				}else if (i == 1) {
+					element[i] = data.substring(9, data.indexOf("€"));
 				} else {
-					element[i] = data.substring(0, data.length());
+						element[i] = data.substring(data.indexOf("€")+6, data.length());
 				}
-				data = data.substring(data.indexOf(" ") + 1, data.length());
 				i++;
 			}
 
-			return model.addFolder(element[0], element[1]);
+			return model.addOrder(element[0], element[1], element[2]);
 		} catch (StringIndexOutOfBoundsException e) {
 			view.displayAddOrder("probleme saisie");
 			return false;
