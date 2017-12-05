@@ -1,5 +1,7 @@
 package fr.esisar.cs441.groupe2.controller;
 
+import java.util.ArrayList;
+
 import fr.esisar.cs441.groupe2.model.Model;
 import fr.esisar.cs441.groupe2.view.View;
 
@@ -13,49 +15,44 @@ public class ControllerAlbumManagement extends Controller {
 		this.model = model;
 	}
 	
-	public void notifChangement(String changement) {
+	public void notifyChangement(String changement) {
 		
-		if(changement.charAt(0) == '9') {
+		if(changement.charAt(0)=='9') {
 			view.displayEnd("");
 		}else {
 			
 			// On test tout les codes
-			if(changement.substring(0,3).equals("NEWW")) { // new Folder
-				if(this.newFolder( changement.substring( changement.indexOf(" "), changement.length()))) {
-					view.displayAlbumMenu("nouvelle album");
-				}
-			}else if(changement.substring(0,3).equals("PREA")) { // new Folder
-				view.displayAlbumMenu(model.getFolderList());
-			}
-			try {
+			if(changement.substring(0,3).equals("NEW")) { // new Folder
 				
-				// detection du type de telechargement
-				int number = Integer.parseInt(changement.substring(0, changement.indexOf(" ")));
-				changement = changement.substring( changement.indexOf(" ")+1, changement.length());
-							
-				while(changement.length()>0 & i<6) {
-	
-					if(i<5) {
-						element[i] = changement.substring(0, changement.indexOf(" "));
-					}else {
-						element[i] = changement.substring(0, changement.length());
-					}
-					changement = changement.substring(changement.indexOf(" ")+1, changement.length());	
-					i++;
+				if(this.newFolder( changement.substring( changement.indexOf(" ")+1, changement.length()))) {
+					view.displayAlbumMenu("nouvel album");
+				}else {
+					view.displayAlbumMenu("creation impossible");
 				}
-	
-				if(i==6) {
-					for(int j=0; j<number; j++) {
-						while(!model.addFile(element[0], element[1], element[2], element[3], element[4], element[5]));
-					}		
+			}else if(changement.substring(0,3).equals("PRE")) { // new Folder
+				
+				view.displayAlbumManagement(model.getFolderList());
+			}else if(changement.substring(0,3).equals("ADA")) { // affichage liste d'ajout
+				
+				view.displayAlbumADD(model.getFoldersFileList(changement.substring(changement.indexOf(" ")+1, changement.length())));
+				
+			}else if(changement.substring(0,3).equals("DEA")) { // on supprime un album
+				
+				if(model.delAlbum(changement.substring(changement.indexOf(" ")+1,changement.length()))) {
+					view.displayAlbumManagement(model.getFolderList());	
+				}else {
+					
+					view.displayAlbumMenu("Probleme");
 				}
-			}catch(StringIndexOutOfBoundsException e) {
-				view.displayAddPhoto("probleme saisie");
-			}catch (NumberFormatException e) {
-				view.displayAddPhoto("probleme nombre de photos");
+			}else if(changement.substring(0,3).equals("ADF")) { // on ajoute une image à un album
+				
+				if(model.delAlbum(changement.substring(changement.indexOf(" ")+1,changement.length()))) {
+					view.displayAlbumManagement(model.getFolderList());	
+				}else {
+					
+					view.displayAlbumMenu("Probleme");
+				}
 			}
-			
-			view.displayAddPhoto("renseignements enregistres");
 		}
 	}
 	
@@ -75,7 +72,7 @@ public class ControllerAlbumManagement extends Controller {
 				data = data.substring(data.indexOf(" ")+1, data.length());	
 				i++;
 			}
-
+			
 			return model.addFolder(element[0], element[1]);		
 		}catch(StringIndexOutOfBoundsException e) {
 			view.displayAddPhoto("probleme saisie");

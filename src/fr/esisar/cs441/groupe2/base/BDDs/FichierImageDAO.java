@@ -85,11 +85,13 @@ public class FichierImageDAO {
 			    int sensibiliteISO = rs.getInt("sensibiliteISO");
 			    int ouverture = rs.getInt("ouverture");
 			    int vitesseObturation = rs.getInt("vitesseObturation");
+			    /*
 			    String adresseMail = rs.getString("adresseMail");
 			    ClientDAO tableClient = new ClientDAO(stmt);
 			    Client client = tableClient.getById(adresseMail);
+			    */
 			    
-				f.add(new FichierImage(id,appareilPhoto,objectif,distanceFocale,sensibiliteISO,ouverture,vitesseObturation,client));
+				f.add(new FichierImage(id,appareilPhoto,objectif,distanceFocale,sensibiliteISO,ouverture,vitesseObturation));
 			}
 			rs.close();
 		} catch (SQLException e) {

@@ -17,12 +17,10 @@ public class ControllerAlbumOrder extends Controller{
 		}else {
 			
 			// On test tous les codes
-			if(changement.substring(0,3).equals("NEWW")) { // new Folder
-				if(this.newOrder( changement.substring( changement.indexOf(" "), changement.length()))) {
-					view.displayAlbumMenu("nouvelle commande");
-				}	
+			if(changement.substring(0,3).equals("NEW")) { // new Folder
+				view.displayOrderADD(model.getFolderList());	
 			}		
-			view.displayAddPhoto("renseignements enregistres");
+			view.displayAddOrder("renseignements enregistres");
 		}/**********************************************************/
 	}
 	
@@ -45,7 +43,7 @@ public class ControllerAlbumOrder extends Controller{
 
 			return model.addFolder(element[0], element[1]);
 		} catch (StringIndexOutOfBoundsException e) {
-			view.displayAddPhoto("probleme saisie");
+			view.displayAddOrder("probleme saisie");
 			return false;
 		}
 	}

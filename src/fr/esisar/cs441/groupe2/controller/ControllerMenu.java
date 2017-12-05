@@ -19,7 +19,7 @@ public class ControllerMenu extends Controller{
 		}else if(changement.charAt(0)=='2') {
 			view.displayAlbumMenu("");
 		}else if(changement.charAt(0)=='3') {
-			view.displayAlbumOrder(null);
+			view.displayOrderMenu("");
 		}else if(changement.charAt(0)=='4') {
 			view.displayOrderList(null);
 		}else if(changement.charAt(0)=='9') {

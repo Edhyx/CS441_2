@@ -86,13 +86,14 @@ public class ClientDAO {
 				String nom = rs.getString("nom");
 				String prenom = rs.getString("prenom");
 				String password = rs.getString("password");
+				/*
 			    int idAdresseF = rs.getInt("idAdresseF");
 			    int idAdresseL = rs.getInt("idAdresseL");
 			    AdresseDAO tableAdresse = new AdresseDAO(stmt);
 			    Adresse adF = tableAdresse.getById_F(idAdresseF);
 			    Adresse adL = tableAdresse.getById_L(idAdresseL);
-			    
-			    client.add(new Client(adresseMail, nom, prenom, password,adF,adL));	       
+			    */
+			    client.add(new Client(adresseMail, nom, prenom, password));	       
 			}
 			rs.close();
 		} catch (SQLException e) {

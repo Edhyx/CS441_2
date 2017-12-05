@@ -82,6 +82,6 @@ public class Adresse {
 	}
 	
 	public String toString_L() {
-		return "AdresseF [idAdresseL=" + idAdresse + ", rue=" + rue + ", codePostal=" + codePostal + ", ville=" + ville +"]";
+		return "AdresseL [idAdresseL=" + idAdresse + ", rue=" + rue + ", codePostal=" + codePostal + ", ville=" + ville +"]";
 	}
 }

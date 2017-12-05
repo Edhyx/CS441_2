@@ -82,13 +82,15 @@ public class ContientDAO {
 				int numOrdre  = rs.getInt("numOrdre");
 			    String titre = rs.getString("titre");
 			    String commentaire = rs.getString("commentaire");
+			    /*
 			    String cheminAcces = rs.getString("cheminAcces");
 			    int idAlbum = rs.getInt("idAlbum");
 			    FichierImageDAO tableFichierImage = new FichierImageDAO(stmt);
 			    FichierImage f = tableFichierImage.getById(cheminAcces);
 			    AlbumDAO tableAlbum = new AlbumDAO(stmt);
 			    Album album = tableAlbum.getById(idAlbum);
-			    contient.add(new Contient(numOrdre,titre,commentaire,f,album));
+			    */
+			    contient.add(new Contient(numOrdre,titre,commentaire));
 			}
 			rs.close();
 		} catch (SQLException e) {

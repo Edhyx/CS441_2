@@ -1,11 +1,10 @@
 /*
-Projet CS441 - Mini projet de developpement d'une application de gestion de tirages
-photos numériques
-Equipe 2
-
-Gestion de l'affichage en ligne de commandes
-
-Auteur : Maxime FELICI
+ * Projet CS441 - Mini projet de developpement d'une application de gestion de tirages
+ * photos numériques
+ * Equipe 2
+ * 
+ * pattern MVC : View
+ * Gestion de l'affichage en ligne de commandes
  */
 
 package fr.esisar.cs441.groupe2.view;
@@ -110,7 +109,7 @@ public class View {
 		System.out.println("--- --- MENU --- ---");
 		System.out.println("Ajouter des photos : tapez 1");
 		System.out.println("Gérer les albums photo : tapez 2");
-		System.out.println("Commander des albums : tapez 3");
+		System.out.println("Gérer les commandes : tapez 3");
 		System.out.println("Lister les commandes en cours : tapez 4");
 		System.out.println("Quitter : tapez 9");
 		Scanner sc = new Scanner(System.in);
@@ -204,7 +203,7 @@ public class View {
 		
 		if(choix.charAt(0)=='1') {
 			
-			fichier = "NEWW";
+			fichier = "NEW";
 			
 			System.out.println("Il vous faut renseigner les informations suivantes :");
 			System.out.print("Titre de l'album : ");
@@ -216,7 +215,7 @@ public class View {
 			
 		}else if(choix.charAt(0)=='2') {
 			
-			control.notifyChangement("PREA");
+			control.notifyChangement("PRE");
 			
 		}else {
 			control.notifyChangement(choix);
@@ -228,9 +227,11 @@ public class View {
 		control = new ControllerAlbumManagement(this, model);
 		
 		System.out.println("--- --- GESTION DES ALBUMS --- ---");
+		System.out.println("liste des albums :");
 		if(!str.isEmpty()){
-			System.out.println("liste des Albums");
-			System.out.println(str);
+			for(String line : str) {
+				System.out.println("+ " + line);
+			}
 		}
 		
 		System.out.println("Ajouter des photos a un album : taper 1 [espace] chemin de l'album");
@@ -244,17 +245,17 @@ public class View {
 		
 		if(choix.charAt(0)=='1') {
 			
-			fichier = "ADDA";
+			fichier = "ADA";
 			
-			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
+			fichier = fichier + " " + choix.substring(choix.indexOf(" ")+1, choix.length());
 			
 			control.notifyChangement(fichier);
 			
 		}else if(choix.charAt(0)=='2') { 
 			
-			fichier = "DELA";
+			fichier = "DEA";
 			
-			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
+			fichier = fichier + " " +choix.substring(choix.indexOf(" ")+1, choix.length());
 			
 			control.notifyChangement(fichier);
 		}else {
@@ -267,13 +268,16 @@ public class View {
 		control = new ControllerAlbumManagement(this, model);
 		
 		System.out.println("--- --- GESTION DES ALBUMS --- ---");
+		System.out.println("liste des Images sans albums");
+		
 		if(!str.isEmpty()){
-			System.out.println("liste des Albums");
-			System.out.println(str);
+			
+			for(String line : str) {
+				System.out.println("+ " + line);
+			}
 		}
 		
 		System.out.println("Ajouter des photos a l'album : taper 1 [espace] id de la photo");
-		System.out.println("Suprimer des photos a l'album :  taper 2 [espace] id de la photo");
 		System.out.println("Quitter : tapez 9");
 		Scanner sc = new Scanner(System.in);
 		
@@ -283,25 +287,18 @@ public class View {
 		
 		if(choix.charAt(0)=='1') {
 			
-			fichier = "ADDF";
+			fichier = "ADF";
 			
-			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
-			
-			control.notifyChangement(fichier);
-			
-		}else if(choix.charAt(0)=='2') { 
-			
-			fichier = "DELF";
-			
-			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
+			fichier = fichier + " " + choix.substring(choix.indexOf(" ")+1, choix.length());
 			
 			control.notifyChangement(fichier);
+			
 		}else {
 			control.notifyChangement(choix);
 		}
 	}
 	
-	public void displayAlbumOrder(ArrayList<String> str){
+	public void displayAlbumOrder(String str){
 		control = new ControllerAlbumManagement(this, model);
 		
 		System.out.println("--- --- GESTION DES COMMANDES --- ---");
@@ -310,44 +307,8 @@ public class View {
 			System.out.println(str);
 		}
 		
-		System.out.println("Commander un album : taper 1 [espace] chemin de l'album");
-		System.out.println("Suprimer commande :  taper 2 [espace] chemin de la commande");
-		System.out.println("Quitter : tapez 9");
-		Scanner sc = new Scanner(System.in);
-		
-		String choix = sc.nextLine();
-		
-		String fichier;
-		
-		if(choix.charAt(0)=='1') {
-			
-			fichier = "ADDC";
-			
-			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
-			
-			control.notifyChangement(fichier);
-			
-		}else if(choix.charAt(0)=='2') { //à modif
-			
-			fichier = "DELC";
-			
-			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
-			
-			control.notifyChangement(fichier);
-		}else {
-			control.notifyChangement(choix);
-		}
-	}
-	
-	public void displayOrderADD(ArrayList<String> str){
-		
-		control = new ControllerAlbumManagement(this, model);
-		
-		System.out.println("--- --- GESTION DES COMMANDES --- ---");
-		if(!str.isEmpty()){
-			System.out.println("liste des Commandes");
-			System.out.println(str);
-		}
+		System.out.println("Commander un album : taper 1 ");
+		System.out.println("Suprimer commande :  taper 2 ");
 		System.out.println("Quitter : tapez 9");
 		Scanner sc = new Scanner(System.in);
 		
@@ -363,7 +324,7 @@ public class View {
 			
 			control.notifyChangement(fichier);
 			
-		}else if(choix.charAt(0)=='2') { 
+		}else if(choix.charAt(0)=='2') { //à modif
 			
 			fichier = "DLC";
 			
@@ -375,15 +336,54 @@ public class View {
 		}
 	}
 	
+	public void displayOrderADD(ArrayList<String> str){
+		
+		control = new ControllerAlbumOrder(this, model);
+		
+		System.out.println("--- --- GESTION DES ALBUMS --- ---");
+		System.out.println("liste des albums :");
+		if(!str.isEmpty()){
+			for(String line : str) {
+				System.out.println("+ " + line);
+			}
+		}
+		
+		System.out.println("choisir l'album à commander: taper 1 [espace] id de l'album");
+		Scanner sc = new Scanner(System.in);
+		
+		String choix = sc.nextLine();
+		
+		String fichier;
+		
+		/*if(choix.charAt(0)=='1') {
+			
+			fichier = "ADA";
+			
+			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
+			
+			control.notifyChangement(fichier);
+			
+		}else if(choix.charAt(0)=='2') { 
+			
+			fichier = "DEA";
+			
+			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
+			
+			control.notifyChangement(fichier);
+		}else {
+			control.notifyChangement(choix);
+		}*/
+	}
+	
 	public void displayOrderMenu(String str){
-		control = new ControllerAlbumManagement(this, model);
+		control = new ControllerAlbumOrder(this, model);
 		
 		if(!str.isEmpty()){
 			System.out.println("["+str+"]");
 		
 		}
-		System.out.println("--- --- GESTION DES ALBUMS --- ---");
-		System.out.println("Nouvel album : taper 1");
+		System.out.println("--- --- GESTION DES COMMANDES --- ---");
+		System.out.println("Nouvele Commande : taper 1");
 		System.out.println("Consulter albums : taper 2");
 		System.out.println("Quitter : tapez 9");
 		Scanner sc = new Scanner(System.in);
@@ -395,13 +395,6 @@ public class View {
 		if(choix.charAt(0)=='1') {
 			
 			fichier = "NEW";
-			
-			System.out.println("Il vous faut renseigner les informations suivantes :");
-			System.out.print("Titre de l'album : ");
-			fichier = fichier + " " + sc.nextLine();
-			System.out.print("Le sous-titre de l'album : ");
-			fichier = fichier + " " + sc.nextLine();
-			
 			control.notifyChangement(fichier);
 			
 		}else if(choix.charAt(0)=='2') {
@@ -411,6 +404,10 @@ public class View {
 		}else {
 			control.notifyChangement(choix);
 		}
+	}
+	
+	public void displayAddOrder(String str){
+		System.out.println(" something... ");
 	}
 
 	public void displayOrderList(ArrayList<String> str){

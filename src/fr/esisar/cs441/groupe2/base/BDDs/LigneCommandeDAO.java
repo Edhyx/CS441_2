@@ -85,6 +85,7 @@ public ArrayList<LigneCommande> getAll() {
 			
 		    	int idCommande  = rs.getInt("idCommande");
 		    	int quantite = rs.getInt("quantite");
+		    	/*
 				int idFormat = rs.getInt("idFormat");
 				int idAlbum = rs.getInt("idAlbum");
 				CommandeDAO tableCommande = new CommandeDAO(stmt);
@@ -93,8 +94,9 @@ public ArrayList<LigneCommande> getAll() {
 				Format frm = tableFormat.getById(idFormat);
 				AlbumDAO tableAlbum = new AlbumDAO(stmt);
 				Album alb = tableAlbum.getById(idAlbum);
+				*/
 				
-			    adF.add(new LigneCommande(quantite,cmd,frm,alb));	       
+			    adF.add(new LigneCommande(quantite));	       
 			}
 			rs.close();
 		} catch (SQLException e) {
