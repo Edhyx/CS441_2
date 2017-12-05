@@ -12,11 +12,11 @@ import fr.esisar.cs441.groupe2.base.entity.*;
 public class BDD_Test {
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		String server = "tp-oracle.esisar.grenoble-inp.fr";
-		String driver = "oracle.jdbc.driver.OracleDriver";
-		String url = "jdbc:oracle:thin:@//"+server+"/xe";
-		String login = "malossep";
-		String pass ="malossep";
+		String driver = "com.mysql.jdbc.Driver";
+		String url = "jdbc:mysql://localhost/test";
+		String login = "root";
+		String pass = "Pauline02";
+
 		try{
 			Class.forName(driver);
 			Connection connexion = DriverManager.getConnection(url,login,pass);
