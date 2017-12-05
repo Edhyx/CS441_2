@@ -34,11 +34,11 @@ public class ControllerAlbumManagement extends Controller {
 				view.displayAlbumManagement(model.getFolderList());
 			}else if(changement.substring(0,3).equals("ADA")) { // affichage liste d'ajout
 				
-				view.displayAlbumADD(model.getFoldersFileList(changement.substring(changement.indexOf(" ")+1, changement.length())));
+				//view.displayAlbumADD(model.getFoldersFileList(changement.substring(changement.indexOf(" ")+1, changement.length())));
 				
 			}else if(changement.substring(0,3).equals("DEA")) { // on supprime un album
 				
-				if(model.delAlbum(changement.substring(changement.indexOf(" ")+1,changement.length()))) {
+				if(model.delFolder(Integer.parseInt(changement.substring(changement.indexOf(" ")+1,changement.length())))) {
 					view.displayAlbumManagement(model.getFolderList());	
 				}else {
 					
@@ -46,12 +46,6 @@ public class ControllerAlbumManagement extends Controller {
 				}
 			}else if(changement.substring(0,3).equals("ADF")) { // on ajoute une image � un album
 				
-				if(model.delAlbum(changement.substring(changement.indexOf(" ")+1,changement.length()))) {
-					view.displayAlbumManagement(model.getFolderList());	
-				}else {
-					
-					view.displayAlbumMenu("Probleme");
-				}
 			}
 		}
 	}

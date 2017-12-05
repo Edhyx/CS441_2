@@ -115,7 +115,7 @@ public class Model {
 		}
 	}
 
-	public boolean addFolder(String idClient, String titre, String sousTitre) {
+	public boolean addFolder( String titre, String sousTitre) {
 
 		Integer id = new Integer(ThreadLocalRandom.current().nextInt(0, 1000 + 1));
 		ClientDAO tableClient = new ClientDAO(stmt);
@@ -124,14 +124,12 @@ public class Model {
 		AlbumDAO tableAlbum = new AlbumDAO(stmt);
 		if (client==null) {return false;}
 		else{
-			try {
-				tableAlbum.add(album);
-			} catch (SQLException e) {
-				e.printStackTrace();
+			if(tableAlbum.add(album)) {
+				return true;
 			}
-
-			return true;
-			}
+		}
+		
+		return false;
 	}
 
 	public ArrayList<String> getFolderList() {

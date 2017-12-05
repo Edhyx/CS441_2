@@ -16,14 +16,14 @@ public class AlbumDAO {
 		this.stmt = stmt;
 	}
 	
-	public void add(Album album) throws SQLException{
+	public boolean add(Album album) {
 	    String sql_element = "INSERT INTO Album " +
 	            "VALUES ("+album.getIdAlbum()+", '"+album.getTitre()+"', '"+album.getSousTitre()+"', '"+album.getCreeParClient().getAdresseMail()+"')";
 	    try{
-	    stmt.executeUpdate(sql_element);
-	    System.out.println("Album '"+album.getIdAlbum()+"' cree");
+	    	stmt.executeUpdate(sql_element);
+	    	return true;
 	    } catch (SQLException e){
-	    	System.out.println("idAlbum '"+album.getIdAlbum()+"' existant");
+	    	return false;
 	    }
 	}
 	
