@@ -29,12 +29,13 @@ public class ControllerAlbumManagement extends Controller {
 				}else {
 					view.displayAlbumMenu("creation impossible");
 				}
-			}else if(changement.substring(0,3).equals("PRE")) { // new Folder
+			}else if(changement.substring(0,3).equals("PRE")) { // consulter les albums
 				
 				view.displayAlbumManagement(model.getFolderList());
+			
 			}else if(changement.substring(0,3).equals("ADA")) { // affichage liste d'ajout
 				
-				//view.displayAlbumADD(model.getFoldersFileList(changement.substring(changement.indexOf(" ")+1, changement.length())));
+				view.displayAlbumADD(model.getFoldersFileList(changement.substring(changement.indexOf(" ")+1, changement.length())));
 				
 			}else if(changement.substring(0,3).equals("DEA")) { // on supprime un album
 				

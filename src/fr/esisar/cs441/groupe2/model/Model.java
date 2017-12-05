@@ -135,15 +135,22 @@ public class Model {
 	public ArrayList<String> getFolderList() {
 
 		ArrayList<String> returns = new ArrayList<String>();
+		
 		ArrayList<Album> album = new ArrayList<Album>();
 		AlbumDAO tableAlbum = new AlbumDAO(stmt);
 		album = tableAlbum.getAll();
 
 		for (Album al : album) {
-			returns.add(album.toString());
+			returns.add(al.toString());
 		}
+		
 		return returns;
 	}
+	
+	public ArrayList<String> getFoldersFileList(String id) {
+		
+	}
+	
 	public boolean delFolder(int idAlbum) {
 		AlbumDAO tableAlbum = new AlbumDAO(stmt);
 		try {
@@ -175,6 +182,7 @@ public class Model {
 			return true;
 			}
 	}
+	
 	public ArrayList<String> getOrderList(){
 		ArrayList<String> returns = new ArrayList<String>();
 		ArrayList<Commande> commande = new ArrayList<Commande>();

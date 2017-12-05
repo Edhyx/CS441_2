@@ -137,6 +137,7 @@ public class View {
 		System.out.println("Ajouter une photo : taper 1");
 		System.out.println("Ajouter un lot de photo : taper 2");
 		System.out.println("Quitter : tapez 9");
+		System.out.print(">> ");
 		Scanner sc = new Scanner(System.in);
 		
 		String choix = sc.nextLine();
@@ -147,14 +148,14 @@ public class View {
 			
 			fichier = "1";
 			
-			System.out.println("Telechargement termin�.\nIl vous faut renseigner les informations suivantes :");
+			System.out.println("Telechargement terminé.\nIl vous faut renseigner les informations suivantes :");
 			System.out.print("L'appareil Photo : ");
 			fichier = fichier + " " + sc.nextLine();
 			System.out.print("L'objectif : ");
 			fichier = fichier + " " + sc.nextLine();
 			System.out.print("La distance Focale : ");
 			fichier = fichier + " " + sc.nextLine();
-			System.out.print("La sensibilit� ISO : ");
+			System.out.print("La sensibilité ISO : ");
 			fichier = fichier + " " + sc.nextLine();
 			System.out.print("L'ouverture : ");
 			fichier = fichier + " " + sc.nextLine();
@@ -167,14 +168,14 @@ public class View {
 						
 			System.out.println("Combien de photos?");
 			fichier = sc.nextLine();
-			System.out.println("Telechargement termin�.\nIl vous faut renseigner les informations suivantes :");
+			System.out.println("Telechargement terminé.\nIl vous faut renseigner les informations suivantes :");
 			System.out.print("L'appareil Photo : ");
 			fichier = fichier + " " + sc.nextLine();
 			System.out.print("L'objectif : ");
 			fichier = fichier + " " + sc.nextLine();
 			System.out.print("La distance Focale : ");
 			fichier = fichier + " " + sc.nextLine();
-			System.out.print("La sensibilit� ISO : ");
+			System.out.print("La sensibilité ISO : ");
 			fichier = fichier + " " + sc.nextLine();
 			System.out.print("L'ouverture : ");
 			fichier = fichier + " " + sc.nextLine();
@@ -201,6 +202,7 @@ public class View {
 		System.out.println("Nouvel album : taper 1");
 		System.out.println("Consulter albums : taper 2");
 		System.out.println("Quitter : tapez 9");
+		System.out.print(">> ");
 		Scanner sc = new Scanner(System.in);
 		
 		String choix = sc.nextLine();
@@ -234,6 +236,7 @@ public class View {
 		
 		System.out.println("--- --- GESTION DES ALBUMS --- ---");
 		System.out.println("liste des albums :");
+		
 		if(!str.isEmpty()){
 			for(String line : str) {
 				System.out.println("+ " + line);
@@ -243,6 +246,7 @@ public class View {
 		System.out.println("Ajouter des photos a un album : taper 1 [espace] chemin de l'album");
 		System.out.println("Suprimer album :  taper 2 [espace] chemin de l'album");
 		System.out.println("Quitter : tapez 9");
+		System.out.print(">> ");
 		Scanner sc = new Scanner(System.in);
 		
 		String choix = sc.nextLine();
