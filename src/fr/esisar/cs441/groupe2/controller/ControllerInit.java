@@ -18,7 +18,7 @@ public class ControllerInit extends Controller{
 		if(changement.charAt(0)=='1') {
 			view.displayNewClient("");
 		}else if(changement.charAt(0)=='2') {
-			view.displayConnection(vide);
+			view.displayConnection("");
 		}else if(changement.charAt(0)=='9') {
 			view.displayEnd("");
 		}else {

@@ -19,7 +19,7 @@ public class ControllerConnection extends Controller{
 			if(changement.charAt(0)=='9') {
 				view.displayEnd("");
 			}else {
-				view.displayConnection(new ArrayList<String>());
+				view.displayConnection("");
 			}
 		}else { // On test l'identification
 			
@@ -28,21 +28,18 @@ public class ControllerConnection extends Controller{
 			String clientPassword;
 			
 			if((clientPassword = model.getClientPassword(id)) != null) {
-				System.out.println(clientPassword);
+				
 				if(password.equals(clientPassword)) {
 					model.setClient(id);
 					view.setModel(model);
 					view.displayMenu("");
 				}else {
-					ArrayList<String> retour = new ArrayList<String>();
-					retour.add("Probleme : impossible de se connecter");
-					view.displayConnection(retour);
+					
+					view.displayConnection("Probleme : impossible de se connecter");
 				}
 			}else {
-			
-				ArrayList<String> retour = new ArrayList<String>();
-				retour.add("Probleme : impossible de se connecter");
-				view.displayConnection(retour);
+
+				view.displayConnection("Probleme : impossible de se connecter");
 			}
 		}
 		

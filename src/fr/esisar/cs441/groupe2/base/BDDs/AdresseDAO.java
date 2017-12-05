@@ -15,26 +15,31 @@ public class AdresseDAO {
 		this.stmt = stmt;
 	}
 	
-	public void add_F(Adresse adF) throws SQLException{
+	public boolean add_F(Adresse adF){
 	    String sql_element = "INSERT INTO AdresseF " +
 	            "VALUES ("+adF.getIdAdresse()+", '"+adF.getRue()+"', '"+adF.getCodePostal()+"', '"+adF.getVille()+"')";
 	    try{
-	    stmt.executeUpdate(sql_element);
-	    System.out.println("AdresseF '"+adF.getIdAdresse()+"' cree");
+	    	stmt.executeUpdate(sql_element);
+	    
 	    } catch (SQLException e){
-	    	System.out.println("idAdresseF '"+adF.getIdAdresse()+"' existant");
+	    	
+	    	return false;
 	    }
+	    
+	    return true;
 	}
 	
-	public void add_L(Adresse adL) throws SQLException{
+	public boolean add_L(Adresse adL){
 	    String sql_element = "INSERT INTO AdresseL " +
 	            "VALUES ("+adL.getIdAdresse()+", '"+adL.getRue()+"', '"+adL.getCodePostal()+"', '"+adL.getVille()+"')";
 	    try{
-	    stmt.executeUpdate(sql_element);
-	    System.out.println("AdresseL '"+adL.getIdAdresse()+"' cree");
+	    	stmt.executeUpdate(sql_element);
+	    
 	    } catch (SQLException e){
-	    	System.out.println("idAdresseL '"+adL.getIdAdresse()+"' existant");
+	    	return false;
 	    }
+	    
+	    return true;
 	}
 
 	public void delete_F(Adresse adF) throws SQLException{
@@ -59,7 +64,7 @@ public class AdresseDAO {
 	    }
 	}
 	
-	public Adresse getById_F(int id) throws SQLException{
+	public Adresse getById_F(int id) {
 		String sql_aff = "SELECT * FROM AdresseF " + "WHERE idAdresseF = " + id +"";
 		Adresse adF = null;
 		boolean a;
@@ -68,7 +73,7 @@ public class AdresseDAO {
 			a = rs.next();
 				//Retrieve by column name
 			if (a==false){
-		    	System.out.println("Impossible de trouver l'adresseF : " + id); 
+		    	return null; 
 		    }
 		    else {
 		    	id  = rs.getInt("idAdresseF");
@@ -81,12 +86,12 @@ public class AdresseDAO {
 		rs.close();
 		}
 		catch (SQLException e) {
-			System.out.println("Impossible de trouver l'adresseF : " + id);
+			return null; 
 		}
 	    return adF;
 	}
 	
-	public Adresse getById_L(int id) throws SQLException{
+	public Adresse getById_L(int id) {
 		String sql_aff = "SELECT * FROM AdresseL " + "WHERE idAdresseL = " + id +"";
 		Adresse adL = null;
 		boolean a;
@@ -95,7 +100,7 @@ public class AdresseDAO {
 			a = rs.next();
 				//Retrieve by column name
 			if (a==false){
-		    	System.out.println("Impossible de trouver l'adresseL : " + id); 
+				return null; 
 		    }
 		    else {
 		    	id  = rs.getInt("idAdresseL");
@@ -108,7 +113,7 @@ public class AdresseDAO {
 		rs.close();
 		}
 		catch (SQLException e) {
-			System.out.println("Impossible de trouver l'adresseL : " + id);
+			return null; 
 		}
 	    return adL;
 	}

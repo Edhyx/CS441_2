@@ -17,15 +17,18 @@ public class ClientDAO {
 		this.stmt = stmt;
 	}
 	
-	public void add(Client client) throws SQLException{
+	public boolean add(Client client){
 	    String sql_element = "INSERT INTO Client " +
 	            "VALUES ('"+client.getAdresseMail()+"', '"+client.getNom()+"', '"+client.getPrenom()+"', '"+client.getPassword()+"', "+client.getAdresseDeFacturation().getIdAdresse()+", "+client.getAdresseDeLivraison().getIdAdresse()+")";
 	    try{
-	    stmt.executeUpdate(sql_element);
-	    System.out.println("Client '"+client.getAdresseMail()+"' cree");
+	    	stmt.executeUpdate(sql_element);
+	    
 	    } catch (SQLException e){
-	    	System.out.println("Client '"+client.getAdresseMail()+"' existant");
+	    	e.printStackTrace();
+	    	return false;
 	    }
+	    
+	    return true;
 	}
 	
 	public void delete(Client client) {

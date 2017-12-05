@@ -16,11 +16,13 @@ public class Model {
 	private Statement stmt;
 
 	public Model() {
+		
 		String server = "tp-oracle.esisar.grenoble-inp.fr";
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = "jdbc:oracle:thin:@//" + server + "/xe";
 		String login = "malossep";
 		String pass = "malossep";
+		
 		try {
 			Class.forName(driver);
 		} catch (ClassNotFoundException e) {
@@ -57,39 +59,37 @@ public class Model {
 
 	}
 
-	private Adresse createAdressF(int idAdresseF, String rue, String codePostal, String ville) {
-		Adresse newAdressF = new Adresse(idAdresseF, rue, codePostal, ville);
-		AdresseDAO tableAdressF = new AdresseDAO(stmt);
-		try {
-			tableAdressF.add_F(newAdressF);
-		} catch (SQLException e) {
-
-			e.printStackTrace();
+	/* Methode permettant de creer un client dans la base
+	 * ainsi que les deux adresses associes
+	 */
+	public boolean createClient(String adresseMail, String nom, String prenom, String password, String rueL, String codeL, String villeL, String rueF, String codeF, String villeF) {
+		
+		AdresseDAO tableAdresse = new AdresseDAO(stmt);
+		
+		Integer idF = new Integer(ThreadLocalRandom.current().nextInt(0, 1000 + 1));
+		while(tableAdresse.getById_F(idF) != null) {} // on verifie que l'id n'existe pas deja
+		
+		// creation de l'adresse dans la table d'adresse
+		Adresse adresseF = new Adresse(idF, rueF, codeF, villeF);
+		
+		Integer idL = new Integer(ThreadLocalRandom.current().nextInt(0, 1000 + 1));
+		while(tableAdresse.getById_L(idL) != null) {} // on verifie que l'id n'existe pas deja
+		
+		Adresse adresseL = new Adresse(idL, rueL, codeL, villeL);
+		
+		if(tableAdresse.add_F(adresseF) & tableAdresse.add_L(adresseL)) {
+			// creation des addresses reussi
+			Client newClient = new Client(adresseMail, nom, prenom, password, adresseF, adresseL);
+			ClientDAO tableClient = new ClientDAO(stmt);
+			
+			if(tableClient.add(newClient)) {
+				System.out.println("oui");
+				return true;
+			}
 		}
-		return newAdressF;
-	}
+		
+		return false;
 
-	public Adresse createAdressL(int idAdresseL, String rue, String codePostal, String ville) {
-		Adresse newAdressL = new Adresse(idAdresseL, rue, codePostal, ville);
-		AdresseDAO tableAdressL = new AdresseDAO(stmt);
-		try {
-			tableAdressL.add_F(newAdressL);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return newAdressL;
-	}
-
-	public boolean createClient(String adresseMail, String nom, String prenom, String password) {
-		Client newClient = new Client(adresseMail, nom, prenom, password, createAdressF(0, null, null, null),
-				createAdressL(0, null, null, null));
-		ClientDAO tableClient = new ClientDAO(stmt);
-		try {
-			tableClient.add(newClient);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return true;
 	}
 
 	public boolean addFile(String idClient, String appareilPhoto, String objectif, int distance, int sensibilte,
