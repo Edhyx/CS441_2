@@ -20,8 +20,6 @@ public class ControllerMenu extends Controller{
 			view.displayAlbumMenu("");
 		}else if(changement.charAt(0)=='3') {
 			view.displayOrderMenu("");
-		}else if(changement.charAt(0)=='4') {
-			view.displayOrderList(null);
 		}else if(changement.charAt(0)=='9') {
 			view.displayEnd("");
 		}else {

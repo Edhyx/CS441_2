@@ -24,7 +24,7 @@ public class ClientDAO {
 	    	stmt.executeUpdate(sql_element);
 	    
 	    } catch (SQLException e){
-	    	e.printStackTrace();
+
 	    	return false;
 	    }
 	    

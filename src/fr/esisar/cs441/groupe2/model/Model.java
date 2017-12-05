@@ -92,24 +92,27 @@ public class Model {
 
 	}
 
-	public boolean addFile(String idClient, String appareilPhoto, String objectif, int distance, int sensibilte,
+	public boolean addFile(String appareilPhoto, String objectif, int distance, int sensibilte,
 			int ouverture, int vitesse) {
 
 		String url = new String("" + ThreadLocalRandom.current().nextInt(0, 1000 + 1));
+		
 		ClientDAO tableClient = new ClientDAO(stmt);
 		Client client = tableClient.getById(idClient);
+		
 		FichierImage fichierIm = new FichierImage(url, appareilPhoto, objectif, distance, sensibilte, ouverture,
 				vitesse, client);
 		FichierImageDAO tableFichierIm = new FichierImageDAO(stmt);
+		
 		if (client==null) {return false;}
 		else{
-			try {
-				tableFichierIm.add(fichierIm);
-			} catch (SQLException e) {
-				e.printStackTrace();
+			
+			if(tableFichierIm.add(fichierIm)) {
+				return true;
 			}
-			return true;
-			}
+			
+			return false;
+		}
 	}
 
 	public boolean addFolder(String idClient, String titre, String sousTitre) {

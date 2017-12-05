@@ -116,7 +116,6 @@ public class View {
 		System.out.println("Ajouter des photos : tapez 1");
 		System.out.println("Gérer les albums photo : tapez 2");
 		System.out.println("Gérer les commandes : tapez 3");
-		System.out.println("Lister les commandes en cours : tapez 4");
 		System.out.println("Quitter : tapez 9");
 		System.out.print(">> ");
 		Scanner sc = new Scanner(System.in);

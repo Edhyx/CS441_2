@@ -15,6 +15,7 @@ public class ControllerAddPhoto extends Controller{
 				// On extrait les informations
 		int i = 0;
 		String[] element = new String[6];
+		boolean result = true;
 		
 		if(changement.charAt(0) == '9') {
 			view.displayEnd("");
@@ -39,16 +40,26 @@ public class ControllerAddPhoto extends Controller{
 	
 				if(i==6) {
 					for(int j=0; j<number; j++) {
-						while(!model.addFile(element[0], element[1], element[2], element[3], element[4], element[5]));
+						if(!model.addFile(element[0],
+											 element[1], 
+											 Integer.parseInt(element[2]), 
+											 Integer.parseInt(element[3]), 
+											 Integer.parseInt(element[4]), 
+											 Integer.parseInt(element[5]))) {
+							view.displayAddPhoto("probleme saisie");
+							result = false;
+						}
 					}		
 				}
 			}catch(StringIndexOutOfBoundsException e) {
 				view.displayAddPhoto("probleme saisie");
 			}catch (NumberFormatException e) {
-				view.displayAddPhoto("probleme nombre de photos");
+				view.displayAddPhoto("probleme saisie");
 			}
 			
-			view.displayAddPhoto("renseignements enregistres");
+			if(result) {
+				view.displayAddPhoto("renseignements enregistres");
+			}
 		}
 	}
 

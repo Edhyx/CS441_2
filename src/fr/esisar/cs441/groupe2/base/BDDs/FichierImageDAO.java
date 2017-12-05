@@ -16,15 +16,17 @@ public class FichierImageDAO {
 		this.stmt = stmt;
 	}
 	
-	public void add(FichierImage f) throws SQLException{
+	public boolean add(FichierImage f) {
 	    String sql_element = "INSERT INTO FichierImage " +
 	            "VALUES ('"+f.getCheminAcces()+"', '"+f.getAppareilPhoto()+"', '"+f.getObjectif()+"', "+f.getDistanceFocale()+", "+f.getSensibiliteISO()+
 	            			", "+f.getOuverture()+", "+f.getVitesseObturation()+", '"+f.getClient().getAdresseMail()+"')";
 	    try{
-	    stmt.executeUpdate(sql_element);
-	    System.out.println("FichierImage '"+f.getCheminAcces()+"' cree");
+	    	
+	    	stmt.executeUpdate(sql_element);
+	    	return true;
+	    	
 	    } catch (SQLException e){
-	    	System.out.println("FichierImage '"+f.getCheminAcces()+"' existant");
+	    	return false;
 	    }
 	}
 	
