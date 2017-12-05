@@ -10,17 +10,20 @@ public class Suppression {
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		
-		String server = "tp-oracle.esisar.grenoble-inp.fr";
-		String driver = "oracle.jdbc.driver.OracleDriver";
-		String url = "jdbc:oracle:thin:@//"+server+"/xe";
-		String login = "malossep";
-		String pass ="malossep";
+		String driver = "com.mysql.jdbc.Driver";
+		String url = "jdbc:mysql://localhost/test?useSSL=false";
+		String login = "root";
+		String pass = "Pauline02";
+
 		
 		Class.forName(driver);
 		Connection connection = DriverManager.getConnection(url,login,pass);
 	    Statement stmt = connection.createStatement();
-/*
-	    ResultSet rs1=stmt.executeQuery("SHOW COLUMNS from Album ");
+
+	    String slq_show =  "SHOW TABLES FROM test";
+	    ResultSet rs_show = stmt.executeQuery(slq_show);
+	    System.out.println("SHOW: "+rs_show.getRow());
+	    /*
 	    //suppression LigneCommande
 	    String sql_delete_tabLc =  "DROP TABLE LigneCommande ";
 	    ResultSet rsLc = stmt.executeQuery(sql_delete_tabLc);
@@ -50,7 +53,7 @@ public class Suppression {
 	    String sql_delete_tabFi =  "DROP TABLE FichierImage ";
 	    ResultSet rsFi = stmt.executeQuery(sql_delete_tabFi);
 	    System.out.println("Table FichierImage supprimee");
-	  */
+	    
 	    //suppression client
 	    String sql_delete_tabC =  "DROP TABLE Client ";
 	    ResultSet rsClient = stmt.executeQuery(sql_delete_tabC);
@@ -65,6 +68,7 @@ public class Suppression {
 	    String sql_delete_tabAdL =  "DROP TABLE AdresseL ";
 	    ResultSet rsAL = stmt.executeQuery(sql_delete_tabAdL);
 	    System.out.println("Table AdresseL supprimee");
+	    */
 	}
 
 }
