@@ -321,7 +321,6 @@ public class View {
 			fichier = "ADC";
 			
 			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
-			
 			control.notifyChangement(fichier);
 			
 		}else if(choix.charAt(0)=='2') { //à modif
@@ -340,7 +339,7 @@ public class View {
 		
 		control = new ControllerAlbumOrder(this, model);
 		
-		System.out.println("--- --- GESTION DES ALBUMS --- ---");
+		System.out.println("--- --- NOUVELLE COMMANDE --- ---");
 		System.out.println("liste des albums :");
 		if(!str.isEmpty()){
 			for(String line : str) {
@@ -357,21 +356,12 @@ public class View {
 		
 		if(choix.charAt(0)=='1') {
 			
-			fichier = "ADA";
+			fichier = "ADC";
 			
 			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
 			
 			control.notifyChangement(fichier);
 			
-		/*}else if(choix.charAt(0)=='2') { 
-			
-			fichier = "DEA";
-			
-			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
-			
-			control.notifyChangement(fichier);
-		}else {
-			control.notifyChangement(choix);*/
 		}
 	}
 	
@@ -384,7 +374,7 @@ public class View {
 		}
 		System.out.println("--- --- GESTION DES COMMANDES --- ---");
 		System.out.println("Nouvele Commande : taper 1");
-		System.out.println("Consulter albums : taper 2");
+		System.out.println("Consulter Commandes : taper 2");
 		System.out.println("Quitter : tapez 9");
 		Scanner sc = new Scanner(System.in);
 		
@@ -407,7 +397,7 @@ public class View {
 	}
 	
 	public void displayAddOrder(String str){
-		System.out.println(" something... ");
+		System.out.println(str);
 	}
 
 	public void displayOrderList(ArrayList<String> str){

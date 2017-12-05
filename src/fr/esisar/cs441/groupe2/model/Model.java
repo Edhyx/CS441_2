@@ -45,6 +45,16 @@ public class Model {
 		
 	}
 	
+	public boolean addOrder(String date, String prix, String nomalbum) {
+		
+		String id = new String(""+ThreadLocalRandom.current().nextInt(0, 1000 + 1));
+		
+		// completer
+		
+		return true;
+		
+	}
+	
 	public ArrayList<String> getFolderList() {
 		ArrayList<String> returns = new ArrayList<String>();
 		
@@ -70,13 +80,23 @@ public class Model {
 		return returns;
 		
 	}
+	
+	public ArrayList<String> getOrderList() {
+		
+		ArrayList<String> returns = new ArrayList<String>();
+		
+		returns.add("12/01/17 10€ blabla");
+		returns.add("15/03/16 69€ poloplop");
+		
+		return returns;
+		
+	}
 
 	public boolean delAlbum(String id) {
 		
 		// a completer
 		
 		return true;
-	}
-	
+	}	
 	
 }
