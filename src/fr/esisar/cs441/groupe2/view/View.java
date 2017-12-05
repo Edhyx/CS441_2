@@ -355,7 +355,7 @@ public class View {
 		
 		String fichier;
 		
-		/*if(choix.charAt(0)=='1') {
+		if(choix.charAt(0)=='1') {
 			
 			fichier = "ADA";
 			
@@ -363,7 +363,7 @@ public class View {
 			
 			control.notifyChangement(fichier);
 			
-		}else if(choix.charAt(0)=='2') { 
+		/*}else if(choix.charAt(0)=='2') { 
 			
 			fichier = "DEA";
 			
@@ -371,8 +371,8 @@ public class View {
 			
 			control.notifyChangement(fichier);
 		}else {
-			control.notifyChangement(choix);
-		}*/
+			control.notifyChangement(choix);*/
+		}
 	}
 	
 	public void displayOrderMenu(String str){

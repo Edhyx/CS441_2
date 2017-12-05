@@ -18,16 +18,19 @@ public class ControllerAlbumOrder extends Controller{
 			
 			// On test tous les codes
 			if(changement.substring(0,3).equals("NEW")) { // new order
-				view.displayOrderADD(model.getFolderList());	
-			}	
-			view.displayAddOrder("renseignements enregistres");
+				view.displayOrderADD(model.getFolderList());
+				
+			}else if(changement.substring(0,3).equals("ADA")) { // affichage liste d'ajout
+				view.displayAlbumADD(model.getFoldersFileList(changement.substring(changement.indexOf(" ")+1, changement.length())));
+			
+			}
 		}/**********************************************************/
 	}
 	
 	private boolean newOrder(String data) {
 		try {
 
-			/*String[] element = new String[2];
+			String[] element = new String[2];
 			int i = 0;
 
 			while (data.length() > 0 & i < 2) {
@@ -38,12 +41,12 @@ public class ControllerAlbumOrder extends Controller{
 					element[i] = data.substring(0, data.length());
 				}
 				data = data.substring(data.indexOf(" ") + 1, data.length());
-				i++;*/
+				i++;
 			}
 
 			return model.addFolder(element[0], element[1]);
 		} catch (StringIndexOutOfBoundsException e) {
-			/*view.displayAddOrder("probleme saisie");*/
+			view.displayAddOrder("probleme saisie");
 			return false;
 		}
 	}
