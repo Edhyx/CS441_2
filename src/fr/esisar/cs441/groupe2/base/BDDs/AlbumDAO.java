@@ -27,11 +27,9 @@ public class AlbumDAO {
 	    }
 	}
 	
-	public boolean delete(Album album) 
-	{
+	public boolean delete(Album album) {
 	    String sql_delete = "DELETE FROM Album " +
 	            "WHERE idAlbum = "+album.getIdAlbum()+"";
-	    
 	    try{
 	    	stmt.executeUpdate(sql_delete);
 	    	return true;
@@ -47,9 +45,8 @@ public class AlbumDAO {
 		try{
 			ResultSet rs = this.stmt.executeQuery(sql_aff);
 			a = rs.next();
-				//Retrieve by column name
 			if (a==false){
-		    	System.out.println("Impossible de trouver l'album : " + id); 
+		    	return null;
 		    }
 		    else {
 		    	id  = rs.getInt("idAlbum");
@@ -61,10 +58,10 @@ public class AlbumDAO {
 			    
 				album = new Album(id,titre,sousTitre,client);
 			}		
-		rs.close();
+			rs.close();
 		}
 		catch (SQLException e) {
-			System.out.println("Impossible de trouver l'album : " + id);
+			return null;
 		}
 	    return album;
 	}
@@ -75,47 +72,39 @@ public class AlbumDAO {
 	    try {
 	    	ResultSet rs = this.stmt.executeQuery(sql_aff);
 			while(rs.next()) {
-			       int id  = rs.getInt("idAlbum");
-			       String titre = rs.getString("titre");
-			       String sousTitre = rs.getString("sousTitre");
-			       /*
-			       String adresseMail = rs.getString("adresseMail");
-			       ClientDAO tableClient = new ClientDAO(stmt);
-				   Client client = tableClient.getById(adresseMail);
-				   */
+				int id  = rs.getInt("idAlbum");
+			    String titre = rs.getString("titre");
+			    String sousTitre = rs.getString("sousTitre");
 			    
-				   album.add(new Album(id,titre,sousTitre));
+				album.add(new Album(id,titre,sousTitre));
 			}
 			rs.close();
 		} catch (SQLException e) {
-			System.out.println("Impossible de trouver d'elements dans la table");
+			return null;
 		}
 	    return album;
 	}
 	
-	public void affiche() throws SQLException{
+	public void affiche(){
 		try{
-		String sql_aff = "SELECT * FROM Album ";
-	    ResultSet rs = stmt.executeQuery(sql_aff);
-	    
-	    boolean a=rs.next();
-	    if (a==false){
-	    	System.out.println("La table Album est vide"); 
-	    }
-	    while(a){
-	       //Retrieve by column name
-	       String id  = rs.getString("idAlbum");
-	       String titre = rs.getString("titre");
-	       String sousTitre = rs.getString("sousTitre");
-	       String adresseMail = rs.getString("adresseMail");
-	       //Display values
-	       System.out.print("idAlbum: " + id);
-	       System.out.print(", titre: " + titre);
-	       System.out.print(", sousTitre: " + sousTitre);
-	       System.out.println(", adresseMail: " + adresseMail);
-	       a=rs.next();
-	    }
-	    rs.close();
+			String sql_aff = "SELECT * FROM Album ";
+		    ResultSet rs = stmt.executeQuery(sql_aff);
+		    boolean a=rs.next();
+		    if (a==false){
+		    	System.out.println("La table Album est vide"); 
+		    }
+		    while(a){
+		       String id  = rs.getString("idAlbum");
+		       String titre = rs.getString("titre");
+		       String sousTitre = rs.getString("sousTitre");
+		       String adresseMail = rs.getString("adresseMail");
+		       System.out.print("idAlbum: " + id);
+		       System.out.print(", titre: " + titre);
+		       System.out.print(", sousTitre: " + sousTitre);
+		       System.out.println(", adresseMail: " + adresseMail);
+		       a=rs.next();
+		    }
+		    rs.close();
 		} catch (SQLException e){
 	    	System.out.println("Table Album non existante");
 	    }

@@ -30,18 +30,16 @@ public class ContientDAO {
 	}
 	
 	//identifier le contient avec deux éléments
-	public void delete(Contient contient) throws SQLException{
+	public void delete(Contient contient){
 	    String sql_delete = "DELETE FROM Contient " +
 	            "WHERE idAlbum = "+contient.getAlbum().getIdAlbum()+" and cheminAcces = '"+contient.getFichierImages().getCheminAcces()+"'";
 	    try{
-	    stmt.executeUpdate(sql_delete);
-	    System.out.println("Contient '"+ contient.getFichierImages().getCheminAcces() + "' et '" +contient.getAlbum().getIdAlbum() +"' supprime");
-		} catch (SQLException e){
-	    	System.out.println("Table Contient non existant");
+	    	stmt.executeUpdate(sql_delete);
+	    } catch (SQLException e){
 	    }
 	}
 	
-	public Contient getById(int idAlbum, String cheminAcces) throws SQLException{
+	public Contient getById(int idAlbum, String cheminAcces){
 		String sql_aff = "SELECT * FROM Contient " +
 				"WHERE idAlbum = "+idAlbum+" and cheminAcces = '"+cheminAcces+"'";
 		Contient contient = null;
@@ -49,9 +47,8 @@ public class ContientDAO {
 		try{
 			ResultSet rs = this.stmt.executeQuery(sql_aff);
 			a = rs.next();
-				//Retrieve by column name
 			if (a==false){
-		    	System.out.println("Impossible de trouver le contient : " + idAlbum + ", " + cheminAcces); 
+				return null;
 		    }
 		    else {
 			    int numOrdre  = rs.getInt("numOrdre");
@@ -63,12 +60,13 @@ public class ContientDAO {
 			    FichierImage f = tableFichierImage.getById(cheminAcces);
 			    AlbumDAO tableAlbum = new AlbumDAO(stmt);
 			    Album album = tableAlbum.getById(idAlbum);
+			    
 			    contient = new Contient(numOrdre,titre,commentaire,f,album);
 		    }		
-		rs.close();
+			rs.close();
 		}
 		catch (SQLException e) {
-			System.out.println("Impossible de trouver le contient : " + idAlbum + ", " + cheminAcces);
+			return null;
 		}
 	    return contient;
 	}
@@ -95,37 +93,33 @@ public class ContientDAO {
 			rs.close();
 			return contient;
 		} catch (SQLException e) {
-			return new ArrayList<Contient>();
+			return null;
 		}
 	}
 
 	
-	public void affiche() throws SQLException{
+	public void affiche(){
 		try{
-		String sql_aff = "SELECT * FROM Contient ";
-	    ResultSet rs = stmt.executeQuery(sql_aff);
-	    
-	    boolean a=rs.next();
-	    if (a==false){
-	    	System.out.println("La table Contient est vide"); 
-	    }
-	    while(a){
-	       //Retrieve by column name
-	       int numOrdre  = rs.getInt("numOrdre");
-	       String titre = rs.getString("titre");
-	       String commentaire = rs.getString("commentaire");
-	       String cheminAcces = rs.getString("cheminAcces");
-	       int idAlbum = rs.getInt("idAlbum");
-
-	       //Display values
-	       System.out.print("numOrdre: " + numOrdre);
-	       System.out.print(", titre: " + titre);
-	       System.out.print(", commentaire: " + commentaire);
-	       System.out.print(", idAlbum: " + idAlbum);
-	       System.out.println(", cheminAcces: " + cheminAcces);
-	       a=rs.next();
-	    }
-	    rs.close();
+			String sql_aff = "SELECT * FROM Contient ";
+		    ResultSet rs = stmt.executeQuery(sql_aff);
+		    boolean a=rs.next();
+		    if (a==false){
+		    	System.out.println("La table Contient est vide"); 
+		    }
+		    while(a){
+		       int numOrdre  = rs.getInt("numOrdre");
+		       String titre = rs.getString("titre");
+		       String commentaire = rs.getString("commentaire");
+		       String cheminAcces = rs.getString("cheminAcces");
+		       int idAlbum = rs.getInt("idAlbum");
+		       System.out.print("numOrdre: " + numOrdre);
+		       System.out.print(", titre: " + titre);
+		       System.out.print(", commentaire: " + commentaire);
+		       System.out.print(", idAlbum: " + idAlbum);
+		       System.out.println(", cheminAcces: " + cheminAcces);
+		       a=rs.next();
+		    }
+		    rs.close();
 		} catch (SQLException e){
 	    	System.out.println("Table Contient non existante");
 	    }

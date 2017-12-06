@@ -22,12 +22,9 @@ public class ClientDAO {
 	            "VALUES ('"+client.getAdresseMail()+"', '"+client.getNom()+"', '"+client.getPrenom()+"', '"+client.getPassword()+"', "+client.getAdresseDeFacturation().getIdAdresse()+", "+client.getAdresseDeLivraison().getIdAdresse()+")";
 	    try{
 	    	stmt.executeUpdate(sql_element);
-	    
 	    } catch (SQLException e){
-
 	    	return false;
 	    }
-	    
 	    return true;
 	}
 	
@@ -38,9 +35,7 @@ public class ClientDAO {
 	    					+ "'";
 	    try{
 		    this.stmt.executeUpdate(sql_delete);
-		    System.out.println("Client '" + client.getAdresseMail() + "' supprime");
 		} catch (SQLException e){
-	    	System.out.println("Table Client non existant");
 	    }
 	}
 				
@@ -52,36 +47,33 @@ public class ClientDAO {
 		try{
 		    ResultSet rs = stmt.executeQuery(sql_aff);
 		    a = rs.next();
-			    if (a==false){
-			    	System.out.println("Impossible de trouver le client associe a l'adresse : " + id); 
-			    }
-			    else {
-		    	//Retrieve by column name
-			    	id = rs.getString("adresseMail");
-					String nom = rs.getString("nom");
-				    String prenom = rs.getString("prenom");
-				    String password = rs.getString("password");
-				    int idAdresseF = rs.getInt("idAdresseF");
-				    int idAdresseL = rs.getInt("idAdresseL");
-				    AdresseDAO tableAdresse = new AdresseDAO(stmt);
-				    Adresse adF = tableAdresse.getById_F(idAdresseF);
-				    Adresse adL = tableAdresse.getById_L(idAdresseL);
+			if (a==false){
+				return null; 
+			}
+			else {
+				id = rs.getString("adresseMail");
+				String nom = rs.getString("nom");
+				String prenom = rs.getString("prenom");
+				String password = rs.getString("password");
+				int idAdresseF = rs.getInt("idAdresseF");
+				int idAdresseL = rs.getInt("idAdresseL");
+				AdresseDAO tableAdresse = new AdresseDAO(stmt);
+				Adresse adF = tableAdresse.getById_F(idAdresseF);
+				Adresse adL = tableAdresse.getById_L(idAdresseL);
 
-				    client = new Client(id, nom, prenom, password,adF,adL);
-				}
-		rs.close();
-	}
+				client = new Client(id, nom, prenom, password,adF,adL);
+			}
+			rs.close();
+		}
 		catch (SQLException e) {
-			System.out.println("Impossible de trouver le client associe a l'adresse : " + id +e);
+			return null;
 		}
 	    return client;
 	}
 	
 	public ArrayList<Client> getAll() {
-		
 		String sql_aff = "SELECT * FROM Client ";
 		ArrayList<Client> client = new ArrayList<Client>();
-		
 	    try {
 	    	ResultSet rs = this.stmt.executeQuery(sql_aff);
 			while(rs.next()) {
@@ -89,50 +81,40 @@ public class ClientDAO {
 				String nom = rs.getString("nom");
 				String prenom = rs.getString("prenom");
 				String password = rs.getString("password");
-				/*
-			    int idAdresseF = rs.getInt("idAdresseF");
-			    int idAdresseL = rs.getInt("idAdresseL");
-			    AdresseDAO tableAdresse = new AdresseDAO(stmt);
-			    Adresse adF = tableAdresse.getById_F(idAdresseF);
-			    Adresse adL = tableAdresse.getById_L(idAdresseL);
-			    */
+				
 			    client.add(new Client(adresseMail, nom, prenom, password));	       
 			}
 			rs.close();
 		} catch (SQLException e) {
-			System.out.println("Impossible de trouver d'elements dans la table");
+			return null;
 		}
 	    return client;
 	}
 	
-	public void affiche() throws SQLException{
+	public void affiche(){
 		String sql_aff = "SELECT * FROM Client ";
 		try{
-	    ResultSet rs = stmt.executeQuery(sql_aff);
-	    
-	    boolean a=rs.next();
-	    if (a==false){
-	    	System.out.println("La table Client est vide"); 
-	    }
-	    while(a){
-	    	
-	    	//Retrieve by column name
-		    String id  = rs.getString("adresseMail");
-		    String nom = rs.getString("nom");
-		    String prenom = rs.getString("prenom");
-		    String password = rs.getString("password");
-		    String idAdresseF = rs.getString("idAdresseF");
-		    String idAdresseL = rs.getString("idAdresseL");
-	        //Display values
-	        System.out.print("adresseMail: " + id);
-		    System.out.print(", nom: " + nom);
-	        System.out.print(", prenom: " + prenom);
-	        System.out.print(", password: " + password);
-	        System.out.print(", idAdresseF: " + idAdresseF);
-	        System.out.println(", idAdresseL: " + idAdresseL);
-	        a=rs.next();
-	    }
-	    rs.close();
+		    ResultSet rs = stmt.executeQuery(sql_aff);
+		    boolean a=rs.next();
+		    if (a==false){
+		    	System.out.println("La table Client est vide"); 
+		    }
+		    while(a){
+			    String id  = rs.getString("adresseMail");
+			    String nom = rs.getString("nom");
+			    String prenom = rs.getString("prenom");
+			    String password = rs.getString("password");
+			    String idAdresseF = rs.getString("idAdresseF");
+			    String idAdresseL = rs.getString("idAdresseL");
+		        System.out.print("adresseMail: " + id);
+			    System.out.print(", nom: " + nom);
+		        System.out.print(", prenom: " + prenom);
+		        System.out.print(", password: " + password);
+		        System.out.print(", idAdresseF: " + idAdresseF);
+		        System.out.println(", idAdresseL: " + idAdresseL);
+		        a=rs.next();
+		    }
+		    rs.close();
 		} catch (SQLException e){
 	    	System.out.println("Table Client non existante");
 	    }

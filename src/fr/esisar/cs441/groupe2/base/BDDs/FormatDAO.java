@@ -15,14 +15,12 @@ public class FormatDAO {
 		this.stmt = stmt;
 	}
 
-	public void add(Format format) throws SQLException{
+	public void add(Format format) {
 	    String sql_element = "INSERT INTO Format " +
 	            "VALUES ("+format.getIdFormat()+", "+format.getPrixUnitaire()+")";
 	    try{
-	    stmt.executeUpdate(sql_element);
-	    System.out.println("Format '"+format.getIdFormat()+"' cree");
+		    stmt.executeUpdate(sql_element);
 	    } catch (SQLException e){
-	    	System.out.println("Format '"+format.getIdFormat()+"' existant");
 	    }
 	}
 	
@@ -30,10 +28,8 @@ public class FormatDAO {
 	    String sql_delete = "DELETE FROM Format " +
 	            "WHERE idFormat = "+format.getIdFormat()+"";
 	    try{
-	    stmt.executeUpdate(sql_delete);
-	    System.out.println("Format '"+format.getIdFormat()+"' supprime");
+		    stmt.executeUpdate(sql_delete);
 		} catch (SQLException e){
-	    	System.out.println("Table  Format non existant");
 	    }
 	}
 	
@@ -44,31 +40,28 @@ public class FormatDAO {
 		try{
 			ResultSet rs = this.stmt.executeQuery(sql_aff);
 			a = rs.next();
-				//Retrieve by column name
 			if (a==false){
-		    	System.out.println("Impossible de trouver le Format : " + id); 
+				return null;
 		    }
 		    else {
 		    	id  = rs.getInt("idFormat");
 				int prixUnitaire = rs.getInt("prixUnitaire");
 				f = new Format(id,prixUnitaire);
 		    }		
-		rs.close();
+			rs.close();
 		}
 		catch (SQLException e) {
-			System.out.println("Impossible de trouver le format : " + id);
+			return null;
 		}
 	    return f;
 	}
 	
-public ArrayList<Format> getAll() {
+	public ArrayList<Format> getAll() {
 		String sql_aff = "SELECT * FROM Format ";
 		ArrayList<Format> f = new ArrayList<Format>();
 	    try {
 	    	ResultSet rs = this.stmt.executeQuery(sql_aff);
 			while(rs.next()) {
-				
-				//Retrieve by column name
 		    	int idFormat  = rs.getInt("idFormat");
 		    	int prixUnitaire = rs.getInt("prixUnitaire");
 
@@ -76,33 +69,30 @@ public ArrayList<Format> getAll() {
 			}
 			rs.close();
 		} catch (SQLException e) {
-			System.out.println("Impossible de trouver d'elements dans la table");
+			return null;
 		}
 	    return f;
 	}
 
 
-public void affiche() throws SQLException{
-	try{
-	String sql_aff = "SELECT * FROM Format ";
-    ResultSet rs = stmt.executeQuery(sql_aff);
-    
-    boolean a=rs.next();
-    if (a==false){
-    	System.out.println("La table Format est vide"); 
-    }
-    while(a){
-    	//Retrieve by column name
-    	int id  = rs.getInt("idFormat");
-		int prixUnitaire = rs.getInt("prixUnitaire");
-	    //Display values
-	    System.out.print("idFormat: " + id);
-	    System.out.println(", prixUnitaire: " + prixUnitaire);
-	    a=rs.next();
-    }
-    rs.close();
-	} catch (SQLException e){
-    	System.out.println("Table Format non existante");
-    }
-}
+	public void affiche() throws SQLException{
+		try{
+			String sql_aff = "SELECT * FROM Format ";
+		    ResultSet rs = stmt.executeQuery(sql_aff);
+		    boolean a=rs.next();
+		    if (a==false){
+		    	System.out.println("La table Format est vide"); 
+		    }
+		    while(a){
+		    	int id  = rs.getInt("idFormat");
+				int prixUnitaire = rs.getInt("prixUnitaire");
+			    System.out.print("idFormat: " + id);
+			    System.out.println(", prixUnitaire: " + prixUnitaire);
+			    a=rs.next();
+		    }
+		    rs.close();
+		} catch (SQLException e){
+	    	System.out.println("Table Format non existante");
+	    }
+	}
 }

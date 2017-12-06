@@ -22,10 +22,8 @@ public class AdresseDAO {
 	    	stmt.executeUpdate(sql_element);
 	    
 	    } catch (SQLException e){
-	    	
 	    	return false;
 	    }
-	    
 	    return true;
 	}
 	
@@ -38,33 +36,28 @@ public class AdresseDAO {
 	    } catch (SQLException e){
 	    	return false;
 	    }
-	    
 	    return true;
 	}
 
-	public void delete_F(Adresse adF) throws SQLException{
+	public void delete_F(Adresse adF){
 	    String sql_delete = "DELETE FROM AdresseF " +
 	            "WHERE idAdresseF = "+adF.getIdAdresse()+"";
 	    try{
-	    stmt.executeUpdate(sql_delete);
-	    System.out.println("AdresseF '"+adF.getIdAdresse()+"' supprime");
+	    	stmt.executeUpdate(sql_delete);
 		} catch (SQLException e){
-	    	System.out.println("Table AdresseF non existant" +e);
 	    }
 	}
 	
-	public void delete_L(Adresse adL) throws SQLException{
+	public void delete_L(Adresse adL){
 	    String sql_delete = "DELETE FROM AdresseL " +
 	            "WHERE idAdresseL = "+adL.getIdAdresse()+"";
 	    try{
-	    stmt.executeUpdate(sql_delete);
-	    System.out.println("AdresseL '"+adL.getIdAdresse()+"' supprime");
+	    	stmt.executeUpdate(sql_delete);
 		} catch (SQLException e){
-	    	System.out.println("Table AdresseL non existant");
 	    }
 	}
 	
-	public Adresse getById_F(int id) {
+	public Adresse getById_F(int id){
 		String sql_aff = "SELECT * FROM AdresseF " + "WHERE idAdresseF = " + id +"";
 		Adresse adF = null;
 		boolean a;
@@ -83,7 +76,7 @@ public class AdresseDAO {
 
 				adF = new Adresse(id,rue,codePostal,ville);
 		    }		
-		rs.close();
+			rs.close();
 		}
 		catch (SQLException e) {
 			return null; 
@@ -110,7 +103,7 @@ public class AdresseDAO {
 
 				adL = new Adresse(id,rue,codePostal,ville);
 		    }		
-		rs.close();
+			rs.close();
 		}
 		catch (SQLException e) {
 			return null; 
@@ -118,7 +111,7 @@ public class AdresseDAO {
 	    return adL;
 	}
 	
-public ArrayList<Adresse> getAll_F() {
+	public ArrayList<Adresse> getAll_F() {
 		String sql_aff = "SELECT * FROM AdresseF ";
 		ArrayList<Adresse> adF = new ArrayList<Adresse>();
 	    try {
@@ -135,86 +128,82 @@ public ArrayList<Adresse> getAll_F() {
 			}
 			rs.close();
 		} catch (SQLException e) {
-			System.out.println("Impossible de trouver d'elements dans la table");
+			return null;
 		}
 	    return adF;
 	}
 
-public ArrayList<Adresse> getAll_L() {
-	String sql_aff = "SELECT * FROM AdresseL ";
-	ArrayList<Adresse> adL = new ArrayList<Adresse>();
-    try {
-    	ResultSet rs = this.stmt.executeQuery(sql_aff);
-		while(rs.next()) {
-			
-			//Retrieve by column name
-	    	int idAdresseL  = rs.getInt("idAdresseL");
-			String rue = rs.getString("rue");
-			String codePostal = rs.getString("codePostal");
-			String ville = rs.getString("ville");
-
-		    adL.add(new Adresse(idAdresseL,rue,codePostal,ville));	       
+	public ArrayList<Adresse> getAll_L() {
+		String sql_aff = "SELECT * FROM AdresseL ";
+		ArrayList<Adresse> adL = new ArrayList<Adresse>();
+	    try {
+	    	ResultSet rs = this.stmt.executeQuery(sql_aff);
+			while(rs.next()) {
+				
+				//Retrieve by column name
+		    	int idAdresseL  = rs.getInt("idAdresseL");
+				String rue = rs.getString("rue");
+				String codePostal = rs.getString("codePostal");
+				String ville = rs.getString("ville");
+	
+			    adL.add(new Adresse(idAdresseL,rue,codePostal,ville));	       
+			}
+			rs.close();
+		} catch (SQLException e) {
+			return null;
 		}
-		rs.close();
-	} catch (SQLException e) {
-		System.out.println("Impossible de trouver d'elements dans la table");
+	    return adL;
 	}
-    return adL;
-}
 
-public void affiche_F() throws SQLException{
-	try{
-	String sql_aff = "SELECT * FROM AdresseF ";
-    ResultSet rs = stmt.executeQuery(sql_aff);
-    
-    boolean a=rs.next();
-    if (a==false){
-    	System.out.println("La table AdresseF est vide"); 
-    }
-    while(a){
-    	//Retrieve by column name
-	    int id  = rs.getInt("idAdresseF");
-	    String rue = rs.getString("rue");
-	    String codePostal = rs.getString("codePostal");
-	    String ville = rs.getString("ville");
-        //Display values
-	    System.out.print("idAdresseF: " + id);
-	    System.out.print(", rue: " + rue);
-	    System.out.print(", codePostal: " + codePostal);
-	    System.out.println(", ville: " + ville);
-	    a=rs.next();
-    }
-    rs.close();
-	} catch (SQLException e){
-    	System.out.println("Table AdresseF non existante");
-    }
-}
+	public void affiche_F(){
+		try{
+			String sql_aff = "SELECT * FROM AdresseF ";
+		    ResultSet rs = stmt.executeQuery(sql_aff);
+		    
+		    boolean a=rs.next();
+		    if (a==false){
+		    	System.out.println("La table AdresseF est vide"); 
+		    }
+		    while(a){
+			    int id  = rs.getInt("idAdresseF");
+			    String rue = rs.getString("rue");
+			    String codePostal = rs.getString("codePostal");
+			    String ville = rs.getString("ville");
+			    System.out.print("idAdresseF: " + id);
+			    System.out.print(", rue: " + rue);
+			    System.out.print(", codePostal: " + codePostal);
+			    System.out.println(", ville: " + ville);
+			    a=rs.next();
+		    }
+		    rs.close();
+		} catch (SQLException e){
+	    	System.out.println("Table AdresseF non existante");
+	    }
+	}
 
-public void affiche_L() throws SQLException{
-	try{
-	String sql_aff = "SELECT idAdresseL, rue, codePostal, ville FROM AdresseL ";
-    ResultSet rs = stmt.executeQuery(sql_aff);
-    
-    boolean a=rs.next();
-    if (a==false){
-    	System.out.println("La table AdresseL est vide"); 
-    }
-    while(a){
-    	//Retrieve by column name
-	    int id  = rs.getInt("idAdresseL");
-	    String rue = rs.getString("rue");
-	    String codePostal = rs.getString("codePostal");
-        String ville = rs.getString("ville");
-	    //Display values
-	    System.out.print("idAdresseL: " + id);
-	    System.out.print(", rue: " + rue);
-	    System.out.print(", codePostal: " + codePostal);
-	    System.out.println(", ville: " + ville);
-	    a=rs.next();
-    }
-    rs.close();
-	} catch (SQLException e){
-    	System.out.println("Table AdresseL non existante");
-    }
-}
+	public void affiche_L(){
+		try{
+			String sql_aff = "SELECT idAdresseL, rue, codePostal, ville FROM AdresseL ";
+		    ResultSet rs = stmt.executeQuery(sql_aff);
+		    
+		    boolean a=rs.next();
+		    if (a==false){
+		    	System.out.println("La table AdresseL est vide"); 
+		    }
+		    while(a){
+			    int id  = rs.getInt("idAdresseL");
+			    String rue = rs.getString("rue");
+			    String codePostal = rs.getString("codePostal");
+		        String ville = rs.getString("ville");
+			    System.out.print("idAdresseL: " + id);
+			    System.out.print(", rue: " + rue);
+			    System.out.print(", codePostal: " + codePostal);
+			    System.out.println(", ville: " + ville);
+			    a=rs.next();
+		    }
+		    rs.close();
+		} catch (SQLException e){
+	    	System.out.println("Table AdresseL non existante");
+	    }
+	}
 }

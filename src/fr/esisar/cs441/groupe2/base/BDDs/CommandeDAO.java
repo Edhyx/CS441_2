@@ -16,38 +16,33 @@ public class CommandeDAO {
 		this.stmt = stmt;
 	}
 	
-	public void add(Commande commande) throws SQLException{
+	public void add(Commande commande) {
 	    String sql_element = "INSERT INTO Commande " +
 	            "VALUES ("+commande.getIdCommande()+", '"+commande.getDate()+"', "+commande.getPrixTotal()+", '"+commande.getClient().getAdresseMail()+"')";
 	    try{
-	    stmt.executeUpdate(sql_element);
-	    System.out.println("Commande '"+commande.getIdCommande()+"' cree");
+	    	stmt.executeUpdate(sql_element);
 	    } catch (SQLException e){
-	    	System.out.println("Commande '"+commande.getIdCommande()+"' existant");
 	    }
 	}
 	
-	public void delete(Commande commande) throws SQLException{
+	public void delete(Commande commande){
 	    String sql_delete = "DELETE FROM Commande " +
 	            "WHERE idCommande = "+commande.getIdCommande()+"";
 	    try{
-	    stmt.executeUpdate(sql_delete);
-	    System.out.println("Commande '"+commande.getIdCommande()+"' supprime");
+	    	stmt.executeUpdate(sql_delete);
 		} catch (SQLException e){
-	    	System.out.println("Table Commande non existant");
 	    }
 	}
 	
-	public Commande getById(int id) throws SQLException{
+	public Commande getById(int id){
 		String sql_aff = "SELECT * FROM Commande " + "WHERE idCommande = " + id +"";
 		Commande commande = null;
 		boolean a;
 		try{
 			ResultSet rs = this.stmt.executeQuery(sql_aff);
 			a = rs.next();
-				//Retrieve by column name
 			if (a==false){
-		    	System.out.println("Impossible de trouver la commande : " + id); 
+				return null; 
 		    }
 		    else {
 		    	id  = rs.getInt("idCommande");
@@ -59,10 +54,10 @@ public class CommandeDAO {
 			    
 				commande = new Commande(id,date,prixTotal,client);
 		    }		
-		rs.close();
+			rs.close();
 		}
 		catch (SQLException e) {
-			System.out.println("Impossible de trouver la commande : " + id);
+			return null;
 		}
 	    return commande;
 	}
@@ -76,17 +71,12 @@ public class CommandeDAO {
 		    	int id  = rs.getInt("idCommande");
 			    String date = rs.getString("dates");
 			    int prixTotal = rs.getInt("prixTotal");
-			    /*
-			    String adresseMail = rs.getString("adresseMail");
-			    ClientDAO tableClient = new ClientDAO(stmt);
-			    Client client = tableClient.getById(adresseMail);
-			    */
 			    
 				commande.add(new Commande(id,date,prixTotal));
 			}
 			rs.close();
 		} catch (SQLException e) {
-			System.out.println("Impossible de trouver d'elements dans la table");
+			return null;
 		}
 	    return commande;
 	}
@@ -94,27 +84,24 @@ public class CommandeDAO {
 	
 	public void affiche() throws SQLException{
 		try{
-		String sql_aff = "SELECT * FROM Commande ";
-	    ResultSet rs = stmt.executeQuery(sql_aff);
-	    
-	    boolean a=rs.next();
-	    if (a==false){
-	    	System.out.println("La table Commande est vide"); 
-	    }
-	    while(a){
-	       //Retrieve by column name
-	       int id  = rs.getInt("idCommande");
-	       String date = rs.getString("dates");
-	       int prixTotal = rs.getInt("prixTotal");
-	       String adresseMail = rs.getString("adresseMail");
-	       //Display values
-	       System.out.print("idCommande: " + id);
-	       System.out.print(", date: " + date);
-	       System.out.print(", prixTotal: " + prixTotal);
-	       System.out.println(", adresseMail: " + adresseMail);
-	       a=rs.next();
-	    }
-	    rs.close();
+			String sql_aff = "SELECT * FROM Commande ";
+		    ResultSet rs = stmt.executeQuery(sql_aff);
+		    boolean a=rs.next();
+		    if (a==false){
+		    	System.out.println("La table Commande est vide"); 
+		    }
+		    while(a){
+		       int id  = rs.getInt("idCommande");
+		       String date = rs.getString("dates");
+		       int prixTotal = rs.getInt("prixTotal");
+		       String adresseMail = rs.getString("adresseMail");
+		       System.out.print("idCommande: " + id);
+		       System.out.print(", date: " + date);
+		       System.out.print(", prixTotal: " + prixTotal);
+		       System.out.println(", adresseMail: " + adresseMail);
+		       a=rs.next();
+		    }
+		    rs.close();
 		} catch (SQLException e){
 	    	System.out.println("Table Commande non existante");
 	    }
