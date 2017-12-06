@@ -244,11 +244,32 @@ public class Model {
 		
 		Album album = tableAlbum.getById(idAlbum);
 		if (album==null){return false;}
-		else if(tableAlbum.delete(album)) {
-			return true;
+		else  {
+			
+			if(this.delFolderFileLink(idAlbum) & tableAlbum.delete(album)) {
+				return true;
+			}
+			
+			return false;			
+		}
+	}
+	
+	public boolean delFolderFileLink(int idAlbum) {
+		
+		ContientDAO tableContient = new ContientDAO(stmt);
+		
+		ArrayList<Contient> listContient = tableContient.getAll();
+		
+		for( Contient contient : listContient) {
+			if(contient.getAlbum().getIdAlbum() == idAlbum) {
+				if(!tableContient.delete(contient)) {
+					return false;
+				}
+			}
 		}
 		
-		return false;
+		return true;
+		
 	}
 	
 	//j'ai changé le type de fichierImage en Liste de fichierImage au lieux de contient 

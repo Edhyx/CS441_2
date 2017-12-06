@@ -30,12 +30,14 @@ public class ContientDAO {
 	}
 	
 	//identifier le contient avec deux éléments
-	public void delete(Contient contient){
+	public boolean delete(Contient contient){
 	    String sql_delete = "DELETE FROM Contient " +
 	            "WHERE idAlbum = "+contient.getAlbum().getIdAlbum()+" and cheminAcces = '"+contient.getFichierImages().getCheminAcces()+"'";
 	    try{
 	    	stmt.executeUpdate(sql_delete);
+	    	return true;
 	    } catch (SQLException e){
+	    	return false;
 	    }
 	}
 	
