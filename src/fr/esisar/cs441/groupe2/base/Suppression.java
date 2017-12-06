@@ -10,17 +10,18 @@ public class Suppression {
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		
-		String driver = "com.mysql.jdbc.Driver";
-		String url = "jdbc:mysql://localhost/test?useSSL=false";
-		String login = "root";
-		String pass = "Pauline02";
+		String server = "tp-oracle.esisar.grenoble-inp.fr";
+		String driver = "oracle.jdbc.driver.OracleDriver";
+		String url = "jdbc:oracle:thin:@//" + server + "/xe";
+		String login = "malossep";
+		String pass = "malossep";
 
 		
-		Class.forName(driver);
+		//Class.forName(driver);
 		Connection connection = DriverManager.getConnection(url,login,pass);
 	    Statement stmt = connection.createStatement();
 
-	    String slq_show =  "SHOW TABLES FROM test";
+	    /*String slq_show =  "SHOW TABLES FROM test";
 	    ResultSet rs_show = stmt.executeQuery(slq_show);
 	    System.out.println("SHOW: "+rs_show.getRow());
 	    
@@ -29,7 +30,7 @@ public class Suppression {
 	    while(rs1.next()) {
 	    	System.out.println("Table " + rs1.getString("table_name"));
 	    	rs1.next();
-	    }
+	    }*/
 
 	    //suppression LigneCommande
 	    String sql_delete_tabLc =  "DROP TABLE LigneCommande ";

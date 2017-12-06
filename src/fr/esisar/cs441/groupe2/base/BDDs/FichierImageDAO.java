@@ -41,7 +41,7 @@ public class FichierImageDAO {
 	    }
 	}
 	
-	public FichierImage getById(String id) throws SQLException{
+	public FichierImage getById(String id) {
 		String sql_aff = "SELECT * FROM FichierImage " + "WHERE cheminAcces = '" + id +"'";
 		FichierImage f = null;
 		boolean a;
@@ -67,11 +67,11 @@ public class FichierImageDAO {
 				f = new FichierImage(id,appareilPhoto,objectif,distanceFocale,sensibiliteISO,ouverture,vitesseObturation,client);
 		    }		
 		rs.close();
+	    return f;
 		}
 		catch (SQLException e) {
-			System.out.println("Impossible de trouver l'adresseL : " + id);
+			return null;
 		}
-	    return f;
 	}
 	
 	public ArrayList<FichierImage> getAll() {

@@ -27,18 +27,20 @@ public class AlbumDAO {
 	    }
 	}
 	
-	public void delete(Album album) throws SQLException{
+	public boolean delete(Album album) 
+	{
 	    String sql_delete = "DELETE FROM Album " +
 	            "WHERE idAlbum = "+album.getIdAlbum()+"";
+	    
 	    try{
-	    stmt.executeUpdate(sql_delete);
-	    System.out.println("Album '"+album.getIdAlbum()+"' supprime");
+	    	stmt.executeUpdate(sql_delete);
+	    	return true;
 		} catch (SQLException e){
-	    	System.out.println("Table Album non existant");
+	    	return false;
 	    }
 	}
 	
-	public Album getById(int id) throws SQLException{
+	public Album getById(int id) {
 		String sql_aff = "SELECT * FROM Album " + "WHERE idAlbum = " + id +"";
 		Album album = null;
 		boolean a;

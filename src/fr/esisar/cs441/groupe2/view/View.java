@@ -301,6 +301,13 @@ public class View {
 			
 			fichier = fichier + " " + choix.substring(choix.indexOf(" ")+1, choix.length());
 			
+			System.out.print("Numéro de la photo : ");
+			fichier = fichier + " " + sc.nextLine();
+			System.out.print("Titre de la photo : ");
+			fichier = fichier + " " + sc.nextLine();
+			System.out.print("Commentaire de la photo : ");
+			fichier = fichier + " " + sc.nextLine();
+			
 			control.notifyChangement(fichier);
 			
 		}else {

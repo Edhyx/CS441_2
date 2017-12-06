@@ -19,8 +19,6 @@ public class Album {
     private String titre;
     private String sousTitre;
     private Client creeParClient;
-    private ArrayList<FichierImage>	fichierImages;
-    private ArrayList<LigneCommande> ligneCommandes;
 	
     public Album(int idAlbum, String titre, String sousTitre) {
 		super();
@@ -28,8 +26,6 @@ public class Album {
 		this.titre = titre;
 		this.sousTitre = sousTitre;
 		this.creeParClient = null;
-		this.fichierImages = new ArrayList<FichierImage>();
-		this.ligneCommandes = new ArrayList<LigneCommande>();
 	}
     public Album(int idAlbum, String titre, String sousTitre, Client creeParClient) {
 		super();
@@ -37,30 +33,6 @@ public class Album {
 		this.titre = titre;
 		this.sousTitre = sousTitre;
 		this.creeParClient = creeParClient;
-		this.fichierImages = new ArrayList<FichierImage>();
-		this.ligneCommandes = new ArrayList<LigneCommande>();
-	}
-    
-    public Album(int idAlbum, String titre, String sousTitre, Client creeParClient,
-			ArrayList<FichierImage> fichierImages, ArrayList<LigneCommande> ligneCommandes) {
-		super();
-		this.idAlbum = idAlbum;
-		this.titre = titre;
-		this.sousTitre = sousTitre;
-		this.creeParClient = creeParClient;
-		this.fichierImages = fichierImages;
-		this.ligneCommandes = ligneCommandes;
-	}
-
-	public Album(int idAlbum, String titre, String sousTitre, Client creeParClient,
-			ArrayList<FichierImage> fichierImages) {
-		super();
-		this.idAlbum = idAlbum;
-		this.titre = titre;
-		this.sousTitre = sousTitre;
-		this.creeParClient = creeParClient;
-		this.fichierImages = fichierImages;
-		this.ligneCommandes = new ArrayList<LigneCommande>();
 	}
 
 	public int getIdAlbum() {
@@ -79,14 +51,6 @@ public class Album {
 		return creeParClient;
 	}
 
-	public ArrayList<FichierImage> getFichierImages() {
-		return fichierImages;
-	}
-
-	public ArrayList<LigneCommande> getLigneCommandes() {
-		return ligneCommandes;
-	}
-
 	public void setIdAlbum(int idAlbum) {
 		this.idAlbum = idAlbum;
 	}
@@ -102,14 +66,6 @@ public class Album {
 	public void setCreeParClient(Client creeParClient) {
 		this.creeParClient = creeParClient;
 	}
-
-	public void setFichierImages(ArrayList<FichierImage> fichierImages) {
-		this.fichierImages = fichierImages;
-	}
-
-	public void setLigneCommandes(ArrayList<LigneCommande> ligneCommandes) {
-		this.ligneCommandes = ligneCommandes;
-	} 
     
 	public String toString() {
 		return "Album [idAlbum=" + idAlbum + ", titre=" + titre + ", sousTitre=" + sousTitre +"]";

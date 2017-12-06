@@ -6,6 +6,5 @@
 	Note :
 		- chemin d'acces : nom.client 
 		- dans controller addMenu/addAlbum changer le while car il faut pouvoir retourner false quand il existe d�ja.
-		
-	to be continued
-		- getFoldersFileList()
+		- getAllFilesWithNoFolder : gérer la fin de parcourt des listes
+		- delfolder : mettre à jour la table Contient

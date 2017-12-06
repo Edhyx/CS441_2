@@ -13,6 +13,7 @@ import fr.esisar.cs441.groupe2.base.BDDs.*;
 public class Model {
 
 	private String idClient;
+	private int idAlbum;
 	private Statement stmt;
 
 	public Model() {
@@ -43,10 +44,16 @@ public class Model {
 		}
 
 		this.stmt = stmts;
+		this.idAlbum = 0;
+		this.idClient = null;
 	}
 
 	public void setClient(String id) {
 		this.idClient = id;
+	}
+	
+	public void setAlbum(int id) {
+		this.idAlbum = id;
 	}
 
 	public String getClientPassword(String id) {
@@ -147,22 +154,120 @@ public class Model {
 		return returns;
 	}
 	
-	public ArrayList<String> getFoldersFileList(String id) {
+	public ArrayList<String> getAllFilesWithNoFolder(String idFolder) {
+		
+		FichierImageDAO tableFichier = new FichierImageDAO(stmt);
+		AlbumDAO tableAlbum = new AlbumDAO(stmt);
+		ContientDAO tableContient = new ContientDAO(stmt);
+		
+		// On verifie si l'Album existe
+		if(tableAlbum.getById(Integer.parseInt(idFolder)) != null) {
+			
+			this.setAlbum(Integer.parseInt(idFolder));
+			
+			ArrayList<FichierImage> pictures = tableFichier.getAll();
+			ArrayList<Contient> folders = tableContient.getAll();
+			ArrayList<String> picturesWithNoFolder = new ArrayList<String>();
+			
+			boolean find;
+			
+			for( FichierImage picture : pictures) {
+				
+				find = false;
+				
+				for( Contient folder : folders) {
+					
+					//On test si l'image ne fait pas deja partie d'un album
+					if(folder.getFichierImages().getCheminAcces().equals(picture.getCheminAcces())) {
+						find = true;
+					}
+				}
+				
+				if(!find) {
+					picturesWithNoFolder.add(picture.toString());	
+				}
+			}
+			
+			return picturesWithNoFolder;
+			
+		}else {
+			// on retourne null si probleme
+			return null;
+		}
+		
+	}
+		
+	public ArrayList<String> getAllFilesWithNoFolder() {
+		
+		FichierImageDAO tableFichier = new FichierImageDAO(stmt);
+		AlbumDAO tableAlbum = new AlbumDAO(stmt);
+		ContientDAO tableContient = new ContientDAO(stmt);
+		
+		// On verifie si l'Album existe
+		if(tableAlbum.getById(idAlbum) != null) {
+						
+			ArrayList<FichierImage> pictures = tableFichier.getAll();
+			ArrayList<Contient> folders = tableContient.getAll();
+			ArrayList<String> picturesWithNoFolder = new ArrayList<String>();
+			
+			boolean find;
+			
+			for( FichierImage picture : pictures) {
+				
+				find = false;
+				
+				for( Contient folder : folders) {
+					
+					//On test si l'image ne fait pas deja partie d'un album
+					if(folder.getFichierImages().getCheminAcces().equals(picture.getCheminAcces())) {
+						find = true;
+					}
+				}
+				
+				if(!find) {
+					picturesWithNoFolder.add(picture.toString());	
+				}
+			}
+			
+			return picturesWithNoFolder;
+			
+		}else {
+			// on retourne null si probleme
+			return null;
+		}
 		
 	}
 	
 	public boolean delFolder(int idAlbum) {
+		
 		AlbumDAO tableAlbum = new AlbumDAO(stmt);
-		try {
-			Album album = tableAlbum.getById(idAlbum);
-			if (album==null){return false;}
-			else{
-				tableAlbum.delete(album);
-				}
-		} catch (SQLException e) {
-			e.printStackTrace();
+		
+		Album album = tableAlbum.getById(idAlbum);
+		if (album==null){return false;}
+		else if(tableAlbum.delete(album)) {
+			return true;
 		}
 		
+		return false;
+	}
+	
+	//j'ai changé le type de fichierImage en Liste de fichierImage au lieux de contient 
+	public boolean addFileToFolder(String idFile, int numOrdre, String titre, String commentaire){
+		
+		AlbumDAO tableAlbum = new AlbumDAO(stmt);
+		Album album = tableAlbum.getById(idAlbum);
+		
+		FichierImageDAO tableFI = new FichierImageDAO(stmt);
+		
+		// On test si le fichier est trouve
+		if(tableFI.getById(idFile) != null) {
+			ContientDAO tableContient = new ContientDAO(stmt);
+			Contient contientNew = new Contient(numOrdre, titre, commentaire, tableFI.getById(idFile), album);
+		
+			return tableContient.add(contientNew);
+			
+		}
+
 		return true;
 	}
 	
@@ -193,23 +298,6 @@ public class Model {
 			returns.add(commande.toString());
 		}
 		return returns;
-	}
-	
-	//j'ai changé le type de fichierImage en Liste de fichierImage au lieux de contient 
-	public boolean addFileToFolder(int idAlbum, String idFile){
-		AlbumDAO tableAlbum = new AlbumDAO(stmt);
-		try {
-			Album album = tableAlbum.getById(idAlbum);
-			ArrayList<FichierImage> fichierImages = new ArrayList<FichierImage>();
-			FichierImageDAO tableFI = new FichierImageDAO(stmt);
-			FichierImage fichier = tableFI.getById(idFile);
-			fichierImages.add(fichier);
-			album.setFichierImages(fichierImages);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return true;
 	}
 
 }

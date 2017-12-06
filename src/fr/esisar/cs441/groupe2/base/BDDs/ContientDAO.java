@@ -17,15 +17,15 @@ public class ContientDAO {
 		this.stmt = stmt;
 	}
 	
-	public void add(Contient contient) throws SQLException{
+	public boolean add(Contient contient) {
 	    String sql_element = "INSERT INTO Contient " +
 	            "VALUES ("+contient.getNumOrdre()+", '"+contient.getTitre()+"', '"+contient.getCommentaire()+
 	            "', "+contient.getAlbum().getIdAlbum()+ ", '"+contient.getFichierImages().getCheminAcces()+"')";
 	    try{
-	    stmt.executeUpdate(sql_element);
-	    System.out.println("Contient '"+ contient.getFichierImages().getCheminAcces() + "' et '" +contient.getAlbum().getIdAlbum() +"' cree");
+	    	stmt.executeUpdate(sql_element);
+	    	return true;
 	    } catch (SQLException e){
-	    	System.out.println("Contient '"+ contient.getFichierImages().getCheminAcces() + "' et '" +contient.getAlbum().getIdAlbum() +"' existant");
+	    	return false;
 	    }
 	}
 	
@@ -82,21 +82,21 @@ public class ContientDAO {
 				int numOrdre  = rs.getInt("numOrdre");
 			    String titre = rs.getString("titre");
 			    String commentaire = rs.getString("commentaire");
-			    /*
 			    String cheminAcces = rs.getString("cheminAcces");
 			    int idAlbum = rs.getInt("idAlbum");
+			    
 			    FichierImageDAO tableFichierImage = new FichierImageDAO(stmt);
-			    FichierImage f = tableFichierImage.getById(cheminAcces);
+			    FichierImage fichier = tableFichierImage.getById(cheminAcces);
 			    AlbumDAO tableAlbum = new AlbumDAO(stmt);
 			    Album album = tableAlbum.getById(idAlbum);
-			    */
-			    contient.add(new Contient(numOrdre,titre,commentaire));
+			   
+			    contient.add(new Contient(numOrdre,titre,commentaire, fichier, album)); 
 			}
 			rs.close();
+			return contient;
 		} catch (SQLException e) {
-			System.out.println("Impossible de trouver d'elements dans la table");
+			return new ArrayList<Contient>();
 		}
-	    return contient;
 	}
 
 	
