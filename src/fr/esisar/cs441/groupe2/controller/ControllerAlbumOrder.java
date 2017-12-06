@@ -26,10 +26,10 @@ public class ControllerAlbumOrder extends Controller{
 				
 			} else if(changement.substring(0,3).equals("ADC")) { // ajout nouvelle commande
 				
-				if(newOrder(changement.substring(changement.indexOf(" "),changement.length()))){
+				if(newOrder(changement.substring(changement.indexOf(" ")+1,changement.length()))){
 					view.displayOrderMenu("Nouvelle commande");
 				} else {
-					view.displayAddOrder("problème ajout nouvelle commande");
+					view.displayOrderADD(model.getFolderList());
 				}
 			} else if(changement.substring(0,3).equals("SHC")) { // affichage liste commandes
 				view.displayOrderADD(model.getOrderList());
@@ -68,8 +68,10 @@ public class ControllerAlbumOrder extends Controller{
 			}
 				
 		}catch(StringIndexOutOfBoundsException e) {
-			view.displayAddPhoto("probleme saisie");
 			return false;
+		}catch(NumberFormatException e){
+			return false;
+			
 		}
 	}
 }

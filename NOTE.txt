@@ -11,3 +11,4 @@
 		- faire évoluer les méthodes View qui ont une Array en paramètre en (String + Array) pour les erreurs
 		- coder la touche retour
 		- format prix : float ?
+		- suppression Automatique

@@ -378,7 +378,7 @@ public class View {
 			
 			fichier = "ADC";
 			
-			fichier = fichier + " " + choix.substring(choix.indexOf(" ")+1, choix.length());
+			fichier = fichier + " " +  choix.substring(choix.indexOf(" ")+1, choix.length());
 			
 			control.notifyChangement(fichier);
 			
@@ -417,10 +417,6 @@ public class View {
 		}else {
 			control.notifyChangement(choix);
 		}
-	}
-	
-	public void displayAddOrder(String str){
-		System.out.println(str);
 	}
 
 	public void displayOrderList(ArrayList<String> str){
