@@ -19,12 +19,14 @@ public class LigneCommandeDAO {
 		this.stmt = stmt;
 	}
 
-	public void add(LigneCommande ligneCommande) {
+	public boolean add(LigneCommande ligneCommande) {
 	    String sql_element = "INSERT INTO LigneCommande " +
 	            "VALUES ("+ligneCommande.getQuantite()+", "+ligneCommande.getCommande().getIdCommande()+", "+ligneCommande.getFormat().getIdFormat()+", "+ligneCommande.getAlbum().getIdAlbum()+")";
 	    try{
 	    	stmt.executeUpdate(sql_element);
+	    	return true;
 	    } catch (SQLException e){
+	    	return false;
 	    }
 	}
 	

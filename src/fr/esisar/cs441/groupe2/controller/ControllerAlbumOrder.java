@@ -1,5 +1,9 @@
 package fr.esisar.cs441.groupe2.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import fr.esisar.cs441.groupe2.model.Model;
 import fr.esisar.cs441.groupe2.view.View;
 
@@ -21,9 +25,9 @@ public class ControllerAlbumOrder extends Controller{
 				view.displayOrderADD(model.getFolderList());
 				
 			} else if(changement.substring(0,3).equals("ADC")) { // ajout nouvelle commande
-				changement = "12/12/17 "+"30€ "+changement; //ajout des infos commande "random"
-				if(newOrder(changement)){
-					view.displayOrderMenu("");
+				
+				if(newOrder(changement.substring(changement.indexOf(" "),changement.length()))){
+					view.displayOrderMenu("Nouvelle commande");
 				} else {
 					view.displayAddOrder("problème ajout nouvelle commande");
 				}
@@ -34,26 +38,37 @@ public class ControllerAlbumOrder extends Controller{
 	}
 	
 	private boolean newOrder(String data) {
+
 		try {
+			
+			String[] element = new String[2];
+			int i=0;
+						
+			while(data.length()>0 & i<2) {
 
-			String[] element = new String[3];
-			int i = 0;
-
-			while (i < 3) {
-
-				if (i == 0) {
-					element[i] = data.substring(0, 7);
-				}else if (i == 1) {
-					element[i] = data.substring(9, data.indexOf("€"));
-				} else {
-						element[i] = data.substring(data.indexOf("€")+6, data.length());
+				if(i<1) {
+					element[i] = data.substring(0, data.indexOf(" "));
+				}else {
+					element[i] = data.substring(0, data.length());
 				}
+				data = data.substring(data.indexOf(" ")+1, data.length());	
 				i++;
 			}
-
-			return model.addOrder(element[0], element[1], element[2]);
-		} catch (StringIndexOutOfBoundsException e) {
-			view.displayAddOrder("probleme saisie");
+			
+			if(i==2) {
+				DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+				Date date = new Date();
+								
+				return model.addOrder(Integer.parseInt(element[0]), 
+									  dateFormat.format(date), 
+									  30,
+									  Integer.parseInt(element[1]));	
+			}else {
+				return false;
+			}
+				
+		}catch(StringIndexOutOfBoundsException e) {
+			view.displayAddPhoto("probleme saisie");
 			return false;
 		}
 	}

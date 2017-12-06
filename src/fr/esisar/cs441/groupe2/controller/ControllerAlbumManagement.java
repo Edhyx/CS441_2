@@ -90,7 +90,12 @@ public class ControllerAlbumManagement extends Controller {
 				i++;
 			}
 			
-			return model.addFolder(element[0], element[1]);		
+			if(i==2) {
+				return model.addFolder(element[0], element[1]);	
+			}else {
+				return false;
+			}
+				
 		}catch(StringIndexOutOfBoundsException e) {
 			view.displayAddPhoto("probleme saisie");
 			return false;

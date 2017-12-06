@@ -15,12 +15,14 @@ public class FormatDAO {
 		this.stmt = stmt;
 	}
 
-	public void add(Format format) {
+	public boolean add(Format format) {
 	    String sql_element = "INSERT INTO Format " +
 	            "VALUES ("+format.getIdFormat()+", "+format.getPrixUnitaire()+")";
 	    try{
 		    stmt.executeUpdate(sql_element);
+		    return true;
 	    } catch (SQLException e){
+	    	return false;
 	    }
 	}
 	

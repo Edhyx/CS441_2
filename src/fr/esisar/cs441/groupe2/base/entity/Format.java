@@ -6,26 +6,15 @@ Format.java
 
 package fr.esisar.cs441.groupe2.base.entity;
 
-import java.util.ArrayList;
-
 public class Format {
 
 	private int idFormat;
     private int prixUnitaire;
-    private ArrayList<LigneCommande> ligneCommande;
-	
-    public Format(int idFormat, int prixUnitaire, ArrayList<LigneCommande> ligneCommande) {
-		super();
-		this.idFormat = idFormat;
-		this.prixUnitaire = prixUnitaire;
-		this.ligneCommande = ligneCommande;
-	}
-      
+	      
 	public Format(int idFormat, int prixUnitaire) {
 		super();
 		this.idFormat = idFormat;
 		this.prixUnitaire = prixUnitaire;
-		this.ligneCommande = new ArrayList<LigneCommande>();
 	}
 
 	public int getIdFormat() {
@@ -36,20 +25,12 @@ public class Format {
 		return prixUnitaire;
 	}
 
-	public ArrayList<LigneCommande> getLigneCommande() {
-		return ligneCommande;
-	}
-
 	public void setIdFormat(int idFormat) {
 		this.idFormat = idFormat;
 	}
 
 	public void setPrixUnitaire(int prixUnitaire) {
 		this.prixUnitaire = prixUnitaire;
-	}
-
-	public void setLigneCommande(ArrayList<LigneCommande> ligneCommande) {
-		this.ligneCommande = ligneCommande;
 	}
 	
 	public String toString() {

@@ -364,7 +364,10 @@ public class View {
 			}
 		}
 		
-		System.out.println("choisir l'album à commander: taper 1 [espace] id de l'album");
+		System.out.println("choisir l'album à commander: taper 1 [espace] id de l'album [espace] quantité");
+		System.out.println("Quitter : tapez 9");
+		System.out.print(">> ");
+		
 		Scanner sc = new Scanner(System.in);
 		
 		String choix = sc.nextLine();
@@ -375,10 +378,12 @@ public class View {
 			
 			fichier = "ADC";
 			
-			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
+			fichier = fichier + " " + choix.substring(choix.indexOf(" ")+1, choix.length());
 			
 			control.notifyChangement(fichier);
 			
+		}else {
+			control.notifyChangement(choix);
 		}
 	}
 	
@@ -393,6 +398,7 @@ public class View {
 		System.out.println("Nouvele Commande : taper 1");
 		System.out.println("Consulter Commandes : taper 2");
 		System.out.println("Quitter : tapez 9");
+		System.out.print(">> ");
 		Scanner sc = new Scanner(System.in);
 		
 		String choix = sc.nextLine();

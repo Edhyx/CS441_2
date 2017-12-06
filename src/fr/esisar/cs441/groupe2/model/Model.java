@@ -238,15 +238,15 @@ public class Model {
 		
 	}
 	
-	public boolean delFolder(int idAlbum) {
+	public boolean delFolder(int idAlbumDel) {
 		
 		AlbumDAO tableAlbum = new AlbumDAO(stmt);
 		
-		Album album = tableAlbum.getById(idAlbum);
+		Album album = tableAlbum.getById(idAlbumDel);
 		if (album==null){return false;}
 		else  {
 			
-			if(this.delFolderFileLink(idAlbum) & tableAlbum.delete(album)) {
+			if(this.delFolderFileLink(idAlbumDel) & tableAlbum.delete(album)) {
 				return true;
 			}
 			
@@ -254,14 +254,14 @@ public class Model {
 		}
 	}
 	
-	public boolean delFolderFileLink(int idAlbum) {
+	public boolean delFolderFileLink(int idAlbumDel) {
 		
 		ContientDAO tableContient = new ContientDAO(stmt);
 		
 		ArrayList<Contient> listContient = tableContient.getAll();
 		
 		for( Contient contient : listContient) {
-			if(contient.getAlbum().getIdAlbum() == idAlbum) {
+			if(contient.getAlbum().getIdAlbum() == idAlbumDel) {
 				if(!tableContient.delete(contient)) {
 					return false;
 				}
@@ -292,21 +292,61 @@ public class Model {
 		return true;
 	}
 	
-	public boolean addOrder(String idClient, String date,int prixTotal){
+	public boolean addOrder(int idAlbumAdd, String date, int prixTotal, int quantite){
+		
 		Integer id = new Integer(ThreadLocalRandom.current().nextInt(0, 1000 + 1));
+		
 		ClientDAO tableClient = new ClientDAO(stmt);
-		Client client = tableClient.getById(idClient);
+		Client client = tableClient.getById(this.idClient);
+		
 		Commande commande = new Commande(id,date,prixTotal,client);
 		CommandeDAO tableCommande = new CommandeDAO(stmt);
+		
 		if (client==null) {return false;}
 		else{
-			try {
-				tableCommande.add(commande);
-			} catch (SQLException e) {
-				e.printStackTrace();
+			
+			if(tableCommande.add(commande)) {
+				
+				/* on determine le prix unitaire
+				 * en comptant le nombre de photos
+				 * 
+				 * On met a jour la table Format
+				 */
+				ContientDAO tableContient = new ContientDAO(stmt);
+				ArrayList<Contient> contients = tableContient.getAll();
+				int nombreFile = 0;
+				
+				for( Contient contient : contients) {
+					if(contient.getAlbum().getIdAlbum() == idAlbumAdd) {
+						nombreFile++;
+					}
+				}
+				
+				Format format = new Format(id, prixTotal/nombreFile);
+				FormatDAO tableFormat = new FormatDAO(stmt);
+				
+				if( tableFormat.add(format) ) {
+					
+					AlbumDAO tableAlbum = new AlbumDAO(stmt);
+					
+					if(tableAlbum.getById(idAlbumAdd) != null) {
+						
+						/* On met a jour la table LigneCommande */
+						LigneCommandeDAO tableLigneCommande = new LigneCommandeDAO(stmt);
+						LigneCommande ligneCommande = new LigneCommande(quantite, 
+																		commande, 
+																		format, 
+																		tableAlbum.getById(idAlbumAdd));
+						if(tableLigneCommande.add(ligneCommande)) {
+							
+							return true;
+						}
+					}
+				}
 			}
-			return true;
-			}
+			
+			return false;
+		}
 	}
 	
 	public ArrayList<String> getOrderList(){

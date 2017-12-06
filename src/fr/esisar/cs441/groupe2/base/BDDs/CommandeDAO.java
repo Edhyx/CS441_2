@@ -16,12 +16,14 @@ public class CommandeDAO {
 		this.stmt = stmt;
 	}
 	
-	public void add(Commande commande) {
+	public boolean add(Commande commande) {
 	    String sql_element = "INSERT INTO Commande " +
 	            "VALUES ("+commande.getIdCommande()+", '"+commande.getDate()+"', "+commande.getPrixTotal()+", '"+commande.getClient().getAdresseMail()+"')";
 	    try{
 	    	stmt.executeUpdate(sql_element);
+	    	return true;
 	    } catch (SQLException e){
+	    	return false;
 	    }
 	}
 	
@@ -72,7 +74,12 @@ public class CommandeDAO {
 			    String date = rs.getString("dates");
 			    int prixTotal = rs.getInt("prixTotal");
 			    
-				commande.add(new Commande(id,date,prixTotal));
+			    String adresseMail = rs.getString("adresseMail");
+			    
+			    ClientDAO tableClient = new ClientDAO(stmt);
+				Client client = tableClient.getById(adresseMail);
+			    
+				commande.add(new Commande(id,date,prixTotal,client));
 			}
 			rs.close();
 		} catch (SQLException e) {
