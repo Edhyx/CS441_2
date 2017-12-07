@@ -16,7 +16,7 @@ public class ClientDAO {
 		super();
 		this.stmt = stmt;
 	}
-	
+	//retourne vrai quand un client a ete ajoute avec succee 
 	public boolean add(Client client){
 	    String sql_element = "INSERT INTO Client " +
 	            "VALUES ('"+client.getAdresseMail()+"', '"+client.getNom()+"', '"+client.getPrenom()+"', '"+client.getPassword()+"', "+client.getAdresseDeFacturation().getIdAdresse()+", "+client.getAdresseDeLivraison().getIdAdresse()+")";
@@ -27,8 +27,8 @@ public class ClientDAO {
 	    }
 	    return true;
 	}
-	
-	public void delete(Client client) {
+	//retourne vrai quand un client a ete supprime avec succee 
+	public boolean delete(Client client) {
 	    String sql_delete = "DELETE FROM Client " 
 	    					+ "WHERE adresseMail = '"
 	    					+ client.getAdresseMail() 
@@ -36,10 +36,11 @@ public class ClientDAO {
 	    try{
 		    this.stmt.executeUpdate(sql_delete);
 		} catch (SQLException e){
+	    	return false;
 	    }
+    	return true;
 	}
-				
-
+	//retourne le client qui correspond a l'id (mail) entre en parametre 
 	public Client getById(String id) {		
 		String sql_aff = "SELECT * FROM Client " + "WHERE adresseMail = '" + id +"'";
 		Client client = null;
@@ -70,7 +71,7 @@ public class ClientDAO {
 		}
 	    return client;
 	}
-	
+	// retourne dans une arrayList tous les clients
 	public ArrayList<Client> getAll() {
 		String sql_aff = "SELECT * FROM Client ";
 		ArrayList<Client> client = new ArrayList<Client>();
@@ -90,7 +91,7 @@ public class ClientDAO {
 		}
 	    return client;
 	}
-	
+	// affiche tout les elements de la table client.Methode reservee a l'admin 
 	public void affiche(){
 		String sql_aff = "SELECT * FROM Client ";
 		try{

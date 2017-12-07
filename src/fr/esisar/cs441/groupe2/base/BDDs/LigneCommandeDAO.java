@@ -18,7 +18,7 @@ public class LigneCommandeDAO {
 		super();
 		this.stmt = stmt;
 	}
-
+	//retourne vrai quand une ligne de commande a ete ajoute avec succee 
 	public boolean add(LigneCommande ligneCommande) {
 	    String sql_element = "INSERT INTO LigneCommande " +
 	            "VALUES ("+ligneCommande.getQuantite()+", "+ligneCommande.getCommande().getIdCommande()+", "+ligneCommande.getFormat().getIdFormat()+", "+ligneCommande.getAlbum().getIdAlbum()+")";
@@ -29,7 +29,7 @@ public class LigneCommandeDAO {
 	    	return false;
 	    }
 	}
-	
+	//retourne vrai quand une ligne de commande a ete supprime avec succee 
 	public void delete(LigneCommande ligneCommande) {
 	    String sql_delete = "DELETE FROM LigneCommande " +
 	            "WHERE idCommande = "+ligneCommande.getCommande().getIdCommande()+"";
@@ -38,7 +38,7 @@ public class LigneCommandeDAO {
 		} catch (SQLException e){
 	    }
 	}
-	
+	//retourne la ligne de commande qui correspond a l'id de la commande entre en parametre 
 	public LigneCommande getById(int idCommande) {
 		String sql_aff = "SELECT * FROM LigneCommande " + "WHERE idCommande = " + idCommande +"";
 		LigneCommande adL = null;
@@ -70,7 +70,7 @@ public class LigneCommandeDAO {
 		}
 	return adL;
 	}
-	
+	// retourne dans une arrayList toutes les lignes de commandes
 	public ArrayList<LigneCommande> getAll() {
 		String sql_aff = "SELECT * FROM LigneCommande ";
 		ArrayList<LigneCommande> adF = new ArrayList<LigneCommande>();
@@ -89,7 +89,7 @@ public class LigneCommandeDAO {
 	return adF;
 	}
 
-
+	// affiche tout les elements de la table ligneCommande.Methode reservee a l'admin 
 	public void affiche() throws SQLException{
 		try{
 			String sql_aff = "SELECT quantite, idCommande, idFormat, idAlbum FROM LigneCommande ";

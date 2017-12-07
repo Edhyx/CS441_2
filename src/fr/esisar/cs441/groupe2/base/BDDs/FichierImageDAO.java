@@ -15,28 +15,30 @@ public class FichierImageDAO {
 		super();
 		this.stmt = stmt;
 	}
-	
+	//retourne vrai quand un fichier image a ete ajoute avec succee 
 	public boolean add(FichierImage f) {
 	    String sql_element = "INSERT INTO FichierImage " +
 	            "VALUES ('"+f.getCheminAcces()+"', '"+f.getAppareilPhoto()+"', '"+f.getObjectif()+"', "+f.getDistanceFocale()+", "+f.getSensibiliteISO()+
 	            			", "+f.getOuverture()+", "+f.getVitesseObturation()+", '"+f.getClient().getAdresseMail()+"')";
 	    try{	    	
 	    	stmt.executeUpdate(sql_element);
-	    	return true;
 	    } catch (SQLException e){
 	    	return false;
 	    }
+    	return true;
 	}
-	
-	public void delete(FichierImage f) throws SQLException{
+	//retourne vrai quand un fichier image a ete supprime avec succee 
+	public boolean delete(FichierImage f) throws SQLException{
 	    String sql_delete = "DELETE FROM FichierImage " +
 	            "WHERE cheminAcces = '"+f.getCheminAcces()+"'";
 	    try{
 		    stmt.executeUpdate(sql_delete);
 		} catch (SQLException e){
+	    	return false;
 	    }
+    	return true;
 	}
-	
+	//retourne le fichier image qui correspond au chemin d'acces entre en parametre 
 	public FichierImage getById(String id) {
 		String sql_aff = "SELECT * FROM FichierImage " + "WHERE cheminAcces = '" + id +"'";
 		FichierImage f = null;
@@ -68,7 +70,7 @@ public class FichierImageDAO {
 			return null;
 		}
 	}
-	
+	// retourne dans une arrayList tous les fichiers images 
 	public ArrayList<FichierImage> getAll() {
 		String sql_aff = "SELECT * FROM FichierImage ";
 		ArrayList<FichierImage> f = new ArrayList<FichierImage>();
@@ -91,7 +93,7 @@ public class FichierImageDAO {
 		}
 	    return f;
 	}
-	
+	// affiche tout les elements de la table FichierImage.Methode reservee a l'admin 
 	public void affiche() {
 		try{
 			String sql_aff = "SELECT * FROM FichierImage ";

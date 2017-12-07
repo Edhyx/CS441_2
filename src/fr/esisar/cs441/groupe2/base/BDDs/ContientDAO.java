@@ -16,20 +16,19 @@ public class ContientDAO {
 		super();
 		this.stmt = stmt;
 	}
-	
+	//retourne vrai quand une liaison "contient" a ete ajoute avec succee 
 	public boolean add(Contient contient) {
 	    String sql_element = "INSERT INTO Contient " +
 	            "VALUES ("+contient.getNumOrdre()+", '"+contient.getTitre()+"', '"+contient.getCommentaire()+
 	            "', "+contient.getAlbum().getIdAlbum()+ ", '"+contient.getFichierImages().getCheminAcces()+"')";
 	    try{
 	    	stmt.executeUpdate(sql_element);
-	    	return true;
 	    } catch (SQLException e){
 	    	return false;
 	    }
+    	return true;
 	}
-	
-	//identifier le contient avec deux éléments
+	//retourne vrai quand une liaison "contient" a ete supprime avec succee 
 	public boolean delete(Contient contient){
 	    String sql_delete = "DELETE FROM Contient " +
 	            "WHERE idAlbum = "+contient.getAlbum().getIdAlbum()+" and cheminAcces = '"+contient.getFichierImages().getCheminAcces()+"'";
@@ -40,7 +39,7 @@ public class ContientDAO {
 	    	return false;
 	    }
 	}
-	
+	//retourne la liaison "contient" qui correspond a l'album et le fichier image entres en parametre 
 	public Contient getById(int idAlbum, String cheminAcces){
 		String sql_aff = "SELECT * FROM Contient " +
 				"WHERE idAlbum = "+idAlbum+" and cheminAcces = '"+cheminAcces+"'";
@@ -72,7 +71,7 @@ public class ContientDAO {
 		}
 	    return contient;
 	}
-	
+	// retourne dans une arrayList toutes les liaison "contient"
 	public ArrayList<Contient> getAll() {
 		String sql_aff = "SELECT * FROM Contient ";
 		ArrayList<Contient> contient = new ArrayList<Contient>();
@@ -99,7 +98,7 @@ public class ContientDAO {
 		}
 	}
 
-	
+	// affiche tout les elements de la table contient.Methode reservee a l'admin 
 	public void affiche(){
 		try{
 			String sql_aff = "SELECT * FROM Contient ";

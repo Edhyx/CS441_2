@@ -15,27 +15,29 @@ public class CommandeDAO {
 		super();
 		this.stmt = stmt;
 	}
-	
+	//retourne vrai quand une commande a ete ajoute avec succee 
 	public boolean add(Commande commande) {
 	    String sql_element = "INSERT INTO Commande " +
 	            "VALUES ("+commande.getIdCommande()+", '"+commande.getDate()+"', "+commande.getPrixTotal()+", '"+commande.getClient().getAdresseMail()+"')";
 	    try{
 	    	stmt.executeUpdate(sql_element);
-	    	return true;
 	    } catch (SQLException e){
 	    	return false;
 	    }
+    	return true;
 	}
-	
-	public void delete(Commande commande){
+	//retourne vrai quand une commande a ete supprime avec succee 
+	public boolean delete(Commande commande){
 	    String sql_delete = "DELETE FROM Commande " +
 	            "WHERE idCommande = "+commande.getIdCommande()+"";
 	    try{
 	    	stmt.executeUpdate(sql_delete);
 		} catch (SQLException e){
+	    	return false;
 	    }
+    	return true;
 	}
-	
+	//retourne la commande qui correspond a l'id entre en parametre 
 	public Commande getById(int id){
 		String sql_aff = "SELECT * FROM Commande " + "WHERE idCommande = " + id +"";
 		Commande commande = null;
@@ -63,7 +65,7 @@ public class CommandeDAO {
 		}
 	    return commande;
 	}
-	
+	// retourne dans une arrayList toutes les commandes
 	public ArrayList<Commande> getAll() {
 		String sql_aff = "SELECT * FROM Commande ";
 		ArrayList<Commande> commande = new ArrayList<Commande>();
@@ -88,7 +90,7 @@ public class CommandeDAO {
 	    return commande;
 	}
 
-	
+	// affiche tout les elements de la table commande.Methode reservee a l'admin  
 	public void affiche() throws SQLException{
 		try{
 			String sql_aff = "SELECT * FROM Commande ";

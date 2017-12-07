@@ -14,7 +14,7 @@ public class AdresseDAO {
 		super();
 		this.stmt = stmt;
 	}
-	
+	//retourne vrai quand une adresse de facturation a ete ajoutee avec succee  
 	public boolean add_F(Adresse adF){
 	    String sql_element = "INSERT INTO AdresseF " +
 	            "VALUES ("+adF.getIdAdresse()+", '"+adF.getRue()+"', '"+adF.getCodePostal()+"', '"+adF.getVille()+"')";
@@ -26,7 +26,7 @@ public class AdresseDAO {
 	    }
 	    return true;
 	}
-	
+	//retourne vrai quand une adresse de livraison a ete ajoutee avec succee  
 	public boolean add_L(Adresse adL){
 	    String sql_element = "INSERT INTO AdresseL " +
 	            "VALUES ("+adL.getIdAdresse()+", '"+adL.getRue()+"', '"+adL.getCodePostal()+"', '"+adL.getVille()+"')";
@@ -38,25 +38,29 @@ public class AdresseDAO {
 	    }
 	    return true;
 	}
-
-	public void delete_F(Adresse adF){
+	//retourne vrai quand une adresse de facturation a ete supprimee avec succee  
+	public boolean delete_F(Adresse adF){
 	    String sql_delete = "DELETE FROM AdresseF " +
 	            "WHERE idAdresseF = "+adF.getIdAdresse()+"";
 	    try{
 	    	stmt.executeUpdate(sql_delete);
 		} catch (SQLException e){
+			return false;
 	    }
+	    return true;
 	}
-	
-	public void delete_L(Adresse adL){
+	//retourne vrai quand une adresse de livraison a ete supprimee avec succee  
+	public boolean delete_L(Adresse adL){
 	    String sql_delete = "DELETE FROM AdresseL " +
 	            "WHERE idAdresseL = "+adL.getIdAdresse()+"";
 	    try{
 	    	stmt.executeUpdate(sql_delete);
 		} catch (SQLException e){
+			return false;
 	    }
+	    return true;
 	}
-	
+	//retourne l'adresse de facturation qui correspond a l'id entre en parametre 
 	public Adresse getById_F(int id){
 		String sql_aff = "SELECT * FROM AdresseF " + "WHERE idAdresseF = " + id +"";
 		Adresse adF = null;
@@ -83,7 +87,7 @@ public class AdresseDAO {
 		}
 	    return adF;
 	}
-	
+	//retourne l'adresse de livraison qui correspond a l'id entre en parametre 
 	public Adresse getById_L(int id) {
 		String sql_aff = "SELECT * FROM AdresseL " + "WHERE idAdresseL = " + id +"";
 		Adresse adL = null;
@@ -110,7 +114,7 @@ public class AdresseDAO {
 		}
 	    return adL;
 	}
-	
+	// retourne dans une arrayList toutes les adresses de facturation
 	public ArrayList<Adresse> getAll_F() {
 		String sql_aff = "SELECT * FROM AdresseF ";
 		ArrayList<Adresse> adF = new ArrayList<Adresse>();
@@ -132,7 +136,7 @@ public class AdresseDAO {
 		}
 	    return adF;
 	}
-
+	// retourne dans une arrayList toutes les adresses de livraison
 	public ArrayList<Adresse> getAll_L() {
 		String sql_aff = "SELECT * FROM AdresseL ";
 		ArrayList<Adresse> adL = new ArrayList<Adresse>();
@@ -154,7 +158,7 @@ public class AdresseDAO {
 		}
 	    return adL;
 	}
-
+	// affiche tout les elements de la table adresseF(L).Methode reservee a l'admin 
 	public void affiche_F(){
 		try{
 			String sql_aff = "SELECT * FROM AdresseF ";
