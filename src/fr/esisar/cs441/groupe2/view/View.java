@@ -2,9 +2,15 @@
  * Projet CS441 - Mini projet de developpement d'une application de gestion de tirages
  * photos numériques
  * Equipe 2
+ *
+ * Maxime FELICI - Mathieu PLAINEMAISON - Pauline MALOSSE - Anis BEN MAHMOUD - Soraya AFELLAD - Rémi POLETTI
+ *
  * 
  * pattern MVC : View
  * Gestion de l'affichage en ligne de commandes
+ * possède des méthodes displayX pour les X fonctionnalités (displayConnection, displayMenu etc)
+ * Attributs :
+ * - x controlerX; où x est le nombre de fonctionnalités
  */
 
 package fr.esisar.cs441.groupe2.view;
@@ -41,7 +47,7 @@ public class View {
 	}
 
 	@SuppressWarnings("resource")
-	public void displayNewClient(String str){
+	public void displayNewClient(String str){   //Gère l'affichage pour un nouveau client
 		
 		control = new ControllerNewClient(this, model);
 		
@@ -93,7 +99,7 @@ public class View {
 		control.notifyChangement(client);		//Envoi dans controler
 	}
 
-	public void displayConnection(String str){
+	public void displayConnection(String str){ //Affiche la page de connexion pour un client déjà existant
 		control = new ControllerConnection(this, model);
 		if(!str.isEmpty()){
 			System.out.println(str);
@@ -106,7 +112,7 @@ public class View {
 		control.notifyChangement(sc.nextLine());	//Scan et envoi dans controler.
 	}
 
-	public void displayMenu(String str){
+	public void displayMenu(String str){	//Affiche le menu principal
 		
 		control = new ControllerMenu(this, model);
 		if(!str.isEmpty()){
@@ -125,7 +131,7 @@ public class View {
 
 	}
 
-	public void displayAddPhoto(String str){
+	public void displayAddPhoto(String str){		//Affiche le menu d'ajout de photo
 		
 		control = new ControllerAddPhoto(this, model);
 		
@@ -191,7 +197,7 @@ public class View {
 	}
 	
 	@SuppressWarnings("resource")
-	public void displayAlbumMenu(String str){
+	public void displayAlbumMenu(String str){			//Affiche le menu ALBUM
 		control = new ControllerAlbumManagement(this, model);
 		
 		if(!str.isEmpty()){
@@ -230,7 +236,7 @@ public class View {
 		}
 	}
 	
-	public void displayAlbumManagement(ArrayList<String> str){
+	public void displayAlbumManagement(ArrayList<String> str){		//Menu de gestion des albums
 		
 		control = new ControllerAlbumManagement(this, model);
 		
@@ -273,7 +279,7 @@ public class View {
 		}
 	}
 	
-	public void displayAlbumADD(ArrayList<String> str){
+	public void displayAlbumADD(ArrayList<String> str){		//Menu d'ajout d'album
 		
 		control = new ControllerAlbumManagement(this, model);
 		
@@ -315,7 +321,7 @@ public class View {
 		}
 	}
 	
-	public void displayAlbumOrder(String str){
+	public void displayAlbumOrder(String str){		//Menu de commande des albums
 		control = new ControllerAlbumManagement(this, model);
 		
 		System.out.println("--- --- GESTION DES COMMANDES --- ---");
@@ -352,7 +358,7 @@ public class View {
 		}
 	}
 	
-	public void displayOrderADD(ArrayList<String> str){
+	public void displayOrderADD(ArrayList<String> str){		//Menu des nouvelles commandes
 		
 		control = new ControllerAlbumOrder(this, model);
 		
@@ -387,7 +393,7 @@ public class View {
 		}
 	}
 	
-	public void displayOrderMenu(String str){
+	public void displayOrderMenu(String str){		//Menu d'entrée commandes
 		control = new ControllerAlbumOrder(this, model);
 		
 		if(!str.isEmpty()){
@@ -395,7 +401,7 @@ public class View {
 		
 		}
 		System.out.println("--- --- GESTION DES COMMANDES --- ---");
-		System.out.println("Nouvele Commande : taper 1");
+		System.out.println("Nouvelle Commande : taper 1");
 		System.out.println("Consulter Commandes : taper 2");
 		System.out.println("Quitter : tapez 9");
 		System.out.print(">> ");
@@ -419,7 +425,7 @@ public class View {
 		}
 	}
 
-	public void displayOrderList(ArrayList<String> str){
+	public void displayOrderList(ArrayList<String> str){		//Menu des listes des commandes
 		control = new ControllerOrderList(this, model);
 		if(!str.isEmpty()){
 			System.out.println(str);
@@ -429,7 +435,7 @@ public class View {
 		control.notifyChangement(sc.nextLine());
 	}
 
-	public void displayEnd(String str){
+	public void displayEnd(String str){		//Affichage de fermeture
 		if(!str.isEmpty()){
 			System.out.println(str);
 		}
