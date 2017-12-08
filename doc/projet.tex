@@ -231,6 +231,21 @@ Attributs :\\
 - clientDAO, AlbumDAO etc ...
 \vspace{1\baselineskip}
 
+Le pattern MVC a été pensé pour respecter au maximum les cloisons entre Model,
+View et Controller. Pour cela, nous avons privilégié le schéma de principe
+suivant : La partie View, quand elle reçoit une interaction de l’utilisateur
+transfère l’information au controller. Ce dernier effectue les tâches et fait
+appel au Model avant de transmettre une nouvelle information au View.
+Ainsi, mise à part les méthodes display(), la partie View pourrait devenir une
+Interface Graphique sans impacter le reste du programme. Dans la même idée le
+controller qui ne reçoit et envoi que des String (ou liste de String)
+n’impacterait en rien le reste du code avec un changement. Le Model quand
+à lui ne transmet des informations que sur demande.\\
+\vspace{1\baselineskip}
+Note sur le modèle : les seules fonctions qui présentent des affichages
+sont à destinations des administrateurs et donc ne sont pas à prendre en
+compte dans le pattern.
+
 \begin{figure}[!h]
   \begin{center}
     \includegraphics[scale=0.45]{fig6} % Include the image placeholder.png
@@ -255,6 +270,20 @@ Ce diagramme représente le fonctionnement détaillé de la partie Controller.
   \end{center}
 \end{figure}
 
+Le build ANT fourni avec le projet permet de produire 4 exécutables
+différents.\\
+Exécutables pour utilisateur : \\
+\begin{itemize}
+  \item CS441_2.jar qui est l'exécutable permettant de lancer le programme
+\end{itemize}
+Exécutables pour administrateur :\\
+\begin{itemize}
+  \item deleteTable.jar qui permet d’effacer la table entièrement
+  \item initTable.jar qui permet d’initialiser les tables de la base de donnée.
+  Obligatoire après avoir effacé la table.
+  \item showTable.jar qui permet de rendre compte de l’ensemble des tables
+  sur la bases de données.
+\end{itemize}
 
 
 \newpage
@@ -306,7 +335,7 @@ facilement. \\
 Ce projet nous a permis de manipuler une base de donnée et de créer un
 programme complet. Nous avons mit en pratique nos connaissances du cours
 de Génie Logiciel (UML, Cycle de vie, Base de données), mais aussi de nos cours
-précédents de Java. 
+précédents de Java.
 
 
 
