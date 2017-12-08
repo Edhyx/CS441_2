@@ -90,15 +90,10 @@ public class AlbumDAO {
 	public ArrayList<Album> getAllById(String idClient) {
 		String sql_aff = "SELECT * FROM Album " + "WHERE adresseMail = '" + idClient +"'";
 		ArrayList<Album> album = new ArrayList<Album>();
-		boolean a;
 		try{
 			ResultSet rs = this.stmt.executeQuery(sql_aff);
-			a = rs.next();
-			if (a==false){
-		    	return new ArrayList<Album>();
-		    }
-		    else {
-		    	int id  = rs.getInt("idAlbum");
+			while(rs.next()) {
+				int id  = rs.getInt("idAlbum");
 			    String titre = rs.getString("titre");
 			    String sousTitre = rs.getString("sousTitre");
 			    
