@@ -19,7 +19,10 @@ public class ControllerAddPhoto extends Controller{
 		
 		if(changement.charAt(0) == '9') {
 			view.displayEnd("");
-		}else {
+		}else if (changement.charAt(0) == '8') {
+			view.displayMenu("");
+		}
+		else {
 		
 			try {
 				

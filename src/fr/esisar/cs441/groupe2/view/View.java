@@ -142,6 +142,7 @@ public class View {
 		System.out.println("--- --- AJOUTER DES PHOTOS --- ---");
 		System.out.println("Ajouter une photo : taper 1");
 		System.out.println("Ajouter un lot de photo : taper 2");
+		System.out.println("Menu : tapez 8");
 		System.out.println("Quitter : tapez 9");
 		System.out.print(">> ");
 		Scanner sc = new Scanner(System.in);
@@ -207,6 +208,7 @@ public class View {
 		System.out.println("--- --- GESTION DES ALBUMS --- ---");
 		System.out.println("Nouvel album : taper 1");
 		System.out.println("Consulter albums : taper 2");
+		System.out.println("Menu : tapez 8");
 		System.out.println("Quitter : tapez 9");
 		System.out.print(">> ");
 		Scanner sc = new Scanner(System.in);
@@ -251,6 +253,7 @@ public class View {
 		
 		System.out.println("Ajouter des photos a un album : taper 1 [espace] chemin de l'album");
 		System.out.println("Suprimer album :  taper 2 [espace] chemin de l'album");
+		System.out.println("Menu : tapez 8");
 		System.out.println("Quitter : tapez 9");
 		System.out.print(">> ");
 		Scanner sc = new Scanner(System.in);
@@ -294,6 +297,7 @@ public class View {
 		}
 		
 		System.out.println("Ajouter des photos a l'album : taper 1 [espace] id de la photo");
+		System.out.println("Menu : tapez 8");
 		System.out.println("Quitter : tapez 9");
 		Scanner sc = new Scanner(System.in);
 		
@@ -334,6 +338,7 @@ public class View {
 		
 		System.out.println("Commander un album : taper 1 ");
 		System.out.println("Suprimer commande :  taper 2 ");
+		System.out.println("Menu : tapez 8");
 		System.out.println("Quitter : tapez 9");
 		Scanner sc = new Scanner(System.in);
 		
@@ -373,6 +378,7 @@ public class View {
 		}
 		
 		System.out.println("choisir l'album à commander: taper 1 [espace] id de l'album [espace] quantité");
+		System.out.println("Menu : tapez 8");
 		System.out.println("Quitter : tapez 9");
 		System.out.print(">> ");
 		
@@ -405,6 +411,7 @@ public class View {
 		System.out.println("--- --- GESTION DES COMMANDES --- ---");
 		System.out.println("Nouvelle Commande : taper 1");
 		System.out.println("Consulter Commandes : taper 2");
+		System.out.println("Menu : tapez 8");
 		System.out.println("Quitter : tapez 9");
 		System.out.print(">> ");
 		Scanner sc = new Scanner(System.in);

@@ -20,7 +20,10 @@ public class ControllerAlbumOrder extends Controller{
 		try {
 			if(changement.charAt(0) == '9') {
 				view.displayEnd("");
-			}else {
+			}else if (changement.charAt(0) == '8') {
+				view.displayMenu("");
+			}
+			else {
 				
 				// On test tous les codes
 				if(changement.substring(0,3).equals("NEW")) { // new order
