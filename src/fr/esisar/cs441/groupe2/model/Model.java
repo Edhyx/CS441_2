@@ -220,8 +220,7 @@ public class Model {
 				
 				find = false;
 				
-				for( Contient folder : folders) {
-					
+				for( Contient folder : folders) {					
 					//On test si l'image ne fait pas deja partie d'un album
 					if(folder.getFichierImages().getCheminAcces().equals(picture.getCheminAcces())) {
 						find = true;

@@ -19,9 +19,9 @@ public class AfficheTable {
 		// TODO Auto-generated method stub
 		String server = "tp-oracle.esisar.grenoble-inp.fr";
 		String driver = "oracle.jdbc.driver.OracleDriver";
-		String url = "jdbc:oracle:thin:@//"+server+"/xe";
+		String url = "jdbc:oracle:thin:@//" + server + "/xe";
 		String login = "malossep";
-		String pass ="malossep";
+		String pass = "malossep";
 		try{
 			Class.forName(driver);
 			Connection connexion = DriverManager.getConnection(url,login,pass);
