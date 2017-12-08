@@ -145,12 +145,11 @@ public class Model {
 		
 		ArrayList<Album> album = new ArrayList<Album>();
 		AlbumDAO tableAlbum = new AlbumDAO(stmt);
-		album = tableAlbum.getAll();
+		album = tableAlbum.getAllById(idClient);
 
 		for (Album al : album) {
 			returns.add(al.toString());
 		}
-		
 		return returns;
 	}
 	
@@ -354,11 +353,10 @@ public class Model {
 		ArrayList<String> returns = new ArrayList<String>();
 		ArrayList<Commande> commande = new ArrayList<Commande>();
 		CommandeDAO tableCommande = new CommandeDAO(stmt);
-		
-		commande = tableCommande.getAll();
+
+		commande = tableCommande.getAllById(idClient);
 
 		for (Commande co : commande) {
-
 			returns.add(co.toString());
 		}
 		return returns;

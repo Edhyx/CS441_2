@@ -65,6 +65,35 @@ public class CommandeDAO {
 		}
 	    return commande;
 	}
+	
+	// retourne dans une arrayList toutes les commandes
+	public ArrayList<Commande> getAllById(String idClient) {
+		String sql_aff = "SELECT * FROM Commande " + "WHERE adresseMail = '" + idClient +"'";
+		ArrayList<Commande> commande = new ArrayList<Commande>();
+		boolean a;
+		try{
+			ResultSet rs = this.stmt.executeQuery(sql_aff);
+			a = rs.next();
+			if (a==false){
+				return new ArrayList<Commande>(); 
+		    }
+		    else {
+		    	int id  = rs.getInt("idCommande");
+			    String date = rs.getString("dates");
+			    int prixTotal = rs.getInt("prixTotal");
+			    String adresseMail = rs.getString("adresseMail");
+			    ClientDAO tableClient = new ClientDAO(stmt);
+			    Client client = tableClient.getById(adresseMail);
+			    
+			    commande.add(new Commande(id,date,prixTotal,client));
+		    }		
+			rs.close();
+		} catch (SQLException e) {
+			return null;
+		}
+	    return commande;
+	}
+	
 	// retourne dans une arrayList toutes les commandes
 	public ArrayList<Commande> getAll() {
 		String sql_aff = "SELECT * FROM Commande ";
