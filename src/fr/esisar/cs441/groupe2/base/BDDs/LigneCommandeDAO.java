@@ -102,7 +102,6 @@ public class LigneCommandeDAO {
 		try {
 			String sql_aff = "SELECT quantite, idCommande, idFormat, idAlbum FROM LigneCommande ";
 			ResultSet rs = stmt.executeQuery(sql_aff);
-
 			boolean a = rs.next();
 			if (a == false) {
 				System.out.println("La table LigneCommande est vide");

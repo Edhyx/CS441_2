@@ -1,9 +1,5 @@
 package fr.esisar.cs441.groupe2;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
-
 import fr.esisar.cs441.groupe2.model.Model;
 import fr.esisar.cs441.groupe2.view.View;
 

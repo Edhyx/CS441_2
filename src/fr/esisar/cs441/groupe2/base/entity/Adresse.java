@@ -4,11 +4,6 @@ import java.util.Optional;
 
 import com.sun.security.ntlm.Client;
 
-/*
- * classe Adresse
- * Association : juste un client selon l'UML
- * 
- */
 public class Adresse {
 
     private int idAdresse;

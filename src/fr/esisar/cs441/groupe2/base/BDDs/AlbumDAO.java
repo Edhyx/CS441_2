@@ -15,6 +15,7 @@ public class AlbumDAO {
 		super();
 		this.stmt = stmt;
 	}
+	
 	//retourne vrai quand un album a ete ajoute avec succee 
 	public boolean add(Album album) {
 	    String sql_element = "INSERT INTO Album " +
@@ -26,6 +27,7 @@ public class AlbumDAO {
 	    }
 	    return true;
 	}
+	
 	//retourne vrai quand un album a ete supprime avec succee 
 	public boolean delete(Album album) {
 	    String sql_delete = "DELETE FROM Album " +
@@ -38,6 +40,7 @@ public class AlbumDAO {
 	    }
 	    return true;
 	}
+	
 	//retourne l'album qui correspond a l'id entre en parametre 
 	public Album getById(int id) {
 		String sql_aff = "SELECT * FROM Album " + "WHERE idAlbum = " + id +"";
@@ -66,6 +69,7 @@ public class AlbumDAO {
 		}
 	    return album;
 	}
+	
 	// retourne dans une arrayList tous les albums
 	public ArrayList<Album> getAll() {
 		String sql_aff = "SELECT * FROM Album ";
@@ -105,6 +109,7 @@ public class AlbumDAO {
 		}
 	    return album;
 	}
+	
 	// affiche tout les elements de la table album.Methode reservee a l'admin 
 	public void affiche(){
 		try{

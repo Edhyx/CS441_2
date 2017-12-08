@@ -1,9 +1,3 @@
-/*
-CS441 Equipe N�2
-
-Client.java
-*/
-
 package fr.esisar.cs441.groupe2.base.entity;
 
 import java.util.*;

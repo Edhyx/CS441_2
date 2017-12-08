@@ -16,7 +16,6 @@ public class Suppression {
 		String login = "malossep";
 		String pass = "malossep";
 
-		
 		Class.forName(driver);
 		Connection connection = DriverManager.getConnection(url,login,pass);
 	    Statement stmt = connection.createStatement();

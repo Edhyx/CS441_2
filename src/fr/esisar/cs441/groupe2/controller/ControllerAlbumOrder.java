@@ -15,38 +15,28 @@ public class ControllerAlbumOrder extends Controller {
 	}
 
 	public void notifyChangement(String changement) {
-
 		try {
 			if (changement.charAt(0) == '9') { // quitter l'application
 				view.displayEnd("");
 			} else if (changement.charAt(0) == '8') { 
 				view.displayMenu("");
 			} else {
-
 				// On test tous les codes envoy�s par view
 				if (changement.substring(0, 3).equals("NEW")) { 
-					// nouvelle commande
-					
+					// nouvelle commande					
 					view.displayOrderADD(model.getFolderList());
-
-				} else if (changement.substring(0, 3).equals("ADC")) { 
-					
+				} else if (changement.substring(0, 3).equals("ADC")) {					
 					// ajout nouvelle commande
-
 					if (newOrder(changement.substring(changement.indexOf(" ") + 1, changement.length()))) {
 						view.displayOrderMenu("Nouvelle commande");
 					} else {
 						view.displayOrderADD(model.getFolderList());
 					}
-				} else if (changement.substring(0, 3).equals("SHC")) { 
-					
+				} else if (changement.substring(0, 3).equals("SHC")) {					
 					// affichage de la liste des commandes
 					view.displayAlbumOrder(model.getOrderList());
-
-				} else if (changement.substring(0, 3).equals("FFF")) { 
-					
+				} else if (changement.substring(0, 3).equals("FFF")) {					
 					// On propose la liste des albums
-
 					if (Integer.parseInt(changement.substring(changement.indexOf(" ") + 1, changement.length())) > 0) {
 						model.setCommand(Integer
 								.parseInt(changement.substring(changement.indexOf(" ") + 1, changement.length())));
@@ -54,9 +44,7 @@ public class ControllerAlbumOrder extends Controller {
 					} else {
 						view.displayOrderMenu("Probleme");
 					}
-
-				} else if (changement.substring(0, 3).equals("AFF")) { 
-					
+				} else if (changement.substring(0, 3).equals("AFF")) { 					
 					//permet de choisir l'album a commander
 					if (model.addLine(
 							Integer.parseInt(
@@ -87,15 +75,11 @@ public class ControllerAlbumOrder extends Controller {
 
 	// methode utilisee pour la creation
 	// d'une commande
-	private boolean newOrder(String data) { 
-
+	private boolean newOrder(String data) {
 		try {
-
 			String[] element = new String[2];
 			int i = 0;
-
 			while (data.length() > 0 & i < 2) {
-
 				if (i < 1) {
 					element[i] = data.substring(0, data.indexOf(" "));
 				} else {
@@ -104,22 +88,18 @@ public class ControllerAlbumOrder extends Controller {
 				data = data.substring(data.indexOf(" ") + 1, data.length());
 				i++;
 			}
-
 			if (i == 2) {
 				DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 				Date date = new Date();
-
 				return model.addOrder(Integer.parseInt(element[0]), dateFormat.format(date), 30,
 						Integer.parseInt(element[1]));
 			} else {
 				return false;
 			}
-
 		} catch (StringIndexOutOfBoundsException e) {
 			return false;
 		} catch (NumberFormatException e) {
 			return false;
-
 		}
 	}
 }

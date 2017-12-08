@@ -11,7 +11,6 @@ public class ControllerConnection extends Controller {
 	}
 
 	public void notifyChangement(String changement) {
-
 		try {
 			if (changement.length() == 1) {
 				if (changement.charAt(0) == '9') { // Quitter l'application
@@ -20,25 +19,19 @@ public class ControllerConnection extends Controller {
 					view.displayConnection(""); // connexion a l'application
 				}
 			} else { // On test l'identification de l'utilisateur
-
 				String id = changement.substring(0, changement.indexOf(" "));
 				String password = changement.substring(changement.indexOf(" ") + 1, changement.length());
 				String clientPassword;
-
 				if ((clientPassword = model.getClientPassword(id)) != null) {
-
-					if (password.equals(clientPassword)) { 
-						
+					if (password.equals(clientPassword)) { 						
 						// on verifie ID et dans le modele
 						model.setClient(id);
 						view.setModel(model);
 						view.displayMenu("");
 					} else {
-
 						view.displayConnection("Probleme : impossible de se connecter");
 					}
 				} else {
-
 					view.displayConnection("Probleme : impossible de se connecter");
 				}
 			}
