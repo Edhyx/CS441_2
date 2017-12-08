@@ -185,7 +185,7 @@ nouvelle équipe.
 Nous utilisons le logiciel StarUML afin de réaliser un diagramme d'état
 de l'application.
 
-\begin{figure}[h]
+\begin{figure}[!h]
   \begin{center}
     \includegraphics[scale=0.3]{fig2} % Include the image placeholder.png
     \caption{Diagramme d'état du logiciel Esyphoto}
@@ -231,6 +231,24 @@ Attributs :\\
 - clientDAO, AlbumDAO etc ...
 \vspace{1\baselineskip}
 
+
+
+
+\begin{figure}[!h]
+  \begin{center}
+    \includegraphics[scale=0.45]{fig6} % Include the image placeholder.png
+    \caption{Diagramme du Controller}
+  \end{center}
+\end{figure}
+
+Ce diagramme représente le fonctionnement détaillé de la partie Controller.\\
+\vspace{1\baselineskip}
+\begin{figure}[!h]
+  \begin{center}
+    \includegraphics[scale=0.25]{fig7} % Include the image placeholder.png
+    \caption{Diagramme de cas d'utilisation}
+  \end{center}
+\end{figure}
 Le pattern MVC a été pensé pour respecter au maximum les cloisons entre Model,
 View et Controller. Pour cela, nous avons privilégié le schéma de principe
 suivant : La partie View, quand elle reçoit une interaction de l’utilisateur
@@ -245,23 +263,7 @@ n’impacterait en rien le reste du code avec un changement. Le Model quand
 Note sur le modèle : les seules fonctions qui présentent des affichages
 sont à destinations des administrateurs et donc ne sont pas à prendre en
 compte dans le pattern.
-
-\begin{figure}[!h]
-  \begin{center}
-    \includegraphics[scale=0.45]{fig6} % Include the image placeholder.png
-    \caption{Diagramme du Controller}
-  \end{center}
-\end{figure}
-
-Ce diagramme représente le fonctionnement détaillé de la partie Controller.
 \vspace{1\baselineskip}
-\begin{figure}[!h]
-  \begin{center}
-    \includegraphics[scale=0.40]{fig7} % Include the image placeholder.png
-    \caption{Diagramme de cas d'utilisation}
-  \end{center}
-\end{figure}
-
 \vspace{1\baselineskip}
 \begin{figure}[!h]
   \begin{center}
@@ -274,7 +276,7 @@ Le build ANT fourni avec le projet permet de produire 4 exécutables
 différents.\\
 Exécutables pour utilisateur : \\
 \begin{itemize}
-  \item CS441_2.jar qui est l'exécutable permettant de lancer le programme
+  \item CS441\_2.jar qui est l'exécutable permettant de lancer le programme
 \end{itemize}
 Exécutables pour administrateur :\\
 \begin{itemize}
@@ -285,7 +287,7 @@ Exécutables pour administrateur :\\
   sur la bases de données.
 \end{itemize}
 
-
+\newpage
 \newpage
 \section{Organisation du travail et répartition des tâches}
 
@@ -321,7 +323,16 @@ instabilité du programme. En effet, lorsque l’utilisateur quitte l’IHM,
 l’ensemble des méthodes se termine les unes après les autres ce qui peut
 etre source de bugs. Cela impact donc le caractère évolutif de notre travail.
 En conséquence, si nous devions refaire cet exercice, nous essayerons de
-retravailler le pattern.
+retravailler le pattern.\\
+\vspace{1\baselineskip}
+Un des autres aspects à prendre en compte est l’impact des saisies de
+l’utilisateur. En effet, comme nous avons choisi de communiquer qu’avec
+des string de la classe View à la classe Controller, et cela avec un système
+de concaténation avec espace, si l’utilisateur rentre lui même un espace, le
+programme risque de ne pas bien exécuter l’ordre. Cela ne devrait pas stopper
+le programme qui gère lui même un large éventail d'erreurs, mais plutôt
+déformer l’information comprise par la partie contrôle.
+
 
 
 
