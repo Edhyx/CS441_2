@@ -36,19 +36,31 @@ public class ControllerAlbumOrder extends Controller{
 				} else if(changement.substring(0,3).equals("SHC")) { // affichage liste commandes
 					view.displayAlbumOrder(model.getOrderList());
 					
-				} else if(changement.substring(0,3).equals("ADC")) { // On propose la liste des albums
+				} else if(changement.substring(0,3).equals("FFF")) { // On propose la liste des albums
 					
-					if(Integer.parseInt(changement.substring(changement.indexOf(" "), changement.length())) >0) {
-						model.setAlbum(Integer.parseInt(changement.substring(changement.indexOf(" "), changement.length())));
-						view.displayOrderADD(model.getFolderList());
+					if(Integer.parseInt(changement.substring(changement.indexOf(" ")+1, changement.length())) >0) {
+						System.out.println(".-");
+						model.setAlbum(Integer.parseInt(changement.substring(changement.indexOf(" ")+1, changement.length())));
+						view.displayOrderADDCommand(model.getFolderList());
+					}else {
+						System.out.println("-");
+						view.displayOrderMenu("Probleme");
 					}
 					
+				} else if(changement.substring(0,3).equals("AFF")) {
+					if(model.addLine(Integer.parseInt(changement.substring(changement.indexOf(" ")+1, changement.length())), 
+							         30, 
+							         Integer.parseInt(changement.substring(changement.lastIndexOf(" ")+1, changement.length())))) {
+						view.displayOrderMenu("Nouvelle commande");
+					}else {
+						view.displayOrderMenu("Probleme");
+					}
 				}
 			}/**********************************************************/
 		}catch(StringIndexOutOfBoundsException e) {
-			view.displayOrderMenu("");
+			view.displayOrderMenu("Probleme saisie");
 		}catch(NumberFormatException e){
-			view.displayOrderMenu("");			
+			view.displayOrderMenu("Probleme nombre");			
 		}
 	}
 	

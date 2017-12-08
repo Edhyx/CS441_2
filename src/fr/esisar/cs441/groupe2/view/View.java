@@ -322,7 +322,7 @@ public class View {
 	}
 	
 	public void displayAlbumOrder(ArrayList<String> str){		//Menu de commande des albums
-		control = new ControllerAlbumManagement(this, model);
+		control = new ControllerAlbumOrder(this, model);
 		
 		System.out.println("--- --- GESTION DES COMMANDES --- ---");
 		if(!str.isEmpty()){
@@ -332,8 +332,8 @@ public class View {
 			}
 		}
 		
-		System.out.println("Commander un album : taper 1 ");
-		System.out.println("Suprimer commande :  taper 2 ");
+		System.out.println("ajouter un album à la commande : taper 1 [espace] idCommande");
+		System.out.println("Suprimer commande :  taper 2 [espace] idCommande");
 		System.out.println("Quitter : tapez 9");
 		Scanner sc = new Scanner(System.in);
 		
@@ -343,9 +343,9 @@ public class View {
 		
 		if(choix.charAt(0)=='1') {
 			
-			fichier = "ADF";
-			
-			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
+			fichier = "FFF";
+			System.out.println(".-");
+			fichier = fichier + " " + choix.substring(choix.indexOf(" ")+1, choix.length());
 			control.notifyChangement(fichier);
 			
 		}else if(choix.charAt(0)=='2') { //à modif
@@ -385,6 +385,41 @@ public class View {
 		if(choix.charAt(0)=='1') {
 			
 			fichier = "ADC";
+			
+			fichier = fichier + " " +  choix.substring(choix.indexOf(" ")+1, choix.length());
+			
+			control.notifyChangement(fichier);
+			
+		}else {
+			control.notifyChangement(choix);
+		}
+	}
+	
+public void displayOrderADDCommand(ArrayList<String> str){		//Menu des nouvelles commandes
+		
+		control = new ControllerAlbumOrder(this, model);
+		
+		System.out.println("--- --- AJOUT COMMANDE --- ---");
+		System.out.println("liste des albums :");
+		if(!str.isEmpty()){
+			for(String line : str) {
+				System.out.println("+ " + line);
+			}
+		}
+
+		System.out.println("choisir l'album à commander: taper 1 [espace] id de l'album [espace] quantité");
+		System.out.println("Quitter : tapez 9");
+		System.out.print(">> ");
+		
+		Scanner sc = new Scanner(System.in);
+		
+		String choix = sc.nextLine();
+		
+		String fichier;
+		
+		if(choix.charAt(0)=='1') {
+			
+			fichier = "AFF";
 			
 			fichier = fichier + " " +  choix.substring(choix.indexOf(" ")+1, choix.length());
 			

@@ -14,6 +14,7 @@ public class Model {
 
 	private String idClient;
 	private int idAlbum;
+	private int idCommand;
 	private Statement stmt;
 
 	public Model() {
@@ -364,6 +365,59 @@ public class Model {
 				}
 			}
 			
+			return false;
+		}
+	}
+	
+public boolean addLine(int idAlbumAdd, int prixTotal, int quantite){
+		
+		Integer id = new Integer(ThreadLocalRandom.current().nextInt(0, 1000 + 1));
+		
+		ClientDAO tableClient = new ClientDAO(stmt);
+		Client client = tableClient.getById(this.idClient);
+		
+		if (client==null) {return false;}
+		else{
+		
+				
+				/* on determine le prix unitaire
+				 * en comptant le nombre de photos
+				 * 
+				 * On met a jour la table Format
+				 */
+				ContientDAO tableContient = new ContientDAO(stmt);
+				ArrayList<Contient> contients = tableContient.getAll();
+				int nombreFile = 0;
+				
+				for( Contient contient : contients) {
+					if(contient.getAlbum().getIdAlbum() == idAlbumAdd) {
+						nombreFile++;
+					}
+				}
+				
+				Format format = new Format(id, prixTotal/nombreFile);
+				FormatDAO tableFormat = new FormatDAO(stmt);
+				
+				if( tableFormat.add(format) ) {
+					
+					AlbumDAO tableAlbum = new AlbumDAO(stmt);
+					
+					if(tableAlbum.getById(idAlbumAdd) != null) {
+						
+						/* On met a jour la table LigneCommande */
+						LigneCommandeDAO tableLigneCommande = new LigneCommandeDAO(stmt);
+						CommandeDAO tableCommande = new CommandeDAO(stmt);
+						LigneCommande ligneCommande = new LigneCommande(quantite, 
+																		tableCommande.getById(idCommand), 
+																		format, 
+																		tableAlbum.getById(idAlbumAdd));
+						if(tableLigneCommande.add(ligneCommande)) {
+							
+							return true;
+						}
+					}
+				}
+		
 			return false;
 		}
 	}
