@@ -21,6 +21,14 @@ public class Commande {
 		this.prixTotal = prixTotal;
 		this.client = client;
 	}
+	
+	public Commande(int idCommande, String date, int prixTotal) {
+		super();
+		this.idCommande = idCommande;
+		this.date = date;
+		this.prixTotal = prixTotal;
+		this.client = null;
+	}
 
 	public int getIdCommande() {
 		return idCommande;

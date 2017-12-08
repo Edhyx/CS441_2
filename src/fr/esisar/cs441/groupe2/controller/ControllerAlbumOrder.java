@@ -16,25 +16,40 @@ public class ControllerAlbumOrder extends Controller{
 	}
 
 	public void notifyChangement(String changement) {
-		if(changement.charAt(0) == '9') {
-			view.displayEnd("");
-		}else {
-			
-			// On test tous les codes
-			if(changement.substring(0,3).equals("NEW")) { // new order
-				view.displayOrderADD(model.getFolderList());
+		
+		try {
+			if(changement.charAt(0) == '9') {
+				view.displayEnd("");
+			}else {
 				
-			} else if(changement.substring(0,3).equals("ADC")) { // ajout nouvelle commande
-				
-				if(newOrder(changement.substring(changement.indexOf(" ")+1,changement.length()))){
-					view.displayOrderMenu("Nouvelle commande");
-				} else {
+				// On test tous les codes
+				if(changement.substring(0,3).equals("NEW")) { // new order
 					view.displayOrderADD(model.getFolderList());
+					
+				} else if(changement.substring(0,3).equals("ADC")) { // ajout nouvelle commande
+					
+					if(newOrder(changement.substring(changement.indexOf(" ")+1,changement.length()))){
+						view.displayOrderMenu("Nouvelle commande");
+					} else {
+						view.displayOrderADD(model.getFolderList());
+					}
+				} else if(changement.substring(0,3).equals("SHC")) { // affichage liste commandes
+					view.displayAlbumOrder(model.getOrderList());
+					
+				} else if(changement.substring(0,3).equals("ADC")) { // On propose la liste des albums
+					
+					if(Integer.parseInt(changement.substring(changement.indexOf(" "), changement.length())) >0) {
+						model.setAlbum(Integer.parseInt(changement.substring(changement.indexOf(" "), changement.length())));
+						view.displayOrderADD(model.getFolderList());
+					}
+					
 				}
-			} else if(changement.substring(0,3).equals("SHC")) { // affichage liste commandes
-				view.displayOrderADD(model.getOrderList());
-			}
-		}/**********************************************************/
+			}/**********************************************************/
+		}catch(StringIndexOutOfBoundsException e) {
+			view.displayOrderMenu("");
+		}catch(NumberFormatException e){
+			view.displayOrderMenu("");			
+		}
 	}
 	
 	private boolean newOrder(String data) {

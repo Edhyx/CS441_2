@@ -38,14 +38,23 @@ public class AfficheTable {
 		    FichierImageDAO tableFichierImage = new FichierImageDAO(stmt);
 		    ContientDAO tableContient = new ContientDAO(stmt);	
 		//Affichage des elements
+		System.out.println("\nAdresses de Facturation xxxxxxxxxxxxxxxxx");
 		tableAdresse.affiche_F();
+		System.out.println("\nAdresses de livraison xxxxxxxxxxxxxxxxxxx");
 		tableAdresse.affiche_L();
+		System.out.println("\nClients xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 		tableClient.affiche();
+		System.out.println("\nCommandes xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 		tableCommande.affiche();
+		System.out.println("\nFormats xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 		tableFormat.affiche();
+		System.out.println("\nAlbum xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 		tableAlbum.affiche();
+		System.out.println("\nligneCommandes xxxxxxxxxxxxxxxxxxxxxxxxxx");
 		tableLigneCommande.affiche();
+		System.out.println("\nImage xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 		tableFichierImage.affiche();
+		System.out.println("\nContient xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 		tableContient.affiche();
 	}
 	catch (Exception e) {

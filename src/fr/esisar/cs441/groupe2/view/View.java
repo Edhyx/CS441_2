@@ -321,13 +321,15 @@ public class View {
 		}
 	}
 	
-	public void displayAlbumOrder(String str){		//Menu de commande des albums
+	public void displayAlbumOrder(ArrayList<String> str){		//Menu de commande des albums
 		control = new ControllerAlbumManagement(this, model);
 		
 		System.out.println("--- --- GESTION DES COMMANDES --- ---");
 		if(!str.isEmpty()){
 			System.out.println("liste des commandes");
-			System.out.println(str);
+			for(String line : str) {
+				System.out.println("+ " + line);
+			}
 		}
 		
 		System.out.println("Commander un album : taper 1 ");
@@ -341,7 +343,7 @@ public class View {
 		
 		if(choix.charAt(0)=='1') {
 			
-			fichier = "ADC";
+			fichier = "ADF";
 			
 			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
 			control.notifyChangement(fichier);
@@ -418,13 +420,14 @@ public class View {
 			
 		}else if(choix.charAt(0)=='2') {
 			
-			control.notifyChangement("PREA");
+			control.notifyChangement("SHC");
 			
 		}else {
 			control.notifyChangement(choix);
 		}
 	}
 
+	@SuppressWarnings("resource")
 	public void displayOrderList(ArrayList<String> str){		//Menu des listes des commandes
 		control = new ControllerOrderList(this, model);
 		if(!str.isEmpty()){

@@ -350,13 +350,16 @@ public class Model {
 	}
 	
 	public ArrayList<String> getOrderList(){
+		
 		ArrayList<String> returns = new ArrayList<String>();
 		ArrayList<Commande> commande = new ArrayList<Commande>();
 		CommandeDAO tableCommande = new CommandeDAO(stmt);
+		
 		commande = tableCommande.getAll();
 
 		for (Commande co : commande) {
-			returns.add(commande.toString());
+
+			returns.add(co.toString());
 		}
 		return returns;
 	}

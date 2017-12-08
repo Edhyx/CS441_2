@@ -78,10 +78,10 @@ public class CommandeDAO {
 			    
 			    String adresseMail = rs.getString("adresseMail");
 			    
-			    ClientDAO tableClient = new ClientDAO(stmt);
-				Client client = tableClient.getById(adresseMail);
+			    /*ClientDAO tableClient = new ClientDAO(stmt);
+				Client client = tableClient.getById(adresseMail);*/
 			    
-				commande.add(new Commande(id,date,prixTotal,client));
+				commande.add(new Commande(id,date,prixTotal));
 			}
 			rs.close();
 		} catch (SQLException e) {
