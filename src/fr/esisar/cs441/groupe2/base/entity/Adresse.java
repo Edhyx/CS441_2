@@ -2,8 +2,6 @@ package fr.esisar.cs441.groupe2.base.entity;
 
 import java.util.Optional;
 
-import com.sun.security.ntlm.Client;
-
 /*
  * classe Adresse
  * Association : juste un client selon l'UML

@@ -28,7 +28,7 @@ public class FichierImageDAO {
     	return true;
 	}
 	//retourne vrai quand un fichier image a ete supprime avec succee 
-	public boolean delete(FichierImage f) throws SQLException{
+	public boolean delete(FichierImage f) {
 	    String sql_delete = "DELETE FROM FichierImage " +
 	            "WHERE cheminAcces = '"+f.getCheminAcces()+"'";
 	    try{

@@ -132,6 +132,7 @@ public class View {
 
 	}
 
+	@SuppressWarnings("resource")
 	public void displayAddPhoto(String str) { // Affiche le menu d'ajout de
 												// photo
 
@@ -286,6 +287,7 @@ public class View {
 		}
 	}
 
+	@SuppressWarnings("resource")
 	public void displayAlbumADD(ArrayList<String> str) { // Menu d'ajout d'album
 
 		control = new ControllerAlbumManagement(this, model);
@@ -330,6 +332,7 @@ public class View {
 		}
 	}
 
+	@SuppressWarnings("resource")
 	public void displayAlbumOrder(ArrayList<String> str) { // Menu de commande
 															// des albums
 		control = new ControllerAlbumOrder(this, model);
@@ -371,6 +374,7 @@ public class View {
 		}
 	}
 
+	@SuppressWarnings("resource")
 	public void displayOrderADD(ArrayList<String> str) { // Menu des nouvelles
 															// commandes
 
@@ -408,8 +412,7 @@ public class View {
 		}
 	}
 
-	public void displayOrderADDCommand(ArrayList<String> str) { // Menu des
-																// nouvelles
+	public void displayOrderADDCommand(ArrayList<String> str) { // Menu des nouvelles
 																// commandes
 
 		control = new ControllerAlbumOrder(this, model);
@@ -446,6 +449,7 @@ public class View {
 		}
 	}
 
+	@SuppressWarnings("resource")
 	public void displayOrderMenu(String str) { // Menu d'entrée commandes
 		control = new ControllerAlbumOrder(this, model);
 
@@ -480,10 +484,15 @@ public class View {
 	}
 
 	public void displayEnd(String str) { // Affichage de fermeture
+		
+		control = new ControllerEnd(this, model);
+		
 		if (!str.isEmpty()) {
 			System.out.println(str);
 		}
 		System.out.println("--- --- FIN DU PROGRAMME --- ---");
+		
+		control.notifyChangement(null);
 	}
 
 }

@@ -108,6 +108,9 @@ public class Model {
 
 	}
 
+	/*
+	 * Methode permettant de creer une photo dans la base
+	 */
 	public boolean addFile(String appareilPhoto, String objectif, int distance, int sensibilte, int ouverture,
 			int vitesse) {
 
@@ -132,6 +135,9 @@ public class Model {
 		}
 	}
 
+	/*
+	 * Methode permettant de creer un album dans la base
+	 */
 	public boolean addFolder(String titre, String sousTitre) {
 
 		Integer id = new Integer(ThreadLocalRandom.current().nextInt(0, 1000 + 1));
@@ -150,6 +156,9 @@ public class Model {
 		return false;
 	}
 
+	/*
+	 * Methode permettant de retourner la liste des album
+	 */
 	public ArrayList<String> getFolderList() {
 
 		ArrayList<String> returns = new ArrayList<String>();
@@ -164,6 +173,10 @@ public class Model {
 		return returns;
 	}
 
+	/*
+	 * Methode permettant de retourner la liste des photos
+	 * sans albums
+	 */
 	public ArrayList<String> getAllFilesWithNoFolder(String idFolder) {
 
 		FichierImageDAO tableFichier = new FichierImageDAO(stmt);
@@ -206,7 +219,47 @@ public class Model {
 		}
 
 	}
+	
+	/*
+	 * Methode permettant de supprimer la liste des photos
+	 * sans albums
+	 */
+	public boolean delAllFilesWithNoFolder() {
 
+		FichierImageDAO tableFichier = new FichierImageDAO(stmt);
+		ContientDAO tableContient = new ContientDAO(stmt);
+
+
+			ArrayList<FichierImage> pictures = tableFichier.getAll();
+			ArrayList<Contient> folders = tableContient.getAll();
+
+			boolean find;
+
+			for (FichierImage picture : pictures) {
+
+				find = false;
+
+				for (Contient folder : folders) {
+
+					// On test si l'image ne fait pas deja partie d'un album
+					if (folder.getFichierImages().getCheminAcces().equals(picture.getCheminAcces())) {
+						find = true;
+					}
+				}
+
+				if (!find) {
+					tableFichier.delete(picture);
+				}
+			}
+
+			return true;
+
+	}
+
+	/*
+	 * Methode permettant de retourner la liste des photos
+	 * sans albums
+	 */
 	public ArrayList<String> getAllFilesWithNoFolder() {
 
 		FichierImageDAO tableFichier = new FichierImageDAO(stmt);
@@ -248,6 +301,9 @@ public class Model {
 
 	}
 
+	/*
+	 * Methode permettant de supprimer un album dans la base
+	 */
 	public boolean delFolder(int idAlbumDel) {
 
 		AlbumDAO tableAlbum = new AlbumDAO(stmt);
@@ -265,7 +321,11 @@ public class Model {
 			return false;
 		}
 	}
-
+	
+	/*
+	 * Methode permettant de creer les contients concerné par 
+	 * un album
+	 */
 	public boolean delFolderFileLink(int idAlbumDel) {
 
 		ContientDAO tableContient = new ContientDAO(stmt);
@@ -284,6 +344,10 @@ public class Model {
 
 	}
 
+	/*
+	 * Methode permettant de creer les commandes concernées par 
+	 * un album
+	 */
 	public boolean delFolderOrderLineLink(int idAlbumDel) {
 
 		LigneCommandeDAO tableCommande = new LigneCommandeDAO(stmt);
@@ -302,8 +366,9 @@ public class Model {
 
 	}
 
-	// j'ai changé le type de fichierImage en Liste de fichierImage au lieux de
-	// contient
+	/*
+	 * Methode permettant d'ajouter une image dans un album
+	 */
 	public boolean addFileToFolder(String idFile, int numOrdre, String titre, String commentaire) {
 
 		AlbumDAO tableAlbum = new AlbumDAO(stmt);
@@ -323,6 +388,9 @@ public class Model {
 		return true;
 	}
 
+	/*
+	 * Methode permettant de céer une commande dans la base
+	 */
 	public boolean addOrder(int idAlbumAdd, String date, int prixTotal, int quantite) {
 
 		Integer id = new Integer(ThreadLocalRandom.current().nextInt(0, 1000 + 1));
@@ -379,6 +447,9 @@ public class Model {
 		}
 	}
 
+	/*
+	 * Methode permettant de céer une ligne de commande dans la base
+	 */	
 	public boolean addLine(int idAlbumAdd, int prixTotal, int quantite) {
 
 		Integer id = new Integer(ThreadLocalRandom.current().nextInt(0, 1000 + 1));
@@ -443,6 +514,9 @@ public class Model {
 		}
 	}
 
+	/*
+	 * Methode permettant de supprimer une commande dans la base
+	 */
 	public boolean delCommand(int idCommande) {
 
 		CommandeDAO tableCommande = new CommandeDAO(stmt);
@@ -460,6 +534,9 @@ public class Model {
 		}
 	}
 
+	/*
+	 * Methode permettant de supprimer une ligne de commande par rapport à une commande
+	 */
 	public boolean delCommandOrderLineLink(int idCommand) {
 
 		LigneCommandeDAO tableCommande = new LigneCommandeDAO(stmt);
@@ -478,6 +555,9 @@ public class Model {
 
 	}
 
+	/*
+	 * Methode permettant de retourner la liste des commandes
+	 */
 	public ArrayList<String> getOrderList() {
 
 		ArrayList<String> returns = new ArrayList<String>();
