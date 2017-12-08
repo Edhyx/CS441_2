@@ -30,12 +30,14 @@ public class LigneCommandeDAO {
 	    }
 	}
 	//retourne vrai quand une ligne de commande a ete supprime avec succee 
-	public void delete(LigneCommande ligneCommande) {
+	public boolean delete(LigneCommande ligneCommande) {
 	    String sql_delete = "DELETE FROM LigneCommande " +
 	            "WHERE idCommande = "+ligneCommande.getCommande().getIdCommande()+"";
 	    try{
 	    	stmt.executeUpdate(sql_delete);
+	    	return true;
 		} catch (SQLException e){
+			return false;
 	    }
 	}
 	//retourne la ligne de commande qui correspond a l'id de la commande entre en parametre 

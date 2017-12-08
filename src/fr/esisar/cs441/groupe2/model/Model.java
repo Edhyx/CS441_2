@@ -245,7 +245,9 @@ public class Model {
 		if (album==null){return false;}
 		else  {
 			
-			if(this.delFolderFileLink(idAlbumDel) & tableAlbum.delete(album)) {
+			if(this.delFolderFileLink(idAlbumDel) 
+					& this.delFolderOrderLineLink(idAlbumDel)
+					& tableAlbum.delete(album)) {
 				return true;
 			}
 			
@@ -262,6 +264,24 @@ public class Model {
 		for( Contient contient : listContient) {
 			if(contient.getAlbum().getIdAlbum() == idAlbumDel) {
 				if(!tableContient.delete(contient)) {
+					return false;
+				}
+			}
+		}
+		
+		return true;
+		
+	}
+	
+	public boolean delFolderOrderLineLink(int idAlbumDel) {
+		
+		LigneCommandeDAO tableCommande = new LigneCommandeDAO(stmt);
+		
+		ArrayList<LigneCommande> listCommande = tableCommande.getAll();
+		
+		for( LigneCommande contient : listCommande) {
+			if(contient.getAlbum().getIdAlbum() == idAlbumDel) {
+				if(!tableCommande.delete(contient)) {
 					return false;
 				}
 			}
