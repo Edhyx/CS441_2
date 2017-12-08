@@ -15,6 +15,7 @@ public class FichierImageDAO {
 		super();
 		this.stmt = stmt;
 	}
+	
 	//retourne vrai quand un fichier image a ete ajoute avec succee 
 	public boolean add(FichierImage f) {
 	    String sql_element = "INSERT INTO FichierImage " +
@@ -27,6 +28,7 @@ public class FichierImageDAO {
 	    }
     	return true;
 	}
+	
 	//retourne vrai quand un fichier image a ete supprime avec succee 
 	public boolean delete(FichierImage f) {
 	    String sql_delete = "DELETE FROM FichierImage " +
@@ -38,6 +40,7 @@ public class FichierImageDAO {
 	    }
     	return true;
 	}
+	
 	//retourne le fichier image qui correspond au chemin d'acces entre en parametre 
 	public FichierImage getById(String id) {
 		String sql_aff = "SELECT * FROM FichierImage " + "WHERE cheminAcces = '" + id +"'";
@@ -70,6 +73,7 @@ public class FichierImageDAO {
 			return null;
 		}
 	}
+	
 	// retourne dans une arrayList tous les fichiers images 
 	public ArrayList<FichierImage> getAll() {
 		String sql_aff = "SELECT * FROM FichierImage ";
@@ -93,6 +97,7 @@ public class FichierImageDAO {
 		}
 	    return f;
 	}
+	
 	// affiche tout les elements de la table FichierImage.Methode reservee a l'admin 
 	public void affiche() {
 		try{

@@ -16,6 +16,7 @@ public class ContientDAO {
 		super();
 		this.stmt = stmt;
 	}
+	
 	//retourne vrai quand une liaison "contient" a ete ajoute avec succee 
 	public boolean add(Contient contient) {
 	    String sql_element = "INSERT INTO Contient " +
@@ -28,6 +29,7 @@ public class ContientDAO {
 	    }
     	return true;
 	}
+	
 	//retourne vrai quand une liaison "contient" a ete supprime avec succee 
 	public boolean delete(Contient contient){
 	    String sql_delete = "DELETE FROM Contient " +
@@ -39,6 +41,7 @@ public class ContientDAO {
 	    	return false;
 	    }
 	}
+	
 	//retourne la liaison "contient" qui correspond a l'album et le fichier image entres en parametre 
 	public Contient getById(int idAlbum, String cheminAcces){
 		String sql_aff = "SELECT * FROM Contient " +
@@ -71,6 +74,7 @@ public class ContientDAO {
 		}
 	    return contient;
 	}
+	
 	// retourne dans une arrayList toutes les liaison "contient"
 	public ArrayList<Contient> getAll() {
 		String sql_aff = "SELECT * FROM Contient ";

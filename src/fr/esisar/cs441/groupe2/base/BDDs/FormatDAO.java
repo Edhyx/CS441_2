@@ -14,6 +14,7 @@ public class FormatDAO {
 		super();
 		this.stmt = stmt;
 	}
+	
 	//retourne vrai quand un format a ete ajoute avec succee 
 	public boolean add(Format format) {
 	    String sql_element = "INSERT INTO Format " +
@@ -25,6 +26,7 @@ public class FormatDAO {
 	    }
 	    return true;
 	}
+	
 	//retourne vrai quand un format a ete supprime avec succee 
 	public boolean delete(Format format) throws SQLException{
 	    String sql_delete = "DELETE FROM Format " +
@@ -36,6 +38,7 @@ public class FormatDAO {
 	    }
 	    return true;
 	}
+	
 	//retourne le format qui correspond a l'id entre en parametre 
 	public Format getById(int id) throws SQLException{
 		String sql_aff = "SELECT * FROM Format " + "WHERE idFormat = " + id +"";
@@ -59,6 +62,7 @@ public class FormatDAO {
 		}
 	    return f;
 	}
+	
 	// retourne dans une arrayList tous les formats 
 	public ArrayList<Format> getAll() {
 		String sql_aff = "SELECT * FROM Format ";

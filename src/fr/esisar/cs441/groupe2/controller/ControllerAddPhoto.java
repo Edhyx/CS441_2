@@ -10,37 +10,31 @@ public class ControllerAddPhoto extends Controller{
 		this.model = model;
 	}
 	
-	public void notifyChangement(String changement) {
-		
+	public void notifyChangement(String changement) {		
 		// On extrait les informations fournies par view
 		int i = 0;
 		String[] element = new String[6];
 		boolean result = true;
-
-		if(changement.charAt(0) == '9') { //quitter l'application
+		if (changement.charAt(0) == '9') { //quitter l'application
 			view.displayEnd("");
-		}else if (changement.charAt(0) == '8') { //retourner au menu principal
+		} else if(changement.charAt(0) == '8') { //retourner au menu principal
 			view.displayMenu("");
 		}
-		else {
-		
-			try {
-				
+		else {		
+			try {				
 				//detection du type de telechargement
 				int number = Integer.parseInt(changement.substring(0, changement.indexOf(" ")));
 				changement = changement.substring( changement.indexOf(" ")+1, changement.length());
 							
-				while(changement.length()>0 & i<6) {
-	
+				while(changement.length()>0 & i<6) {	
 					if(i<5) {
 						element[i] = changement.substring(0, changement.indexOf(" "));
-					}else {
+					} else {
 						element[i] = changement.substring(0, changement.length());
 					}
 					changement = changement.substring(changement.indexOf(" ")+1, changement.length());	
 					i++;
-				}
-	
+				}	
 				if(i==6) {
 					for(int j=0; j<number; j++) { //envoie des informations photos au modele
 						if(!model.addFile(element[0],
@@ -58,8 +52,7 @@ public class ControllerAddPhoto extends Controller{
 				view.displayAddPhoto("probleme saisie");
 			}catch (NumberFormatException e) {
 				view.displayAddPhoto("probleme saisie");
-			}
-			
+			}			
 			if(result) {
 				view.displayAddPhoto("renseignements enregistres");
 			}

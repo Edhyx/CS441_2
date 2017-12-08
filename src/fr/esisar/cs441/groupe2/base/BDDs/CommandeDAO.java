@@ -15,6 +15,7 @@ public class CommandeDAO {
 		super();
 		this.stmt = stmt;
 	}
+	
 	//retourne vrai quand une commande a ete ajoute avec succee 
 	public boolean add(Commande commande) {
 	    String sql_element = "INSERT INTO Commande " +
@@ -26,6 +27,7 @@ public class CommandeDAO {
 	    }
     	return true;
 	}
+	
 	//retourne vrai quand une commande a ete supprime avec succee 
 	public boolean delete(Commande commande){
 	    String sql_delete = "DELETE FROM Commande " +
@@ -37,6 +39,7 @@ public class CommandeDAO {
 	    }
     	return true;
 	}
+	
 	//retourne la commande qui correspond a l'id entre en parametre 
 	public Commande getById(int id){
 		String sql_aff = "SELECT * FROM Commande " + "WHERE idCommande = " + id +"";

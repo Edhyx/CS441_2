@@ -1,17 +1,6 @@
-/*
-CS441 Equipe N°2
-
-Album.java
-*/
-
 package fr.esisar.cs441.groupe2.base.entity;
-/*
- * classe Album
- * Association : verifier pour ligneCommande cas ou c'est 0
- * 
- */
-public class Album {
 
+public class Album {
 
     private int idAlbum;
     private String titre;
@@ -25,6 +14,7 @@ public class Album {
 		this.sousTitre = sousTitre;
 		this.creeParClient = null;
 	}
+    
     public Album(int idAlbum, String titre, String sousTitre, Client creeParClient) {
 		super();
 		this.idAlbum = idAlbum;

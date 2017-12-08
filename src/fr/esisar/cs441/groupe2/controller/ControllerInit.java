@@ -12,11 +12,8 @@ public class ControllerInit extends Controller {
 		this.model = model;
 	}
 
-	public void notifyChangement(String changement) { 
-		
-		// choix du type de connexion (nouveau
-		// client ou identification)
-		
+	public void notifyChangement(String changement) { 	
+
 		if (changement.charAt(0) == '1') {
 			view.displayNewClient("");
 		} else if (changement.charAt(0) == '2') {

@@ -1,14 +1,5 @@
-/*
-CS441 Equipe N°2
-
-Contient.java
-*/
-
 package fr.esisar.cs441.groupe2.base.entity;
 
-/*
- * il faut gerer l'association
- */
 public class Contient {
 
 	private int numOrdre;

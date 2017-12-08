@@ -14,6 +14,7 @@ public class AdresseDAO {
 		super();
 		this.stmt = stmt;
 	}
+	
 	//retourne vrai quand une adresse de facturation a ete ajoutee avec succee  
 	public boolean add_F(Adresse adF){
 	    String sql_element = "INSERT INTO AdresseF " +
@@ -26,6 +27,7 @@ public class AdresseDAO {
 	    }
 	    return true;
 	}
+	
 	//retourne vrai quand une adresse de livraison a ete ajoutee avec succee  
 	public boolean add_L(Adresse adL){
 	    String sql_element = "INSERT INTO AdresseL " +
@@ -38,6 +40,7 @@ public class AdresseDAO {
 	    }
 	    return true;
 	}
+	
 	//retourne vrai quand une adresse de facturation a ete supprimee avec succee  
 	public boolean delete_F(Adresse adF){
 	    String sql_delete = "DELETE FROM AdresseF " +
@@ -49,6 +52,7 @@ public class AdresseDAO {
 	    }
 	    return true;
 	}
+	
 	//retourne vrai quand une adresse de livraison a ete supprimee avec succee  
 	public boolean delete_L(Adresse adL){
 	    String sql_delete = "DELETE FROM AdresseL " +
@@ -60,6 +64,7 @@ public class AdresseDAO {
 	    }
 	    return true;
 	}
+	
 	//retourne l'adresse de facturation qui correspond a l'id entre en parametre 
 	public Adresse getById_F(int id){
 		String sql_aff = "SELECT * FROM AdresseF " + "WHERE idAdresseF = " + id +"";
@@ -68,7 +73,6 @@ public class AdresseDAO {
 		try{
 			ResultSet rs = this.stmt.executeQuery(sql_aff);
 			a = rs.next();
-				//Retrieve by column name
 			if (a==false){
 		    	return null; 
 		    }
@@ -87,6 +91,7 @@ public class AdresseDAO {
 		}
 	    return adF;
 	}
+	
 	//retourne l'adresse de livraison qui correspond a l'id entre en parametre 
 	public Adresse getById_L(int id) {
 		String sql_aff = "SELECT * FROM AdresseL " + "WHERE idAdresseL = " + id +"";
@@ -95,7 +100,6 @@ public class AdresseDAO {
 		try{
 			ResultSet rs = this.stmt.executeQuery(sql_aff);
 			a = rs.next();
-				//Retrieve by column name
 			if (a==false){
 				return null; 
 		    }
@@ -114,6 +118,7 @@ public class AdresseDAO {
 		}
 	    return adL;
 	}
+	
 	// retourne dans une arrayList toutes les adresses de facturation
 	public ArrayList<Adresse> getAll_F() {
 		String sql_aff = "SELECT * FROM AdresseF ";
@@ -121,8 +126,6 @@ public class AdresseDAO {
 	    try {
 	    	ResultSet rs = this.stmt.executeQuery(sql_aff);
 			while(rs.next()) {
-				
-				//Retrieve by column name
 		    	int idAdresseF  = rs.getInt("idAdresseF");
 				String rue = rs.getString("rue");
 				String codePostal = rs.getString("codePostal");
@@ -136,6 +139,7 @@ public class AdresseDAO {
 		}
 	    return adF;
 	}
+	
 	// retourne dans une arrayList toutes les adresses de livraison
 	public ArrayList<Adresse> getAll_L() {
 		String sql_aff = "SELECT * FROM AdresseL ";
@@ -143,8 +147,6 @@ public class AdresseDAO {
 	    try {
 	    	ResultSet rs = this.stmt.executeQuery(sql_aff);
 			while(rs.next()) {
-				
-				//Retrieve by column name
 		    	int idAdresseL  = rs.getInt("idAdresseL");
 				String rue = rs.getString("rue");
 				String codePostal = rs.getString("codePostal");
@@ -158,12 +160,12 @@ public class AdresseDAO {
 		}
 	    return adL;
 	}
+	
 	// affiche tout les elements de la table adresseF(L).Methode reservee a l'admin 
 	public void affiche_F(){
 		try{
 			String sql_aff = "SELECT * FROM AdresseF ";
 		    ResultSet rs = stmt.executeQuery(sql_aff);
-		    
 		    boolean a=rs.next();
 		    if (a==false){
 		    	System.out.println("La table AdresseF est vide"); 
@@ -189,7 +191,6 @@ public class AdresseDAO {
 		try{
 			String sql_aff = "SELECT idAdresseL, rue, codePostal, ville FROM AdresseL ";
 		    ResultSet rs = stmt.executeQuery(sql_aff);
-		    
 		    boolean a=rs.next();
 		    if (a==false){
 		    	System.out.println("La table AdresseL est vide"); 

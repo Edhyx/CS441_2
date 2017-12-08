@@ -13,10 +13,8 @@ public class ControllerMenu extends Controller {
 	}
 
 	public void notifyChangement(String changement) { 
-
 		// permet l'accès aux sous-menus directs
 		// (Photos, Albums ou Commandes).
-
 		if (changement.charAt(0) == '1') {
 			view.displayAddPhoto(null);
 		} else if (changement.charAt(0) == '2') {

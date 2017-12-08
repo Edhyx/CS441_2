@@ -17,12 +17,12 @@ public class Init {
 		String login = "malossep";
 		String pass = "malossep";
 
-			Class.forName(driver);	
-			Connection connexion = DriverManager.getConnection(url,login,pass);	
-			System.out.println("Connection OK!"); 
-			Statement stmt = connexion.createStatement();
+		Class.forName(driver);	
+		Connection connexion = DriverManager.getConnection(url,login,pass);	
+		System.out.println("Connection OK!"); 
+		Statement stmt = connexion.createStatement();
 			
-/////////Creer table AdressF
+        /////////Creer table AdressF
 		String sql_adresseF = "CREATE TABLE AdresseF " + 
 	            "(idAdresseF INTEGER, " +
 	            " rue VARCHAR(255), " + 
@@ -33,7 +33,7 @@ public class Init {
 	    System.out.println("Table AdresseF cree");
 
 	    
-/////////Creer table AdressL
+        /////////Creer table AdressL
 	    String sql_adresseL = "CREATE TABLE AdresseL " +
 	            "(idAdresseL INTEGER, " +
 	            " rue VARCHAR(255), " + 
@@ -43,7 +43,7 @@ public class Init {
 	    stmt.executeUpdate(sql_adresseL);
 	    System.out.println("Table AdresseL cree");
 
-/////////Creer table client
+        /////////Creer table client
 	    String sql_client = "CREATE TABLE Client " +
 	            "(adresseMail VARCHAR(255), " +
 	            " nom VARCHAR(255), " + 
@@ -57,18 +57,18 @@ public class Init {
 	    stmt.executeUpdate(sql_client);
 	    System.out.println("Table Client cree"); 
 	    
-/////////Creer table Commande
-			String sql_commande = "CREATE TABLE Commande " +
-		            "(idCommande INTEGER, " +
-		            " dates VARCHAR(255), " + 
-		            " prixTotal INTEGER, " + 
-		            " adresseMail VARCHAR(255), " +  
-		            " PRIMARY KEY ( idCommande ), " +
-		            " FOREIGN KEY (adresseMail) REFERENCES Client(adresseMail))";
-		    stmt.executeUpdate(sql_commande);
-		    System.out.println("Table Commande cree");
+        /////////Creer table Commande
+		String sql_commande = "CREATE TABLE Commande " +
+		        "(idCommande INTEGER, " +
+		        " dates VARCHAR(255), " + 
+		        " prixTotal INTEGER, " + 
+		        " adresseMail VARCHAR(255), " +  
+		        " PRIMARY KEY ( idCommande ), " +
+		        " FOREIGN KEY (adresseMail) REFERENCES Client(adresseMail))";
+		stmt.executeUpdate(sql_commande);
+		System.out.println("Table Commande cree");
 		    
-/////////Creer table Format
+        /////////Creer table Format
 	    String sql_format = "CREATE TABLE Format " +
 	            "(idFormat INTEGER, " +
 	            "prixUnitaire INTEGER, " +
@@ -76,7 +76,7 @@ public class Init {
 	    stmt.executeUpdate(sql_format);
 	    System.out.println("Table Format cree"); 
 
-/////////Creer table Album
+        /////////Creer table Album
 	    String sql_album = "CREATE TABLE Album " +
 	            "(idAlbum INTEGER, " +
 	            " titre VARCHAR(255), " + 
@@ -87,7 +87,7 @@ public class Init {
 	    stmt.executeUpdate(sql_album);
 	    System.out.println("Table Album cree"); 
 	    
-/////////Creer table LigneCommande
+        /////////Creer table LigneCommande
 	    String sql_ligneC = "CREATE TABLE LigneCommande " +
 	            "(quantite INTEGER, " +
 	            " idCommande INTEGER, " + 
@@ -99,7 +99,7 @@ public class Init {
 	    stmt.executeUpdate(sql_ligneC);
 	    System.out.println("Table LigneCommande cree");
 	    
-/////////Creer table FichierImage
+	    /////////Creer table FichierImage
 	    String sql_fichierIm = "CREATE TABLE FichierImage " +
 	            "(cheminAcces VARCHAR(255), " +
 	            " appareilPhoto VARCHAR(255), " + 
@@ -114,7 +114,7 @@ public class Init {
 	    stmt.executeUpdate(sql_fichierIm);
 	    System.out.println("Table FichierImage cree"); 
 	    
-/////////Creer table Contient
+	    /////////Creer table Contient
 	    String sql_contient = "CREATE TABLE Contient " +
 	            "(numOrdre INTEGER, " +
 	            " titre VARCHAR(255), " + 
