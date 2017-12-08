@@ -299,6 +299,7 @@ public class View {
 		System.out.println("Ajouter des photos a l'album : taper 1 [espace] id de la photo");
 		System.out.println("Menu : tapez 8");
 		System.out.println("Quitter : tapez 9");
+		System.out.print(">> ");
 		Scanner sc = new Scanner(System.in);
 		
 		String choix = sc.nextLine();
@@ -340,6 +341,7 @@ public class View {
 		System.out.println("Suprimer commande :  taper 2 [espace] idCommande");
 		System.out.println("Menu : tapez 8");
 		System.out.println("Quitter : tapez 9");
+		System.out.print(">> ");
 		Scanner sc = new Scanner(System.in);
 		
 		String choix = sc.nextLine();
@@ -349,7 +351,6 @@ public class View {
 		if(choix.charAt(0)=='1') {
 			
 			fichier = "FFF";
-			System.out.println(".-");
 			fichier = fichier + " " + choix.substring(choix.indexOf(" ")+1, choix.length());
 			control.notifyChangement(fichier);
 			
@@ -357,7 +358,7 @@ public class View {
 			
 			fichier = "DLC";
 			
-			fichier = fichier + choix.substring(choix.indexOf(" ")+1, choix.length());
+			fichier = fichier + choix.substring(choix.indexOf(" "), choix.length());
 			
 			control.notifyChangement(fichier);
 		}else {
@@ -414,6 +415,7 @@ public void displayOrderADDCommand(ArrayList<String> str){		//Menu des nouvelles
 		}
 
 		System.out.println("choisir l'album à commander: taper 1 [espace] id de l'album [espace] quantité");
+		System.out.println("Menu : tapez 8");
 		System.out.println("Quitter : tapez 9");
 		System.out.print(">> ");
 		
@@ -467,17 +469,6 @@ public void displayOrderADDCommand(ArrayList<String> str){		//Menu des nouvelles
 		}else {
 			control.notifyChangement(choix);
 		}
-	}
-
-	@SuppressWarnings("resource")
-	public void displayOrderList(ArrayList<String> str){		//Menu des listes des commandes
-		control = new ControllerOrderList(this, model);
-		if(!str.isEmpty()){
-			System.out.println(str);
-		}
-		System.out.println("--- --- LISTE DES COMMANDES --- ---");
-		Scanner sc = new Scanner(System.in);
-		control.notifyChangement(sc.nextLine());
 	}
 
 	public void displayEnd(String str){		//Affichage de fermeture

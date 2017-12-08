@@ -1,14 +1,3 @@
-	A faire :
-		- delFile()
-		- view supprimer les " " pour des arrayList
-
-
 	Note :
-		- chemin d'acces : nom.client 
-		- dans controller addMenu/addAlbum changer le while car il faut pouvoir retourner false quand il existe d�ja.
-		- getAllFilesWithNoFolder : gérer la fin de parcourt des listes
-		- delfolder : mettre à jour la table Contient
-		- faire évoluer les méthodes View qui ont une Array en paramètre en (String + Array) pour les erreurs
 		- coder la touche retour
-		- format prix : float ?
 		- suppression Automatique

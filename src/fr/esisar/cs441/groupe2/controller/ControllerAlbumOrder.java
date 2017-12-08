@@ -42,22 +42,28 @@ public class ControllerAlbumOrder extends Controller{
 				} else if(changement.substring(0,3).equals("FFF")) { // On propose la liste des albums
 					
 					if(Integer.parseInt(changement.substring(changement.indexOf(" ")+1, changement.length())) >0) {
-						System.out.println(".-");
-						model.setAlbum(Integer.parseInt(changement.substring(changement.indexOf(" ")+1, changement.length())));
+						model.setCommand(Integer.parseInt(changement.substring(changement.indexOf(" ")+1, changement.length())));
 						view.displayOrderADDCommand(model.getFolderList());
 					}else {
-						System.out.println("-");
 						view.displayOrderMenu("Probleme");
 					}
 					
 				} else if(changement.substring(0,3).equals("AFF")) {
-					if(model.addLine(Integer.parseInt(changement.substring(changement.indexOf(" ")+1, changement.length())), 
+					if(model.addLine(Integer.parseInt(changement.substring(changement.indexOf(" ")+1, changement.lastIndexOf(" "))), 
 							         30, 
 							         Integer.parseInt(changement.substring(changement.lastIndexOf(" ")+1, changement.length())))) {
 						view.displayOrderMenu("Nouvelle commande");
 					}else {
 						view.displayOrderMenu("Probleme");
 					}
+				} else if(changement.substring(0,3).equals("DLC")) {
+					if(model.delCommand(Integer.parseInt(changement.substring(changement.indexOf(" ")+1, changement.length())))) {
+						view.displayMenu("Commande supprimée");
+					}else {
+						view.displayMenu("Probleme");
+					}
+				}else {
+					view.displayMenu("Probleme");
 				}
 			}/**********************************************************/
 		}catch(StringIndexOutOfBoundsException e) {
