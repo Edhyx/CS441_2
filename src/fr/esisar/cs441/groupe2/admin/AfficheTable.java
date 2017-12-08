@@ -1,4 +1,4 @@
-package fr.esisar.cs441.groupe2.base;
+package fr.esisar.cs441.groupe2.admin;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

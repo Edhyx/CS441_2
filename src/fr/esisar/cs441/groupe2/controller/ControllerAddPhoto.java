@@ -42,7 +42,7 @@ public class ControllerAddPhoto extends Controller{
 				}
 	
 				if(i==6) {
-					for(int j=0; j<number; j++) { //envoie des informations photos au modèle
+					for(int j=0; j<number; j++) { //envoie des informations photos au modele
 						if(!model.addFile(element[0],
 											 element[1], 
 											 Integer.parseInt(element[2]), 

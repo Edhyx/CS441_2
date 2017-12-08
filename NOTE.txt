@@ -1,3 +1,0 @@
-	Note :
-		- coder la touche retour
-		- suppression Automatique
