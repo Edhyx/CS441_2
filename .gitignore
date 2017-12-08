@@ -4,6 +4,10 @@
 .settings/
 /bin/
 .class
+.log 
+.lof
+.pdf
+.aux
 
 
 # Intellij
