@@ -85,6 +85,31 @@ public class AlbumDAO {
 		}
 	    return album;
 	}
+	
+	// retourne dans une arrayList tous les albums
+	public ArrayList<Album> getAllById(String idClient) {
+		String sql_aff = "SELECT * FROM Album " + "WHERE adresseMail = '" + idClient +"'";
+		ArrayList<Album> album = new ArrayList<Album>();
+		boolean a;
+		try{
+			ResultSet rs = this.stmt.executeQuery(sql_aff);
+			a = rs.next();
+			if (a==false){
+		    	return new ArrayList<Album>();
+		    }
+		    else {
+		    	int id  = rs.getInt("idAlbum");
+			    String titre = rs.getString("titre");
+			    String sousTitre = rs.getString("sousTitre");
+			    
+				album.add(new Album(id,titre,sousTitre));
+			}		
+			rs.close();
+		} catch (SQLException e) {
+			return null;
+		}
+	    return album;
+	}
 	// affiche tout les elements de la table album.Methode reservee a l'admin 
 	public void affiche(){
 		try{
