@@ -5,8 +5,6 @@ Album.java
 */
 
 package fr.esisar.cs441.groupe2.base.entity;
-
-import java.util.ArrayList;
 /*
  * classe Album
  * Association : verifier pour ligneCommande cas ou c'est 0

@@ -1,7 +1,5 @@
 package fr.esisar.cs441.groupe2.controller;
 
-import java.util.ArrayList;
-
 import fr.esisar.cs441.groupe2.model.Model;
 import fr.esisar.cs441.groupe2.view.View;
 
@@ -19,8 +17,6 @@ public class ControllerInit extends Controller {
 		// choix du type de connexion (nouveau
 		// client ou identification)
 		
-		ArrayList<String> vide = new ArrayList<String>();
-
 		if (changement.charAt(0) == '1') {
 			view.displayNewClient("");
 		} else if (changement.charAt(0) == '2') {

@@ -98,6 +98,7 @@ public class View {
 		control.notifyChangement(client); // Envoi dans controler
 	}
 
+	@SuppressWarnings("resource")
 	public void displayConnection(String str) { // Affiche la page de connexion
 												// pour un client déjà existant
 		control = new ControllerConnection(this, model);
@@ -113,6 +114,7 @@ public class View {
 													// controler.
 	}
 
+	@SuppressWarnings("resource")
 	public void displayMenu(String str) { // Affiche le menu principal
 
 		control = new ControllerMenu(this, model);
@@ -241,6 +243,7 @@ public class View {
 		}
 	}
 
+	@SuppressWarnings("resource")
 	public void displayAlbumManagement(ArrayList<String> str) { // Menu de
 																// gestion des
 																// albums
@@ -412,6 +415,7 @@ public class View {
 		}
 	}
 
+	@SuppressWarnings("resource")
 	public void displayOrderADDCommand(ArrayList<String> str) { // Menu des nouvelles
 																// commandes
 

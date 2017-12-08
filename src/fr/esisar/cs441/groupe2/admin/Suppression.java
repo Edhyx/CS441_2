@@ -2,7 +2,6 @@ package fr.esisar.cs441.groupe2.admin;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -23,47 +22,47 @@ public class Suppression {
 	    
 	    //suppression LigneCommande
 	    String sql_delete_tabLc =  "DROP TABLE LigneCommande ";
-	    ResultSet rsLc = stmt.executeQuery(sql_delete_tabLc);
+	    stmt.executeQuery(sql_delete_tabLc);
 	    System.out.println("Table LigneCommande supprimee");
 	
 	    //suppression Commande
 	    String sql_delete_tabCo =  "DROP TABLE Commande ";
-	    ResultSet rsCo = stmt.executeQuery(sql_delete_tabCo);
+	    stmt.executeQuery(sql_delete_tabCo);
 	    System.out.println("Table Commande supprimee");
 	  
 	    //suppression Format
 	    String sql_delete_tabF =  "DROP TABLE Format ";
-	    ResultSet rsF = stmt.executeQuery(sql_delete_tabF);
+	    stmt.executeQuery(sql_delete_tabF);
 	    System.out.println("Table Format supprimee");
 	    
 	    //suppression Contient
 	    String sql_delete_tabCt =  "DROP TABLE Contient ";
-	    ResultSet rsCt = stmt.executeQuery(sql_delete_tabCt);
+	    stmt.executeQuery(sql_delete_tabCt);
 	    System.out.println("Table FichierImage supprimee");
 	    
 	    //suppression Album
 	    String sql_delete_tabAlb =  "DROP TABLE Album ";
-	    ResultSet rsAlb = stmt.executeQuery(sql_delete_tabAlb);
+	    stmt.executeQuery(sql_delete_tabAlb);
 	    System.out.println("Table Album supprimee");
 	   
 	    //suppression FichierImage
 	    String sql_delete_tabFi =  "DROP TABLE FichierImage ";
-	    ResultSet rsFi = stmt.executeQuery(sql_delete_tabFi);
+	    stmt.executeQuery(sql_delete_tabFi);
 	    System.out.println("Table FichierImage supprimee");
 	    
 	    //suppression client
 	    String sql_delete_tabC =  "DROP TABLE Client ";
-	    ResultSet rsClient = stmt.executeQuery(sql_delete_tabC);
+	    stmt.executeQuery(sql_delete_tabC);
 	    System.out.println("Table Client supprimee");
 	     
 	    //suppression adressF
 	    String sql_delete_tabAdF =  "DROP TABLE AdresseF ";
-	    ResultSet rsAF = stmt.executeQuery(sql_delete_tabAdF);
+	    stmt.executeQuery(sql_delete_tabAdF);
 	    System.out.println("Table AdresseF supprimee");
 
 	    //suppression adressL
 	    String sql_delete_tabAdL =  "DROP TABLE AdresseL ";
-	    ResultSet rsAL = stmt.executeQuery(sql_delete_tabAdL);
+	    stmt.executeQuery(sql_delete_tabAdL);
 	    System.out.println("Table AdresseL supprimee");
 	}
 
