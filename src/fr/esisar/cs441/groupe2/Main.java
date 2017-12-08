@@ -3,9 +3,9 @@ package fr.esisar.cs441.groupe2;
 import fr.esisar.cs441.groupe2.model.Model;
 import fr.esisar.cs441.groupe2.view.View;
 
-public class MainTestControl {
+public class Main {
 
-	public MainTestControl() {
+	public Main() {
 		// TODO Auto-generated constructor stub
 	}
 

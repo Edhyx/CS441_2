@@ -9,20 +9,89 @@
 	</target>
 	
 	<target name="compile" depends="clean">
+		
 		<mkdir dir="${classes.dir}"/>
-		<javac srcdir="${src.dir}" destdir="${classes.dir}"/>
+		<javac srcdir="${src.dir}" destdir="${classes.dir}"	>	
+			<classpath>
+				<pathelement location="CS441_2"/>
+				<pathelement path="ojdbc6.jar"/>
+			</classpath>
+		</javac>
 	</target>
 			
 	<target name="jar" depends="compile">
+		
 		<mkdir dir="${jar.dir}"/>
+		
 		<jar destfile="${ant.project.name}.jar" basedir="${classes.dir}">
+			<zipgroupfileset dir="lib" includes="*.jar"/>
+			<zipgroupfileset dir="lib" includes="*.jar" excludes=""/>
+			
 			<manifest>
-				<attribute name="Main-Class" value="fr.esisar.cs441.groupe2.view.View"/>
+				<attribute name="Main-Class" value="fr.esisar.cs441.groupe2.Main"/>
+				<attribute name="Class-Path" value="lib/ojdbc6.jar"/>
 			</manifest>
 		</jar>
 	</target>
 			
 	<target name="run" depends="jar">
 		<java jar="${ant.project.name}.jar" fork="true"/>
-	</target>		
+	</target>	
+	
+	<target name="jarDelete" depends="compile">
+		
+		<mkdir dir="${jar.dir}"/>
+		
+		<jar destfile="delelteTable.jar" basedir="${classes.dir}">
+			<zipgroupfileset dir="lib" includes="*.jar"/>
+			<zipgroupfileset dir="lib" includes="*.jar" excludes=""/>
+			
+			<manifest>
+				<attribute name="Main-Class" value="fr.esisar.cs441.groupe2.admin.Suppression"/>
+				<attribute name="Class-Path" value="lib/ojdbc6.jar"/>
+			</manifest>
+		</jar>
+	</target>
+	
+	<target name="deleteTable" depends="jarDelete">
+		<java jar="delelteTable.jar" fork="true"/>
+	</target>	
+
+	<target name="jarAffichage" depends="compile">
+		
+		<mkdir dir="${jar.dir}"/>
+		
+		<jar destfile="showTable.jar" basedir="${classes.dir}">
+			<zipgroupfileset dir="lib" includes="*.jar"/>
+			<zipgroupfileset dir="lib" includes="*.jar" excludes=""/>
+			
+			<manifest>
+				<attribute name="Main-Class" value="fr.esisar.cs441.groupe2.admin.AfficheTable"/>
+				<attribute name="Class-Path" value="lib/ojdbc6.jar"/>
+			</manifest>
+		</jar>
+	</target>
+	
+	<target name="showTable" depends="jarAffichage">
+		<java jar="showTable.jar" fork="true"/>
+	</target>	
+
+	<target name="jarInit" depends="compile">
+		
+		<mkdir dir="${jar.dir}"/>
+		
+		<jar destfile="initTable.jar" basedir="${classes.dir}">
+			<zipgroupfileset dir="lib" includes="*.jar"/>
+			<zipgroupfileset dir="lib" includes="*.jar" excludes=""/>
+			
+			<manifest>
+				<attribute name="Main-Class" value="fr.esisar.cs441.groupe2.admin.Suppression"/>
+				<attribute name="Class-Path" value="lib/ojdbc6.jar"/>
+			</manifest>
+		</jar>
+	</target>
+	
+	<target name="initTable" depends="jarInit">
+		<java jar="initTable.jar" fork="true"/>
+	</target>	
 </project>

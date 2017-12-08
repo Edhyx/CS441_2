@@ -1,7 +1,6 @@
 package fr.esisar.cs441.groupe2.base.entity;
 
 import java.util.Optional;
-
 import com.sun.security.ntlm.Client;
 
 public class Adresse {

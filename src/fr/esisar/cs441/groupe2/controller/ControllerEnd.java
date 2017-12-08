@@ -11,5 +11,6 @@ public class ControllerEnd extends Controller{ //Permet de quitter l'application
 	}
 
 	public void notifyChangement(String changement) {
+		model.delAllFilesWithNoFolder();
 	}
 }
