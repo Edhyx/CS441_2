@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import fr.esisar.cs441.groupe2.model.Model;
 import fr.esisar.cs441.groupe2.view.View;
 
-public class ControllerInit extends Controller{
+public class ControllerInit extends Controller{ //permet l'initialisation de l'application et le premier transfert vers les pages suivantes
 
 	public ControllerInit(View view, Model model) {
 		this.view = view;
 		this.model = model;
 	}
 	
-	public void notifyChangement(String changement) {
+	public void notifyChangement(String changement) { // choix du type de connexion (nouveau client ou identification)
 		ArrayList<String> vide = new ArrayList<String>();
 		
 		if(changement.charAt(0)=='1') {

@@ -17,15 +17,15 @@ public class ControllerAlbumManagement extends Controller {
 	
 	public void notifyChangement(String changement) {
 		
-		if(changement.charAt(0)=='9') {
+		if(changement.charAt(0)=='9') { //quitter l'application
 			view.displayEnd("");
-		}else if (changement.charAt(0) == '8') {
+		}else if (changement.charAt(0) == '8') { //retourner au menu principal
 			view.displayMenu("");
 		}
 		else {
 			
-			// On test tout les codes
-			if(changement.substring(0,3).equals("NEW")) { // new Folder
+			// On test tout les codes possibles envoyés par view
+			if(changement.substring(0,3).equals("NEW")) { // création nouvel album
 				
 				if(this.newFolder( changement.substring( changement.indexOf(" ")+1, changement.length()))) {
 					view.displayAlbumMenu("nouvel album");
@@ -36,7 +36,7 @@ public class ControllerAlbumManagement extends Controller {
 				
 				view.displayAlbumManagement(model.getFolderList());
 			
-			}else if(changement.substring(0,3).equals("ADA")) { // affichage liste d'ajout
+			}else if(changement.substring(0,3).equals("ADA")) { // affichage liste d'albums
 				
 				ArrayList<String> returns = model.getAllFilesWithNoFolder(changement.substring(changement.indexOf(" ")+1, changement.length()));
 				
@@ -49,7 +49,7 @@ public class ControllerAlbumManagement extends Controller {
 					view.displayAlbumADD(returns);	
 				}
 				
-			}else if(changement.substring(0,3).equals("DEA")) { // on supprime un album
+			}else if(changement.substring(0,3).equals("DEA")) { // suppression d'un album
 				
 				if(model.delFolder(Integer.parseInt(changement.substring(changement.indexOf(" ")+1,changement.length())))) {
 					view.displayAlbumManagement(model.getFolderList());	
@@ -57,7 +57,7 @@ public class ControllerAlbumManagement extends Controller {
 					
 					view.displayAlbumMenu("Probleme");
 				}
-			}else if(changement.substring(0,3).equals("ADF")) { // on ajoute une image a un album
+			}else if(changement.substring(0,3).equals("ADF")) { // ajout d'une image à un album
 				
 				if(addFileToFolder(changement.substring(changement.indexOf(" ")+1,changement.length()))){
 				}
@@ -76,7 +76,7 @@ public class ControllerAlbumManagement extends Controller {
 		}
 	}
 	
-	private boolean newFolder(String data) {
+	private boolean newFolder(String data) { // méthode utilisée pour la création d'un album
 		try {
 			
 			String[] element = new String[2];
@@ -105,7 +105,7 @@ public class ControllerAlbumManagement extends Controller {
 		}
 	}
 	
-	private boolean addFileToFolder( String str) {
+	private boolean addFileToFolder( String str) { // méthode utilisée pour l'ajout d'une photo à l'album
 		
 		String[] element = new String[4];
 		

@@ -6,7 +6,7 @@ import fr.esisar.cs441.groupe2.view.View;
 /**
  * Created by maximefelici on 29/11/2017.
  */
-public class ControllerNewClient extends Controller{
+public class ControllerNewClient extends Controller{ //création d'un nouveau client
 
 	public ControllerNewClient(View view, Model model) {
 		this.view = view;
@@ -20,7 +20,7 @@ public class ControllerNewClient extends Controller{
 		int i = 0;
 		
 		try {
-			while(changement.length()>0 & i<10) {
+			while(changement.length()>0 & i<10) { // récupérations des infos nouveau client
 				
 				if(i<9) {
 					element[i] = changement.substring(0, changement.indexOf(" "));
@@ -33,7 +33,7 @@ public class ControllerNewClient extends Controller{
 			
 			if(i==10) {
 				
-				// creation du client
+				// creation du nouveau client
 				boolean result = model.createClient(element[0], element[1], element[2], element[3],element[4], element[5], element[6], element[7], element[8], element[9]);
 				
 				if(result) {

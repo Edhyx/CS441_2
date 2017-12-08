@@ -15,14 +15,13 @@ public class ControllerConnection extends Controller{
 	public void notifyChangement(String changement) {
 		
 		try {
-			// on detecte si il s'agit d'une commande
 			if(changement.length() == 1) {
-				if(changement.charAt(0)=='9') {
+				if(changement.charAt(0)=='9') { // Quitter l'application
 					view.displayEnd("");
 				}else {
-					view.displayConnection("");
+					view.displayConnection(""); // connexion à l'application
 				}
-			}else { // On test l'identification
+			}else { // On test l'identification de l'utilisateur
 				
 				String id = changement.substring(0,changement.indexOf(" "));
 				String password = changement.substring(changement.indexOf(" ")+1,changement.length());
@@ -30,7 +29,7 @@ public class ControllerConnection extends Controller{
 				
 				if((clientPassword = model.getClientPassword(id)) != null) {
 					
-					if(password.equals(clientPassword)) {
+					if(password.equals(clientPassword)) { // on vérifie ID et MDP dans le modèle
 						model.setClient(id);
 						view.setModel(model);
 						view.displayMenu("");

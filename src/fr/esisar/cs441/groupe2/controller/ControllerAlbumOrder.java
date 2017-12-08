@@ -18,15 +18,15 @@ public class ControllerAlbumOrder extends Controller{
 	public void notifyChangement(String changement) {
 		
 		try {
-			if(changement.charAt(0) == '9') {
+			if(changement.charAt(0) == '9') { // quitter l'application
 				view.displayEnd("");
-			}else if (changement.charAt(0) == '8') {
+			}else if (changement.charAt(0) == '8') { // retourner au menu principal
 				view.displayMenu("");
 			}
 			else {
 				
-				// On test tous les codes
-				if(changement.substring(0,3).equals("NEW")) { // new order
+				// On test tous les codes envoyés par view
+				if(changement.substring(0,3).equals("NEW")) { // nouvelle commande
 					view.displayOrderADD(model.getFolderList());
 					
 				} else if(changement.substring(0,3).equals("ADC")) { // ajout nouvelle commande
@@ -36,7 +36,7 @@ public class ControllerAlbumOrder extends Controller{
 					} else {
 						view.displayOrderADD(model.getFolderList());
 					}
-				} else if(changement.substring(0,3).equals("SHC")) { // affichage liste commandes
+				} else if(changement.substring(0,3).equals("SHC")) { // affichage de la liste des commandes
 					view.displayAlbumOrder(model.getOrderList());
 					
 				} else if(changement.substring(0,3).equals("FFF")) { // On propose la liste des albums
@@ -48,7 +48,7 @@ public class ControllerAlbumOrder extends Controller{
 						view.displayOrderMenu("Probleme");
 					}
 					
-				} else if(changement.substring(0,3).equals("AFF")) {
+				} else if(changement.substring(0,3).equals("AFF")) { // permet de choisir l'album à commander
 					if(model.addLine(Integer.parseInt(changement.substring(changement.indexOf(" ")+1, changement.lastIndexOf(" "))), 
 							         30, 
 							         Integer.parseInt(changement.substring(changement.lastIndexOf(" ")+1, changement.length())))) {
@@ -56,7 +56,7 @@ public class ControllerAlbumOrder extends Controller{
 					}else {
 						view.displayOrderMenu("Probleme");
 					}
-				} else if(changement.substring(0,3).equals("DLC")) {
+				} else if(changement.substring(0,3).equals("DLC")) { // supprimer une commande
 					if(model.delCommand(Integer.parseInt(changement.substring(changement.indexOf(" ")+1, changement.length())))) {
 						view.displayMenu("Commande supprimÃ©e");
 					}else {
@@ -65,7 +65,7 @@ public class ControllerAlbumOrder extends Controller{
 				}else {
 					view.displayMenu("Probleme");
 				}
-			}/**********************************************************/
+			}
 		}catch(StringIndexOutOfBoundsException e) {
 			view.displayOrderMenu("Probleme saisie");
 		}catch(NumberFormatException e){
@@ -73,7 +73,7 @@ public class ControllerAlbumOrder extends Controller{
 		}
 	}
 	
-	private boolean newOrder(String data) {
+	private boolean newOrder(String data) { // méthode utilisée pour la création d'une commande
 
 		try {
 			
