@@ -17,21 +17,10 @@ public class Suppression {
 		String pass = "malossep";
 
 		
-		//Class.forName(driver);
+		Class.forName(driver);
 		Connection connection = DriverManager.getConnection(url,login,pass);
 	    Statement stmt = connection.createStatement();
-
-	    /*String slq_show =  "SHOW TABLES FROM test";
-	    ResultSet rs_show = stmt.executeQuery(slq_show);
-	    System.out.println("SHOW: "+rs_show.getRow());
 	    
-
-	    ResultSet rs1=stmt.executeQuery("SELECT tablespace_name, table_name from all_tables");
-	    while(rs1.next()) {
-	    	System.out.println("Table " + rs1.getString("table_name"));
-	    	rs1.next();
-	    }*/
-
 	    //suppression LigneCommande
 	    String sql_delete_tabLc =  "DROP TABLE LigneCommande ";
 	    ResultSet rsLc = stmt.executeQuery(sql_delete_tabLc);
