@@ -20,3 +20,13 @@ L'objectif est de mettre en oeuvre les techniques de Génie Logiciel acquises en
 * Rémi POLETTI
 * Antoine HOMBERT
 * Anis BEN MAHMOUD
+
+
+## Documentation
+
+Pour compiler le fichier projet.tex :
+
+```
+pdflatex -shell-escape projet.tex
+```
+
