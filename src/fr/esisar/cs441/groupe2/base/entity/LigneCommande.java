@@ -13,12 +13,12 @@ public class LigneCommande {
     private Commande commande;
     private Format format;
 	
-    public LigneCommande(int quantite) {
+    public LigneCommande(int quantite, int idCommande, int idFormat, int idAlbum) {
 		super();
 		this.quantite = quantite;
-		this.album = null;
-		this.commande = null;
-		this.format = null;
+		this.album = new Album(idAlbum, null, null);
+		this.commande = new Commande(idCommande, null, idAlbum, null);
+		this.format = new Format(idFormat, 0);
 	}
     
     public LigneCommande(int quantite, Commande commande, Format format, Album album) {
