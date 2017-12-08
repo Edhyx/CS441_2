@@ -80,9 +80,11 @@ public class LigneCommandeDAO {
 	    	ResultSet rs = this.stmt.executeQuery(sql_aff);
 			while(rs.next()) {
 		    	int idCommande  = rs.getInt("idCommande");
+		    	int idAlbum  = rs.getInt("idAlbum");
+		    	int idFormat = rs.getInt("idFormat");
 		    	int quantite = rs.getInt("quantite");
 				
-			    adF.add(new LigneCommande(quantite));	       
+			    adF.add(new LigneCommande(quantite,idCommande,idFormat,idAlbum));	       
 			}
 			rs.close();
 		} catch (SQLException e) {
